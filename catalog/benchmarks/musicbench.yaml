@@ -1,0 +1,40 @@
+name: MusicBench
+full_name: "MusicBench: Towards Formal Music Understanding Benchmarks for Audio Language Models"
+year: 2024
+arxiv_id: "2408.01337"
+
+task_type: [QA]
+primary_skill:
+  - pitch
+  - instrument
+  - genre
+  - rhythm
+  - chord
+  - melody
+  - harmony
+  - key
+  - tempo
+  - emotion
+
+question_format: [MCQ, open-ended]
+answer_type: [categorical, text]
+n_choices: 4
+
+coverage:
+  n_items: null          # TODO: fill from paper
+  audio_duration_range: null
+  genres: null
+  instruments: null
+  languages: [en]
+  audio_source: null
+  real_vs_synth: null
+
+llm_only_score: null
+llm_only_model: null
+sota_score: null
+sota_model: null
+human_score: null
+
+used_in_papers: []
+
+notes: "Primary reference paper for this meta-study. PDF in ALM/current benchmarks/2408.01337v1.pdf"

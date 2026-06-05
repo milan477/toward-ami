@@ -1,0 +1,11 @@
+[project]
+name = "ami-eval"
+version = "0.1.0"
+description = "Meta-study: characterizing ALM music benchmarks and proposing better evaluation methods"
+requires-python = ">=3.12"
+dependencies = [
+    "pyyaml>=6.0",
+    "matplotlib>=3.9.0",
+    "numpy>=2.0.0",
+    "requests>=2.32.0",
+]
