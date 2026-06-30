@@ -1,6 +1,7 @@
 """
 Timeline: benchmark citation frequency and SOTA score evolution over time.
-Reads from catalog; score data may be augmented from data/scores/*.csv.
+Year and SOTA score are not in the normalized CSVs (the curated catalog was
+removed), so these plots are empty until that metadata is sourced elsewhere.
 """
 
 from pathlib import Path
@@ -8,18 +9,18 @@ from collections import defaultdict
 import matplotlib.pyplot as plt
 from catalog import load_all
 
-FIGURES = Path(__file__).parent.parent / "paper" / "figures"
-FIGURES.mkdir(parents=True, exist_ok=True)
+_DEFAULT_OUT = Path(__file__).parent.parent / "paper" / "figures"
 
 
-def publication_timeline(benchmarks: list[dict]) -> None:
+def publication_timeline(benchmarks: list[dict], out_dir: Path = _DEFAULT_OUT) -> None:
+    out_dir.mkdir(parents=True, exist_ok=True)
     year_counts: dict[int, int] = defaultdict(int)
     for b in benchmarks:
         if b.get("year"):
             year_counts[b["year"]] += 1
 
     if not year_counts:
-        print("No year data yet — fill in catalog entries.")
+        print("No year data available (publication year is not in the normalized CSVs).")
         return
 
     years = sorted(year_counts)
@@ -32,20 +33,20 @@ def publication_timeline(benchmarks: list[dict]) -> None:
     ax.set_title("ALM music benchmark publications over time")
     ax.set_xticks(years)
     plt.tight_layout()
-    fig.savefig(FIGURES / "publication_timeline.pdf")
+    fig.savefig(out_dir / "publication_timeline.pdf")
     plt.close(fig)
     print("Saved publication_timeline.pdf")
 
 
-def sota_score_evolution(benchmarks: list[dict]) -> None:
-    # Plot SOTA score vs year for benchmarks that have both fields
+def sota_score_evolution(benchmarks: list[dict], out_dir: Path = _DEFAULT_OUT) -> None:
+    out_dir.mkdir(parents=True, exist_ok=True)
     data = [
         (b["year"], b["sota_score"], b["name"])
         for b in benchmarks
         if b.get("year") and b.get("sota_score") is not None
     ]
     if not data:
-        print("No SOTA score data yet — fill in catalog entries.")
+        print("No SOTA score data available (not in the normalized CSVs).")
         return
 
     data.sort()
@@ -59,7 +60,7 @@ def sota_score_evolution(benchmarks: list[dict]) -> None:
     ax.set_ylabel("SOTA score reported")
     ax.set_title("SOTA performance vs benchmark publication year")
     plt.tight_layout()
-    fig.savefig(FIGURES / "sota_evolution.pdf")
+    fig.savefig(out_dir / "sota_evolution.pdf")
     plt.close(fig)
     print("Saved sota_evolution.pdf")
 

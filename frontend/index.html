@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ami-eval · benchmark browser</title>
+<style>
+  :root { --bg:#0f1117; --panel:#181b24; --line:#2a2f3a; --fg:#e6e8ee; --muted:#8b93a7;
+          --accent:#4f8cff; --good:#2ecc71; --chip:#222633; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+         background:var(--bg); color:var(--fg); }
+  header { position:sticky; top:0; z-index:5; background:var(--panel);
+           border-bottom:1px solid var(--line); padding:12px 16px; }
+  h1 { font-size:16px; margin:0 0 10px; }
+  h1 small { color:var(--muted); font-weight:400; }
+  .controls { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+  select, input[type=text] { background:var(--bg); color:var(--fg);
+    border:1px solid var(--line); border-radius:6px; padding:6px 9px; font-size:13px; }
+  input[type=text] { min-width:240px; }
+  label.check { color:var(--muted); display:flex; gap:5px; align-items:center; cursor:pointer; }
+  .meta { color:var(--muted); margin-left:auto; white-space:nowrap; }
+  main { padding:16px; max-width:1100px; margin:0 auto; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:10px;
+          padding:14px 16px; margin-bottom:12px; }
+  .qrow { display:flex; gap:8px; align-items:baseline; }
+  .idx { color:var(--muted); font-variant-numeric:tabular-nums; min-width:48px; }
+  .question { font-size:15px; font-weight:600; }
+  .chips { margin:8px 0 4px; display:flex; flex-wrap:wrap; gap:6px; }
+  .chip { background:var(--chip); color:var(--muted); border:1px solid var(--line);
+          padding:1px 8px; border-radius:20px; font-size:11.5px; }
+  .chip.type { color:var(--accent); border-color:var(--accent); }
+  .answers { margin:8px 0; }
+  .ans { padding:3px 0; }
+  .ans .tick { color:var(--good); font-weight:700; }
+  .ans.correct { color:var(--good); }
+  .ans.distractor { color:var(--fg); }
+  .open-ans { color:var(--good); padding:6px 10px; background:#13261b;
+              border:1px solid #1f4030; border-radius:6px; white-space:pre-wrap; }
+  audio { width:100%; margin-top:6px; }
+  .noaudio { color:var(--muted); font-style:italic; font-size:12.5px; margin-top:6px; }
+  .pager { display:flex; gap:8px; align-items:center; justify-content:center; padding:14px; }
+  button { background:var(--accent); color:#fff; border:0; border-radius:6px;
+           padding:7px 14px; font-size:13px; cursor:pointer; }
+  button:disabled { background:#33384a; color:var(--muted); cursor:default; }
+  .extra { color:var(--muted); font-size:12px; margin-top:6px; }
+  .empty { text-align:center; color:var(--muted); padding:40px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>ami-eval <small>· benchmark question & audio browser</small></h1>
+  <div class="controls">
+    <select id="dataset"></select>
+    <select id="category"><option value="">All categories</option></select>
+    <select id="type">
+      <option value="">All types</option>
+      <option value="mcq">MCQ</option>
+      <option value="oeq">Open-ended</option>
+    </select>
+    <input type="text" id="search" placeholder="Search question / answer…">
+    <label class="check"><input type="checkbox" id="audioOnly"> has audio</label>
+    <span class="meta" id="meta"></span>
+  </div>
+</header>
+<main>
+  <div id="list"></div>
+  <div class="pager">
+    <button id="prev">‹ Prev</button>
+    <span id="pageinfo" class="meta"></span>
+    <button id="next">Next ›</button>
+  </div>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+let page = 1;
+const state = { dataset:"", category:"", type:"", search:"", audioOnly:false };
+let searchTimer = null;
+
+async function jget(url) { const r = await fetch(url); return r.json(); }
+
+async function initDatasets() {
+  const { datasets } = await jget("/api/datasets");
+  $("dataset").innerHTML = datasets.map(d =>
+    `<option value="${d.name}">${d.name} (${d.count} q · ${d.audio_on_disk} audio)</option>`).join("");
+  state.dataset = datasets[0]?.name || "";
+  await loadCategories();
+  await load();
+}
+
+async function loadCategories() {
+  const { categories } = await jget("/api/categories?dataset=" + encodeURIComponent(state.dataset));
+  $("category").innerHTML = `<option value="">All categories</option>` +
+    categories.map(c => `<option value="${escapeAttr(c)}">${escapeHtml(c)}</option>`).join("");
+}
+
+function esc(s){return (s??"").toString();}
+function escapeHtml(s){return esc(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
+function escapeAttr(s){return escapeHtml(s).replace(/"/g,"&quot;");}
+
+function parseDistractors(raw){ try { const v=JSON.parse(raw); return Array.isArray(v)?v:[]; } catch { return []; } }
+
+const KNOWN = new Set(["benchmark","question","question_type","correct_answer","distractors","audio_url","category_1","category_2","category_3","_audio"]);
+
+function renderRow(r, i){
+  const cats = [r.category_1, r.category_2, r.category_3].filter(Boolean)
+    .map(c=>`<span class="chip">${escapeHtml(c)}</span>`).join("");
+  const typeChip = `<span class="chip type">${escapeHtml(r.question_type||"")}</span>`;
+
+  let answersHtml;
+  if (r.question_type === "mcq") {
+    const ds = parseDistractors(r.distractors);
+    answersHtml = `<div class="answers">`
+      + `<div class="ans correct"><span class="tick">✓</span> ${escapeHtml(r.correct_answer)}</div>`
+      + ds.map(d=>`<div class="ans distractor">• ${escapeHtml(d)}</div>`).join("")
+      + `</div>`;
+  } else {
+    answersHtml = `<div class="answers"><div class="open-ans">${escapeHtml(r.correct_answer) || "<em>(no reference answer)</em>"}</div></div>`;
+  }
+
+  const audio = (r._audio||[]).length
+    ? r._audio.map(u=>`<audio controls preload="none" src="${u}"></audio>`).join("")
+    : `<div class="noaudio">no audio on disk · <code>${escapeHtml(r.audio_url)}</code></div>`;
+
+  // any non-canonical columns (e.g. skills, length_type, music_knowledge)
+  const extras = Object.keys(r).filter(k=>!KNOWN.has(k) && esc(r[k]).length)
+    .map(k=>`${escapeHtml(k)}=${escapeHtml(r[k])}`).join("  ·  ");
+
+  return `<div class="card">
+    <div class="qrow"><span class="idx">${i}</span><span class="question">${escapeHtml(r.question)}</span></div>
+    <div class="chips">${typeChip}${cats}</div>
+    ${answersHtml}
+    ${audio}
+    ${extras ? `<div class="extra">${extras}</div>` : ""}
+  </div>`;
+}
+
+async function load(){
+  const p = new URLSearchParams({
+    dataset:state.dataset, category:state.category, type:state.type,
+    search:state.search, audio_only:state.audioOnly?"1":"", page:String(page), page_size:"25",
+  });
+  const data = await jget("/api/questions?"+p.toString());
+  const rows = data.rows||[];
+  const start = (data.page-1)*data.page_size;
+  $("list").innerHTML = rows.length
+    ? rows.map((r,k)=>renderRow(r, start+k+1)).join("")
+    : `<div class="empty">No matching questions.</div>`;
+  const pages = Math.max(1, Math.ceil(data.total/data.page_size));
+  $("meta").textContent = `${data.total} questions`;
+  $("pageinfo").textContent = `page ${data.page} / ${pages}`;
+  $("prev").disabled = data.page<=1;
+  $("next").disabled = data.page>=pages;
+  window.scrollTo({top:0});
+}
+
+$("dataset").onchange = async e => { state.dataset=e.target.value; page=1; await loadCategories(); load(); };
+$("category").onchange = e => { state.category=e.target.value; page=1; load(); };
+$("type").onchange = e => { state.type=e.target.value; page=1; load(); };
+$("audioOnly").onchange = e => { state.audioOnly=e.target.checked; page=1; load(); };
+$("search").oninput = e => { clearTimeout(searchTimer); searchTimer=setTimeout(()=>{ state.search=e.target.value; page=1; load(); },250); };
+$("prev").onclick = () => { if(page>1){page--; load();} };
+$("next").onclick = () => { page++; load(); };
+
+initDatasets();
+</script>
+</body>
+</html>

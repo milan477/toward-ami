@@ -4,9 +4,11 @@ test conditions (instrument × duration × format × ...) do they appear?
 """
 
 from collections import defaultdict
+from pathlib import Path
 from catalog import load_all
 
-# Full taxonomy of skills we care about — every leaf we'd want covered.
+_DEFAULT_OUT = Path(__file__).parent.parent / "paper" / "figures"
+
 SKILL_TAXONOMY = {
     "perception": ["pitch", "timbre", "loudness", "rhythm", "tempo", "onset", "duration"],
     "structure":  ["melody", "harmony", "chord", "key", "meter", "form", "polyphony"],
@@ -18,28 +20,35 @@ SKILL_TAXONOMY = {
 ALL_SKILLS = [s for skills in SKILL_TAXONOMY.values() for s in skills]
 
 
-def gap_report(benchmarks: list[dict]) -> None:
+def gap_report(benchmarks: list[dict], out_dir: Path = _DEFAULT_OUT) -> None:
+    out_dir.mkdir(parents=True, exist_ok=True)
     coverage: dict[str, list[str]] = defaultdict(list)
     for b in benchmarks:
         for skill in b.get("primary_skill") or []:
             coverage[skill].append(b["name"])
 
-    print("=" * 60)
-    print("SKILL COVERAGE REPORT")
-    print("=" * 60)
+    lines = []
+    lines.append("=" * 60)
+    lines.append("SKILL COVERAGE REPORT")
+    lines.append("=" * 60)
     for category, skills in SKILL_TAXONOMY.items():
-        print(f"\n[{category.upper()}]")
+        lines.append(f"\n[{category.upper()}]")
         for skill in skills:
             benches = coverage.get(skill, [])
             tag = "OK" if len(benches) >= 2 else ("WEAK" if len(benches) == 1 else "MISSING")
             bench_str = ", ".join(benches) if benches else "—"
-            print(f"  {tag:7s}  {skill:20s}  ({len(benches)} benchmark(s): {bench_str})")
+            lines.append(f"  {tag:7s}  {skill:20s}  ({len(benches)} benchmark(s): {bench_str})")
 
     missing = [s for s in ALL_SKILLS if not coverage.get(s)]
     weak = [s for s in ALL_SKILLS if len(coverage.get(s, [])) == 1]
-    print(f"\nSummary: {len(missing)} missing skills, {len(weak)} weakly covered skills")
-    print("Missing:", missing or "none")
-    print("Weak:   ", weak or "none")
+    lines.append(f"\nSummary: {len(missing)} missing skills, {len(weak)} weakly covered skills")
+    lines.append("Missing: " + (", ".join(missing) if missing else "none"))
+    lines.append("Weak:    " + (", ".join(weak) if weak else "none"))
+
+    report = "\n".join(lines)
+    print(report)
+    (out_dir / "gap_report.txt").write_text(report)
+    print(f"Saved gap_report.txt")
 
 
 if __name__ == "__main__":

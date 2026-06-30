@@ -1,0 +1,46 @@
+============================================================
+SKILL COVERAGE REPORT
+============================================================
+
+[PERCEPTION]
+  OK       pitch                 (2 benchmark(s): MMAR, MusicBench)
+  MISSING  timbre                (0 benchmark(s): —)
+  MISSING  loudness              (0 benchmark(s): —)
+  OK       rhythm                (2 benchmark(s): MMAR, MusicBench)
+  OK       tempo                 (2 benchmark(s): MMAR, MusicBench)
+  MISSING  onset                 (0 benchmark(s): —)
+  MISSING  duration              (0 benchmark(s): —)
+
+[STRUCTURE]
+  OK       melody                (2 benchmark(s): MMAR, MusicBench)
+  OK       harmony               (2 benchmark(s): MMAR, MusicBench)
+  OK       chord                 (2 benchmark(s): MMAR, MusicBench)
+  OK       key                   (2 benchmark(s): MMAR, MusicBench)
+  MISSING  meter                 (0 benchmark(s): —)
+  MISSING  form                  (0 benchmark(s): —)
+  MISSING  polyphony             (0 benchmark(s): —)
+
+[KNOWLEDGE]
+  OK       genre                 (2 benchmark(s): MMAR, MusicBench)
+  MISSING  style                 (0 benchmark(s): —)
+  OK       instrument            (2 benchmark(s): MMAR, MusicBench)
+  MISSING  era                   (0 benchmark(s): —)
+  MISSING  composer              (0 benchmark(s): —)
+  MISSING  theory                (0 benchmark(s): —)
+
+[REASONING]
+  MISSING  comparison            (0 benchmark(s): —)
+  MISSING  counting              (0 benchmark(s): —)
+  MISSING  ordering              (0 benchmark(s): —)
+  MISSING  analogy               (0 benchmark(s): —)
+  MISSING  inference             (0 benchmark(s): —)
+
+[AFFECT]
+  OK       emotion               (2 benchmark(s): MMAR, MusicBench)
+  MISSING  mood                  (0 benchmark(s): —)
+  MISSING  valence               (0 benchmark(s): —)
+  MISSING  arousal               (0 benchmark(s): —)
+
+Summary: 19 missing skills, 0 weakly covered skills
+Missing: timbre, loudness, onset, duration, meter, form, polyphony, style, era, composer, theory, comparison, counting, ordering, analogy, inference, mood, valence, arousal
+Weak:    none

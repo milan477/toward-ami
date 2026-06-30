@@ -1,6 +1,6 @@
 """
 Benchmark overlap: how many skills are shared between benchmarks.
-Outputs an overlap heatmap to paper/figures/.
+Outputs an overlap heatmap to out_dir (default: paper/figures/).
 """
 
 from pathlib import Path
@@ -8,11 +8,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 from catalog import load_all
 
-FIGURES = Path(__file__).parent.parent / "paper" / "figures"
-FIGURES.mkdir(parents=True, exist_ok=True)
+_DEFAULT_OUT = Path(__file__).parent.parent / "paper" / "figures"
 
 
-def skill_overlap_matrix(benchmarks: list[dict]) -> None:
+def skill_overlap_matrix(benchmarks: list[dict], out_dir: Path = _DEFAULT_OUT) -> None:
+    out_dir.mkdir(parents=True, exist_ok=True)
     names = [b["name"] for b in benchmarks]
     skills = [set(b.get("primary_skill") or []) for b in benchmarks]
 
@@ -33,7 +33,7 @@ def skill_overlap_matrix(benchmarks: list[dict]) -> None:
     ax.set_yticklabels(names, fontsize=8)
     ax.set_title("Skill overlap between benchmarks (Jaccard)")
     plt.tight_layout()
-    fig.savefig(FIGURES / "skill_overlap.pdf")
+    fig.savefig(out_dir / "skill_overlap.pdf")
     plt.close(fig)
     print(f"Saved skill_overlap.pdf ({n}×{n})")
 
