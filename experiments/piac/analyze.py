@@ -101,12 +101,13 @@ def _fmt(v) -> str:
     return "—" if v != v else f"{v:.0%}"
 
 
-def make_figures(by_piac: pd.DataFrame, by_skill: pd.DataFrame) -> list[Path]:
+def make_figures(by_piac: pd.DataFrame, by_skill: pd.DataFrame, slug: str = "") -> list[Path]:
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
     FIG_DIR.mkdir(parents=True, exist_ok=True)
+    pre = f"piac_{slug}_" if slug else "piac_"
     saved = []
 
     # 1. hallucination rate by PIAC category
@@ -119,7 +120,7 @@ def make_figures(by_piac: pd.DataFrame, by_skill: pd.DataFrame) -> list[Path]:
     for i, v in enumerate(p["halluc_rate"]):
         ax.text(i, v + 0.02, f"{v:.0%}", ha="center", fontsize=9)
     plt.tight_layout()
-    f1 = FIG_DIR / "piac_hallucination_by_category.pdf"
+    f1 = FIG_DIR / f"{pre}hallucination_by_category.pdf"
     fig.savefig(f1); fig.savefig(f1.with_suffix(".png"), dpi=120); plt.close(fig)
     saved.append(f1)
 
@@ -137,13 +138,14 @@ def make_figures(by_piac: pd.DataFrame, by_skill: pd.DataFrame) -> list[Path]:
         ax.set_xlim(0, 1); ax.legend(loc="lower right", fontsize=8)
         ax.invert_yaxis()
         plt.tight_layout()
-        f2 = FIG_DIR / "piac_mcq_vs_oeq_by_skill.pdf"
+        f2 = FIG_DIR / f"{pre}mcq_vs_oeq_by_skill.pdf"
         fig.savefig(f2); fig.savefig(f2.with_suffix(".png"), dpi=120); plt.close(fig)
         saved.append(f2)
     return saved
 
 
-def write_report(df, by_piac, by_skill, halluc_levels, oeq_path, mcq_path) -> Path:
+def write_report(df, by_piac, by_skill, halluc_levels, oeq_path, mcq_path, out_dir=None) -> Path:
+    out_dir = out_dir or OUT_DIR
     n = len(df)
     lines = [
         "PIAC analysis — hallucination & apparent-vs-actual acquisition",
@@ -180,7 +182,7 @@ def write_report(df, by_piac, by_skill, halluc_levels, oeq_path, mcq_path) -> Pa
     lines += ["",
               "Reading: a large positive gap = the skill looks acquired in MCQ but collapses in",
               "open-ended answering (often via hallucination) — apparent, not actual, acquisition."]
-    out = OUT_DIR / "analysis_report.txt"
+    out = out_dir / "analysis_report.txt"
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return out
 
@@ -192,21 +194,23 @@ def run(oeq_path: Path | None, mcq_path: Path | None) -> None:
         raise SystemExit(f"Need both an OEQ-PIAC summary ({OEQ_GLOB}) and an MCQ summary "
                          f"({MCQ_GLOB}). Run run_oeq first.")
     df = load_merged(oeq_path, mcq_path)
+    out_dir = oeq_path.parent            # write next to the OEQ summary being analyzed
+    slug = out_dir.parent.name           # model dir, e.g. 'gemini-3-flash-preview'
 
     halluc_levels = (df[df["hallucinated"]]["hallucination_level"]
                      .value_counts().to_dict())
     by_piac = _breakdown(df, "piac")
     by_skill = _breakdown(_explode_skills(df), "skill")
 
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    df.to_csv(OUT_DIR / "analysis.csv", index=False)
-    by_piac.to_csv(OUT_DIR / "analysis_by_piac.csv", index=False)
-    by_skill.to_csv(OUT_DIR / "analysis_by_skill.csv", index=False)
-    report = write_report(df, by_piac, by_skill, halluc_levels, oeq_path, mcq_path)
-    figs = make_figures(by_piac, by_skill)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    df.to_csv(out_dir / "analysis.csv", index=False)
+    by_piac.to_csv(out_dir / "analysis_by_piac.csv", index=False)
+    by_skill.to_csv(out_dir / "analysis_by_skill.csv", index=False)
+    report = write_report(df, by_piac, by_skill, halluc_levels, oeq_path, mcq_path, out_dir)
+    figs = make_figures(by_piac, by_skill, slug)
 
     print(report.read_text())
-    print(f"Wrote {OUT_DIR/'analysis.csv'} + by_piac/by_skill CSVs")
+    print(f"Wrote {out_dir/'analysis.csv'} + by_piac/by_skill CSVs")
     print("Figures:", ", ".join(str(f) for f in figs))
 
 

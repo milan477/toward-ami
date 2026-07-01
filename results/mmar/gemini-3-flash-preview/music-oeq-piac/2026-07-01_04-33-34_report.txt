@@ -1,0 +1,10 @@
+openrouter:google/gemini-3-flash-preview — MMAR music OEQ (PIAC-judged)
+================================================
+Run: 2026-07-01_04-33-34   commit 7cdb0958931f69bb4b0fdea0fe2c07bbfc3816e6
+mean score (0-1): 0.3932   hallucination: 60.19% (124/206)
+
+By PIAC category (mean score | n):
+  perceptual   0.2353  (n=34)
+  inferential  0.4318  (n=132)
+  affective    0.8333  (n=12)
+  contextual   0.2143  (n=28)

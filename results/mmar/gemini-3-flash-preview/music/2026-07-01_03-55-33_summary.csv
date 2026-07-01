@@ -1,0 +1,4 @@
+qid,category,skills,category_1,category_2,category_3,question,correct_answer,correct_letter,pred_letter,pred_answer,response,correct,skipped,error
+BV1vc411S7ro_00-00-00_00-00-30,inferential,location,music,Perception Layer,Environmental Perception and Reasoning,"In the video, the woman is singing. Is the location indoors or outdoors?",Outdoors,B,B,Outdoors,B,True,,
+pUZeSYsU0Uk_00-01-40_00-02-00,affective,emotion,music,Cultural Layer,Professional Knowledge and Reasoning,"What emotion does this piece of music express, happiness or sadness",Sadness,B,B,Sadness,B,True,,
+5cV1y1uDhpk_00-00-00_00-00-22,inferential,instrumentation,music,Cultural Layer,Professional Knowledge and Reasoning,"Different violins are used in the performance in the video, which violin do you think is more expensive?",The second one,D,D,The second one,D,True,,

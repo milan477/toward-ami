@@ -1,0 +1,10 @@
+openrouter:google/gemini-3-flash-preview — MMAR music MCQ
+================================================
+Run: 2026-07-01_04-19-03   commit 7cdb0958931f69bb4b0fdea0fe2c07bbfc3816e6
+accuracy: 59.22%  (122/206)
+
+By PIAC category:
+  perceptual   55.88%  (n=34)
+  inferential  56.06%  (n=132)
+  affective    75.00%  (n=12)
+  contextual   71.43%  (n=28)

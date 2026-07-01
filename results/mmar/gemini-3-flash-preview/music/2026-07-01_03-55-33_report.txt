@@ -1,0 +1,8 @@
+openrouter:google/gemini-3-flash-preview — MMAR music MCQ
+================================================
+Run: 2026-07-01_03-55-33   commit 7cdb0958931f69bb4b0fdea0fe2c07bbfc3816e6
+accuracy: 100.00%  (3/3)
+
+By PIAC category:
+  inferential  100.00%  (n=2)
+  affective    100.00%  (n=1)
