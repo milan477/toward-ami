@@ -1,0 +1,23 @@
+Audio Flamingo Next — MMAR (full benchmark, MCQ)
+====================================================
+Model:        nvidia/audio-flamingo-next-hf
+Git commit:   c037c155b1ebe0cd16564232a30fc041f0381db4
+Run started:  2026-06-30T17:46:13.296390+00:00
+Run finished: 2026-06-30T17:46:13.314061+00:00
+Audio cap:    29.5s (clips truncated to stay within one 30s encoder window)
+
+Overall
+----------------------------------------------------
+  questions (total):   1000
+  answered:            1000
+  skipped (no audio):  0
+  errors:              0
+  correct:             561
+  accuracy:            56.10%
+
+Accuracy by category (Layer)
+----------------------------------------------------
+  Semantic Layer                    250/412   60.68%
+  Perception Layer                  217/404   53.71%
+  Cultural Layer                     67/141   47.52%
+  Signal Layer                       27/43    62.79%

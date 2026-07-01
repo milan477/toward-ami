@@ -45,6 +45,25 @@
   button:disabled { background:#33384a; color:var(--muted); cursor:default; }
   .extra { color:var(--muted); font-size:12px; margin-top:6px; }
   .empty { text-align:center; color:var(--muted); padding:40px; }
+  .review { margin-top:10px; padding:10px 12px; background:#13182b; border:1px solid #283150;
+            border-radius:8px; display:flex; flex-wrap:wrap; gap:10px 18px; align-items:center; }
+  .review label { color:var(--muted); font-size:12px; display:flex; gap:6px; align-items:center; }
+  .review select, .review input.fmt { background:var(--bg); color:var(--fg);
+    border:1px solid var(--line); border-radius:6px; padding:5px 8px; font-size:13px; }
+  .review input.fmt { min-width:260px; }
+  .review .saved { color:var(--good); font-size:12px; opacity:0; transition:opacity .2s; }
+  .review .saved.show { opacity:1; }
+  .cat-perceptual { color:#4f8cff; border-color:#4f8cff; }
+  .cat-inferential { color:#b07cff; border-color:#b07cff; }
+  .cat-affective   { color:#ff7c9c; border-color:#ff7c9c; }
+  .cat-contextual  { color:#2ecc71; border-color:#2ecc71; }
+  .chip.cat { font-weight:600; }
+  .rationale { color:var(--muted); font-size:11.5px; font-style:italic; flex-basis:100%; }
+  .pred { margin:6px 0; padding:6px 10px; background:#101622; border:1px solid #243049;
+          border-radius:6px; font-size:13px; }
+  .example { margin:6px 0; padding:5px 10px; background:#20141a; border:1px solid #4a2733;
+             border-radius:6px; font-size:13px; color:#f0c0cc; }
+  .example .lbl { color:#ff7c9c; font-size:11px; font-weight:600; margin-right:6px; }
 </style>
 </head>
 <body>
@@ -101,12 +120,62 @@ function escapeAttr(s){return escapeHtml(s).replace(/"/g,"&quot;");}
 
 function parseDistractors(raw){ try { const v=JSON.parse(raw); return Array.isArray(v)?v:[]; } catch { return []; } }
 
-const KNOWN = new Set(["benchmark","question","question_type","correct_answer","distractors","audio_url","category_1","category_2","category_3","_audio"]);
+const KNOWN = new Set(["benchmark","question","question_type","correct_answer","distractors","audio_url","category_1","category_2","category_3","_audio","qid","category","category_auto","category_rationale","answer_format","example_answer","af_pred_letter","af_pred_answer","af_correct","af_response","af_error"]);
+
+function predBlock(r){
+  if (!("af_pred_answer" in r) && !("af_response" in r)) return "";
+  const has = (r.af_pred_answer||"") !== "" || (r.af_response||"") !== "" || (r.af_error||"") !== "";
+  if (!has) return "";
+  const ok = r.af_correct === "true", bad = r.af_correct === "false";
+  const mark = ok ? `<span style="color:var(--good)">✓ correct</span>`
+             : bad ? `<span style="color:#ff7c9c">✗ incorrect</span>` : "";
+  const pred = r.af_pred_answer
+    ? `<b>${escapeHtml(r.af_pred_answer)}</b>${r.af_pred_letter?` (${escapeHtml(r.af_pred_letter)})`:""}` : "<em>—</em>";
+  const raw = r.af_response && r.af_response !== r.af_pred_answer
+    ? ` · <span style="color:var(--muted)">raw: ${escapeHtml(r.af_response)}</span>` : "";
+  const err = r.af_error ? ` · <span style="color:#ff7c9c">error: ${escapeHtml(r.af_error)}</span>` : "";
+  return `<div class="pred">AF-Next: ${pred} ${mark}${raw}${err}</div>`;
+}
+
+let REVIEW_CATS = [];   // listener-action categories, from the server
+let EDITABLE = false;   // dataset carries qid + category columns
+
+async function saveField(qid, field, value, el){
+  const r = await fetch("/api/update", {
+    method:"POST", headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({dataset:state.dataset, qid, field, value}),
+  });
+  const ok = (await r.json()).ok;
+  if (el){ el.classList.toggle("show", ok); if(ok) setTimeout(()=>el.classList.remove("show"), 1200); }
+}
+
+function reviewBlock(r){
+  if (!EDITABLE) return "";
+  const cur = r.category || "";
+  const opts = [`<option value="">— unset —</option>`].concat(
+    REVIEW_CATS.map(c=>`<option value="${escapeAttr(c)}"${c===cur?" selected":""}>${escapeHtml(c)}</option>`)
+  ).join("");
+  const auto = r.category_auto ? `auto: ${escapeHtml(r.category_auto)}` : "";
+  const rationale = r.category_rationale ? `<div class="rationale">${escapeHtml(r.category_rationale)}</div>` : "";
+  return `<div class="review" data-qid="${escapeAttr(r.qid)}">
+    <label>category
+      <select class="cat-select cat-${escapeAttr(cur)}">${opts}</select>
+    </label>
+    <label>answer format
+      <input class="fmt" type="text" value="${escapeAttr(r.answer_format||"")}" placeholder="e.g. an instrument name">
+    </label>
+    <span class="chip">${escapeHtml(auto)}</span>
+    <span class="saved">✓ saved</span>
+    ${rationale}
+  </div>`;
+}
 
 function renderRow(r, i){
   const cats = [r.category_1, r.category_2, r.category_3].filter(Boolean)
     .map(c=>`<span class="chip">${escapeHtml(c)}</span>`).join("");
   const typeChip = `<span class="chip type">${escapeHtml(r.question_type||"")}</span>`;
+  const catChip = r.category
+    ? `<span class="chip cat cat-${escapeAttr(r.category)}">${escapeHtml(r.category)}</span>` : "";
 
   let answersHtml;
   if (r.question_type === "mcq") {
@@ -119,6 +188,9 @@ function renderRow(r, i){
     answersHtml = `<div class="answers"><div class="open-ans">${escapeHtml(r.correct_answer) || "<em>(no reference answer)</em>"}</div></div>`;
   }
 
+  const exampleHtml = (r.example_answer||"") !== ""
+    ? `<div class="example"><span class="lbl">✗ incorrect example</span> ${escapeHtml(r.example_answer)}</div>` : "";
+
   const audio = (r._audio||[]).length
     ? r._audio.map(u=>`<audio controls preload="none" src="${u}"></audio>`).join("")
     : `<div class="noaudio">no audio on disk · <code>${escapeHtml(r.audio_url)}</code></div>`;
@@ -129,11 +201,30 @@ function renderRow(r, i){
 
   return `<div class="card">
     <div class="qrow"><span class="idx">${i}</span><span class="question">${escapeHtml(r.question)}</span></div>
-    <div class="chips">${typeChip}${cats}</div>
+    <div class="chips">${typeChip}${catChip}${cats}</div>
     ${answersHtml}
+    ${exampleHtml}
+    ${predBlock(r)}
     ${audio}
+    ${reviewBlock(r)}
     ${extras ? `<div class="extra">${extras}</div>` : ""}
   </div>`;
+}
+
+// Wire up the editable review controls after each render (event delegation).
+function bindReview(){
+  document.querySelectorAll(".review").forEach(block=>{
+    const qid = block.dataset.qid;
+    const saved = block.querySelector(".saved");
+    const sel = block.querySelector(".cat-select");
+    sel.onchange = e => {
+      REVIEW_CATS.forEach(c=>sel.classList.remove("cat-"+c));
+      if (e.target.value) sel.classList.add("cat-"+e.target.value);
+      saveField(qid, "category", e.target.value, saved);
+    };
+    const fmt = block.querySelector(".fmt");
+    fmt.onchange = e => saveField(qid, "answer_format", e.target.value, saved);
+  });
 }
 
 async function load(){
@@ -143,10 +234,13 @@ async function load(){
   });
   const data = await jget("/api/questions?"+p.toString());
   const rows = data.rows||[];
+  EDITABLE = !!data.editable;
+  REVIEW_CATS = data.review_categories || [];
   const start = (data.page-1)*data.page_size;
   $("list").innerHTML = rows.length
     ? rows.map((r,k)=>renderRow(r, start+k+1)).join("")
     : `<div class="empty">No matching questions.</div>`;
+  bindReview();
   const pages = Math.max(1, Math.ceil(data.total/data.page_size));
   $("meta").textContent = `${data.total} questions`;
   $("pageinfo").textContent = `page ${data.page} / ${pages}`;

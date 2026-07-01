@@ -1,0 +1,32 @@
+Audio Flamingo Next — MMAR music subset (OEQ, Qwen-judged)
+==========================================================
+Answer model: nvidia/audio-flamingo-next-hf
+Judge model:  Qwen/Qwen3-8B
+Judge scale:  0-4  →  normalized score / 4
+Git commit:   c037c155b1ebe0cd16564232a30fc041f0381db4
+Run datetime: 2026-06-30_22-48-58 (local)
+Modality:     music   audio: no truncation
+
+Overall
+----------------------------------------------------------
+  questions:           206
+  answered:            206
+  judged:              206
+  skipped (no audio):  0
+  mean score (0-4):    1.204
+  mean score (0-1):    0.3010
+  score distribution:  {'0': 125, '1': 1, '2': 28, '3': 17, '4': 35}
+
+Mean normalized score by PIAC category
+----------------------------------------------------------
+  perceptual                       0.2596  (n=52)
+  inferential                      0.2931  (n=87)
+  affective                        0.4444  (n=9)
+  contextual                       0.3276  (n=58)
+
+Mean normalized score by category (MMAR Layer)
+----------------------------------------------------------
+  Perception Layer                 0.2929  (n=105)
+  Cultural Layer                   0.3202  (n=57)
+  Semantic Layer                   0.2750  (n=30)
+  Signal Layer                     0.3393  (n=14)

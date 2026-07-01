@@ -67,6 +67,47 @@ matching each question's `audio_url` to whatever is on disk (so questions whose
 audio hasn't been downloaded just show without a player). Supports dataset/
 category/type filters, search, an "has audio" toggle, and audio seeking.
 
+When a dataset carries `qid` + `category` columns (e.g. the Qwen-annotated
+`data/processed/<name>.csv`, see below), each card also shows the assigned
+content category and an inline editor — a category dropdown
+(perceptual/inferential/affective/contextual) and an answer-format field — that
+writes edits straight back to the CSV via `POST /api/update`:
+
+```bash
+python frontend/server.py --data-dir data/processed   # review + edit categories
+```
+
+A model run can also be browsed this way: `run_mmar_af_next.py` writes a
+frontend-viewable CSV (`data/af_next/<input>.csv` = full schema + `category` +
+`af_pred_answer`/`af_correct`/`af_response`), so each card shows the model's
+answer with a ✓/✗ next to the audio and category:
+
+```bash
+python experiments/scripts/run_mmar_af_next.py --data data/processed/mmar.csv --modality music
+python frontend/server.py --data-dir data/af_next     # browse AF-Next predictions
+```
+
+## Annotating questions (local Qwen)
+
+`experiments/oeq_mcq/annotate.py` uses a local Qwen model (no API key) to
+prepopulate, per question, an `answer_format` (what a correct open-ended answer
+looks like) and a content `category` — **perceptual** (measurable from the
+signal), **inferential** (trained analysis of the signal), **affective** (the
+listener's subjective experience), **contextual** (factual world knowledge beyond
+the signal); the prompt summarizes each and states the rule of thumb. Output is
+the editable `data/processed/<name>.csv` (source columns + `qid`, `category`,
+`category_auto`, `category_rationale`, `answer_format`); re-runs preserve manual
+edits. Review/correct the labels in the frontend (above).
+
+```bash
+python -m experiments.oeq_mcq.annotate                 # cleaned mmar, local Qwen
+python -m experiments.oeq_mcq.annotate --overwrite     # re-annotate all rows
+```
+
+The general 0–4 LLM-as-judge lives at `experiments/helpers/judge.py` (also
+local-Qwen by default); any `make_client` spec works as the judge/annotator
+backend (`local:...`, `openai:...`, `openrouter:...`).
+
 ## Running analysis
 
 ```bash

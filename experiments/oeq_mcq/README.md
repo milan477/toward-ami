@@ -9,6 +9,7 @@ Tests whether multiple-choice (MCQ) inflates ALM scores relative to open-ended
 | Step | Module | What it does |
 |------|--------|--------------|
 | 1–2 | `sample.py` | Pull the MMAR music subset (`data/cleaned/mmar.csv`), draw a stratified ~50-question sheet, write `data/classification.csv` for **manual** level labelling. |
+| 1b | `annotate.py` | **Local Qwen** pre-labels every question with a content `category` (perceptual/inferential/affective/contextual) + an `answer_format`, into the editable `data/processed/mmar.csv` — review/correct in the frontend (`server.py --data-dir data/processed`). |
 | 3 | `prompts.py` | Build MCQ (shuffled lettered options) and OEQ ("answer in 1–2 sentences", options stripped) variants. |
 | 4 | `run.py` | Query one model with both variants **+ audio**. MCQ graded automatically. |
 | 5 | `judge.py` | LLM-as-judge scores each OEQ answer for **accuracy + grounding**, using the level's eval criterion. |
@@ -44,6 +45,17 @@ Model specs (`--model` / `--judge`), see `experiments/helpers/models.py`:
   `gpt-4o-audio-preview`) receive the clip; others get text only.
 - `openrouter:<vendor/model>` — needs `OPENROUTER_API_KEY`. Audio sent when the
   model id looks audio-capable.
+- `local` / `local:<hf_model_id>` — a local HF text model (default
+  `Qwen/Qwen2.5-7B-Instruct`, override via `LOCAL_JUDGE_MODEL`). Text-only, runs
+  on this machine with no API key — ideal as a judge. See
+  `experiments/helpers/judge.py` for a standalone 0–4 correctness judge
+  (`0` fully incorrect … `4` fully correct):
+
+  ```bash
+  python -m experiments.helpers.judge --run experiments/results/exp_3_oeq_vs_mcq/<ts>
+  python -m experiments.helpers.judge \
+      --question "..." --reference "..." --answer "..."   # ad-hoc grade
+  ```
 
 Outputs land in `experiments/results/exp_3_oeq_vs_mcq/<timestamp>/`
 (`results_*.json`, `judged_*.json`, `table.md`, `table.csv`) — committed, never

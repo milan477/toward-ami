@@ -131,6 +131,8 @@ def api_questions(params: dict) -> dict:
     return {
         "dataset": dataset,
         "columns": list(df.columns),
+        "editable": "qid" in df.columns and "category" in df.columns,
+        "review_categories": REVIEW_CATEGORIES,
         "total": total,
         "page": page,
         "page_size": size,
@@ -145,6 +147,45 @@ def api_categories(params: dict) -> dict:
     df = _load_df(dataset)
     cats = sorted({c for c in df.get("category_1", pd.Series(dtype=str)) if c})
     return {"categories": cats}
+
+
+# The listener-action review categories (must match annotate.py). When a dataset
+# carries a `category` column, the frontend lets a reviewer reassign it.
+REVIEW_CATEGORIES = ["perceptual", "inferential", "affective", "contextual"]
+EDITABLE_FIELDS = {"category", "piac", "answer_format"}
+# `category` and `piac` hold the same content-category value — edit one, write both.
+PIAC_ALIASES = ("category", "piac")
+
+
+def api_update(body: dict) -> dict:
+    """Persist a single edited cell back to the dataset's CSV on disk (by qid)."""
+    dataset = body.get("dataset")
+    qid = str(body.get("qid", ""))
+    field = body.get("field")
+    value = "" if body.get("value") is None else str(body.get("value"))
+    if dataset not in datasets():
+        return {"ok": False, "error": f"unknown dataset {dataset!r}"}
+    if field not in EDITABLE_FIELDS:
+        return {"ok": False, "error": f"field {field!r} is not editable"}
+    if field in PIAC_ALIASES and value and value not in REVIEW_CATEGORIES:
+        return {"ok": False, "error": f"invalid category {value!r}"}
+
+    path = DATA_DIR / f"{dataset}.csv"
+    df = pd.read_csv(path, dtype=str, keep_default_na=False)
+    if "qid" not in df.columns:
+        return {"ok": False, "error": f"{dataset} has no qid column; not editable"}
+    mask = df["qid"] == qid
+    if not mask.any():
+        return {"ok": False, "error": f"qid {qid!r} not found"}
+    # Editing the content category writes both aliases so they never drift.
+    targets = PIAC_ALIASES if field in PIAC_ALIASES else (field,)
+    for col in targets:
+        if col not in df.columns:
+            df[col] = ""
+        df.loc[mask, col] = value
+    df.to_csv(path, index=False)
+    _load_df.cache_clear()  # so subsequent reads reflect the edit
+    return {"ok": True, "dataset": dataset, "qid": qid, "field": field, "value": value}
 
 
 # --- HTTP server ----------------------------------------------------------
@@ -222,6 +263,18 @@ class Handler(BaseHTTPRequestHandler):
                 return self._serve_audio(parts[0], parts[1])
             return self.send_error(404)
         self.send_error(404)
+
+    def do_POST(self):
+        parsed = urlparse(self.path)
+        if parsed.path != "/api/update":
+            return self.send_error(404)
+        length = int(self.headers.get("Content-Length", 0) or 0)
+        try:
+            body = json.loads(self.rfile.read(length) or b"{}")
+        except json.JSONDecodeError:
+            return self._send_json({"ok": False, "error": "bad json"}, status=400)
+        result = api_update(body)
+        return self._send_json(result, status=200 if result.get("ok") else 400)
 
 
 class DualStackServer(ThreadingHTTPServer):

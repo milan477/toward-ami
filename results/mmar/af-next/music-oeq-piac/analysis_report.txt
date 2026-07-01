@@ -1,0 +1,30 @@
+PIAC analysis — hallucination & apparent-vs-actual acquisition
+================================================================
+OEQ source: 2026-07-01_02-06-08_summary.csv
+MCQ source: 2026-07-01_01-54-58_summary.csv
+Questions merged: 20
+
+Overall
+----------------------------------------------------------------
+  MCQ accuracy (apparent):   65.0%
+  OEQ accuracy (actual):     40.0%
+  OEQ mean score (0-1):      0.400
+  Hallucination rate (OEQ):  55.0%
+  Hallucination by failing PIAC level: {'inferential': 7, 'perceptual': 3, 'affective': 1}
+
+By PIAC category   (n | MCQ apparent | OEQ actual | OEQ mean | halluc | apparent−actual)
+----------------------------------------------------------------
+  perceptual     5 |    60% |    20% | 0.20 |   60% |    40%
+  inferential   11 |    64% |    36% | 0.36 |   64% |    27%
+  affective      3 |    67% |    67% | 0.67 |   33% |     0%
+  contextual     1 |   100% |   100% | 1.00 |    0% |     0%
+
+By skill (n≥3), sorted by apparent−actual gap (the proof)
+----------------------------------------------------------------
+  skill            n | MCQ | OEQ | halluc | gap
+  other             5 |  60% |  20% |   80% |   40%
+  instrumentation   5 |  60% |  40% |   40% |   20%
+  form              3 |  67% |  67% |   33% |    0%
+
+Reading: a large positive gap = the skill looks acquired in MCQ but collapses in
+open-ended answering (often via hallucination) — apparent, not actual, acquisition.

@@ -1,0 +1,20 @@
+Audio Flamingo Next — MMAR music OEQ, PIAC-judged (+ hallucination)
+==============================================================
+Answer model: nvidia/audio-flamingo-next-hf
+Judge model:  Qwen/Qwen3-8B (local, PIAC category-specific)  (category-specific rubric)
+Git commit:   c037c155b1ebe0cd16564232a30fc041f0381db4
+Run datetime: 2026-07-01_03-50-34 (local)
+
+Overall
+--------------------------------------------------------------
+  questions / answered / judged:  206 / 206 / 206
+  mean score (0-1):               0.3799
+  hallucination rate:             63.11% (130)
+  hallucination by failing level: {'perceptual': 26, 'inferential': 81, 'contextual': 20, 'affective': 3}
+
+Per PIAC category:  mean score (0-1)   |   hallucination rate
+--------------------------------------------------------------
+  perceptual     0.2059                76.47%
+  inferential    0.4015                59.85%
+  affective      0.7708                41.67%
+  contextual     0.3214                71.43%
