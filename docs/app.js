@@ -1,6 +1,6 @@
 "use strict";
 
-const MODEL_COLORS = { "af-next": "#7c9cff", "gemini": "#d98cf0" };
+const MODEL_COLORS = { "af-next": "#0071e3", "gemini": "#8944ab" };
 const PIAC = ["perceptual", "inferential", "affective", "contextual"];
 const state = { data: null, model: null, filters: { q: "", piac: "", result: "" } };
 
@@ -47,7 +47,7 @@ function renderOverview() {
   $("#overview-cards").innerHTML = models.map((m) => {
     const o = overview[m.id];
     const gap = o.mcq_acc - o.oeq_acc;
-    const color = MODEL_COLORS[m.id] || "#7c9cff";
+    const color = MODEL_COLORS[m.id] || "#0071e3";
     return `
     <div class="ov-card">
       <h3><span class="model-dot" style="background:${color}"></span>${esc(m.label)}</h3>
