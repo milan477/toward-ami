@@ -1,0 +1,330 @@
+AMI-EVAL — SUPPLEMENTARY MATERIAL: PROMPTS
+======================================================================
+Every prompt used in the MMAR music-understanding pipeline. Placeholders in
+<ANGLE BRACKETS> are filled per question at run time. Grouped as: (A) prompts
+shown to the audio LM under test; (B) annotation/classification prompts (local
+Qwen3-8B); (C) LLM-as-judge prompts (local Qwen3-8B).
+Generated from the live code (experiments/oeq_mcq, experiments/piac,
+experiments/helpers) so it stays in sync.
+
+
+######################################################################
+A1. MCQ (multiple-choice) — answer model
+Purpose: Asks the audio LM to pick the single correct lettered option (auto-graded by letter).
+######################################################################
+
+Listen to the audio and answer the multiple-choice question. Respond with only the letter of the correct option, and nothing else. Example: A
+
+No other text or comments.
+
+Question: <QUESTION>
+
+A. <DISTRACTOR 3>
+B. <DISTRACTOR 2>
+C. <REFERENCE (correct) ANSWER>
+D. <DISTRACTOR 1>
+
+
+######################################################################
+A2. OEQ (open-ended, unguided) — answer model
+Purpose: Asks the audio LM to answer the question in 1-2 free-text sentences with no format hint.
+######################################################################
+
+Listen to the audio and answer the question in 1-2 sentences. Be specific and ground your answer in what you hear.
+
+Question: <QUESTION>
+
+
+######################################################################
+A3. OEQ (open-ended, guided) — answer model
+Purpose: Same open-ended question but steered by the expected answer_format and a validly-formatted (incorrect) example so the form is fixed without leaking the answer.
+######################################################################
+
+Listen to the audio and answer the question. Be specific and ground your answer in what you hear.
+Answer format: <ANSWER FORMAT>.
+Example of a validly-formatted answer (shows the expected form only — it is NOT the correct answer): "<EXAMPLE (incorrect) ANSWER>"
+
+Question: <QUESTION>
+
+
+######################################################################
+B1. Answer-format + category + example annotation (Qwen3)
+Purpose: Prepopulates, per question, the answer_format, a first-pass PIAC category, and one incorrect example answer, written to data/processed for review.
+######################################################################
+
+You are annotating a question about an audio clip for a music-evaluation study. Do three things.
+
+1. answer_format: in a short, SPECIFIC noun phrase, describe what a correct answer looks like if the question were asked open-ended — its form, not its content, and IGNORING that options may be listed. Be precise about the type: e.g. "a single instrument name", "a country name", "an ordinal number (first/second/…)", "a tempo in beats per minute", "a short emotion word", "yes or no", "a count of beats", "a reason (a 'because…' clause)". Derive the type from the REFERENCE ANSWER's own form. NEVER answer with a vague type such as "mcq option", "one of the listed options", "an option", or "a piece number".
+
+2. category: classify the question into exactly ONE of these four content categories, by what a correct answer fundamentally depends on:
+  - perceptual: Information directly measurable from the audio signal, admitting a single ground truth and requiring neither prior knowledge nor reasoning. Defined by the absence of reasonable disagreement (given an answer format): a note is A4 or it is not; an onset occurs at a given time or it does not. Covers objective signal-level attributes / audio features — pitch, timing, duration, loudness, instrumentation, lyrics. NB: meter / time-signature is NOT perceptual (not physically present in the signal; interpretable, e.g. 4/4 vs 2/2).
+  - inferential: Musical information derived from the audio through trained listening and analytical reasoning. Intersubjective: trained listeners tend to converge on an answer but some disagreement remains possible; claims must be substantiable in perceptual evidence. Covers harmonic function, chord identity, formal segmentation, phrase structure, voice leading, other aspects of musical organization, and genre/style attribution — plus relative descriptors that map a measurable quantity onto a musical category (e.g. calling a measured tempo 'slow').
+  - affective: Information about the listener's subjective experience of the music — expression and emotional response. Subjective by definition: no single right answer and no consensus expected or desirable. Covers perceived mood, character, tension, intimacy, energy, aesthetic quality, and personal response; ideally grounded in perceptual/inferential features.
+  - contextual: Factual knowledge about the music that is external to the audio signal, attached through historical or physical context, and admitting a single ground truth (when it is unknown, the correct response is to acknowledge that uncertainty). Covers composer, performer, title, date or place of recording, and the audio's reception or influence. NB: detecting genre from audio is inferential and ambiguous, NOT contextual.
+
+Rule of thumb, by degree of ambiguity: if it is directly measurable from the signal (single ground truth, no reasoning) it is perceptual; if it is an external fact about the music not derivable from the signal (single ground truth) it is contextual; if it is the listener's subjective experience (no consensus) it is affective; otherwise — derived by trained analysis, with expert consensus but some disagreement — it is inferential.
+
+3. example_answer: give ONE INCORRECT but valid answer to the question — a real answer from the SAME answer space and in the SAME form as the reference answer (same brevity and type), just a wrong value. It is a wrong OPTION, not an explanation: never a sentence or a justification.
+   - If the question is yes/no or offers explicit alternatives, use the OTHER option (reference "Yes" → "No"; reference "Outdoors" → "Indoors"; reference "Fourth" → "Second").
+   - If options are listed below, example_answer MUST be exactly one of the INCORRECT options, copied verbatim.
+   - Otherwise pick a different but realistic value of the same kind (reference "violin" → "cello"; reference "Japan" → "Korea").
+
+Question: <QUESTION>
+Answer type: oeq
+Reference answer (the CORRECT answer — do not reuse it): <REFERENCE (correct) ANSWER>
+
+Reply with ONLY a JSON object and nothing else:
+{"answer_format": "<short phrase>", "category": "<perceptual|inferential|affective|contextual>", "rationale": "<one short sentence>", "example_answer": "<an incorrect option, same form as the reference>"}
+
+
+######################################################################
+B2. PIAC category classification (Qwen3, full taxonomy)
+Purpose: Classifies each question into one PIAC category (perceptual/inferential/affective/contextual) using the full taxonomy definitions.
+######################################################################
+
+You classify a question about an audio clip into ONE epistemic category, by the NATURE of what a correct answer fundamentally depends on. The four PIAC categories:
+
+### perceptual
+- Information: Anything measurable from the audio itself; needs neither prior knowledge nor active reasoning.
+- Ambiguity: No reasonable disagreement given an answer format: a note is A4 or it is not; an onset occurs at a time or it does not.
+- Coverage: Objective signal-level attributes: pitch, timing, duration, loudness, instrumentation, lyrics. NOT meter/time-signature (interpreted, e.g. 4/4 vs 2/2) — that is inferential.
+- Evaluation: Exact semantic match, or match within a predefined tolerance.
+- Example — Q: What note is played by the violin at 0:31? Answer in scientific pitch notation.  A: A4.
+
+### inferential
+- Information: Musical properties derived from the audio through trained listening and analytical reasoning.
+- Ambiguity: Intersubjective: trained listeners tend to converge, but some disagreement remains possible.
+- Coverage: Harmonic function, formal segmentation, phrase structure, genre attribution, voice leading, other aspects of musical organization.
+- Evaluation: Accept justified expert-annotated alternatives; a claim need only be substantiable in perceptual content (traceable to observable features).
+- Example — Q: [B-flat grace note to an A over an A7 chord] What is the name of this chord?  A: A7, or A9.
+
+### affective
+- Information: How the music is experienced by a listener — expression and emotional response.
+- Ambiguity: Subjective by definition; should NOT be resolved by consensus — there is no single right answer.
+- Coverage: Perceived mood, character, tension, intimacy, energy, aesthetic quality, personal response.
+- Evaluation: Accommodate multiple correct answers: judge plausibility (musically reasonable), internal consistency, and grounding (affective claims supported by perceptual/inferential references).
+- Example — Q: What is the most dramatic spot in the audio?  A: Any spot a listener could reasonably conceive as most dramatic.
+
+### contextual
+- Information: Factual information associated with the music through historical or physical context; admits a single ground truth.
+- Ambiguity: Not ambiguous in principle. When the fact is unknown, the correct response is to acknowledge that uncertainty.
+- Coverage: Composer, performer, title, date/period of recording, reception or influence. (Detecting genre from audio is inferential, not contextual.)
+- Evaluation: Exact semantic match; a compatible answer of different specificity is accepted (reference 'China' vs answer 'Beijing').
+- Example — Q: Who is the composer of the piece I just played?  A: Mozart.
+
+The SAME query can belong to different categories depending on the nature of its ground truth. 'Where was this recorded?' is contextual if the answer is a documented fact (a known studio), but inferential if it must be deduced from acoustic cues (room size from reverberation). Classify by what the correct answer fundamentally depends on, not by surface wording.
+
+Rule of thumb: unambiguously extractable from the signal → perceptual; tied to the listener's subjective experience → affective; a non-debatable external fact about the piece → contextual; otherwise (trained analysis of the signal) → inferential.
+
+Question: <QUESTION>
+Reference answer (the correct answer): <REFERENCE (correct) ANSWER>
+Answer format: <ANSWER FORMAT>
+
+Reply with ONLY a JSON object and nothing else:
+{"piac": "<perceptual|inferential|affective|contextual>", "rationale": "<one short sentence>"}
+
+
+######################################################################
+B3. Skill classification (Qwen3)
+Purpose: Labels which musical skill(s) a question probes (pitch, harmony, tempo, genre, emotion, ...), orthogonal to the PIAC category.
+######################################################################
+
+You label what musical topic(s) a question about an audio clip probes.
+
+Choose the applicable skill(s) from THIS fixed list (multiple allowed, most specific first):
+pitch, timbre, loudness, instrumentation, harmony, chord, key, melody, rhythm, tempo, onset, duration, meter, form, counting, genre, style, lyrics, emotion, mood, structure, performer, composer, location, date, scene, other
+
+Guidance: tone skills = pitch, timbre, loudness, harmony, chord, key, melody, instrumentation.
+time skills = rhythm, tempo, onset, duration, meter, form, counting. Higher-order = genre,
+style, lyrics, emotion, mood, structure. External = performer, composer, location, date, scene.
+Use "other" only if nothing fits. Pick 1-3 skills that best capture what the answer requires.
+
+Question: <QUESTION>
+Reference answer: <REFERENCE (correct) ANSWER>
+Answer format: <ANSWER FORMAT>
+
+Reply with ONLY a JSON object and nothing else:
+{"skills": ["<skill>", ...], "rationale": "<one short sentence>"}
+
+
+######################################################################
+B4. Question decomposition into a PIAC probe chain (Qwen3)
+Purpose: Breaks a question into an ordered chain of perceptual->...->target probes to test where an ALM's understanding fails, not just whether.
+######################################################################
+
+You break a question about an audio clip into a short ORDERED CHAIN of simpler sub-questions ("probes") that build up to it. The chain lets us test an audio model's musical understanding at each level of the PIAC taxonomy and pinpoint WHERE it fails: a model may state the final answer fluently yet be wrong on the perceptual facts it should rest on.
+
+The four PIAC levels, from least to most ambiguous:
+### perceptual
+- Information: Anything measurable from the audio itself; needs neither prior knowledge nor active reasoning.
+- Ambiguity: No reasonable disagreement given an answer format: a note is A4 or it is not; an onset occurs at a time or it does not.
+- Coverage: Objective signal-level attributes: pitch, timing, duration, loudness, instrumentation, lyrics. NOT meter/time-signature (interpreted, e.g. 4/4 vs 2/2) — that is inferential.
+- Evaluation: Exact semantic match, or match within a predefined tolerance.
+- Example — Q: What note is played by the violin at 0:31? Answer in scientific pitch notation.  A: A4.
+
+### inferential
+- Information: Musical properties derived from the audio through trained listening and analytical reasoning.
+- Ambiguity: Intersubjective: trained listeners tend to converge, but some disagreement remains possible.
+- Coverage: Harmonic function, formal segmentation, phrase structure, genre attribution, voice leading, other aspects of musical organization.
+- Evaluation: Accept justified expert-annotated alternatives; a claim need only be substantiable in perceptual content (traceable to observable features).
+- Example — Q: [B-flat grace note to an A over an A7 chord] What is the name of this chord?  A: A7, or A9.
+
+### affective
+- Information: How the music is experienced by a listener — expression and emotional response.
+- Ambiguity: Subjective by definition; should NOT be resolved by consensus — there is no single right answer.
+- Coverage: Perceived mood, character, tension, intimacy, energy, aesthetic quality, personal response.
+- Evaluation: Accommodate multiple correct answers: judge plausibility (musically reasonable), internal consistency, and grounding (affective claims supported by perceptual/inferential references).
+- Example — Q: What is the most dramatic spot in the audio?  A: Any spot a listener could reasonably conceive as most dramatic.
+
+### contextual
+- Information: Factual information associated with the music through historical or physical context; admits a single ground truth.
+- Ambiguity: Not ambiguous in principle. When the fact is unknown, the correct response is to acknowledge that uncertainty.
+- Coverage: Composer, performer, title, date/period of recording, reception or influence. (Detecting genre from audio is inferential, not contextual.)
+- Evaluation: Exact semantic match; a compatible answer of different specificity is accepted (reference 'China' vs answer 'Beijing').
+- Example — Q: Who is the composer of the piece I just played?  A: Mozart.
+
+Rule of thumb: unambiguously extractable from the signal → perceptual; tied to the listener's subjective experience → affective; a non-debatable external fact about the piece → contextual; otherwise (trained analysis of the signal) → inferential.
+
+How to build the chain:
+- Start from the most basic PERCEPTUAL observation and move UP one level at a time, each probe supplying the evidence the next one needs, ending with a final probe AT THE LEVEL of the original question (its category is given below).
+- Every probe must be answerable by LISTENING to this audio (no outside knowledge, unless the original question is contextual).
+- Give each probe its PIAC level, the sub-question, and the EXPECTED answer that is consistent with the known correct final answer — the LAST probe's expected answer is the reference answer itself. Keep expected answers short and concrete.
+- Use 2 to 4 probes; do not repeat the original question except as the final probe.
+
+Worked examples:
+- "Is the location indoors or outdoors?" (contextual/inferential) →
+    1. perceptual — "Is there audible reverberation or echo? (yes/no)"  expected: "yes"
+    2. inferential — "How large does the enclosing space sound?"  expected: "a large room"
+    3. contextual — "Is the location indoors or outdoors?"  expected: "indoors"
+- "Which segment of music is played best?" (affective) →
+    1. perceptual — "What instrument is playing?"  expected: "violin"
+    2. inferential — "How many distinct segments are there?"  expected: "three"
+    3. affective — "Which segment sounds best?"  expected: "the second segment"
+
+Original question: <QUESTION>
+Reference answer (correct): <REFERENCE (correct) ANSWER>
+PIAC category of the original question: inferential
+Answer format: a short answer
+
+Reply with ONLY a JSON object and nothing else:
+{"probes": [{"level": "<perceptual|inferential|affective|contextual>", "question": "<sub-question>", "expected": "<short expected answer>"}, ...]}
+
+
+######################################################################
+C1. PIAC category-specific judge + hallucination (Qwen3) — PRIMARY
+Purpose: Grades an open-ended answer under its PIAC category's rule (binary for perceptual/inferential/contextual, graded for affective) and flags hallucination + the failing PIAC level.
+######################################################################
+
+You are a strict, fair music-evaluation judge. Grade a model's open-ended answer to a question about an audio clip, and separately assess hallucination.
+
+Question category (PIAC): perceptual
+This is a PERCEPTUAL question with a single measurable ground truth. Grade BINARY: score 4 if the answer matches the reference (exactly, as a synonym/paraphrase, or within a small tolerance for a numeric value), otherwise 0. NEVER give 1/2/3. A close-but-wrong value scores 0 (e.g. 20 when the reference is 26 → 0).
+
+Also assess HALLUCINATION: a confident claim in the answer that is wrong or ungrounded — most often a fluent higher-level claim (affective or inferential) that rests on a wrong or absent lower-level (perceptual) observation, or a stated fact that contradicts the reference. If the answer hallucinates, set hallucinated=true and hallucination_level to the PIAC level of the failing claim (perceptual / inferential / affective / contextual); otherwise hallucinated=false and hallucination_level="none". Also rate grounding 0-1 (how well the answer ties its claims to observable audio features).
+
+Question: <QUESTION>
+Answer format expected: <ANSWER FORMAT>
+Reference answer (one valid ground truth): <REFERENCE (correct) ANSWER>
+Model's answer: <MODEL'S ANSWER>
+
+Reply with ONLY a JSON object and nothing else:
+{"score": <int 0-4>, "grounded": <float 0-1>, "hallucinated": <true|false>, "hallucination_level": "<perceptual|inferential|affective|contextual|none>", "rationale": "<one short sentence>"}
+
+
+######################################################################
+C1b. PIAC judge — per-category rubric blocks (injected into C1)
+Purpose: The four category-specific grading rules that replace the {rubric} slot in the PIAC judge prompt above.
+######################################################################
+
+[binary_exact]
+This is a PERCEPTUAL question with a single measurable ground truth. Grade BINARY: score 4 if the answer matches the reference (exactly, as a synonym/paraphrase, or within a small tolerance for a numeric value), otherwise 0. NEVER give 1/2/3. A close-but-wrong value scores 0 (e.g. 20 when the reference is 26 → 0).
+
+[binary_contextual]
+This is a CONTEXTUAL question — an external factual ground truth. Grade BINARY: score 4 if the answer matches the reference fact, otherwise 0. Accept a semantically-compatible answer of different specificity (reference 'China' and answer 'Beijing' → 4; reference 'Beijing' and answer 'China' → 4). If the reference indicates the fact is unknown and the model declines/says unknown, score 4. Never 1/2/3.
+
+[binary_expert_multi]
+This is an INFERENTIAL question — trained analysis on which experts largely agree but valid alternatives exist. Grade BINARY: score 4 if the answer matches the reference OR any other reasonable expert-valid answer to this question, otherwise 0. Do NOT require the model to justify its answer (it was not asked to). Never 1/2/3.
+
+[graded_affective]
+This is an AFFECTIVE question — subjective, with no single right answer. Grade 0-4 on: plausibility (is the described feeling musically reasonable?), internal consistency, and grounding (does it tie the feeling to perceptual/inferential features?). Accept emotions similar to the reference ('sad' ≈ 'melancholic' → high). 4 = plausible, consistent and grounded; 2 = plausible but ungrounded/thin; 0 = implausible, contradictory, or empty.
+
+
+######################################################################
+C2. Guided-OEQ strict 0-4 judge (Qwen3) — earlier AF-Next OEQ runs
+Purpose: The single strict 0-4 rubric used for the earlier (non-category-specific) AF-Next OEQ judging.
+######################################################################
+
+You are grading a model's open-ended answer to a question about an audio clip.
+
+Question: {question}
+Reference answer (ground truth): {reference}
+Model's answer: {answer}
+
+Score how well the model's answer matches the reference answer, on an integer scale 0-4:
+0 = wrong, irrelevant, or no answer
+1 = mostly wrong; only a slight or incidental overlap
+2 = partially correct; a MULTI-PART answer that gets some required parts but misses others
+3 = largely correct; all key content present, only minor wording differences
+4 = fully correct and complete
+
+Grading rules (apply strictly):
+- A single number or single discrete value (a count, a note, yes/no, one name, one word) is
+  either right or wrong: 4 if it matches the reference, 0 if it does not. NEVER give partial
+  credit for a close-but-wrong value — e.g. answering 20 when the reference is 26 scores 0.
+- Ignore extra information: if the answer contains everything the reference requires PLUS
+  additional details, do not penalize the extra — that is still 4.
+- "Partially correct" (2) applies ONLY when the reference has several required parts and the
+  answer is incomplete (some parts right, some missing) — never to a single value that is merely close.
+- Judge meaning, not wording: accept synonyms and paraphrases of the reference.
+
+Reply with ONLY a JSON object: {{"score": <integer 0-4>, "rationale": "<one short sentence>"}}
+
+
+######################################################################
+C3. Generic 0-4 correctness judge (Qwen3) — helpers.judge
+Purpose: A general-purpose 0-4 correctness judge (meaning-not-wording) used as the reusable judging backend.
+######################################################################
+
+You are a strict, fair grader. Compare a model's answer to a reference (ground-truth) answer for the same question and rate how correct the model's answer is on this 0–4 scale:
+
+    0 — fully incorrect
+    1 — mostly incorrect
+    2 — neither correct nor incorrect
+    3 — mostly correct
+    4 — fully correct
+
+Judge meaning, not wording: an answer that conveys the reference's content in different words is fully correct; 0 for answers that are wrong, empty, or off-topic.
+
+Grading rules (apply strictly):
+- A single number or single discrete value (a count, a note, yes/no, one name) is either right or wrong: 4 if it matches, 0 if not — NEVER partial credit for a close-but-wrong value (e.g. 20 when the reference is 26 scores 0).
+- Ignore extra information: an answer that includes everything the reference requires PLUS extra details is still fully correct (4).
+- The middle scores apply ONLY to a multi-part reference where the answer is incomplete (some required parts present, others missing) — never to a single value that is merely close.
+
+Question: <QUESTION>
+Reference answer (ground truth): <REFERENCE (correct) ANSWER>
+Model's answer: <MODEL'S ANSWER>
+
+Reply with ONLY a JSON object and nothing else:
+{"score": <integer 0-4>, "rationale": "<one short sentence>"}
+
+
+######################################################################
+C4. Level-conditioned judge (HEAR/ANALYZE/FEEL/KNOW) — legacy oeq_mcq.judge
+Purpose: The earlier level-based LLM-judge (accuracy+grounding+verdict), retired in favour of the PIAC judge above.
+######################################################################
+
+You are grading a model's open-ended answer to a question about an audio clip.
+
+Question level: HEAR — Objective content — anything literally in the audio
+Definition: Measurable or factually extractable from the audio signal itself; the ground truth is computable from the audio. There is no reasonable disagreement: a frequency is A4 or it is not.
+Evaluation criterion: Exact match, or match within a defined tolerance.
+
+Question: <QUESTION>
+Reference answer (ground truth): <REFERENCE (correct) ANSWER>
+Model's answer: <MODEL'S ANSWER>
+
+Score the model's answer. For FEEL questions there is no single right answer, so
+judge plausibility and grounding rather than exact correctness.
+Reply with ONLY a JSON object:
+{"accuracy": <0-1 float>, "grounding": <0-1 float>, "verdict": "correct|partial|incorrect", "rationale": "<one sentence>"}
+

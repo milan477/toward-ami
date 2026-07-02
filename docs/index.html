@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MMAR Music Understanding Explorer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand">
+      <span class="logo">◍</span>
+      <div>
+        <h1>MMAR Music Understanding Explorer</h1>
+        <p class="tagline">Multiple-choice vs. open-ended answering on the MMAR music set, judged through the PIAC taxonomy.</p>
+      </div>
+    </div>
+    <nav class="tabs" id="tabs">
+      <button class="tab active" data-tab="overview">Overview</button>
+      <button class="tab" data-tab="browse">Browse questions</button>
+      <button class="tab" data-tab="prompts">Prompts</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- OVERVIEW -->
+  <section class="panel active" id="tab-overview">
+    <div class="section-intro">
+      <h2>Results overview</h2>
+      <p>Each model answers all <strong id="ov-n">–</strong> questions twice: once as multiple choice
+      (MCQ, graded automatically) and once open-ended (OEQ, graded by a PIAC-aware LLM judge that also
+      flags hallucination). The gap between the two is the point.</p>
+    </div>
+    <div id="overview-cards" class="ov-cards"></div>
+    <h3 class="sub">By PIAC category</h3>
+    <div class="table-scroll">
+      <table id="piac-table" class="data-table"></table>
+    </div>
+    <p class="legend">
+      <span class="pill perceptual">perceptual</span> measurable from the signal ·
+      <span class="pill inferential">inferential</span> trained analysis ·
+      <span class="pill affective">affective</span> subjective experience ·
+      <span class="pill contextual">contextual</span> external world knowledge
+    </p>
+  </section>
+
+  <!-- BROWSE -->
+  <section class="panel" id="tab-browse">
+    <div class="controls">
+      <input type="search" id="search" placeholder="Search questions, answers, skills…" />
+      <label>Model
+        <select id="model-select"></select>
+      </label>
+      <label>PIAC
+        <select id="piac-filter"><option value="">all</option></select>
+      </label>
+      <label>Result
+        <select id="result-filter">
+          <option value="">all</option>
+          <option value="halluc">hallucinated (OEQ)</option>
+          <option value="mcqRight-oeqWrong">MCQ right, OEQ wrong</option>
+          <option value="both-right">both right</option>
+          <option value="both-wrong">both wrong</option>
+        </select>
+      </label>
+      <span class="count" id="browse-count"></span>
+    </div>
+    <div id="cards" class="cards"></div>
+    <div id="empty" class="empty" hidden>No questions match these filters.</div>
+  </section>
+
+  <!-- PROMPTS -->
+  <section class="panel" id="tab-prompts">
+    <div class="section-intro">
+      <h2>Prompts</h2>
+      <p>The exact prompt text driving every stage of the pipeline, pulled from the source modules.</p>
+    </div>
+    <div id="prompts-list" class="prompts"></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>ami-eval · generated <span id="gen-date">–</span></span>
+    <span>Audio transcoded to OGG/Vorbis for the web.</span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

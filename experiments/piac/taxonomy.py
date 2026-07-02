@@ -42,7 +42,7 @@ CATEGORIES: dict[str, Category] = {
                     "knowledge nor active reasoning.",
         ambiguity="No reasonable disagreement given an answer format: a note is A4 or "
                   "it is not; an onset occurs at a time or it does not.",
-        coverage="Objective signal-level attributes: pitch, timing, duration, loudness, "
+        coverage="Objective signal-level attributes: pitch, timing, duration, bpm, loudness, "
                  "instrumentation, lyrics. NOT meter/time-signature (interpreted, e.g. "
                  "4/4 vs 2/2) — that is inferential.",
         evaluation="Exact semantic match, or match within a predefined tolerance.",
@@ -83,12 +83,12 @@ CATEGORIES: dict[str, Category] = {
     ),
     "contextual": Category(
         key="contextual",
-        information="Factual information associated with the music through historical or "
+        information="Factual, world knowledge information associated with the music through historical or "
                     "physical context; admits a single ground truth.",
         ambiguity="Not ambiguous in principle. When the fact is unknown, the correct "
                   "response is to acknowledge that uncertainty.",
         coverage="Composer, performer, title, date/period of recording, reception or "
-                 "influence. (Detecting genre from audio is inferential, not contextual.)",
+                 "influence. (Detecting genre from audio is inferential, not contextual. Detecting location can be contextual if a documented fact, or inferential if deduced from reverberation.)",
         evaluation="Exact semantic match; a compatible answer of different specificity is "
                    "accepted (reference 'China' vs answer 'Beijing').",
         example_q="Who is the composer of the piece I just played?",
