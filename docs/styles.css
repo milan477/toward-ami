@@ -89,7 +89,7 @@ a { color: var(--accent); text-decoration: none; }
 main { flex: 1; max-width: var(--wide); width: 100%; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 2.5rem); }
 .page { display: none; max-width: var(--col); margin: 0 auto; padding: clamp(48px, 9vw, 96px) 0 120px; }
 .page.active { display: block; }
-#page-benchmarks, #page-evaluation { max-width: none; }
+#page-benchmarks, #page-evaluation, #page-results { max-width: none; }
 
 /* ---------- display type ---------- */
 .display {
@@ -97,9 +97,10 @@ main { flex: 1; max-width: var(--wide); width: 100%; margin: 0 auto; padding: 0 
   font-size: clamp(36px, 5.5vw, 52px); color: var(--fg); margin: 0 0 18px; max-width: 18ch;
 }
 .display.sm { font-size: clamp(32px, 4.5vw, 42px); max-width: none; }
-.lede { font-size: 20px; font-weight: 400; line-height: 1.45; color: var(--fg-soft); max-width: 42ch; margin: 0; }
+.lede { font-size: 20px; font-weight: 400; line-height: 1.45; color: var(--fg-soft); max-width: none; margin: 0; }
 .page-head { margin-bottom: 6px; }
-.page-head .lede { max-width: 52ch; }
+.page-head .lede { max-width: none; }
+.section-sub { color: var(--fg-soft); margin: 0 0 28px; max-width: none; line-height: 1.45; }
 
 .block-label {
   font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em;
@@ -247,14 +248,14 @@ main { flex: 1; max-width: var(--wide); width: 100%; margin: 0 auto; padding: 0 
 /* ---------- evaluation ---------- */
 .prose { margin: 40px 0 0; }
 .prose .para { margin: 0 0 34px; }
-.prose .para.intro p { font-size: 21px; font-weight: 400; line-height: 1.45; color: var(--fg); max-width: 70ch; }
+.prose .para.intro p { font-size: 21px; font-weight: 400; line-height: 1.45; color: var(--fg); max-width: none; }
 .cat-head h3 { font-weight: 600; font-size: 22px; margin: 0 0 8px; text-transform: capitalize; letter-spacing: -0.02em; color: var(--c, var(--fg)); }
 .prose p { margin: 0 0 8px; color: var(--fg-soft); }
 .prose .detail { font-size: 15.5px; }
 .prose .detail b { color: var(--fg); font-weight: 600; }
 .prose .example { font-size: 14px; color: var(--fg-faint); margin-top: 12px; }
 .prose .example b { color: var(--fg-mute); }
-.rule-of-thumb { margin: 20px 0 0; font-size: 15.5px; color: var(--fg-soft); }
+.rule-of-thumb { margin: 20px 0 0; font-size: 15.5px; color: var(--fg-soft); max-width: none; }
 .rule-of-thumb b { color: var(--fg); font-weight: 600; }
 
 /* framework cards — same look as the benchmark boxes */
@@ -274,7 +275,6 @@ main { flex: 1; max-width: var(--wide); width: 100%; margin: 0 auto; padding: 0 
 .contextual { --c: var(--contextual); }
 
 .section-title { font-weight: 600; font-size: 26px; color: var(--fg); margin: 84px 0 6px; letter-spacing: -0.02em; }
-.section-sub { color: var(--fg-soft); margin: 0 0 28px; }
 
 .concepts { display: grid; gap: 22px; }
 .concept h4 { font-weight: 600; font-size: 16px; margin: 0 0 4px; }
@@ -370,14 +370,135 @@ main { flex: 1; max-width: var(--wide); width: 100%; margin: 0 auto; padding: 0 
 
 /* ---------- responsive ---------- */
 @media (max-width: 720px) {
-  .home-bottom { flex-direction: column; align-items: flex-start; gap: 40px; }
-  .home .latest { text-align: left; max-width: none; }
-  .home .latest .news-item p { margin-left: 0; }
+  .nav-inner {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 1rem 1rem 1.1rem;
+  }
+  .menu {
+    flex: 1 1 100%;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0.5rem 0.75rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .menu a { font-size: 12px; white-space: nowrap; }
+  .brand { padding: 0.45rem 0.8rem; font-size: 12px; }
+
+  main { padding: 0 1rem; }
+  .page { padding: 2rem 0 4rem; }
+  #page-home { padding-top: 0.75rem; }
+
+  .display { font-size: clamp(28px, 8vw, 36px); margin-bottom: 12px; }
+  .display.sm { font-size: clamp(26px, 7vw, 32px); }
+  .lede { font-size: 16px; line-height: 1.5; max-width: none; }
+  .page-head { margin-bottom: 4px; }
+  .page-head .lede { max-width: none; }
+
+  .home-grid { min-height: calc(100dvh - 180px); }
+  .home-title { font-size: clamp(34px, 11vw, 52px); }
+  .home-bottom { padding: 2.5rem 0 2rem; gap: 2rem; flex-direction: column; align-items: flex-start; }
+  .home-desc .lede { font-size: 15px; }
+  .home .latest { text-align: left; max-width: none; min-width: 0; width: 100%; }
+  .home .latest .news-item p { margin-left: 0; max-width: none; }
+  .cta { gap: 0.75rem; margin-top: 1.25rem; }
+  .btn-primary { min-height: 40px; padding: 0 0.95rem; font-size: 13px; }
+  .btn-secondary { font-size: 13px; }
+
+  .section-title { font-size: 20px; margin: 2.5rem 0 4px; }
+  .section-sub { font-size: 14px; margin-bottom: 1.25rem; line-height: 1.5; }
+
+  .bench-list { grid-template-columns: 1fr; gap: 14px; margin-top: 1.5rem; }
+  .bench { padding: 1.1rem 1rem 1.15rem; }
+  .bench-id h3 { font-size: 18px; }
+  .bench .paper { font-size: 13px; margin: 6px 0 12px; }
+  .field { grid-template-columns: 72px 1fr; gap: 10px; }
+  .field .v { font-size: 14px; }
+  .field .v.muted { font-size: 13px; }
+  .hint { font-size: 12px; margin-top: 8px; }
+
+  .prose { margin-top: 1.5rem; }
+  .framework-list { gap: 14px; margin-top: 1.25rem; }
+  .framework-card { padding: 1.1rem 1rem 1.15rem; }
+  .framework-card .detail { font-size: 14px; }
+  .framework-card .fw-sub { font-size: 13px; margin-bottom: 12px; }
+  .rule-of-thumb { font-size: 14px; line-height: 1.5; max-width: none; }
+
+  .prompt-head { padding: 1rem 0; gap: 12px; }
+  .prompt-head h4 { font-size: 15px; }
+  .prompt-head .purpose { font-size: 12.5px; }
+  .prompt-body pre { padding: 12px; font-size: 11px; }
+
+  .model-compare { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+  .model-panel h3 { font-size: 16px; margin-bottom: 10px; }
+  .model-panel .mrow { padding: 8px 0; }
+  .model-panel .mrow .lab { font-size: 12px; }
+  .model-panel .mrow .num { font-size: 15px; }
+  .model-panel .mrow.headline .num { font-size: 18px; }
+
+  .data-table { font-size: 12px; }
+  .data-table th, .data-table td { padding: 8px 10px 8px 0; }
+  .data-table th { font-size: 10px; }
+  .pill { font-size: 12px; }
+
+  .controls { gap: 10px; margin-bottom: 8px; }
+  .controls input, .controls select { font-size: 13px; padding: 6px 0; }
+  .controls input { min-width: 0; flex: 1 1 100%; }
+  .controls label { font-size: 12px; }
+  .count { margin-left: 0; flex: 1 1 100%; }
+
+  .inspect-btn { font-size: 12px; padding: 6px 12px; margin-bottom: 1rem; width: 100%; }
+  .qcard { padding: 1.25rem 0; }
+  .qcard-top { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .qcard-top .q { font-size: 16px; line-height: 1.45; }
+  .qmeta { font-size: 11.5px; margin: 6px 0 12px; }
+  .ref { font-size: 14px; margin-bottom: 1rem; }
+  .answers { grid-template-columns: 1fr; gap: 1.25rem; }
+  .mans .line { font-size: 14px; }
+
+  .zoom { padding: 12px; align-items: flex-end; }
+  .zoom-card { padding: 1.25rem 1rem 1rem; max-height: 92vh; }
+  .zoom-card .bench-id h3 { font-size: 22px; }
+
+  .bench-actions {
+    left: 12px; right: 12px; bottom: 12px;
+    transform: none; width: auto; max-width: none;
+    flex-wrap: wrap; justify-content: center;
+    padding: 8px 10px; border-radius: 12px;
+  }
+  .bench-actions .act { font-size: 12px; padding: 6px 10px; }
+
+  .foot-inner { padding: 1.5rem 1rem; font-size: 12px; flex-direction: column; gap: 8px; }
 }
-@media (max-width: 640px) {
-  body { font-size: 16px; }
-  .model-compare { grid-template-columns: 1fr; gap: 30px; }
-  .answers { grid-template-columns: 1fr; gap: 24px; }
-  .nav { flex-wrap: wrap; gap: 12px 20px; }
-  .foot-inner { flex-direction: column; gap: 8px; }
+
+@media (max-width: 480px) {
+  body { font-size: 14px; line-height: 1.5; }
+
+  .menu { gap: 8px; padding: 0.45rem 0.55rem; }
+  .menu a { font-size: 11px; }
+
+  .display.sm { font-size: 24px; }
+  .lede { font-size: 14px; }
+  .home-title { font-size: clamp(30px, 12vw, 40px); }
+  .home-desc .lede { font-size: 14px; }
+
+  .news-item .news-title .t { font-size: 14px; }
+  .news-item p { font-size: 13px; }
+
+  .bench-id h3 { font-size: 17px; }
+  .field { grid-template-columns: 1fr; gap: 2px; }
+  .field .k { margin-bottom: 2px; }
+
+  .section-title { font-size: 18px; margin-top: 2rem; }
+  .qcard-top .q { font-size: 15px; }
+
+  .empty { padding: 2.5rem 0; }
+}
+
+@supports (padding: max(0px)) {
+  .nav-inner { padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right)); }
+  main { padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right)); }
+  .bench-actions { bottom: max(12px, env(safe-area-inset-bottom)); }
+  .foot-inner { padding-bottom: max(1.5rem, env(safe-area-inset-bottom)); }
 }

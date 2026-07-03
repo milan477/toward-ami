@@ -294,7 +294,7 @@ def build_benchmarks() -> list[dict]:
 def build_evaluation() -> dict:
     """PIAC taxonomy (the five-paragraph framing), concepts, from the live module."""
     from src.piac.taxonomy import (
-        FLEXIBILITY_NOTE, PIAC_ORDER, RULE_OF_THUMB, SKILL_AXIS,
+        PIAC_ORDER, RULE_OF_THUMB, SKILL_AXIS,
     )
 
     # Verbatim from paper/paper.tex §"PIAC Framework" so the site mirrors the paper.
@@ -409,7 +409,6 @@ def build_evaluation() -> dict:
         "intro": intro,
         "categories": categories,
         "rule_of_thumb": RULE_OF_THUMB,
-        "flexibility_note": FLEXIBILITY_NOTE,
         "concepts": concepts,
     }
 

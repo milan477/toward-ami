@@ -318,6 +318,13 @@ function closeZoom() {
 function renderEvaluation() {
   const ev = state.data.evaluation || {};
   const cats = ev.categories || [];
+
+  const introEl = $("#framework-intro");
+  if (introEl) {
+    introEl.textContent = ev.intro || "";
+    introEl.hidden = !ev.intro;
+  }
+
   let html = `<div class="framework-list">` + cats.map((c) => `
     <article class="framework-card">
       <div class="bench-id"><h3>${esc(c.key)}</h3></div>

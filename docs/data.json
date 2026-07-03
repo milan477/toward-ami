@@ -8011,7 +8011,7 @@
     }
   ],
   "evaluation": {
-    "intro": "To this end, we propose a listener-centered taxonomy organized around four modes of musical engagement, each corresponding to a distinct degree of ambiguity: Perceptual, Inferential, Affective, and Contextual content. For each category we discuss (1) the nature of the information, (2) its epistemic status, in particular the degree to which consensus is expected, (3) representative examples, (4) an appropriate evaluation methodology, and (5) an illustrative question.",
+    "intro": "Evaluation runs through PIAC. PIAC is a listener-centered taxonomy organized around four modes of musical engagement, each corresponding to a distinct degree of ambiguity: Perceptual, Inferential, Affective, and Contextual content.",
     "categories": [
       {
         "key": "perceptual",
@@ -8055,7 +8055,6 @@
       }
     ],
     "rule_of_thumb": "Rule of thumb: unambiguously extractable from the signal → perceptual; tied to the listener's subjective experience → affective; a non-debatable external fact about the piece → contextual; otherwise (trained analysis of the signal) → inferential.",
-    "flexibility_note": "The SAME query can belong to different categories depending on the nature of its ground truth. 'Where was this recorded?' is contextual if the answer is a documented fact (a known studio), but inferential if it must be deduced from acoustic cues (room size from reverberation). Classify by what the correct answer fundamentally depends on, not by surface wording.",
     "concepts": {
       "Tone": [
         "pitch",

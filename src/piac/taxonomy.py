@@ -100,12 +100,7 @@ CATEGORIES: dict[str, Category] = {
 # Cross-cutting notes (fed to the classifier so the same query can shift category by
 # the nature of its ground truth — e.g. recording location is contextual if a
 # documented fact, inferential if deduced from reverberation).
-FLEXIBILITY_NOTE = (
-    "The SAME query can belong to different categories depending on the nature of its "
-    "ground truth. 'Where was this recorded?' is contextual if the answer is a documented "
-    "fact (a known studio), but inferential if it must be deduced from acoustic cues "
-    "(room size from reverberation). Classify by what the correct answer fundamentally "
-    "depends on, not by surface wording."
+FLEXIBILITY_NOTE = (""
 )
 
 RULE_OF_THUMB = (
