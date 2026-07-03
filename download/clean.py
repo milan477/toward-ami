@@ -1,6 +1,7 @@
 """Filter normalized benchmarks down to their music parts.
 
-Reads data/normalized/<name>.csv and writes data/cleaned/<name>.csv keeping
+Reads data/benchmarks/<name>/<name>_normalized.csv and writes
+data/benchmarks/<name>/<name>_cleaned.csv keeping
 only rows whose modality is music or a mix that includes music (e.g.
 "mix-music-speech", "sound_music"). The modality lives in a different column
 per dataset, so each dataset declares which column to test.
@@ -20,7 +21,7 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-from common import CLEAN_DIR, NORM_DIR
+from common import BENCH_DIR, bench_dir, bench_path
 
 # Per-dataset: which normalized column holds the audio modality label.
 MODALITY_COLUMN = {
@@ -38,18 +39,18 @@ def clean_dataset(name: str) -> Path:
     if name == "all":
         for n in MODALITY_COLUMN:
             clean_dataset(n)
-        return CLEAN_DIR
+        return BENCH_DIR
     if name not in MODALITY_COLUMN:
         raise ValueError(
             f"Dataset {name!r} not found. Available: {', '.join(sorted(MODALITY_COLUMN))}"
         )
 
     column = MODALITY_COLUMN[name]
-    df = pd.read_csv(NORM_DIR / f"{name}.csv")
+    df = pd.read_csv(bench_path(name, "normalized"))
     music = df[df[column].map(_has_music)]
 
-    CLEAN_DIR.mkdir(parents=True, exist_ok=True)
-    path = CLEAN_DIR / f"{name}.csv"
+    bench_dir(name)
+    path = bench_path(name, "cleaned")
     music.to_csv(path, index=False)
     print(f"  cleaned    → {path}  ({len(music)} of {len(df)} rows kept)")
     return path

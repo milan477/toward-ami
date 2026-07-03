@@ -1,6 +1,6 @@
 """Download the audio clips referenced by the cleaned (music) subsets.
 
-Reads data/cleaned/<name>.csv (see download/clean.py) and fetches only the audio
+Reads data/benchmarks/<name>/<name>_cleaned.csv (see download/clean.py) and fetches only the audio
 files those rows reference, into data/audio/<name>/. Files already present are
 skipped, so re-runs are cheap and resumable.
 
@@ -39,7 +39,7 @@ from remotezip import RemoteIOError, RemoteZip
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-from common import AUDIO_DIR, CLEAN_DIR, NORM_DIR
+from common import AUDIO_DIR, bench_path
 
 MMAR_REPO        = "BoJack/MMAR"
 MMAR_AUDIO       = "mmar-audio.tar.gz"
@@ -59,7 +59,7 @@ def _referenced_paths(name: str) -> list[str]:
     repr (e.g. "['data/uuid.wav']"), mmar as a plain "./audio/id.wav". Both may
     in principle carry several clips joined with "; ".
     """
-    df = pd.read_csv(CLEAN_DIR / f"{name}.csv")
+    df = pd.read_csv(bench_path(name, "cleaned"))
     paths: list[str] = []
     for url in df["audio_url"]:
         for chunk in str(url).split("; "):
@@ -249,7 +249,7 @@ def _download_musiccaps(ids: list[str], out_dir: Path) -> None:
 def download_muchomusic_audio() -> Path:
     name = "muchomusic"
     out_dir = AUDIO_DIR / name
-    df = pd.read_csv(NORM_DIR / f"{name}.csv")
+    df = pd.read_csv(bench_path(name, "normalized"))
 
     by_source: dict[str, list[str]] = {"sdd": [], "musiccaps": []}
     for url in df["audio_url"]:

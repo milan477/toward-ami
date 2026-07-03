@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skill-space editor</title>
+<style>
+  :root{
+    --bg:#0b0d13; --panel:#141824; --line:#242a3a; --fg:#eef1f8; --muted:#8b93a7;
+    --accent:#7c5cff; --accent2:#22d3ee; --danger:#ff5d7d;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:
+        radial-gradient(1200px 600px at 20% -10%, #1a2030 0%, var(--bg) 55%);
+        color:var(--fg);font:14px/1.5 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;}
+  header{padding:16px 22px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;
+         border-bottom:1px solid var(--line)}
+  h1{font-size:16px;margin:0;font-weight:650;letter-spacing:.2px}
+  h1 span{color:var(--muted);font-weight:400}
+  .toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-left:auto}
+  input[type=text]{background:#0e1220;border:1px solid var(--line);color:var(--fg);
+    border-radius:9px;padding:8px 11px;font-size:13px;min-width:210px;outline:none}
+  input[type=text]:focus{border-color:var(--accent)}
+  button{border:0;border-radius:9px;padding:8px 13px;font-size:13px;font-weight:600;
+    cursor:pointer;color:#fff;background:#232a3c;transition:.15s transform,.15s filter}
+  button:hover{filter:brightness(1.15)} button:active{transform:translateY(1px)}
+  button.primary{background:linear-gradient(135deg,var(--accent),#4f8cff)}
+  button.ghost{background:#1a2030;color:var(--muted)}
+  main{padding:20px 22px;display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+  .stage{background:var(--panel);border:1px solid var(--line);border-radius:16px;
+         padding:14px;box-shadow:0 20px 60px -30px #000}
+  .hint{color:var(--muted);font-size:12.5px;margin:10px 2px 0}
+  .hint b{color:var(--fg)} kbd{background:#0e1220;border:1px solid var(--line);
+    border-bottom-width:2px;border-radius:6px;padding:0 6px;font-size:11px;color:var(--fg)}
+  aside{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;
+        width:360px;max-width:100%}
+  aside h2{font-size:13px;margin:0 0 10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  textarea{width:100%;height:260px;background:#0e1220;border:1px solid var(--line);
+    color:#cdd6f4;border-radius:10px;padding:10px;font:12px/1.5 ui-monospace,Menlo,Consolas,monospace;
+    resize:vertical;outline:none}
+  .count{color:var(--muted);font-size:12.5px}
+  /* SVG bits */
+  .dot{cursor:grab;transition:r .1s}
+  .dot:active{cursor:grabbing}
+  .lbl{font:600 13px ui-sans-serif,system-ui,sans-serif;fill:#fff;
+       paint-order:stroke;stroke:#0009;stroke-width:3px;pointer-events:none;user-select:none}
+  .axis{font:12px ui-sans-serif,system-ui,sans-serif;fill:#c7cde0}
+  .axistitle{font:600 13px ui-sans-serif,system-ui,sans-serif;fill:#eef1f8}
+  .zone{stroke:#ffffff22;stroke-dasharray:2 6}
+</style>
+</head>
+<body>
+<header>
+  <h1>Skill-space editor <span>· drag to place · double-click to delete</span></h1>
+  <div class="toolbar">
+    <input type="text" id="newname" placeholder="New skill name…">
+    <button id="add" class="primary">+ Add</button>
+    <button id="reset" class="ghost">Reset</button>
+  </div>
+</header>
+
+<main>
+  <div>
+    <div class="stage"><svg id="svg"></svg></div>
+    <div class="hint">
+      <b>Drag</b> a dot to reposition · <b>Double-click</b> a dot to delete ·
+      Add new skills top-right · Export the Python list on the right, paste into
+      <kbd>analysis/skill_space.py</kbd>. <span id="live"></span>
+    </div>
+  </div>
+
+  <aside>
+    <h2>Export <span class="count" id="count"></span></h2>
+    <div class="toolbar" style="margin:0 0 10px">
+      <button id="copy" class="primary">Copy Python</button>
+      <button id="dlpy" class="ghost">⬇ .py</button>
+      <button id="dljson" class="ghost">⬇ .json</button>
+    </div>
+    <textarea id="out" readonly></textarea>
+  </aside>
+</main>
+
+<script>
+// ---------- initial skills (mirrors analysis/skill_space.py) ----------
+const INITIAL = [
+  ["Pitch Identification",0.10,0.06],["Melody Identification",0.30,0.12],
+  ["Polyphonic Pitch Estimation",0.14,0.20],["Timbre Perception",0.12,0.34],
+  ["Instrument Identification",0.40,0.28],["Dynamics / Loudness Perception",0.28,0.44],
+  ["Spatial / Stereo Perception",0.12,0.52],["Source Separation",0.50,0.56],
+  ["Onset Detection",0.28,0.62],["Beat Tracking",0.14,0.70],
+  ["Tempo Estimation",0.33,0.76],["Downbeat Tracking",0.52,0.71],
+  ["Key Detection",0.64,0.14],["Melodic Contour / Motif Analysis",0.70,0.24],
+  ["Chord Recognition",0.66,0.34],["Harmonic Progression Analysis",0.92,0.42],
+  ["Automatic Music Transcription",0.78,0.50],["Structural Segmentation / Form",1.05,0.60],
+  ["Meter / Time-Signature Analysis",0.80,0.68],["Rhythmic Pattern Analysis",1.05,0.77],
+  ["Query by Humming",1.18,0.32],["Cover Song Identification",1.26,0.22],
+  ["Score–Performance Alignment",1.32,0.66],["Mood / Emotion Recognition",1.66,0.40],
+  ["Expressive / Aesthetic Character",1.86,0.54],["Cross-Modal Retrieval",2.40,0.16],
+  ["Music Recommendation",2.80,0.24],["Music Similarity & Retrieval",2.14,0.30],
+  ["Artist Identification",2.60,0.32],["Music Question Answering",2.97,0.40],
+  ["Genre Classification",2.28,0.44],["Music Captioning / Description",2.88,0.50],
+  ["Style / Era Recognition",2.54,0.57],["Music Auto-Tagging",2.30,0.63],
+  ["Musicological Knowledge",2.72,0.69],["Singing-Voice Detection",0.30,0.90],
+  ["Lyrics Transcription",0.62,0.93],["Lyrics Alignment",0.98,0.90],
+  ["Lyrical Content Analysis",2.80,0.93],
+];
+
+// ---------- geometry ----------
+const W=1120, H=640, M={l:96,r:34,t:34,b:56};
+const PX0=M.l, PX1=W-M.r, PY0=H-M.b, PY1=M.t;   // data y=0 → PY0 (bottom)
+const SPEECH_FLOOR=0.86;
+const xdom=[0,3], ydom=[0,1];
+const x2p = x => PX0 + (x-xdom[0])/(xdom[1]-xdom[0])*(PX1-PX0);
+const y2p = y => PY0 + (y-ydom[0])/(ydom[1]-ydom[0])*(PY1-PY0);
+const p2x = px => xdom[0] + (px-PX0)/(PX1-PX0)*(xdom[1]-xdom[0]);
+const p2y = py => ydom[0] + (py-PY0)/(PY1-PY0)*(ydom[1]-ydom[0]);
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+
+const svg=document.getElementById('svg');
+svg.setAttribute('width',W); svg.setAttribute('height',H);
+svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+
+// ---------- cool gradient background (offscreen canvas → <image>) ----------
+function lerp(a,b,t){return[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];}
+function mix(a,b,t){return lerp(a,b,t);}
+function gradientDataURL(){
+  const w=560,h=360,cv=document.createElement('canvas');cv.width=w;cv.height=h;
+  const ctx=cv.getContext('2d'),img=ctx.createImageData(w,h),d=img.data;
+  // cool, modern corner palette
+  const bL=[255,176,59], bR=[34,199,168], tL=[255,94,126], tR=[108,92,231];
+  for(let j=0;j<h;j++){
+    const ty=1-j/(h-1), tx0=j*w;
+    for(let i=0;i<w;i++){
+      const tx=i/(w-1);
+      const top=lerp(tL,tR,tx), bot=lerp(bL,bR,tx);
+      let c=lerp(bot,top,ty);
+      // gentle darken toward the top for depth
+      const dark=0.72+0.28*ty*(ty<SPEECH_FLOOR?1:0);
+      c=[c[0]*dark,c[1]*dark,c[2]*dark];
+      if(ty>=SPEECH_FLOOR) c=mix(c,[20,22,32],0.74);        // speech band
+      // soft vignette
+      const dx=(tx-0.5)*2, dy=(ty-0.5)*2, vg=1-0.16*(dx*dx+dy*dy);
+      const o=(j*w+i)*4;
+      d[o]=c[0]*vg; d[o+1]=c[1]*vg; d[o+2]=c[2]*vg; d[o+3]=255;
+    }
+  }
+  ctx.putImageData(img,0,0);
+  return cv.toDataURL();
+}
+
+// ---------- static layers ----------
+const defs=document.createElementNS('http://www.w3.org/2000/svg','defs');
+defs.innerHTML=`<filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+  <feDropShadow dx="0" dy="1" stdDeviation="2.2" flood-color="#000" flood-opacity="0.55"/></filter>`;
+svg.appendChild(defs);
+
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs={},parent=svg){const e=document.createElementNS(NS,tag);
+  for(const k in attrs)e.setAttribute(k,attrs[k]);parent.appendChild(e);return e;}
+
+// background image (rounded)
+const clip=el('clipPath',{id:'plotclip'},defs);
+el('rect',{x:PX0,y:PY1,width:PX1-PX0,height:PY0-PY1,rx:12},clip);
+el('image',{href:gradientDataURL(),x:PX0,y:PY1,width:PX1-PX0,height:PY0-PY1,
+  preserveAspectRatio:'none','clip-path':'url(#plotclip)'});
+el('rect',{x:PX0,y:PY1,width:PX1-PX0,height:PY0-PY1,rx:12,fill:'none',stroke:'#ffffff22'});
+
+// speech divider
+el('line',{x1:PX0,y1:y2p(SPEECH_FLOOR),x2:PX1,y2:y2p(SPEECH_FLOOR),
+  stroke:'#ffffffcc','stroke-width':1.2,'stroke-dasharray':'6 4'});
+el('text',{x:PX1-10,y:y2p((SPEECH_FLOOR+1)/2),'text-anchor':'end','dominant-baseline':'middle',
+  class:'axistitle',fill:'#ffffffcc','font-size':13}).textContent='SPEECH';
+
+// axes ticks
+const xt=[[0,'Perceptual'],[1,'Inferential'],[2,'Affective'],[3,'Contextual']];
+const yt=[[0,'Tone'],[0.43,'Mixed'],[0.75,'Time'],[0.93,'Speech']];
+xt.forEach(([v,l])=>{
+  el('text',{x:x2p(v),y:PY0+22,'text-anchor':'middle',class:'axis'}).textContent=l;
+  if(v>0&&v<3) el('line',{x1:x2p(v),y1:PY1,x2:x2p(v),y2:PY0,class:'zone'});
+});
+yt.forEach(([v,l])=>el('text',{x:PX0-12,y:y2p(v),'text-anchor':'end','dominant-baseline':'middle',
+  class:'axis'}).textContent=l);
+el('text',{x:(PX0+PX1)/2,y:H-8,'text-anchor':'middle',class:'axistitle'})
+  .textContent='Cognitive Processing Spectrum';
+const yl=el('text',{x:22,y:(PY0+PY1)/2,'text-anchor':'middle',class:'axistitle',
+  transform:`rotate(-90 22 ${(PY0+PY1)/2})`});
+yl.textContent='Signal Scope:  Tone → Time  |  Speech';
+
+// dynamic layer for dots
+const layer=el('g',{});
+
+// ---------- state ----------
+let skills = INITIAL.map(([name,x,y],i)=>({id:i+1,name,x,y}));
+let nextId = skills.length+1;
+
+function render(){
+  layer.innerHTML='';
+  for(const s of skills){
+    const g=el('g',{},layer);
+    const left = s.x>2.35;
+    el('text',{x:x2p(s.x)+(left?-14:14),y:y2p(s.y),'text-anchor':left?'end':'start',
+      'dominant-baseline':'middle',class:'lbl'},g).textContent=s.name;
+    const c=el('circle',{cx:x2p(s.x),cy:y2p(s.y),r:8,fill:'#fff',stroke:'#0b0d13',
+      'stroke-width':2,class:'dot',filter:'url(#glow)'},g);
+    c.addEventListener('pointerdown',e=>startDrag(e,s,c,g));
+    g.addEventListener('dblclick',()=>{skills=skills.filter(k=>k.id!==s.id);render();sync();});
+  }
+  sync();
+}
+
+// ---------- drag ----------
+function svgPoint(e){
+  const r=svg.getBoundingClientRect();
+  return {px:(e.clientX-r.left)*(W/r.width), py:(e.clientY-r.top)*(H/r.height)};
+}
+function startDrag(e,s,c,g){
+  e.preventDefault(); c.setPointerCapture(e.pointerId); c.setAttribute('r',10);
+  const move=ev=>{
+    const {px,py}=svgPoint(ev);
+    s.x=clamp(p2x(px),0,3); s.y=clamp(p2y(py),0,1);
+    c.setAttribute('cx',x2p(s.x)); c.setAttribute('cy',y2p(s.y));
+    const left=s.x>2.35, t=g.querySelector('text');
+    t.setAttribute('x',x2p(s.x)+(left?-14:14)); t.setAttribute('y',y2p(s.y));
+    t.setAttribute('text-anchor',left?'end':'start');
+    document.getElementById('live').textContent=`— ${s.name}: (${s.x.toFixed(2)}, ${s.y.toFixed(2)})`;
+  };
+  const up=ev=>{c.releasePointerCapture(ev.pointerId);c.setAttribute('r',8);
+    c.removeEventListener('pointermove',move);c.removeEventListener('pointerup',up);
+    document.getElementById('live').textContent=''; sync();};
+  c.addEventListener('pointermove',move); c.addEventListener('pointerup',up);
+}
+
+// ---------- export ----------
+function pyList(){
+  const rows=skills.map(s=>`    (${JSON.stringify(s.name)}, ${s.x.toFixed(2)}, ${s.y.toFixed(2)}),`);
+  return 'skills = [\n'+rows.join('\n')+'\n]';
+}
+function sync(){
+  document.getElementById('out').value=pyList();
+  document.getElementById('count').textContent=`(${skills.length} skills)`;
+}
+function download(name,text,type){
+  const b=new Blob([text],{type});const u=URL.createObjectURL(b);
+  const a=document.createElement('a');a.href=u;a.download=name;a.click();URL.revokeObjectURL(u);
+}
+
+document.getElementById('add').onclick=()=>{
+  const inp=document.getElementById('newname');const name=inp.value.trim();
+  if(!name)return; skills.push({id:nextId++,name,x:1.5,y:0.5}); inp.value=''; render();
+};
+document.getElementById('newname').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('add').click();});
+document.getElementById('reset').onclick=()=>{
+  skills=INITIAL.map(([name,x,y],i)=>({id:i+1,name,x,y}));nextId=skills.length+1;render();};
+document.getElementById('copy').onclick=()=>{navigator.clipboard.writeText(pyList());
+  const b=document.getElementById('copy');b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy Python',1200);};
+document.getElementById('dlpy').onclick=()=>download('skills.py',pyList(),'text/x-python');
+document.getElementById('dljson').onclick=()=>download('skills.json',
+  JSON.stringify(skills.map(({name,x,y})=>({name,x:+x.toFixed(3),y:+y.toFixed(3)})),null,2),'application/json');
+
+render();
+</script>
+</body>
+</html>

@@ -1,13 +1,13 @@
 """Shared helpers for dataset download + normalization.
 
-Every dataset gets a specialized download function (see e.g. download/mmar.py)
-that produces two CSVs:
+Every dataset gets a specialized download function (see e.g.
+download/benchmark_mmar.py) that produces two CSVs under data/benchmarks/<name>/:
 
-  data/raw/<name>.csv          The source dataset, stored exactly as is.
-                               List/dict cells are JSON-serialized so the CSV
-                               round-trips, but no rows/columns are dropped.
-  data/normalized/<name>.csv   The canonical schema below, shared across all
-                               datasets so downstream analysis is uniform.
+  <name>_raw.csv          The source dataset, stored exactly as is.
+                          List/dict cells are JSON-serialized so the CSV
+                          round-trips, but no rows/columns are dropped.
+  <name>_normalized.csv   The canonical schema below, shared across all
+                          datasets so downstream analysis is uniform.
 
 Normalized schema
 -----------------
@@ -32,10 +32,23 @@ import numpy as np
 import pandas as pd
 
 ROOT      = Path(__file__).parent.parent
-RAW_DIR   = ROOT / "data" / "raw"
-NORM_DIR  = ROOT / "data" / "normalized"
-CLEAN_DIR = ROOT / "data" / "cleaned"
+BENCH_DIR = ROOT / "data" / "benchmarks"
 AUDIO_DIR = ROOT / "data" / "audio"
+
+
+def bench_dir(name: str) -> Path:
+    """Return (and create) data/benchmarks/<name>/, the home of all stages."""
+    d = BENCH_DIR / name
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
+def bench_path(name: str, stage: str) -> Path:
+    """Path to a benchmark stage CSV: data/benchmarks/<name>/<name>_<stage>.csv.
+
+    Stages: raw, normalized, cleaned, ready (ready = probe-ready, formerly
+    'processed')."""
+    return BENCH_DIR / name / f"{name}_{stage}.csv"
 
 NORMALIZED_COLUMNS = [
     "benchmark", "question", "question_type", "correct_answer",
@@ -127,26 +140,26 @@ def _serialize_cell(value):
 
 
 def write_raw(name: str, df: pd.DataFrame) -> Path:
-    """Write the source dataset to data/raw/<name>.csv (one record per line)."""
-    RAW_DIR.mkdir(parents=True, exist_ok=True)
+    """Write the source dataset to data/benchmarks/<name>/<name>_raw.csv."""
+    bench_dir(name)
     out = df.map(_serialize_cell)
-    path = RAW_DIR / f"{name}.csv"
+    path = bench_path(name, "raw")
     out.to_csv(path, index=False)
     print(f"  raw        → {path}  ({len(out)} rows × {len(out.columns)} cols)")
     return path
 
 
 def write_normalized(name: str, rows: list[dict]) -> Path:
-    """Write canonical rows to data/normalized/<name>.csv.
+    """Write canonical rows to data/benchmarks/<name>/<name>_normalized.csv.
 
     Columns in NORMALIZED_COLUMNS come first (in order); any extra keys present
     in the rows are appended after, sorted.
     """
-    NORM_DIR.mkdir(parents=True, exist_ok=True)
+    bench_dir(name)
     extra = sorted({k for r in rows for k in r} - set(NORMALIZED_COLUMNS))
     columns = NORMALIZED_COLUMNS + extra
     df = pd.DataFrame(rows, columns=columns)
-    path = NORM_DIR / f"{name}.csv"
+    path = bench_path(name, "normalized")
     df.to_csv(path, index=False)
     n_mcq = (df["question_type"] == "mcq").sum()
     n_oeq = (df["question_type"] == "oeq").sum()

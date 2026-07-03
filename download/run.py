@@ -1,8 +1,8 @@
 """Download + normalize benchmark datasets.
 
 Each dataset has a specialized download function that writes two CSVs:
-  data/raw/<name>.csv          source dataset, exactly as is
-  data/normalized/<name>.csv   canonical schema (see download/common.py)
+  data/benchmarks/<name>/<name>_raw.csv         source dataset, exactly as is
+  data/benchmarks/<name>/<name>_normalized.csv  canonical schema (see download/common.py)
 
 Usage
 -----
@@ -17,9 +17,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-from mmar import download_mmar
-from mmau_pro import download_mmau_pro
-from muchomusic import download_muchomusic
+from benchmark_mmar import download_mmar
+from benchmark_mmau_pro import download_mmau_pro
+from benchmark_muchomusic import download_muchomusic
 
 # Register one download function per dataset here.
 DATASETS = {
