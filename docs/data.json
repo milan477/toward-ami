@@ -7736,19 +7736,9 @@
   "repo_url": "https://github.com/milan477/toward-ami",
   "news": [
     {
-      "date": "2026-07-02",
-      "title": "Multiple choice hides what models can't do",
+      "date": "2026-06-30",
+      "title": "Multiple choice enhance model performance",
       "text": "On the MMAR music set, both Audio Flamingo Next and Gemini 3 Flash score far higher on multiple-choice questions than on the identical questions asked open-ended."
-    },
-    {
-      "date": "2026-07-02",
-      "title": "PIAC: grade a claim by how its truth is established",
-      "text": "We separate every musical question into perceptual, inferential, affective, or contextual — by the nature of its ground truth — and let the judge apply a different standard to each. Affective questions admit many correct answers; perceptual ones admit one."
-    },
-    {
-      "date": "2026-07-01",
-      "title": "Nine benchmarks characterized",
-      "text": "We catalogued the current landscape of music-understanding benchmarks — what each measures, in what format, and which models report on it — to make the coverage gaps legible."
     }
   ],
   "benchmarks": [
