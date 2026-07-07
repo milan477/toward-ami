@@ -8011,7 +8011,7 @@
     }
   ],
   "evaluation": {
-    "intro": "Evaluation runs through PIAC. PIAC is a listener-centered taxonomy organized around four modes of musical engagement, each corresponding to a distinct degree of ambiguity: Perceptual, Inferential, Affective, and Contextual content.",
+    "intro": "Evaluation is organized through PIAC, a listener-centered taxonomy created around four modes of musical engagement, each corresponding to a distinct degree of evaluation ambiguity: Perceptual, Inferential, Affective, and Contextual content. Each of the four categories comes with a defined evaluation methodology to systematically assess Audio-Language Models in open-ended tasks.",
     "categories": [
       {
         "key": "perceptual",

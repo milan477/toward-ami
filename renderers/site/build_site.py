@@ -31,6 +31,7 @@ DOCS = ROOT / "docs"
 AUDIO_OUT = DOCS / "audio"
 PROCESSED = ROOT / "data" / "benchmarks" / "mmar" / "mmar_ready.csv"
 AUDIO_SRC = ROOT / "data" / "audio" / "mmar"
+PAPER_PDF = ROOT / "paper" / "paper.pdf"
 BENCH_OVERVIEW = ROOT / "benchmark_overview.csv"
 REPO_URL = "https://github.com/milan477/toward-ami"
 
@@ -327,7 +328,7 @@ def build_evaluation() -> dict:
                         "ground truth.",
             "evaluation": "Evaluation within this category can proceed via exact "
                           "semantic match or within a predefined tolerance. A "
-                          "constrained answer often required to increase comparability "
+                          "constrained answer is often required to increase comparability "
                           "between prediction and reference.",
             "example_q": "What note is played by the violin at 0:31:23? Answer in "
                          "scientific pitch notation.",
@@ -472,6 +473,8 @@ def main() -> None:
     args = ap.parse_args()
 
     DOCS.mkdir(exist_ok=True)
+    if PAPER_PDF.exists():                          # served at docs/paper.pdf
+        (DOCS / "paper.pdf").write_bytes(PAPER_PDF.read_bytes())
     models = {m["id"]: load_model(m) for m in MODELS}
 
     questions: list[dict] = []

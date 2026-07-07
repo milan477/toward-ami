@@ -17,10 +17,10 @@ async function init() {
   state.data = data;
 
   const repo = data.repo_url || "https://github.com/milan477/toward-ami";
-  $("#fork-btn").href = repo + "/fork";
   $("#repo-btn").href = repo;
   const footRepo = $("#foot-repo");
   if (footRepo) footRepo.href = repo;
+  $("#about-btn").addEventListener("click", openAbout);
 
   renderNews();
   setupBenchSearch();
@@ -307,6 +307,32 @@ function openZoom(name, origin) {
   });
 }
 
+/* ---------- home: about / "tell me more" ---------- */
+function openAbout() {
+  const overlay = $("#zoom");
+  const card = $("#zoom-card");
+  card.innerHTML = `
+    <button class="zoom-close" type="button" data-close aria-label="Close">×</button>
+    <div class="about">
+      <span class="wip-badge">what it is</span>
+      <br /><br />
+      <p>toward Artificial Musical Intelligence (AMI) is an open platform where researchers can contribute to
+        collectively and organically shape what artificial musical intelligence
+        should look like.</p>
+      <p>The intention is to unify the evaluation framework across models
+       and benchmarks, so we gain a clearer, comparable understanding of
+        model performance. The benchmarks become a place to filter for and navigate
+        model skills, musical genres, and more. The platform is designed as a resource for training the next
+        generation of Audio-Language Models.</p>
+      <p class="about-note">The site is under construction. Fork the repository on GitHub to contribute to it, the benchmarks or the models.</p>
+    </div>`;
+  overlay.hidden = false;
+  requestAnimationFrame(() => overlay.classList.add("show"));
+  // No FLIP here — just center the card and let the backdrop fade in.
+  card.style.transition = "none";
+  card.style.transform = "none";
+}
+
 function closeZoom() {
   const overlay = $("#zoom");
   if (overlay.hidden) return;
@@ -326,14 +352,9 @@ function renderEvaluation() {
   }
 
   let html = `<div class="framework-list">` + cats.map((c) => `
-    <article class="framework-card">
+    <article class="framework-card" data-key="${esc(c.key)}">
       <div class="bench-id"><h3>${esc(c.key)}</h3></div>
       ${c.subtitle ? `<p class="fw-sub">${esc(c.subtitle)}</p>` : ""}
-      <p class="detail"><b>Information.</b> ${esc(c.information)}</p>
-      <p class="detail"><b>Ambiguity.</b> ${esc(c.ambiguity)}</p>
-      <p class="detail"><b>Coverage.</b> ${esc(c.coverage)}</p>
-      <p class="detail"><b>Evaluation.</b> ${esc(c.evaluation)}</p>
-      <p class="example"><b>Q.</b> ${esc(c.example_q)} &nbsp; <b>A.</b> ${esc(c.example_a)}</p>
     </article>`).join("") + `</div>`;
   $("#piac").innerHTML = html;
   if (ev.rule_of_thumb) {
@@ -343,7 +364,54 @@ function renderEvaluation() {
     $("#piac").appendChild(rot);
   }
 
+  // Click a category to open its full detail in the shared zoom view.
+  $("#piac").addEventListener("click", (e) => {
+    const card = e.target.closest(".framework-card");
+    if (card) openEvalZoom(card.dataset.key, card);
+  });
+
   renderPrompts();
+}
+
+function evalByKey(key) {
+  return ((state.data.evaluation || {}).categories || []).find((c) => c.key === key);
+}
+
+function evalZoomHTML(c) {
+  return `
+    <button class="zoom-close" type="button" data-close aria-label="Close">×</button>
+    <div class="bench-id"><h3 class="cap">${esc(c.key)}</h3></div>
+    ${c.subtitle ? `<p class="fw-sub">${esc(c.subtitle)}</p>` : ""}
+    <p class="detail"><b>Information.</b> ${esc(c.information)}</p>
+    <p class="detail"><b>Ambiguity.</b> ${esc(c.ambiguity)}</p>
+    <p class="detail"><b>Coverage.</b> ${esc(c.coverage)}</p>
+    <p class="detail"><b>Evaluation.</b> ${esc(c.evaluation)}</p>
+    <p class="example"><b>Q.</b> ${esc(c.example_q)} &nbsp; <b>A.</b> ${esc(c.example_a)}</p>`;
+}
+
+function openEvalZoom(key, origin) {
+  const c = evalByKey(key);
+  if (!c) return;
+  const overlay = $("#zoom");
+  const card = $("#zoom-card");
+  card.innerHTML = evalZoomHTML(c);
+  overlay.hidden = false;
+  requestAnimationFrame(() => overlay.classList.add("show"));
+
+  // FLIP: grow the centered card from the clicked box's rect (same as benchmarks).
+  card.style.transition = "none";
+  card.style.transform = "none";
+  const first = origin.getBoundingClientRect();
+  const last = card.getBoundingClientRect();
+  const dx = first.left - last.left, dy = first.top - last.top;
+  const sx = first.width / last.width, sy = first.height / last.height;
+  card.style.transformOrigin = "top left";
+  card.style.transform = `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})`;
+  card.getBoundingClientRect();
+  requestAnimationFrame(() => {
+    card.style.transition = "transform 320ms cubic-bezier(.2,.7,.2,1)";
+    card.style.transform = "none";
+  });
 }
 
 function renderPrompts() {
