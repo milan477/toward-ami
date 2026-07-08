@@ -2,7 +2,7 @@
 
 const PIAC = ["perceptual", "inferential", "affective", "contextual"];
 const ROUTES = ["home", "benchmarks", "models", "evaluation", "results"];
-const state = { data: null, filters: { q: "", piac: "" }, benchQ: "", selected: new Set(), selectMode: false };
+const state = { data: null, filters: { q: "", piac: "" }, benchQ: "", modelQ: "", selected: new Set(), selectMode: false };
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -12,8 +12,21 @@ const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) =>
 
 init();
 
+async function loadData() {
+  const base = "data/";
+  const names = ["meta", "news", "models", "benchmarks", "evaluation", "overview", "prompts", "questions"];
+  const parts = await Promise.all(
+    names.map((n) => fetch(`${base}${n}.json`).then((r) => {
+      if (!r.ok) throw new Error(`failed to load ${n}.json`);
+      return r.json();
+    })),
+  );
+  const [meta, news, models, benchmarks, evaluation, overview, prompts, questions] = parts;
+  return { ...meta, news, models, benchmarks, evaluation, overview, prompts, questions };
+}
+
 async function init() {
-  const data = await (await fetch("data.json")).json();
+  const data = await loadData();
   state.data = data;
 
   const repo = data.repo_url || "https://github.com/milan477/toward-ami";
@@ -24,6 +37,7 @@ async function init() {
 
   renderNews();
   setupBenchSearch();
+  setupModelSearch();
   renderBenchmarks();
   renderModels();
   renderEvaluation();
@@ -69,6 +83,13 @@ function benchByName(name) {
 const truncWords = (s, n) => {
   const w = String(s).trim().split(/\s+/);
   return w.length > n ? w.slice(0, n).join(" ") + "…" : String(s);
+};
+const formatSize = (s) => {
+  const t = String(s).trim();
+  if (!t) return t;
+  const m = t.match(/^(\d+)(.*)$/);
+  if (!m) return t;
+  return Number(m[1]).toLocaleString("en-US") + m[2];
 };
 const field = (k, v, muted, limit) => v
   ? `<div class="field"><div class="k">${k}</div><div class="v${muted ? " muted" : ""}">${esc(limit ? truncWords(v, limit) : v)}</div></div>`
@@ -132,7 +153,7 @@ function renderBenchmarks() {
       ${b.paper_title ? `<p class="paper">${esc(b.paper_title)}</p>` : ""}
       <div class="bench-fields">
         ${field("Modalities", b.modalities, false, 20)}
-        ${field("Size", b.size, false, 20)}
+        ${field("Size", formatSize(b.size), false, 20)}
         ${field("Skills", b.skills, true, 20)}
         ${field("Sources", b.sources, true, 20)}
         ${b.links && b.links.length ? `<div class="field"><div class="k">Links</div><div class="bench-links">${linksHTML(b)}</div></div>` : ""}
@@ -258,7 +279,7 @@ function zoomHTML(b) {
     ${b.paper_title ? `<p class="paper">${esc(b.paper_title)}</p>` : ""}
     <div class="bench-fields">
       ${field("Modalities", b.modalities)}
-      ${field("Size", b.size)}
+      ${field("Size", formatSize(b.size))}
       ${field("Skills", b.skills, true)}
       ${field("Sources", b.sources, true)}
       ${field("Models", b.models, true)}
@@ -435,9 +456,27 @@ function modelById(id) {
   return (state.data.models || []).find((m) => m.id === id);
 }
 
+function setupModelSearch() {
+  let t;
+  $("#model-search").addEventListener("input", (e) => {
+    clearTimeout(t);
+    t = setTimeout(() => { state.modelQ = e.target.value.toLowerCase().trim(); renderModels(); }, 120);
+  });
+  $("#models").addEventListener("click", (e) => {
+    const card = e.target.closest(".framework-card");
+    if (card) openModelZoom(card.dataset.id, card);
+  });
+}
+
 function renderModels() {
-  const models = state.data.models || [];
-  $("#models").innerHTML = models.map((m) => `
+  const all = state.data.models || [];
+  const q = state.modelQ;
+  const rows = !q ? all : all.filter((m) =>
+    [m.label, m.developer, m.year, m.paper_title, m.id]
+      .join(" ").toLowerCase().includes(q));
+  $("#model-count").textContent = `${rows.length} of ${all.length}`;
+  $("#models-empty").hidden = rows.length > 0;
+  $("#models").innerHTML = rows.map((m) => `
     <article class="framework-card" data-id="${esc(m.id)}">
       <div class="bench-id">
         <h3 class="cap">${esc(m.label)}</h3>
@@ -445,11 +484,6 @@ function renderModels() {
       </div>
       ${m.developer ? `<p class="fw-sub">${esc(m.developer)}</p>` : ""}
     </article>`).join("");
-
-  $("#models").addEventListener("click", (e) => {
-    const card = e.target.closest(".framework-card");
-    if (card) openModelZoom(card.dataset.id, card);
-  });
 }
 
 function modelZoomHTML(m) {
@@ -495,9 +529,13 @@ function flipZoom(html, origin) {
   });
 }
 
+const evalModels = (data = state.data) =>
+  (data.models || []).filter((m) => (data.overview || {})[m.id]);
+
 /* ---------- results ---------- */
 function renderResults() {
-  const { models, overview } = state.data;
+  const { overview } = state.data;
+  const models = evalModels();
 
   $("#results-overview").innerHTML = models.map((m) => {
     const o = overview[m.id];
@@ -520,7 +558,8 @@ function renderResults() {
 }
 
 function renderPiacTable() {
-  const { models, overview } = state.data;
+  const { overview } = state.data;
+  const models = evalModels();
   let html = `<thead><tr>
       <th>PIAC category</th><th>Model</th>
       <th class="num">n</th><th class="num">MCQ</th><th class="num">OEQ</th><th class="num">gap</th><th class="num">OEQ mean</th>
@@ -564,7 +603,7 @@ function setupResultControls() {
 
 function renderCards() {
   const { q, piac } = state.filters;
-  const { models } = state.data;
+  const models = evalModels();
   const list = state.data.questions.filter((row) => {
     if (piac && row.piac !== piac) return false;
     if (q) {
@@ -580,7 +619,7 @@ function renderCards() {
 }
 
 function cardHTML(row) {
-  const { models } = state.data;
+  const models = evalModels();
   const audio = row.audio
     ? `<audio controls preload="none" src="${esc(row.audio)}"></audio>`
     : `<div class="no-audio">audio unavailable for this clip</div>`;
