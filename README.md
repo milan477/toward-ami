@@ -1,1 +1,3 @@
 # Welcome to the official repository toward Artificial Musical Intelligence
+
+This repository is designed to be a continuously-updated resource for training Audio-Language models or multimodal models that listen to audio and to let researchers collectively and organically define what Artificial Musical Intelligence should look like. Feel free to fork the repository to add benchmarks, models, or scores. 
