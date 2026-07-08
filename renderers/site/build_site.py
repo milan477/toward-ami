@@ -4,7 +4,7 @@ Reads the processed MMAR questions, both models' MCQ + PIAC-judged OEQ results,
 and the live prompt sources, then emits a self-contained site under ``docs/``:
 
     docs/index.html  docs/styles.css  docs/app.js   (static, hand-written)
-    docs/data.json                                  (generated here)
+    docs/data/*.json                                (generated here)
     docs/audio/<stem>.ogg                           (transcoded from data/audio/mmar)
 
 Audio is transcoded WAV -> mono OGG/Vorbis so the whole payload fits comfortably
@@ -12,6 +12,11 @@ on GitHub Pages (the source WAVs are ~1 GB; the OGGs are tens of MB).
 
     python site/build_site.py            # full build (data + audio)
     python site/build_site.py --no-audio # data only (fast, keeps existing oggs)
+
+The model catalog is read from the newest
+``data/models/overviews/model_overview_<date>.csv`` (source of truth) and written
+out as ``docs/data/models.json``. Benchmarks likewise come from the newest
+``data/benchmarks/overviews/benchmark_overview_<date>.csv`` → ``docs/data/benchmarks.json``.
 """
 
 from __future__ import annotations
@@ -28,11 +33,11 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
 DOCS = ROOT / "docs"
+DATA_DIR = DOCS / "data"
 AUDIO_OUT = DOCS / "audio"
 PROCESSED = ROOT / "data" / "benchmarks" / "mmar" / "mmar_ready.csv"
 AUDIO_SRC = ROOT / "data" / "audio" / "mmar"
 PAPER_PDF = ROOT / "paper" / "paper.pdf"
-BENCH_OVERVIEW = ROOT / "benchmark_overview.csv"
 REPO_URL = "https://github.com/milan477/toward-ami"
 
 # Latest news / takeaways shown on the home page — newest first. Edit freely.
@@ -62,32 +67,48 @@ NEWS = [
     },
 ]
 
-MODELS = [
-    {
-        "id": "af-next",
-        "label": "Audio Flamingo Next",
-        "developer": "NVIDIA & University of Maryland",
-        "year": "2026",
-        "paper_title": "Audio Flamingo Next: Next-Generation Open Audio-Language Models for Speech, Sound, and Music",
-        "paper_url": "https://arxiv.org/abs/2604.10905",
-        "mcq_csv": "results/mmar/af-next/music/2026-07-01_01-54-58_summary.csv",
-        "oeq_answers": "results/mmar/af-next/music-oeq-piac/.oeq_answers.jsonl",
-        "oeq_judged": "results/mmar/af-next/music-oeq-piac/.oeq_piac_judged.jsonl",
-    },
-    {
-        "id": "gemini",
-        "label": "Gemini 3 Flash",
-        "developer": "Google DeepMind",
-        "year": "2025",
-        "paper_title": "Introducing Gemini 3 Flash",
-        "paper_url": "https://blog.google/products-and-platforms/products/gemini/gemini-3-flash/",
-        "mcq_csv": "results/mmar/gemini-3-flash-preview/music/2026-07-01_04-33-34_summary.csv",
-        "oeq_answers": "results/mmar/gemini-3-flash-preview/music-oeq-piac/.oeq_answers.jsonl",
-        "oeq_judged": "results/mmar/gemini-3-flash-preview/music-oeq-piac/.oeq_piac_judged.jsonl",
-    },
-]
-
 MODEL_META = ("developer", "year", "paper_title", "paper_url")
+
+# Catalogs are authored in dated overview CSVs under data/*/overviews/. The newest
+# dated file is read at build time to populate docs/data/*.json.
+MODEL_OVERVIEWS = ROOT / "data" / "models" / "overviews"
+BENCH_OVERVIEWS = ROOT / "data" / "benchmarks" / "overviews"
+
+
+def latest_model_overview() -> Path | None:
+    if not MODEL_OVERVIEWS.exists():
+        return None
+    files = sorted(MODEL_OVERVIEWS.glob("model_overview_*.csv"))
+    return files[-1] if files else None
+
+
+def load_models() -> list[dict]:
+    """Read the newest model_overview_*.csv into model dicts (source of truth)."""
+    path = latest_model_overview()
+    if not path:
+        raise FileNotFoundError(
+            "no model_overview_*.csv in data/models/overviews/")
+    models: list[dict] = []
+    with path.open(encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            mid = (r.get("ID") or "").strip()
+            if not mid:
+                continue
+            m = {
+                "id": mid,
+                "label": (r.get("Label") or "").strip(),
+                "developer": (r.get("Developer") or "").strip(),
+                "year": (r.get("Year") or "").strip(),
+                "paper_title": (r.get("Paper title") or "").strip(),
+                "paper_url": (r.get("Paper link") or "").strip(),
+            }
+            mcq = (r.get("MCQ CSV") or "").strip()
+            if mcq:
+                m["mcq_csv"] = mcq
+                m["oeq_answers"] = (r.get("OEQ answers") or "").strip()
+                m["oeq_judged"] = (r.get("OEQ judged") or "").strip()
+            models.append(m)
+    return models
 
 PIAC_ORDER = ["perceptual", "inferential", "affective", "contextual"]
 
@@ -226,6 +247,23 @@ def build_prompts() -> list[dict]:
     ]
 
 
+def _clean_bibtex(raw: str) -> str:
+    """Drop local-only BibTeX fields (e.g. Zotero file paths)."""
+    drop = frozenset({
+        "file", "abstract", "urldate", "keywords", "langid", "copyright",
+    })
+    kept: list[str] = []
+    for line in (raw or "").splitlines():
+        m = re.match(r"\s*(\w+)\s*=", line)
+        if m and m.group(1).lower() in drop:
+            continue
+        kept.append(line)
+    text = "\n".join(kept).strip()
+    if text and not text.endswith("}"):
+        text += "\n}"
+    return text
+
+
 def _clean(v: str) -> str:
     v = (v or "").strip()
     return "" if v in {"?", "…", "-", "—"} else v
@@ -268,35 +306,56 @@ def _links(*cells: str) -> list[dict]:
     return out
 
 
-def build_benchmarks() -> list[dict]:
-    """Parse benchmark_overview.csv → the analyzed benchmarks (rows with a year)."""
+def latest_benchmark_overview() -> Path | None:
+    if not BENCH_OVERVIEWS.exists():
+        return None
+    files = sorted(BENCH_OVERVIEWS.glob("benchmark_overview_*.csv"))
+    return files[-1] if files else None
+
+
+def load_benchmarks() -> list[dict]:
+    """Read the newest benchmark_overview_*.csv into benchmark dicts (source of truth)."""
+    path = latest_benchmark_overview()
+    if not path:
+        raise FileNotFoundError(
+            "no benchmark_overview_*.csv in data/benchmarks/overviews/")
     rows: list[dict] = []
-    with BENCH_OVERVIEW.open(encoding="utf-8") as f:
-        reader = csv.reader(f)
-        next(reader, None)  # header
-        for r in reader:
-            r = r + [""] * (16 - len(r))            # pad short rows
-            name, ext, paper, domain, fmt, year = (_clean(r[i]) for i in range(6))
-            if not year:                            # skip the task-dataset tail rows
+    with path.open(encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            if _clean(r.get("Status", "")).lower() != "confirmed":
                 continue
+            year = _clean(r.get("Year", ""))
+            if not year:
+                continue
+            name = _clean(r.get("Known name", ""))
+            if not name:
+                continue
+            ext = _clean(r.get("Extended benchmark name", ""))
+            paper = _clean(r.get("Paper title", ""))
+            paper_link = r.get("Paper link", "")
+            dataset_link = r.get("Dataset link", "")
+            codebase_link = r.get("Codebase link", "")
             rows.append({
                 "name": name,
                 "extended": ext or paper,
                 "paper_title": paper,
-                "domain": domain,
-                "format": fmt,
+                "domain": _clean(r.get("Type", "")),
+                "format": _clean(r.get("Q type", "")),
                 "year": year,
-                "modalities": _clean(r[6]),
-                "skills": _clean(r[7]),
-                "sources": _clean(r[8]),
-                "size": _clean(r[9]),
-                "models": _clean(r[13]),
-                "links": _links(r[10], r[11], r[12]),
-                "paper_url": next(iter(_urls(r[10])), ""),
-                "hf_url": next((u for u in _urls(r[11]) if "huggingface" in u), ""),
-                "code_url": next((u for u in _urls(r[12]) if "github" in u),
-                                 next(iter(_urls(r[12])), "")),
-                "bibtex": _clean(r[15]),
+                "modalities": _clean(r.get("Modalities", "")),
+                "skills": _clean(r.get("Skills and categories", "")),
+                "sources": _clean(r.get("Data sources", "")),
+                "size": _clean(r.get("Size", "")),
+                "models": "",
+                "links": _links(paper_link, dataset_link, codebase_link),
+                "paper_url": next(iter(_urls(paper_link)), ""),
+                "hf_url": next(
+                    (u for u in _urls(dataset_link) if "huggingface" in u), ""),
+                "code_url": next(
+                    (u for u in _urls(codebase_link) if "github" in u),
+                    next(iter(_urls(codebase_link)), "")),
+                "bibtex": _clean(_clean_bibtex(r.get("Citation", ""))),
+                "status": _clean(r.get("Status", "")),
             })
     rows.sort(key=lambda b: (b["year"], b["name"].lower()))
     return rows
@@ -478,6 +537,35 @@ def transcode_audio(stems: set[str]) -> dict[str, str]:
     return mapping
 
 
+def write_site_data(bundle: dict) -> None:
+    """Emit site payload as one JSON file per section under docs/data/."""
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    files = {
+        "meta.json": {
+            "generated": bundle["generated"],
+            "repo_url": bundle["repo_url"],
+            "n_questions": bundle["n_questions"],
+            "piac_order": bundle["piac_order"],
+        },
+        "news.json": bundle["news"],
+        "models.json": bundle["models"],
+        "benchmarks.json": bundle["benchmarks"],
+        "evaluation.json": bundle["evaluation"],
+        "overview.json": bundle["overview"],
+        "prompts.json": bundle["prompts"],
+        "questions.json": bundle["questions"],
+    }
+    total = 0
+    for name, payload in files.items():
+        text = json.dumps(payload, ensure_ascii=False, indent=1) + "\n"
+        (DATA_DIR / name).write_text(text, encoding="utf-8")
+        total += len(text)
+    legacy = DOCS / "data.json"
+    if legacy.exists():
+        legacy.unlink()
+    print(f"  wrote docs/data/ ({total / 1e6:.2f} MB, {len(bundle['questions'])} questions)")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--no-audio", action="store_true", help="skip audio transcoding")
@@ -486,7 +574,9 @@ def main() -> None:
     DOCS.mkdir(exist_ok=True)
     if PAPER_PDF.exists():                          # served at docs/paper.pdf
         (DOCS / "paper.pdf").write_bytes(PAPER_PDF.read_bytes())
-    models = {m["id"]: load_model(m) for m in MODELS}
+    all_models = load_models()
+    eval_models = [m for m in all_models if m.get("mcq_csv")]
+    models = {m["id"]: load_model(m) for m in eval_models}
 
     questions: list[dict] = []
     stems: set[str] = set()
@@ -529,21 +619,18 @@ def main() -> None:
         "generated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "repo_url": REPO_URL,
         "news": NEWS,
-        "benchmarks": build_benchmarks(),
+        "benchmarks": load_benchmarks(),
         "evaluation": build_evaluation(),
         "n_questions": len(questions),
         "piac_order": PIAC_ORDER,
         "models": [{"id": m["id"], "label": m["label"],
-                    **{k: m.get(k, "") for k in MODEL_META}} for m in MODELS],
+                    **{k: m.get(k, "") for k in MODEL_META}} for m in all_models],
         "overview": {mid: overview_for(data, qids, q_piac)
                      for mid, data in models.items()},
         "questions": questions,
         "prompts": build_prompts(),
     }
-    (DOCS / "data.json").write_text(
-        json.dumps(bundle, ensure_ascii=False, indent=1), encoding="utf-8")
-    size = (DOCS / "data.json").stat().st_size / 1e6
-    print(f"  wrote docs/data.json ({size:.2f} MB, {len(questions)} questions)")
+    write_site_data(bundle)
 
 
 if __name__ == "__main__":

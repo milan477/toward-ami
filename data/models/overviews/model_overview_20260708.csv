@@ -1,0 +1,14 @@
+ID,Label,Developer,Year,Paper title,Paper link,Citation,Evaluated on MMAR,MCQ CSV,OEQ answers,OEQ judged,Status
+gpt-4o,GPT-4o,OpenAI,2024,GPT-4o System Card,https://openai.com/index/gpt-4o-system-card/,,,,,,confirmed
+gpt-5,GPT-5,OpenAI,2025,GPT-5 System Card,https://openai.com/index/gpt-5-system-card/,,,,,,confirmed
+gemini,Gemini 3 Flash,Google DeepMind,2025,Gemini 3 Flash Model Card,https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-Flash-Model-Card.pdf,,yes,results/mmar/gemini-3-flash-preview/music/2026-07-01_04-33-34_summary.csv,results/mmar/gemini-3-flash-preview/music-oeq-piac/.oeq_answers.jsonl,results/mmar/gemini-3-flash-preview/music-oeq-piac/.oeq_piac_judged.jsonl,confirmed
+qwen-omni,Qwen2.5-Omni,Alibaba,2025,Qwen2.5-Omni Technical Report,https://arxiv.org/abs/2503.20215,,,,,,confirmed
+salmonn,SALMONN,Tsinghua University & ByteDance,2024,SALMONN: Towards Generic Hearing Abilities for Large Language Models,https://arxiv.org/abs/2310.13289,,,,,,confirmed
+af3,Audio Flamingo 3,NVIDIA & University of Maryland,2025,Audio Flamingo 3: Advancing Audio Intelligence with Fully Open Large Audio Language Models,https://arxiv.org/abs/2507.08128,,,,,,confirmed
+af-next,Audio Flamingo Next,NVIDIA & University of Maryland,2026,"Audio Flamingo Next: Next-Generation Open Audio-Language Models for Speech, Sound, and Music",https://arxiv.org/abs/2604.10905,,yes,results/mmar/af-next/music/2026-07-01_01-54-58_summary.csv,results/mmar/af-next/music-oeq-piac/.oeq_answers.jsonl,results/mmar/af-next/music-oeq-piac/.oeq_piac_judged.jsonl,confirmed
+music-flamingo,Music Flamingo,NVIDIA & University of Maryland,2025,Music Flamingo: Scaling Music Understanding in Audio Language Models,https://arxiv.org/abs/2511.10289,,,,,,confirmed
+gamma,GaMMA,Fudan University, & ByteDance2026,GaMMA: Towards Joint Global-Temporal Music Understanding in Large Multimodal Models,https://arxiv.org/abs/2605.00371,,,,,,confirmed
+mufun,MuFun,Zhejiang University & NetEase Cloud Music,2025,Advancing the Foundation Model for Music Understanding,https://arxiv.org/abs/2508.01178,,,,,,confirmed
+mert,MERT,"m-a-p.ai, University of Manchester, University of Sheffield, Carnegie Mellon University, HKUST, University of Waterloo, Beijing Academy of Artificial Intelligence, Queen Mary University of London, Durham University, Google DeepMind, MBZUAI, New York University, linksoul.ai",2024,MERT: Acoustic Music Understanding Model with Large-Scale Self-supervised Training,https://arxiv.org/abs/2306.00107,,,,,,confirmed
+tinymu,TinyMU,"LTCI, Télécom Paris, Institut Polytechnique de Paris & Shanghai Jiao Tong University",2026,TinyMU: A Compact Audio-Language Model for Music Understanding,https://arxiv.org/abs/2604.15849,,,,,,confirmed
+llark,LLark,University of Washington & Spotify,2023/2024,LLark: A Multimodal Instruction-Following Language Model for Music,https://arxiv.org/abs/2310.07160,,,,,,confirmed

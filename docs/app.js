@@ -268,7 +268,6 @@ function download(filename, text, mime) {
 /* ---------- zoom ---------- */
 function zoomHTML(b) {
   const kind = [b.domain, b.format].filter(Boolean).join(" · ");
-  const on = state.selected.has(b.name);
   return `
     <button class="zoom-close" type="button" data-close aria-label="Close">×</button>
     <div class="bench-id">
@@ -286,9 +285,8 @@ function zoomHTML(b) {
       ${b.links && b.links.length ? `<div class="field"><div class="k">Links</div><div class="bench-links">${linksHTML(b)}</div></div>` : ""}
     </div>
     <div class="zoom-actions">
-      <label class="zoom-check"><input type="checkbox" ${on ? "checked" : ""} data-zoom-select /> Select</label>
       <button type="button" class="act" data-zoom-bib>Export .bib</button>
-      <button type="button" class="act" data-zoom-py>Python download</button>
+      <button type="button" class="act" data-zoom-py disabled title="Coming soon">Python download (coming soon)</button>
     </div>
     <pre class="cite-preview">${esc(bibFor(b))}</pre>`;
 }
@@ -318,17 +316,8 @@ function openZoom(name, origin) {
   });
 
   // wire the in-modal controls
-  card.querySelector("[data-zoom-select]").addEventListener("change", (e) => {
-    toggleSelect(b.name, e.target.checked);
-    const gridBox = $(`.bench-select[data-name="${cssq(b.name)}"] input`);
-    if (gridBox) gridBox.checked = e.target.checked;
-  });
   card.querySelector("[data-zoom-bib]").addEventListener("click", () =>
     download(`${slug(b.name)}.bib`, bibFor(b) + "\n", "application/x-bibtex"));
-  card.querySelector("[data-zoom-py]").addEventListener("click", () => {
-    const saved = new Set(state.selected);
-    state.selected = new Set([b.name]); exportPy(); state.selected = saved;
-  });
 }
 
 /* ---------- home: about / "Learn more" ---------- */
@@ -338,15 +327,15 @@ function openAbout() {
   card.innerHTML = `
     <button class="zoom-close" type="button" data-close aria-label="Close">×</button>
     <div class="about">
-      <span class="wip-badge">what it is</span>
+      <span class="wip-badge">our mission</span>
       <br /><br />
-      <p>toward Artificial Musical Intelligence (AMI) is an open platform where researchers can contribute to
+      <p><em>towards Artificial Musical Intelligence (AMI)</em> is an open platform where researchers can contribute to
         collectively and organically shape what artificial musical intelligence
         should look like.</p>
       <p>The intention is to unify evaluation across models
        and benchmarks, so we gain a clearer, comparable understanding of
-        model performance. The benchmark section become a place to filter for and navigate
-        model skills, musical genres, and more; the results section a place to see how models perform on the benchmarks. The platform is designed as a resource for training the next
+        model performance. The benchmark section is a place to filter for and navigate
+        model skills, musical genres, and more; the results section a place to see how models perform on the benchmarks. The platform is designed as an ever-evolving resource for training the next
         generation of Audio-Language Models.</p>
       <p class="about-note">Fork the repository on GitHub to contribute to the website, the benchmarks or the models.</p>
     </div>`;
@@ -360,8 +349,18 @@ function openAbout() {
 function closeZoom() {
   const overlay = $("#zoom");
   if (overlay.hidden) return;
+  const card = $("#zoom-card");
   overlay.classList.remove("show");
-  setTimeout(() => { overlay.hidden = true; }, 220);
+  card.style.transition = "transform 140ms ease, opacity 140ms ease";
+  card.style.transformOrigin = "center";
+  card.style.transform = "scale(0.96)";
+  card.style.opacity = "0";
+  setTimeout(() => {
+    overlay.hidden = true;
+    card.style.transition = "";
+    card.style.transform = "";
+    card.style.opacity = "";
+  }, 150);
 }
 
 /* ---------- evaluation ---------- */

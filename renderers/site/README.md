@@ -8,7 +8,7 @@ flags), and has an overview results table plus a Prompts tab.
 ## Build
 
 ```bash
-python renderers/site/build_site.py            # transcode audio (WAV→OGG) + emit docs/data.json
+python renderers/site/build_site.py            # transcode audio (WAV→OGG) + emit docs/data/
 python renderers/site/build_site.py --no-audio # data only (reuse existing docs/audio/*.ogg)
 ```
 
@@ -21,7 +21,7 @@ Inputs (all committed except the audio/data sources, which are generated):
   total) so the payload fits GitHub Pages
 
 Output is the fully static `docs/` folder: `index.html`, `styles.css`, `app.js`,
-`data.json`, `audio/*.ogg`.
+`data/*.json`, `audio/*.ogg`.
 
 ## Publish on GitHub Pages
 

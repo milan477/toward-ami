@@ -4,8 +4,8 @@
   "label": "GPT-4o",
   "developer": "OpenAI",
   "year": "2024",
-  "paper_title": "Hello GPT-4o",
-  "paper_url": "https://openai.com/index/hello-gpt-4o/"
+  "paper_title": "GPT-4o System Card",
+  "paper_url": "https://openai.com/index/gpt-4o-system-card/"
  },
  {
   "id": "gpt-5",
@@ -20,8 +20,11 @@
   "label": "Gemini 3 Flash",
   "developer": "Google DeepMind",
   "year": "2025",
-  "paper_title": "Introducing Gemini 3 Flash",
-  "paper_url": "https://blog.google/products-and-platforms/products/gemini/gemini-3-flash/"
+  "paper_title": "Gemini 3 Flash Model Card",
+  "paper_url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-Flash-Model-Card.pdf",
+  "mcq_csv": "results/mmar/gemini-3-flash-preview/music/2026-07-01_04-33-34_summary.csv",
+  "oeq_answers": "results/mmar/gemini-3-flash-preview/music-oeq-piac/.oeq_answers.jsonl",
+  "oeq_judged": "results/mmar/gemini-3-flash-preview/music-oeq-piac/.oeq_piac_judged.jsonl"
  },
  {
   "id": "qwen-omni",
@@ -35,14 +38,14 @@
   "id": "salmonn",
   "label": "SALMONN",
   "developer": "Tsinghua University & ByteDance",
-  "year": "2023",
+  "year": "2024",
   "paper_title": "SALMONN: Towards Generic Hearing Abilities for Large Language Models",
   "paper_url": "https://arxiv.org/abs/2310.13289"
  },
  {
   "id": "af3",
   "label": "Audio Flamingo 3",
-  "developer": "NVIDIA",
+  "developer": "NVIDIA & University of Maryland",
   "year": "2025",
   "paper_title": "Audio Flamingo 3: Advancing Audio Intelligence with Fully Open Large Audio Language Models",
   "paper_url": "https://arxiv.org/abs/2507.08128"
@@ -53,7 +56,10 @@
   "developer": "NVIDIA & University of Maryland",
   "year": "2026",
   "paper_title": "Audio Flamingo Next: Next-Generation Open Audio-Language Models for Speech, Sound, and Music",
-  "paper_url": "https://arxiv.org/abs/2604.10905"
+  "paper_url": "https://arxiv.org/abs/2604.10905",
+  "mcq_csv": "results/mmar/af-next/music/2026-07-01_01-54-58_summary.csv",
+  "oeq_answers": "results/mmar/af-next/music-oeq-piac/.oeq_answers.jsonl",
+  "oeq_judged": "results/mmar/af-next/music-oeq-piac/.oeq_piac_judged.jsonl"
  },
  {
   "id": "music-flamingo",
@@ -67,14 +73,14 @@
   "id": "gamma",
   "label": "GaMMA",
   "developer": "Fudan University",
-  "year": "2026",
+  "year": "& ByteDance2026",
   "paper_title": "GaMMA: Towards Joint Global-Temporal Music Understanding in Large Multimodal Models",
   "paper_url": "https://arxiv.org/abs/2605.00371"
  },
  {
   "id": "mufun",
   "label": "MuFun",
-  "developer": "Open source",
+  "developer": "Zhejiang University & NetEase Cloud Music",
   "year": "2025",
   "paper_title": "Advancing the Foundation Model for Music Understanding",
   "paper_url": "https://arxiv.org/abs/2508.01178"
@@ -99,7 +105,7 @@
   "id": "llark",
   "label": "LLark",
   "developer": "University of Washington & Spotify",
-  "year": "2023",
+  "year": "2023/2024",
   "paper_title": "LLark: A Multimodal Instruction-Following Language Model for Music",
   "paper_url": "https://arxiv.org/abs/2310.07160"
  }

@@ -225,7 +225,7 @@ main { flex: 1; max-width: var(--wide); width: 100%; margin: 0 auto; padding: 0 
 /* zoom overlay */
 .zoom { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 24px; }
 .zoom[hidden] { display: none; }
-.zoom-backdrop { position: absolute; inset: 0; background: rgba(20,18,14,0.42); opacity: 0; transition: opacity 240ms ease; }
+.zoom-backdrop { position: absolute; inset: 0; background: rgba(20,18,14,0.42); opacity: 0; transition: opacity 150ms ease; }
 .zoom.show .zoom-backdrop { opacity: 1; }
 .zoom-card {
   position: relative; z-index: 1; width: min(640px, 100%); max-height: 86vh; overflow: auto;
@@ -321,7 +321,11 @@ main { flex: 1; max-width: var(--wide); width: 100%; margin: 0 auto; padding: 0 
 .framework-card .bench-id h3 { text-transform: capitalize; }
 .framework-card .model-stats { display: flex; gap: 20px; margin-top: 4px; font-size: 14px; color: var(--fg-soft); }
 .framework-card .model-stats b { color: var(--fg); font-weight: 600; font-variant-numeric: tabular-nums; }
-.framework-card .fw-sub { font-size: 14px; color: var(--fg-mute); font-style: italic; margin: 7px 0 16px; }
+.framework-card .fw-sub {
+  font-size: 14px; color: var(--fg-mute); font-style: italic; margin: 7px 0 16px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 .framework-card .detail { font-size: 15px; margin: 0 0 9px; color: var(--fg-soft); }
 .framework-card .detail b { color: var(--fg); font-weight: 600; }
 .framework-card .example { font-size: 14px; color: var(--fg-faint); margin-top: 12px; }
