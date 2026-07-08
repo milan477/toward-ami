@@ -1,0 +1,269 @@
+[
+ {
+  "name": "NSynth",
+  "extended": "Neural Audio Synthesis of Musical Notes with WaveNet Autoencoders",
+  "paper_title": "Neural Audio Synthesis of Musical Notes with WaveNet Autoencoders",
+  "domain": "Pitch and instrument",
+  "format": "MCL",
+  "year": "2017",
+  "modalities": "Music",
+  "skills": "Instrument source (acoustic, electronics, synthetic), pitch, note quality (bright, dark, decay, …), and family (type)",
+  "sources": "",
+  "size": "305979",
+  "models": "AF3, AF-Next, MuFun, MERT, Music Flamingo",
+  "links": [
+   {
+    "label": "arXiv",
+    "url": "https://arxiv.org/pdf/1704.01279"
+   }
+  ],
+  "paper_url": "https://arxiv.org/pdf/1704.01279",
+  "hf_url": "",
+  "code_url": "",
+  "bibtex": "@misc{nsynth2017,\n    Author = {Jesse Engel and Cinjon Resnick and Adam Roberts and\n              Sander Dieleman and Douglas Eck and Karen Simonyan and\n              Mohammad Norouzi},\n    Title = {Neural Audio Synthesis of Musical Notes with WaveNet Autoencoders},\n    Year = {2017},\n    Eprint = {arXiv:1704.01279},\n}"
+ },
+ {
+  "name": "MARBLE",
+  "extended": "MARBLE: Music Audio Representation Benchmark  for Universal Evaluation",
+  "paper_title": "MARBLE: Music Audio Representation Benchmark  for Universal Evaluation",
+  "domain": "Multi-task",
+  "format": "Task-specificQ",
+  "year": "2023",
+  "modalities": "Music",
+  "skills": "18 tasks across 4 hierarchy levels (acoustic, performance, score, high-level description): Key Detection, Music Tagging, Genre Classification, Emotion Detection, Score-level Pitch Classification, Beat Tracking, Melody Extraction, Chord Estimation, Lyrics Transcription, Vocal Technique Detection, Singer Identification, Instrument Classification, Source Separation",
+  "sources": "12 datasets: Giantsteps key, MagnaTagATune, MTG Top50, GTZAN, MTG Genre, Emomusic, MTG MoodTheme, Nsynth, GTZAN Rhythm, MelodyDB, GuitarSet, MulJam2.0, Jamendo, VocalSet, MUSDB18",
+  "size": "",
+  "models": "",
+  "links": [
+   {
+    "label": "arXiv",
+    "url": "https://arxiv.org/abs/2306.10548"
+   },
+   {
+    "label": "GitHub",
+    "url": "https://github.com/a43992899/MARBLE-Benchmark"
+   }
+  ],
+  "paper_url": "https://arxiv.org/abs/2306.10548",
+  "hf_url": "",
+  "code_url": "https://github.com/a43992899/MARBLE-Benchmark",
+  "bibtex": "@misc{yuanMARBLEMusicAudio2023,\n  title = {{{MARBLE}}: {{Music Audio Representation Benchmark}} for {{Universal Evaluation}}},\n  shorttitle = {{{MARBLE}}},\n  author = {Yuan, Ruibin and Ma, Yinghao and Li, Yizhi and Zhang, Ge and Chen, Xingran and Yin, Hanzhi and Zhuo, Le and Liu, Yiqi and Huang, Jiawen and Tian, Zeyue and Deng, Binyue and Wang, Ningzhi and Lin, Chenghua and Benetos, Emmanouil and Ragni, Anton and Gyenge, Norbert and Dannenberg, Roger and Chen, Wenhu and Xia, Gus and Xue, Wei and Liu, Si and Wang, Shi and Liu, Ruibo and Guo, Yike and Fu, Jie},\n  year = 2023,\n  month = nov,\n  number = {arXiv:2306.10548},\n  eprint = {2306.10548},\n  primaryclass = {cs},\n  publisher = {arXiv},\n  doi = {10.48550/arXiv.2306.10548},\n  archiveprefix = {arXiv},\n}"
+ },
+ {
+  "name": "MMAU",
+  "extended": "Massive Multi-Task Audio Understanding and Reasoning Benchmark",
+  "paper_title": "MMAU: A MASSIVE MULTI-TASK AUDIO UNDERSTANDING AND REASONING BENCHMARK",
+  "domain": "Multi-task",
+  "format": "MCQ",
+  "year": "2024",
+  "modalities": "Sound, speech, music",
+  "skills": "27 skills across information extraction and reasoning. Information extraction: Eco-Acoustic Knowledge, Sound-Based Event Recognition, Melodic Structure Interpretation, Harmony and Chord Progressions, Rhythm and Tempo Understanding, Instrumentation, Musical Texture Interpretation, Event-Based Knowledge Retrieval, Phonemic Stress Pattern Analysis, Conversational Fact Retrieval, Key Highlight Extraction. Reasoning: Temporal Event Reasoning, Event-Based Sound Reasoning, Ambient Sound Interpretation, Acoustic Source Inference, Acoustic Scene Reasoning, Emotional Tone Interpretation, Temporal Reasoning, Musical Genre Reasoning, Lyrical Reasoning, Socio-cultural Interpretation, Emotion Flip Detection, Multi Speaker Role Mapping, Emotion State Summarisation, Counting, Dissonant Emotion Interpretation",
+  "sources": "Pooled from several datasets: Audioset (2788), AudioSet Strong (391), Mustard (405), MELD (540), VoxCeleb-1 (633), IEMOCAP (515), MusicBench (1937), Jamendo (32), SDD (277), MusicCaps (514), GuitarSet (506), MUSDB18 (68), Synthetic (1394)",
+  "size": "10000",
+  "models": "AF3, AF-Next, MuFun, Music Flamingo",
+  "links": [
+   {
+    "label": "arXiv",
+    "url": "https://arxiv.org/abs/2410.19168"
+   },
+   {
+    "label": "Hugging Face",
+    "url": "https://huggingface.co/datasets/gamma-lab-umd/MMAU-test-mini"
+   },
+   {
+    "label": "Hugging Face",
+    "url": "https://huggingface.co/datasets/gamma-lab-umd/MMAU-test"
+   },
+   {
+    "label": "GitHub",
+    "url": "https://github.com/Sakshi113/MMAU"
+   }
+  ],
+  "paper_url": "https://arxiv.org/abs/2410.19168",
+  "hf_url": "https://huggingface.co/datasets/gamma-lab-umd/MMAU-test-mini",
+  "code_url": "https://github.com/Sakshi113/MMAU",
+  "bibtex": ""
+ },
+ {
+  "name": "MuChoMusic",
+  "extended": "Evaluating Music Understanding in Multimodal Audio-Language Models",
+  "paper_title": "Evaluating Music Understanding in Multimodal Audio-Language Models",
+  "domain": "Multi-task",
+  "format": "MCQ",
+  "year": "2024",
+  "modalities": "Music",
+  "skills": "Music knowledge (Performance Metre and Rhythm, Sound Texture Melody Harmony Structure, Instrumentation) and reasoning (Mood & Expression Genre & Style, FunctionalContext TemporalRelations Lyrics Cultural Conte)",
+  "sources": "MusicCaps and the Song Describer Dataset",
+  "size": "1187",
+  "models": "AF3, AF-Next, MuFun, Music Flamingo, TinyMU",
+  "links": [
+   {
+    "label": "arXiv",
+    "url": "https://arxiv.org/abs/2408.01337"
+   },
+   {
+    "label": "Hugging Face",
+    "url": "https://huggingface.co/datasets/mulab-mir/muchomusic"
+   },
+   {
+    "label": "GitHub",
+    "url": "https://mulab-mir.github.io/muchomusic"
+   }
+  ],
+  "paper_url": "https://arxiv.org/abs/2408.01337",
+  "hf_url": "https://huggingface.co/datasets/mulab-mir/muchomusic",
+  "code_url": "https://mulab-mir.github.io/muchomusic",
+  "bibtex": "@misc{weckMuChoMusicEvaluatingMusic2024,\n  title = {{{MuChoMusic}}: {{Evaluating Music Understanding}} in {{Multimodal Audio-Language Models}}},\n  shorttitle = {{{MuChoMusic}}},\n  author = {Weck, Benno and Manco, Ilaria and Benetos, Emmanouil and Quinton, Elio and Fazekas, George and Bogdanov, Dmitry},\n  year = 2024,\n  month = aug,\n  number = {arXiv:2408.01337},\n  eprint = {2408.01337},\n  primaryclass = {cs},\n  publisher = {arXiv},\n  doi = {10.48550/arXiv.2408.01337},\n  archiveprefix = {arXiv},\n}"
+ },
+ {
+  "name": "Percepiano",
+  "extended": "Piano Performance Evaluation Dataset with Multi-level Perceptual Features",
+  "paper_title": "Piano performance evaluation dataset with multilevel perceptual features",
+  "domain": "Piano performance evaluation",
+  "format": "Multi-class",
+  "year": "2024",
+  "modalities": "",
+  "skills": "Interpretation and perceptual features",
+  "sources": "",
+  "size": "",
+  "models": "",
+  "links": [
+   {
+    "label": "Nature",
+    "url": "https://www.nature.com/articles/s41598-024-73810-0"
+   },
+   {
+    "label": "GitHub",
+    "url": "https://github.com/JonghoKimSNU/PercePiano"
+   }
+  ],
+  "paper_url": "https://www.nature.com/articles/s41598-024-73810-0",
+  "hf_url": "",
+  "code_url": "https://github.com/JonghoKimSNU/PercePiano",
+  "bibtex": ""
+ },
+ {
+  "name": "CMI-Bench",
+  "extended": "CMI-BENCH: A COMPREHENSIVE BENCHMARK FOR EVALUATING  MUSIC INSTRUCTION FOLLOWING",
+  "paper_title": "CMI-BENCH: A COMPREHENSIVE BENCHMARK FOR EVALUATING  MUSIC INSTRUCTION FOLLOWING",
+  "domain": "Multi-task",
+  "format": "Task-specificQ",
+  "year": "2025",
+  "modalities": "Music",
+  "skills": "14 tasks spanning multi-class, multi-label, regression, captioning, and sequential prediction",
+  "sources": "20 datasets: GS, EMO, MagnaTagATune, MTG-Top50, MTG-Instrument, Nsynth-Instrument, MTG-Genre, GTZAN, MTG-Emotion, Nsynth-Pitch, VocalSet, SDD, MusicCaps, DSing, GTZAN-Rhythm, ballroom, GTZAN-Rhythm (DownBeat), ballroom (DownBeat), MedleyDB v2, GuZheng_99",
+  "size": "",
+  "models": "",
+  "links": [
+   {
+    "label": "arXiv",
+    "url": "https://arxiv.org/abs/2506.12285"
+   },
+   {
+    "label": "Hugging Face",
+    "url": "https://huggingface.co/datasets/nicolaus625/CMI-bench"
+   },
+   {
+    "label": "GitHub",
+    "url": "https://github.com/nicolaus625/CMI-bench/tree/main"
+   }
+  ],
+  "paper_url": "https://arxiv.org/abs/2506.12285",
+  "hf_url": "https://huggingface.co/datasets/nicolaus625/CMI-bench",
+  "code_url": "https://github.com/nicolaus625/CMI-bench/tree/main",
+  "bibtex": "@misc{maCMIBenchComprehensiveBenchmark2025,\n  title = {{{CMI-Bench}}: {{A Comprehensive Benchmark}} for {{Evaluating Music Instruction Following}}},\n  shorttitle = {{{CMI-Bench}}},\n  author = {Ma, Yinghao and Li, Siyou and Yu, Juntao and Benetos, Emmanouil and Maezawa, Akira},\n  year = 2025,\n  month = jun,\n  number = {arXiv:2506.12285},\n  eprint = {2506.12285},\n  primaryclass = {eess},\n  publisher = {arXiv},\n  doi = {10.48550/arXiv.2506.12285},\n  archiveprefix = {arXiv},\n}"
+ },
+ {
+  "name": "MMAR",
+  "extended": "MMAR: A Challenging Benchmark for Deep Reasoning in Speech, Audio, Music, and Their Mix",
+  "paper_title": "MMAR: A Challenging Benchmark for Deep Reasoning in Speech, Audio, Music, and Their Mix",
+  "domain": "Multi-task",
+  "format": "MCQ",
+  "year": "2025",
+  "modalities": "Sound, music, speech, mix",
+  "skills": "16 skills across Signal, Perception, and Semantic & Cultural: Acoustic Quality Analysis, Anomaly Detection, Audio Difference Analysis, Spatial Analysis, Temporal Analysis, Correlation Analysis, Counting and Statistics, Music Theory, Environmental Perception and Reasoning, Content Analysis, Emotion and Intention, Speaker Analysis, Culture of Speaker, Imagination, Aesthetic Analysis, Professional Knowledge & Reasoning",
+  "sources": "Real-world internet videos",
+  "size": "1000",
+  "models": "AF3, AF-Next, Music Flamingo",
+  "links": [
+   {
+    "label": "arXiv",
+    "url": "https://arxiv.org/abs/2505.13032"
+   },
+   {
+    "label": "Hugging Face",
+    "url": "https://huggingface.co/datasets/BoJack/MMAR"
+   },
+   {
+    "label": "GitHub",
+    "url": "https://github.com/ddlBoJack/MMAR"
+   }
+  ],
+  "paper_url": "https://arxiv.org/abs/2505.13032",
+  "hf_url": "https://huggingface.co/datasets/BoJack/MMAR",
+  "code_url": "https://github.com/ddlBoJack/MMAR",
+  "bibtex": "@misc{maMMARChallengingBenchmark2025,\n  title = {{{MMAR}}: {{A Challenging Benchmark}} for {{Deep Reasoning}} in {{Speech}}, {{Audio}}, {{Music}}, and {{Their Mix}}},\n  shorttitle = {{{MMAR}}},\n  author = {Ma, Ziyang and Ma, Yinghao and Zhu, Yanqiao and Yang, Chen and Chao, Yi-Wen and Xu, Ruiyang and Chen, Wenxi and Chen, Yuanzhe and Chen, Zhuo and Cong, Jian and Li, Kai and Li, Keliang and Li, Siyou and Li, Xinfeng and Li, Xiquan and Lian, Zheng and Liang, Yuzhe and Liu, Minghao and Niu, Zhikang and Wang, Tianrui and Wang, Yuping and Wang, Yuxuan and Wu, Yihao and Yang, Guanrou and Yu, Jianwei and Yuan, Ruibin and Zheng, Zhisheng and Zhou, Ziya and Zhu, Haina and Xue, Wei and Benetos, Emmanouil and Yu, Kai and Chng, Eng-Siong and Chen, Xie},\n  year = 2025,\n  month = may,\n  number = {arXiv:2505.13032},\n  eprint = {2505.13032},\n  primaryclass = {cs},\n  publisher = {arXiv},\n  doi = {10.48550/arXiv.2505.13032},\n  archiveprefix = {arXiv},\n}"
+ },
+ {
+  "name": "MMAU-Pro",
+  "extended": "Massive Multitask Audio Understanding and Reasoning Benchmark — Pro",
+  "paper_title": "MMAU-Pro: A Challenging and Comprehensive Benchmark for Holistic Evaluation of Audio General Intelligence",
+  "domain": "Multi-task",
+  "format": "MCQ, OEQ",
+  "year": "2025",
+  "modalities": "Sound, music, speech, mix",
+  "skills": "49 skills across perceptual and reasoning categories",
+  "sources": "“from the wild”",
+  "size": "5305",
+  "models": "AF-Next, Music Flamingo",
+  "links": [
+   {
+    "label": "arXiv",
+    "url": "https://arxiv.org/abs/2508.13992"
+   },
+   {
+    "label": "Hugging Face",
+    "url": "https://huggingface.co/datasets/gamma-lab-umd/MMAU-Pro"
+   },
+   {
+    "label": "GitHub",
+    "url": "https://github.com/sonalkum/MMAUPro"
+   }
+  ],
+  "paper_url": "https://arxiv.org/abs/2508.13992",
+  "hf_url": "https://huggingface.co/datasets/gamma-lab-umd/MMAU-Pro",
+  "code_url": "https://github.com/sonalkum/MMAUPro",
+  "bibtex": "@misc{kumarMMAUProChallengingComprehensive2025,\n  title = {{{MMAU-Pro}}: {{A Challenging}} and {{Comprehensive Benchmark}} for {{Holistic Evaluation}} of {{Audio General Intelligence}}},\n  shorttitle = {{{MMAU-Pro}}},\n  author = {Kumar, Sonal and Sedl{\\'a}{\\v c}ek, {\\v S}imon and Lokegaonkar, Vaibhavi and L{\\'o}pez, Fernando and Yu, Wenyi and Anand, Nishit and Ryu, Hyeonggon and Chen, Lichang and Pli{\\v c}ka, Maxim and Hlav{\\'a}{\\v c}ek, Miroslav and Ellingwood, William Fineas and Udupa, Sathvik and Hou, Siyuan and Ferner, Allison and Barahona, Sara and Bola{\\~n}os, Cecilia and Rahi, Satish and {Herrera-Alarc{\\'o}n}, Laura and Dixit, Satvik and Patil, Siddhi and Deshmukh, Soham and Koroshinadze, Lasha and Liu, Yao and Perera, Leibny Paola Garcia and Zanou, Eleni and Stafylakis, Themos and Chung, Joon Son and Harwath, David and Zhang, Chao and Manocha, Dinesh and {Lozano-Diez}, Alicia and Kesiraju, Santosh and Ghosh, Sreyan and Duraiswami, Ramani},\n  year = 2025,\n  month = aug,\n  number = {arXiv:2508.13992},\n  eprint = {2508.13992},\n  primaryclass = {eess},\n  publisher = {arXiv},\n  doi = {10.48550/arXiv.2508.13992},\n  archiveprefix = {arXiv},\n}"
+ },
+ {
+  "name": "MUSE",
+  "extended": "Music Understanding and Structural Evaluation Benchmark",
+  "paper_title": "THE MUSE BENCHMARK: PROBING MUSIC PERCEPTION AND AUDITORY  RELATIONAL REASONING IN AUDIO LLMS",
+  "domain": "Low-level tasks",
+  "format": "MCQ",
+  "year": "2025",
+  "modalities": "Music",
+  "skills": "10 skills across beginner and advanced levels. Beginner: Pitch Shift Detection, Rhythm Matching, Oddball Detection, Instrument ID, Melody Shape ID. Advanced: Chord Identification, Syncopation, Key Modulation, Chord Seq. Matching, Meter Identification",
+  "sources": "Self-composed and recorded",
+  "size": "200 stimuli",
+  "models": "",
+  "links": [
+   {
+    "label": "arXiv",
+    "url": "https://arxiv.org/abs/2510.19055"
+   },
+   {
+    "label": "Airtable",
+    "url": "https://airtable.com/appQCPXVEeadwacMP/shrHV0OjuwxYBzJ78"
+   },
+   {
+    "label": "GitHub",
+    "url": "https://github.com/brandoncarone/MUSE_music_benchmark"
+   }
+  ],
+  "paper_url": "https://arxiv.org/abs/2510.19055",
+  "hf_url": "",
+  "code_url": "https://github.com/brandoncarone/MUSE_music_benchmark",
+  "bibtex": "@misc{caroneMUSEBenchmarkProbing2025,\n  title = {The {{MUSE Benchmark}}: {{Probing Music Perception}} and {{Auditory Relational Reasoning}} in {{Audio LLMS}}},\n  shorttitle = {The {{MUSE Benchmark}}},\n  author = {Carone, Brandon James and Roman, Iran R. and Ripoll{\\'e}s, Pablo},\n  year = 2025,\n  month = oct,\n  number = {arXiv:2510.19055},\n  eprint = {2510.19055},\n  primaryclass = {cs},\n  publisher = {arXiv},\n  doi = {10.48550/arXiv.2510.19055},\n  archiveprefix = {arXiv},\n}"
+ }
+]

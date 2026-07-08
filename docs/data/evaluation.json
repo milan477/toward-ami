@@ -1,0 +1,103 @@
+{
+ "intro": "Evaluation is organized through PIAC, a listener-centered taxonomy created around four modes of musical engagement, each corresponding to a distinct degree of evaluation ambiguity: Perceptual, Inferential, Affective, and Contextual content. Each of the four categories comes with a defined evaluation methodology to systematically assess Audio-Language Models in open-ended tasks.",
+ "categories": [
+  {
+   "key": "perceptual",
+   "subtitle": "information directly measurable from the audio signal, admitting a single ground truth",
+   "information": "Perceptual content comprises anything that is measurable from the audio itself. This category requires neither prior knowledge nor active reasoning.",
+   "ambiguity": "The defining characteristic is the absence of reasonable disagreement, given a predefined answer format: a given note corresponds to A4 or it does not; a note onset occurs at a specific time or it does not.",
+   "coverage": "This category includes objective signal-level attributes or audio features, such as pitch, timing, duration, loudness, instrumentation, and lyrics. Musical descriptors that don't fall into this category include meter, as it is not physically present in the signal and may be interpreted differently by different listeners (such as 4/4 or 2/2), lacking a clear ground truth.",
+   "evaluation": "Evaluation within this category can proceed via exact semantic match or within a predefined tolerance. A constrained answer often required to increase comparability between prediction and reference.",
+   "example_q": "What note is played by the violin at 0:31:23? Answer in scientific pitch notation.",
+   "example_a": "A4."
+  },
+  {
+   "key": "inferential",
+   "subtitle": "information derived from the audio through expert listening and analytical reasoning, for which expert consensus is expected though not guaranteed",
+   "information": "Inferential content consists of musical properties that can be derived from the audio through expert listening and analytical reasoning.",
+   "ambiguity": "The claims are intersubjective: trained listeners tend to converge on an answer, but some degree of disagreement remains possible.",
+   "coverage": "This category includes harmonic function, formal segmentation, phrase structure, genre attribution, voice leading, and other aspects of musical organization.",
+   "evaluation": "Evaluation at this level should account for justified expert-annotated alternatives. Answers must be explicitly or implicitly substantiable in perceptual content. A claim about a theme's boundaries, for instance, should be traceable to observable features such as recurring melodic material or harmonic closure, even though identifying the theme itself requires some degree of interpretation.",
+   "example_q": "[In a situation where a B♭ is played as a grace note to an A, above an A7 chord] What is the name of this chord?",
+   "example_a": "A7, or A9."
+  },
+  {
+   "key": "affective",
+   "subtitle": "information related to the subjective experience of the listener, for which no consensus is expected or desirable",
+   "information": "Affective content captures how music is experienced by a listener and relates to expression and emotional response.",
+   "ambiguity": "By definition, these claims are subjective and should not be resolved by consensus, as there is no single right answer.",
+   "coverage": "This category includes perceived mood, character, tension, intimacy, energy, aesthetic quality, and personal response.",
+   "evaluation": "Evaluation should accommodate multiple correct answers by focusing on core criteria: the plausibility of the affective description (whether it is musically reasonable), internal consistency (ensuring different parts of the response cohere), and grounding (verifying that affective claims are supported by perceptual or inferential references). For example, describing a passage as “tender” gains substance if it is supported by references to soft dynamics, legato articulation, and sustained harmonic resolution.",
+   "example_q": "What is the most dramatic spot in the audio?",
+   "example_a": "Any spot that can be conceived as the most dramatic spot in the audio by an engaged human listener."
+  },
+  {
+   "key": "contextual",
+   "subtitle": "factual knowledge about the music external to the audio signal, admitting a single ground truth",
+   "information": "Contextual content consists of factual information that is associated with the music through historical or physical context and admits a single ground truth.",
+   "ambiguity": "Contextual claims are not ambiguous in principle: they admit a single ground truth. When contextual information is unknown or unavailable, the correct response is to acknowledge that uncertainty.",
+   "coverage": "This includes the composer, performer, name, date of recording, or the audio's reception and influence. In contrast, detecting genre from audio is inferential and ambiguous.",
+   "evaluation": "Evaluation should proceed via exact semantic match.",
+   "example_q": "Who is the composer of the piece I just played?",
+   "example_a": "Mozart."
+  }
+ ],
+ "rule_of_thumb": "Rule of thumb: unambiguously extractable from the signal → perceptual; tied to the listener's subjective experience → affective; a non-debatable external fact about the piece → contextual; otherwise (trained analysis of the signal) → inferential.",
+ "rule_of_thumb_items": [
+  {
+   "condition": "Unambiguously extractable from the signal",
+   "category": "perceptual"
+  },
+  {
+   "condition": "Tied to the listener's subjective experience",
+   "category": "affective"
+  },
+  {
+   "condition": "A non-debatable external fact about the piece",
+   "category": "contextual"
+  },
+  {
+   "condition": "Ttrained analysis of the signal",
+   "category": "inferential"
+  }
+ ],
+ "concepts": {
+  "Tone": [
+   "pitch",
+   "timbre",
+   "loudness",
+   "instrumentation",
+   "harmony",
+   "chord",
+   "key",
+   "melody"
+  ],
+  "Time": [
+   "rhythm",
+   "tempo",
+   "onset",
+   "duration",
+   "meter",
+   "form",
+   "counting"
+  ],
+  "Tone × Time": [
+   "genre",
+   "style",
+   "lyrics",
+   "emotion",
+   "mood",
+   "structure"
+  ],
+  "Context": [
+   "performer",
+   "composer",
+   "location",
+   "date",
+   "scene"
+  ],
+  "Other": [
+   "other"
+  ]
+ }
+}
