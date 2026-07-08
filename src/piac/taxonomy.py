@@ -103,6 +103,25 @@ CATEGORIES: dict[str, Category] = {
 FLEXIBILITY_NOTE = (""
 )
 
+RULE_OF_THUMB_ITEMS = [
+    {
+        "condition": "Unambiguously extractable from the signal",
+        "category": "perceptual",
+    },
+    {
+        "condition": "Tied to the listener's subjective experience",
+        "category": "affective",
+    },
+    {
+        "condition": "A non-debatable external fact about the piece",
+        "category": "contextual",
+    },
+    {
+        "condition": "Otherwise — trained analysis of the signal",
+        "category": "inferential",
+    },
+]
+
 RULE_OF_THUMB = (
     "Rule of thumb: unambiguously extractable from the signal → perceptual; tied to the "
     "listener's subjective experience → affective; a non-debatable external fact about the "

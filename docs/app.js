@@ -1,7 +1,7 @@
 "use strict";
 
 const PIAC = ["perceptual", "inferential", "affective", "contextual"];
-const ROUTES = ["home", "benchmarks", "evaluation", "results"];
+const ROUTES = ["home", "benchmarks", "models", "evaluation", "results"];
 const state = { data: null, filters: { q: "", piac: "" }, benchQ: "", selected: new Set(), selectMode: false };
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -25,6 +25,7 @@ async function init() {
   renderNews();
   setupBenchSearch();
   renderBenchmarks();
+  renderModels();
   renderEvaluation();
   renderResults();
 
@@ -46,7 +47,9 @@ function route() {
 
 /* ---------- home: news ---------- */
 function renderNews() {
-  $("#news").innerHTML = (state.data.news || []).map((n) => `
+  const el = $("#news");
+  if (!el) return;                       // "Latest" block removed from the home screen
+  el.innerHTML = (state.data.news || []).map((n) => `
     <div class="news-item">
       <button class="news-title" type="button">
         <span class="t">${esc(n.title)}</span>
@@ -307,7 +310,7 @@ function openZoom(name, origin) {
   });
 }
 
-/* ---------- home: about / "tell me more" ---------- */
+/* ---------- home: about / "Learn more" ---------- */
 function openAbout() {
   const overlay = $("#zoom");
   const card = $("#zoom-card");
@@ -319,12 +322,12 @@ function openAbout() {
       <p>toward Artificial Musical Intelligence (AMI) is an open platform where researchers can contribute to
         collectively and organically shape what artificial musical intelligence
         should look like.</p>
-      <p>The intention is to unify the evaluation framework across models
+      <p>The intention is to unify evaluation across models
        and benchmarks, so we gain a clearer, comparable understanding of
-        model performance. The benchmarks become a place to filter for and navigate
-        model skills, musical genres, and more. The platform is designed as a resource for training the next
+        model performance. The benchmark section become a place to filter for and navigate
+        model skills, musical genres, and more; the results section a place to see how models perform on the benchmarks. The platform is designed as a resource for training the next
         generation of Audio-Language Models.</p>
-      <p class="about-note">The site is under construction. Fork the repository on GitHub to contribute to it, the benchmarks or the models.</p>
+      <p class="about-note">Fork the repository on GitHub to contribute to the website, the benchmarks or the models.</p>
     </div>`;
   overlay.hidden = false;
   requestAnimationFrame(() => overlay.classList.add("show"));
@@ -341,6 +344,26 @@ function closeZoom() {
 }
 
 /* ---------- evaluation ---------- */
+function ruleOfThumbHTML(ev) {
+  const items = ev.rule_of_thumb_items;
+  if (items?.length) {
+    const rows = items.map((item) => `
+      <li class="rule-row">
+        <span class="rule-condition">${esc(item.condition)}</span>
+        <span class="rule-arrow" aria-hidden="true">→</span>
+        <span class="pill ${esc(item.category)}">${esc(item.category)}</span>
+      </li>`).join("");
+    return `
+      <aside class="rule-of-thumb">
+        <p class="rule-of-thumb-title">Rule of thumb</p>
+        <p class="rule-of-thumb-lede">By degree of ambiguity</p>
+        <ul class="rule-of-thumb-list">${rows}</ul>
+      </aside>`;
+  }
+  if (!ev.rule_of_thumb) return "";
+  return `<aside class="rule-of-thumb"><p>${esc(ev.rule_of_thumb)}</p></aside>`;
+}
+
 function renderEvaluation() {
   const ev = state.data.evaluation || {};
   const cats = ev.categories || [];
@@ -357,12 +380,8 @@ function renderEvaluation() {
       ${c.subtitle ? `<p class="fw-sub">${esc(c.subtitle)}</p>` : ""}
     </article>`).join("") + `</div>`;
   $("#piac").innerHTML = html;
-  if (ev.rule_of_thumb) {
-    const rot = document.createElement("div");
-    rot.className = "rule-of-thumb";
-    rot.innerHTML = `<b>Rule of thumb.</b> ${esc(ev.rule_of_thumb.replace(/^Rule of thumb:\s*/i, ""))}`;
-    $("#piac").appendChild(rot);
-  }
+  const rot = ruleOfThumbHTML(ev);
+  if (rot) $("#piac").insertAdjacentHTML("beforeend", rot);
 
   // Click a category to open its full detail in the shared zoom view.
   $("#piac").addEventListener("click", (e) => {
@@ -392,26 +411,7 @@ function evalZoomHTML(c) {
 function openEvalZoom(key, origin) {
   const c = evalByKey(key);
   if (!c) return;
-  const overlay = $("#zoom");
-  const card = $("#zoom-card");
-  card.innerHTML = evalZoomHTML(c);
-  overlay.hidden = false;
-  requestAnimationFrame(() => overlay.classList.add("show"));
-
-  // FLIP: grow the centered card from the clicked box's rect (same as benchmarks).
-  card.style.transition = "none";
-  card.style.transform = "none";
-  const first = origin.getBoundingClientRect();
-  const last = card.getBoundingClientRect();
-  const dx = first.left - last.left, dy = first.top - last.top;
-  const sx = first.width / last.width, sy = first.height / last.height;
-  card.style.transformOrigin = "top left";
-  card.style.transform = `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})`;
-  card.getBoundingClientRect();
-  requestAnimationFrame(() => {
-    card.style.transition = "transform 320ms cubic-bezier(.2,.7,.2,1)";
-    card.style.transform = "none";
-  });
+  flipZoom(evalZoomHTML(c), origin);
 }
 
 function renderPrompts() {
@@ -428,6 +428,71 @@ function renderPrompts() {
     </div>`).join("");
   $$("#prompts .prompt-head").forEach((h) =>
     h.addEventListener("click", () => h.closest(".prompt").classList.toggle("open")));
+}
+
+/* ---------- models ---------- */
+function modelById(id) {
+  return (state.data.models || []).find((m) => m.id === id);
+}
+
+function renderModels() {
+  const models = state.data.models || [];
+  $("#models").innerHTML = models.map((m) => `
+    <article class="framework-card" data-id="${esc(m.id)}">
+      <div class="bench-id">
+        <h3 class="cap">${esc(m.label)}</h3>
+        ${m.year ? `<span class="year">${esc(m.year)}</span>` : ""}
+      </div>
+      ${m.developer ? `<p class="fw-sub">${esc(m.developer)}</p>` : ""}
+    </article>`).join("");
+
+  $("#models").addEventListener("click", (e) => {
+    const card = e.target.closest(".framework-card");
+    if (card) openModelZoom(card.dataset.id, card);
+  });
+}
+
+function modelZoomHTML(m) {
+  const paper = m.paper_url
+    ? `<div class="field"><div class="k">Paper</div><div class="bench-links"><a href="${esc(m.paper_url)}" target="_blank" rel="noopener">${esc(m.paper_title || "Paper")}</a></div></div>`
+    : "";
+  return `
+    <button class="zoom-close" type="button" data-close aria-label="Close">×</button>
+    <div class="bench-id"><h3 class="cap">${esc(m.label)}</h3></div>
+    <div class="bench-fields">
+      ${field("Released", m.year)}
+      ${field("By", m.developer)}
+      ${paper}
+    </div>`;
+}
+
+function openModelZoom(id, origin) {
+  const m = modelById(id);
+  if (!m) return;
+  flipZoom(modelZoomHTML(m), origin);
+}
+
+/* Shared zoom opener: set card HTML, fade the backdrop, and FLIP-grow the
+   centered card from the clicked box's rect. */
+function flipZoom(html, origin) {
+  const overlay = $("#zoom");
+  const card = $("#zoom-card");
+  card.innerHTML = html;
+  overlay.hidden = false;
+  requestAnimationFrame(() => overlay.classList.add("show"));
+  card.style.transition = "none";
+  card.style.transform = "none";
+  const first = origin.getBoundingClientRect();
+  const last = card.getBoundingClientRect();
+  const dx = first.left - last.left, dy = first.top - last.top;
+  const sx = first.width / last.width, sy = first.height / last.height;
+  card.style.transformOrigin = "top left";
+  card.style.transform = `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})`;
+  card.getBoundingClientRect();
+  requestAnimationFrame(() => {
+    card.style.transition = "transform 320ms cubic-bezier(.2,.7,.2,1)";
+    card.style.transform = "none";
+  });
 }
 
 /* ---------- results ---------- */

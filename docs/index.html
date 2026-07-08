@@ -20,6 +20,7 @@
       <video class="vid-bg" src="vid.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
       <a href="#home" data-route="home">Home</a>
       <a href="#benchmarks" data-route="benchmarks">Benchmarks</a>
+      <a href="#models" data-route="models">Models</a>
       <a href="#evaluation" data-route="evaluation">Evaluation</a>
       <a href="#results" data-route="results">Results</a>
     </nav>
@@ -35,13 +36,9 @@
         <div class="home-desc">
           <p class="lede">An open platform created to advance research on artificial musical intelligence.</p>
           <p class="cta">
-            <button id="about-btn" class="btn-primary" type="button">Tell me more</button>
+            <button id="about-btn" class="btn-primary" type="button">Learn more</button>
             <a id="repo-btn" class="btn-secondary" href="https://github.com/milan477/toward-ami" target="_blank" rel="noopener">View on GitHub</a>
           </p>
-        </div>
-        <div class="latest">
-          <h2 class="block-label">Latest</h2>
-          <div id="news" class="news"></div>
         </div>
       </div>
     </div>
@@ -63,6 +60,16 @@
     <p class="hint">Click to see more details. Press Select, then pick multiple to cite or download in bulk.</p>
     <div id="benchmarks" class="bench-list"></div>
     <div id="bench-empty" class="empty" hidden>No benchmarks match.</div>
+  </section>
+
+  <!-- MODELS -->
+  <section class="page" id="page-models">
+    <header class="page-head">
+      <h1 class="display sm">Models</h1>
+      <p class="lede">The models currently evaluated on the platform.</p>
+    </header>
+    <p class="hint">Click a model for release date, authors, and paper.</p>
+    <div id="models" class="framework-list"></div>
   </section>
 
   <!-- EVALUATION -->

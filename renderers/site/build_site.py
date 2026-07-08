@@ -66,6 +66,10 @@ MODELS = [
     {
         "id": "af-next",
         "label": "Audio Flamingo Next",
+        "developer": "NVIDIA & University of Maryland",
+        "year": "2026",
+        "paper_title": "Audio Flamingo Next: Next-Generation Open Audio-Language Models for Speech, Sound, and Music",
+        "paper_url": "https://arxiv.org/abs/2604.10905",
         "mcq_csv": "results/mmar/af-next/music/2026-07-01_01-54-58_summary.csv",
         "oeq_answers": "results/mmar/af-next/music-oeq-piac/.oeq_answers.jsonl",
         "oeq_judged": "results/mmar/af-next/music-oeq-piac/.oeq_piac_judged.jsonl",
@@ -73,11 +77,17 @@ MODELS = [
     {
         "id": "gemini",
         "label": "Gemini 3 Flash",
+        "developer": "Google DeepMind",
+        "year": "2025",
+        "paper_title": "Introducing Gemini 3 Flash",
+        "paper_url": "https://blog.google/products-and-platforms/products/gemini/gemini-3-flash/",
         "mcq_csv": "results/mmar/gemini-3-flash-preview/music/2026-07-01_04-33-34_summary.csv",
         "oeq_answers": "results/mmar/gemini-3-flash-preview/music-oeq-piac/.oeq_answers.jsonl",
         "oeq_judged": "results/mmar/gemini-3-flash-preview/music-oeq-piac/.oeq_piac_judged.jsonl",
     },
 ]
+
+MODEL_META = ("developer", "year", "paper_title", "paper_url")
 
 PIAC_ORDER = ["perceptual", "inferential", "affective", "contextual"]
 
@@ -295,7 +305,7 @@ def build_benchmarks() -> list[dict]:
 def build_evaluation() -> dict:
     """PIAC taxonomy (the five-paragraph framing), concepts, from the live module."""
     from src.piac.taxonomy import (
-        PIAC_ORDER, RULE_OF_THUMB, SKILL_AXIS,
+        PIAC_ORDER, RULE_OF_THUMB, RULE_OF_THUMB_ITEMS, SKILL_AXIS,
     )
 
     # Verbatim from paper/paper.tex §"PIAC Framework" so the site mirrors the paper.
@@ -410,6 +420,7 @@ def build_evaluation() -> dict:
         "intro": intro,
         "categories": categories,
         "rule_of_thumb": RULE_OF_THUMB,
+        "rule_of_thumb_items": RULE_OF_THUMB_ITEMS,
         "concepts": concepts,
     }
 
@@ -522,7 +533,8 @@ def main() -> None:
         "evaluation": build_evaluation(),
         "n_questions": len(questions),
         "piac_order": PIAC_ORDER,
-        "models": [{"id": m["id"], "label": m["label"]} for m in MODELS],
+        "models": [{"id": m["id"], "label": m["label"],
+                    **{k: m.get(k, "") for k in MODEL_META}} for m in MODELS],
         "overview": {mid: overview_for(data, qids, q_piac)
                      for mid, data in models.items()},
         "questions": questions,
