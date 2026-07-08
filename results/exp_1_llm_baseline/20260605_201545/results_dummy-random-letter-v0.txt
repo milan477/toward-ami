@@ -1,7 +1,0 @@
-Experiment: exp_1_llm_baseline
-Model:      dummy-random-letter-v0
-Commit:     138ef54c856220ce555304340f6532fd8f0a6338
-Timestamp:  2026-06-05T20:15:42.530721+00:00
-
-Summary:
-  MMAR: {'n': 206, 'accuracy': 0.0}
