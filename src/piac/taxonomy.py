@@ -150,27 +150,6 @@ MOTIVATION = {
             "hallucinatory claims."
         ),
     ],
-    "example_prompt": "Can you describe what is happening musically?",
-    "annotated_passage": [
-        {
-            "text": "Before transitioning back to the second theme in the re-exposition, ",
-            "category": "inferential",
-        },
-        {"text": "the leading tone ", "category": "inferential"},
-        {"text": "(an A4), ", "category": "perceptual"},
-        {"text": "played louder than the surrounding notes, ", "category": "perceptual"},
-        {
-            "text": "strongly augments the tension introduced by the previous diminished chords. ",
-            "category": "inferential",
-        },
-        {"text": "At the same time, the music subtly accelerates, ", "category": "perceptual"},
-        {"text": "contributing to a feeling of despair. ", "category": "affective"},
-        {"text": "This leads up to an emotional climax which bursts out at 02:15, ", "category": "affective"},
-        {
-            "text": "an exclamation typical of the Romantic style but atypical of Prokofiev.",
-            "category": "contextual",
-        },
-    ],
 }
 
 # --- Skill vocabulary (what musical topic the question probes) --------------
