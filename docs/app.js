@@ -16,7 +16,7 @@ async function loadData() {
   const base = "data/";
   const names = ["meta", "news", "models", "benchmarks", "evaluation", "overview", "prompts", "questions"];
   const parts = await Promise.all(
-    names.map((n) => fetch(`${base}${n}.json`).then((r) => {
+    names.map((n) => fetch(`${base}${n}.json`, { cache: "no-store" }).then((r) => {
       if (!r.ok) throw new Error(`failed to load ${n}.json`);
       return r.json();
     })),
@@ -364,6 +364,26 @@ function closeZoom() {
 }
 
 /* ---------- evaluation ---------- */
+function motivationHTML(ev) {
+  const m = ev.motivation;
+  if (!m) return "";
+  const paras = (m.body || []).map((p) => `<p>${esc(p)}</p>`).join("");
+  const segs = (m.annotated_passage || []).map((seg) => `
+    <span class="annot-seg ${esc(seg.category)}">
+      <span class="annot-text">${esc(seg.text)}</span>
+      <span class="annot-cat">${esc(seg.category)}</span>
+    </span>`).join("");
+  return `
+    <aside class="rule-of-thumb framework-motivation">
+      <p class="rule-of-thumb-title">Motivation</p>
+      <div class="motivation-body">
+        ${paras}
+        ${m.example_prompt ? `<p class="motivation-example-q">${esc(m.example_prompt)}</p>` : ""}
+        ${segs ? `<div class="annotated-passage">${segs}</div>` : ""}
+      </div>
+    </aside>`;
+}
+
 function ruleOfThumbHTML(ev) {
   const items = ev.rule_of_thumb_items;
   if (items?.length) {
@@ -402,6 +422,8 @@ function renderEvaluation() {
   $("#piac").innerHTML = html;
   const rot = ruleOfThumbHTML(ev);
   if (rot) $("#piac").insertAdjacentHTML("beforeend", rot);
+  const mot = motivationHTML(ev);
+  if (mot) $("#piac").insertAdjacentHTML("beforeend", mot);
 
   // Click a category to open its full detail in the shared zoom view.
   $("#piac").addEventListener("click", (e) => {

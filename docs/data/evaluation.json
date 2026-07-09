@@ -57,7 +57,7 @@
    "category": "contextual"
   },
   {
-   "condition": "Ttrained analysis of the signal",
+   "condition": "Through trained analysis of the signal",
    "category": "inferential"
   }
  ],
@@ -98,6 +98,53 @@
   ],
   "Other": [
    "other"
+  ]
+ },
+ "motivation": {
+  "body": [
+   "PIAC is a framework that probes layered understanding of music, designed as a paradigm for benchmarks to organize evaluation around, conceptually and in practice, when assessing audio-language models in open-ended tasks. The framework rests on a distinction between four levels of ambiguity.",
+   "Consider a few examples. “How many notes are played in total in this audio?\" is a perceptual question, as it is directly measurable from the audio and admits a single ground truth, and therefore perfectly suitable for an open-ended format with an exact match requirement.",
+   "The answer to “What does the music feel like?” shouldn't be converged on by consensus. The evaluation should admit multiple responses, either using an LLM-as-a-judge or tailored similarity metrics. Understanding which perceptual or inferential features support the affective experience may shed light on potential superficial or hallucinatory claims.",
+   "Consider the following example: "
+  ],
+  "example_prompt": "Can you describe what is happening musically?",
+  "annotated_passage": [
+   {
+    "text": "Before transitioning back to the second theme in the re-exposition, ",
+    "category": "inferential"
+   },
+   {
+    "text": "the leading tone ",
+    "category": "inferential"
+   },
+   {
+    "text": "(an A4), ",
+    "category": "perceptual"
+   },
+   {
+    "text": "played louder than the surrounding notes, ",
+    "category": "perceptual"
+   },
+   {
+    "text": "strongly augments the tension introduced by the previous diminished chords. ",
+    "category": "inferential"
+   },
+   {
+    "text": "At the same time, the music subtly accelerates, ",
+    "category": "perceptual"
+   },
+   {
+    "text": "contributing to a feeling of despair. ",
+    "category": "affective"
+   },
+   {
+    "text": "This leads up to an emotional climax which bursts out at 02:15, ",
+    "category": "affective"
+   },
+   {
+    "text": "an exclamation typical of the Romantic style but atypical of Prokofiev.",
+    "category": "contextual"
+   }
   ]
  }
 }
