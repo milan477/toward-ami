@@ -568,7 +568,6 @@ function renderResults() {
       ${row("MCQ accuracy (apparent)", pct(o.mcq_acc), true)}
       ${row("OEQ accuracy (actual)", pct(o.oeq_acc), true)}
       ${row("MCQ − OEQ gap", ((o.mcq_acc - o.oeq_acc) * 100).toFixed(1) + " pt")}
-      ${row("OEQ mean judge score", o.oeq_mean.toFixed(3))}
       ${row("Questions", o.n)}
     </div>`;
   }).join("");
@@ -583,7 +582,7 @@ function renderPiacTable() {
   const models = evalModels();
   let html = `<thead><tr>
       <th>PIAC category</th><th>Model</th>
-      <th class="num">n</th><th class="num">MCQ</th><th class="num">OEQ</th><th class="num">gap</th><th class="num">OEQ mean</th>
+      <th class="num">n</th><th class="num">MCQ</th><th class="num">OEQ</th><th class="num">gap</th>
     </tr></thead><tbody>`;
   for (const cat of PIAC) {
     const rows = models.map((m) => [m, overview[m.id].by_piac[cat]]).filter(([, r]) => r);
@@ -596,7 +595,6 @@ function renderPiacTable() {
         <td class="num">${pct(r.mcq_acc)}</td>
         <td class="num">${pct(r.oeq_acc)}</td>
         <td class="num">${((r.mcq_acc - r.oeq_acc) * 100).toFixed(0)} pt</td>
-        <td class="num">${r.oeq_mean.toFixed(2)}</td>
       </tr>`;
     });
   }
