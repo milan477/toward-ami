@@ -329,15 +329,12 @@ function openAbout() {
     <div class="about">
       <span class="wip-badge">our mission</span>
       <br /><br />
-      <p><em>towards Artificial Musical Intelligence (AMI)</em> is an open platform where researchers can contribute to
-        collectively and organically shape what artificial musical intelligence
-        should look like.</p>
-      <p>The intention is to unify evaluation across models
-       and benchmarks, so we gain a clearer, comparable understanding of
-        model performance. The benchmark section is a place to filter for and navigate
-        model skills, musical genres, and more; the results section a place to see how models perform on the benchmarks. The platform is designed as an ever-evolving resource for training the next
-        generation of Audio-Language Models.</p>
-      <p class="about-note">Fork the repository on GitHub to contribute to the website, the benchmarks or the models.</p>
+      <p><em>Towards Artificial Musical Intelligence (AMI)</em> is an open, community-driven platform where researchers can
+        collectively define what artificial musical intelligence is about.</p>
+      <p>Its goal is to unify evaluation across models
+       and benchmarks, enabling consistent and comprehensive assessment of model performance. The Benchmarks section allows users to explore and filter tasks by musical skill, while the Results section provides performance comparisons across models. 
+        Designed as a living resource, the platform continuously evolves with contributions from the community, supporting the development and evaluation of the next generation of Audio-Language Models.</p>
+      <p class="about-note">Fork the repository on GitHub to contribute to the website, benchmarks or models.</p>
     </div>`;
   overlay.hidden = false;
   requestAnimationFrame(() => overlay.classList.add("show"));
