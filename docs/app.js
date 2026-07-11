@@ -23,6 +23,7 @@ const state = {
   inspectName: null,
   benchQFilters: { q: "", categories: {} },
   benchQControlsReady: false,
+  questionsPromise: null,
 };
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -46,18 +47,31 @@ init();
 
 async function loadData() {
   const base = "data/";
-  const names = ["meta", "news", "models", "benchmarks", "evaluation", "overview", "prompts", "questions",
-    "benchmark_questions"];
+  const names = ["meta", "news", "models", "benchmarks", "evaluation", "overview", "prompts"];
   const parts = await Promise.all(
     names.map((n) => fetch(`${base}${n}.json`, { cache: "no-store" }).then((r) => {
       if (!r.ok) throw new Error(`failed to load ${n}.json`);
       return r.json();
     })),
   );
-  const [meta, news, models, benchmarks, evaluation, overview, prompts, questions,
-    benchmark_questions] = parts;
-  return { ...meta, news, models, benchmarks, evaluation, overview, prompts,
-    questions: questions || benchmark_questions, benchmark_questions };
+  const [meta, news, models, benchmarks, evaluation, overview, prompts] = parts;
+  return { ...meta, news, models, benchmarks, evaluation, overview, prompts, questions: null };
+}
+
+async function loadBenchmarkQuestions() {
+  if (state.data?.questions) return state.data.questions;
+  if (!state.questionsPromise) {
+    state.questionsPromise = fetch("data/benchmark_questions.json", { cache: "no-store" }).then((r) => {
+      if (!r.ok) throw new Error("failed to load benchmark_questions.json");
+      return r.json();
+    }).then((questions) => {
+      state.data.questions = questions;
+      return questions;
+    }).finally(() => {
+      state.questionsPromise = null;
+    });
+  }
+  return state.questionsPromise;
 }
 
 async function init() {
@@ -108,8 +122,12 @@ function route() {
 
 function benchesWithQuestions() {
   return new Set(
-    (state.data.questions || []).map((q) => q.benchmark).filter(Boolean),
+    (state.data.benchmarks || []).filter(hasBenchmarkQuestions).map((b) => b.name),
   );
+}
+
+function hasBenchmarkQuestions(b) {
+  return Boolean(b?.has_questions || Number(b?.question_count || 0) > 0);
 }
 
 function questionsForBench(name) {
@@ -863,6 +881,11 @@ function setupBenchQuestionControls() {
   });
   document.addEventListener("click", (event) => {
     const target = event.target instanceof Element ? event.target : event.target?.parentElement;
+    const audioButton = target?.closest("[data-load-audio]");
+    if (audioButton) {
+      loadQuestionAudio(audioButton);
+      return;
+    }
     const toggle = target?.closest(".pie-toggle");
     if (!toggle) return;
     const card = toggle.closest(".pie-card");
@@ -873,7 +896,7 @@ function setupBenchQuestionControls() {
   });
 }
 
-function renderBenchmarkDetail(name) {
+async function renderBenchmarkDetail(name) {
   const b = benchByName(name);
   const head = $("#bench-detail-head");
   const meta = $("#bench-detail-meta");
@@ -885,6 +908,18 @@ function renderBenchmarkDetail(name) {
     $("#bench-q-count").textContent = "";
     $("#bench-q-empty").hidden = false;
     $("#bench-q-empty").textContent = "No questions available.";
+    return;
+  }
+  if (!state.data.questions) {
+    renderBenchmarkDetailLoading(b);
+    try {
+      await loadBenchmarkQuestions();
+      if (state.inspectName === name) renderBenchmarkDetail(name);
+    } catch (err) {
+      $("#bench-q-empty").hidden = false;
+      $("#bench-q-empty").textContent = "Could not load questions.";
+      console.error(err);
+    }
     return;
   }
   const kind = [b.domain, b.format].filter(Boolean).join(" · ");
@@ -914,6 +949,34 @@ function renderBenchmarkDetail(name) {
   setupBenchmarkCategoryFilters();
   $("#bench-q-search").value = "";
   renderBenchQuestions();
+}
+
+function renderBenchmarkDetailLoading(b) {
+  const kind = [b.domain, b.format].filter(Boolean).join(" · ");
+  const nQ = Number(b.question_count || 0);
+  $("#bench-detail-head").innerHTML = `
+    <h1 class="display sm">${esc(b.name)}</h1>
+    <p class="lede">${esc(b.paper_title || b.extended || "")}</p>
+    <p class="bench-detail-tags">
+      ${b.year ? `<span class="year">${esc(b.year)}</span>` : ""}
+      ${kind ? `<span class="kind">${esc(kind)}</span>` : ""}
+      <span class="kind">${nQ ? `${nQ.toLocaleString()} question${nQ === 1 ? "" : "s"}` : "questions"}</span>
+    </p>`;
+  $("#bench-detail-meta").innerHTML = `
+    <div class="bench-fields">
+      ${field("Modalities", b.modalities)}
+      ${field("Size", formatSize(b.size))}
+      ${field("Authors", authorDisplay(b), true)}
+      ${field("Skills", b.skills, true)}
+      ${field("Sources", b.sources, true)}
+      ${b.links && b.links.length ? `<div class="field"><div class="k">Links</div><div class="bench-links">${linksHTML(b)}</div></div>` : ""}
+    </div>`;
+  state.benchQFilters = { q: "", categories: {} };
+  $("#bench-q-search").value = "";
+  $("#bench-q-count").textContent = "Loading questions…";
+  $("#bench-q-empty").hidden = false;
+  $("#bench-q-empty").textContent = "Loading inspectable questions.";
+  $("#bench-q-cards").innerHTML = "";
 }
 
 function categoryFilterHTML(rows) {
@@ -1274,7 +1337,7 @@ function renderBenchQuestions() {
 
 function benchQuestionHTML(row) {
   const audio = row.audio
-    ? `<audio controls preload="none" src="${esc(row.audio)}"></audio>`
+    ? `<div class="audio-lazy"><button class="audio-load" type="button" data-load-audio="${esc(row.audio)}">Play audio</button></div>`
     : `<div class="no-audio">audio unavailable for this clip</div>`;
   const meta = questionCategoryMeta(row);
   const piac = knownPiac(row.piac);
@@ -1296,6 +1359,17 @@ function benchQuestionHTML(row) {
     ${fmt}
     ${distractors}
   </article>`;
+}
+
+function loadQuestionAudio(button) {
+  const src = button.dataset.loadAudio;
+  if (!src) return;
+  const audio = document.createElement("audio");
+  audio.controls = true;
+  audio.preload = "none";
+  audio.src = src;
+  button.replaceWith(audio);
+  audio.play().catch(() => {});
 }
 
 function questionCategoryMeta(row) {

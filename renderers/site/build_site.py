@@ -209,6 +209,21 @@ def _benchmark_stage_paths() -> list[Path]:
     return paths
 
 
+def benchmark_question_counts(benchmarks: list[dict]) -> dict[str, int]:
+    display_names = _display_name_map(benchmarks)
+    counts: dict[str, int] = {}
+    for path in _benchmark_stage_paths():
+        dataset = path.parent.name
+        benchmark = display_names.get(dataset, display_names.get(_compact_key(dataset), dataset))
+        try:
+            with path.open(encoding="utf-8") as f:
+                n = sum(1 for _ in csv.DictReader(f))
+        except OSError:
+            continue
+        counts[benchmark] = counts.get(benchmark, 0) + n
+    return counts
+
+
 def _audio_stem(audio_url: str) -> str:
     first = str(audio_url or "").split(";", 1)[0].strip()
     if not first:
@@ -604,6 +619,10 @@ def load_benchmarks() -> list[dict]:
                 "status": _clean(r.get("Status", "")),
             })
     rows.sort(key=lambda b: (b["year"], b["name"].lower()))
+    question_counts = benchmark_question_counts(rows)
+    for row in rows:
+        row["question_count"] = question_counts.get(row["name"], 0)
+        row["has_questions"] = row["question_count"] > 0
     return rows
 
 
