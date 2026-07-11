@@ -1,45 +1,88 @@
-"""Entry point for all src. Usage: python run.py <exp_name> [--preview]"""
+"""Central dispatcher for src workflows.
+
+Usage:
+    python -m src.run --list
+    python -m src.run analysis pipeline mmar --limit 20
+    python -m src.run decomposition decompose mmar --limit 5
+    python -m src.run experiments mcq-oeq --model af-next --limit 5
+"""
+
+from __future__ import annotations
 
 import argparse
-import importlib.util
+import importlib
 import sys
-from pathlib import Path
 
-SCRIPTS = Path(__file__).parent / "scripts"
+COMMANDS: dict[str, dict[str, str]] = {
+    "preprocess": {
+        "load": "src.preprocess.benchmarks",
+    },
+    "analysis": {
+        "annotate": "src.analysis.run",
+        "pipeline": "src.analysis.run",
+        "statistics": "src.analysis.run",
+    },
+    "evaluation": {
+        "judge": "src.evaluation.judge",
+        "piac": "src.evaluation.piac_analyze",
+    },
+    "decomposition": {
+        "decompose": "src.decomposition.decompose",
+        "perturbation": "src.decomposition.exp_2_perturbation",
+    },
+    "experiments": {
+        "mcq-oeq": "src.experiments.exp_0_mcq_oeq",
+        "probes": "src.experiments.exp_4_probe_eval",
+        "llm-baseline": "src.experiments.exp_1_llm_baseline",
+    },
+}
 
 
-def load_exp(name: str):
-    matches = list(SCRIPTS.glob(f"{name}.py"))
-    if not matches:
-        sys.exit(f"No experiment script found for {name!r}. Run with --list to see options.")
-    spec = importlib.util.spec_from_file_location(name, matches[0])
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    return mod
+def _print_commands() -> None:
+    print("Available commands:")
+    for area, commands in COMMANDS.items():
+        print(f"\n{area}")
+        for name, module in commands.items():
+            print(f"  {name:<14} {module}")
 
 
-def list_experiments():
-    for p in sorted(SCRIPTS.glob("exp_*.py")):
-        print(f"  {p.stem}")
+def _resolve(area: str, command: str) -> str:
+    try:
+        return COMMANDS[area][command]
+    except KeyError:
+        choices = ", ".join(COMMANDS.get(area, {})) if area in COMMANDS else ", ".join(COMMANDS)
+        raise SystemExit(f"Unknown command {area} {command!r}. Choices: {choices}")
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("exp", nargs="?", help="Experiment name (e.g. exp_1_llm_baseline)")
-    parser.add_argument("--preview", action="store_true", help="Preview without querying model")
-    parser.add_argument("--list", action="store_true", help="List available experiments")
-    args = parser.parse_args()
+def main() -> None:
+    parser = argparse.ArgumentParser(add_help=False)
+    parser.add_argument("area", nargs="?")
+    parser.add_argument("command", nargs="?")
+    parser.add_argument("args", nargs=argparse.REMAINDER)
+    parser.add_argument("--list", action="store_true")
+    parser.add_argument("-h", "--help", action="store_true")
+    ns = parser.parse_args()
 
-    if args.list or not args.exp:
-        print("Available experiments:")
-        list_experiments()
+    if ns.help or ns.list or not ns.area:
+        _print_commands()
+        print("\nPass command-specific flags after the command, e.g. "
+              "`python -m src.run analysis pipeline mmar --limit 20`.")
         return
+    if not ns.command:
+        raise SystemExit(f"Missing command for area {ns.area!r}. Run `python -m src.run --list`.")
 
-    mod = load_exp(args.exp)
-    if args.preview:
-        mod.preview()
+    module = _resolve(ns.area, ns.command)
+    if module == "src.analysis.run":
+        sys.argv = [ns.area, ns.command, *ns.args]
     else:
+        sys.argv = [f"{ns.area} {ns.command}", *ns.args]
+    mod = importlib.import_module(module)
+    if hasattr(mod, "main"):
+        mod.main()
+    elif hasattr(mod, "run"):
         mod.run()
+    else:
+        raise SystemExit(f"{module} has no main() or run() entry point.")
 
 
 if __name__ == "__main__":

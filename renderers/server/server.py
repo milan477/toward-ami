@@ -7,13 +7,13 @@ indexing what's on disk (formats differ per dataset: "./audio/X.wav",
 audio hasn't been downloaded simply show up without a player.
 
 The default --data-dir is data/benchmarks, whose CSVs are named
-<name>_<stage>.csv (raw/normalized/cleaned/ready); each is discovered by its
-filename stem (e.g. "mmar_normalized", "mmar_ready"). Any other flat directory
-of CSVs also works (e.g. --data-dir data/af_next).
+<name>_<stage>.csv (raw/normalized) plus normalized_selected/normalized_selected_annotated;
+each is discovered by its filename stem. Any other flat directory
+of CSVs also works (e.g. --data-dir data/model_runs).
 
 Run:
     python renderers/server/server.py            # then open http://localhost:8000
-    python renderers/server/server.py --port 9000 --data-dir data/af_next
+    python renderers/server/server.py --port 9000 --data-dir data/model_runs
 """
 
 import argparse
@@ -46,7 +46,7 @@ def _dataset_map() -> dict[str, Path]:
     """Map dataset key (CSV filename stem) → path, found recursively under DATA_DIR.
 
     Supports both the nested benchmark layout (data/benchmarks/<name>/<name>_<stage>.csv)
-    and any flat directory of CSVs (e.g. data/af_next)."""
+    and any flat directory of CSVs (e.g. data/model_runs)."""
     return {p.stem: p for p in sorted(DATA_DIR.rglob("*.csv"))
             if not p.name.startswith(".")}
 

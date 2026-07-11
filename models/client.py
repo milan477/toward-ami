@@ -1,6 +1,8 @@
 """Pluggable model clients with a single interface, audio when supported.
 
 Backends (selected by a `spec` string):
+    af-next                          direct local Audio Flamingo Next
+    af-next:<hf-model-id>            direct local Audio Flamingo Next with a model id
     flamingo                          local Audio Flamingo FastAPI server (:8001)
     flamingo@http://host:port         ... at a custom URL
     openai:gpt-4o-audio-preview       OpenAI; audio-capable models ingest the clip
@@ -18,8 +20,6 @@ Env vars: OPENAI_API_KEY, OPENROUTER_API_KEY, FLAMINGO_URL, LOCAL_JUDGE_MODEL.
 import base64
 import os
 from pathlib import Path
-
-import requests
 
 TIMEOUT = 180
 
@@ -53,6 +53,8 @@ class FlamingoClient(ModelClient):
         self.model_id = "audio-flamingo"
 
     def info(self) -> dict:
+        import requests
+
         try:
             h = requests.get(f"{self.url}/health", timeout=10).json()
             self.model_id = h.get("model", self.model_id)
@@ -61,6 +63,8 @@ class FlamingoClient(ModelClient):
         return {**super().info(), "url": self.url}
 
     def generate(self, prompt, audio_path=None, max_tokens=256):
+        import requests
+
         if not audio_path:
             raise ValueError("Flamingo requires audio; no audio_path given.")
         with open(audio_path, "rb") as f:
@@ -93,6 +97,8 @@ class _ChatCompletionsClient(ModelClient):
         return {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
 
     def generate(self, prompt, audio_path=None, max_tokens=256):
+        import requests
+
         if audio_path and self.supports_audio:
             data, fmt = _b64_audio(audio_path)
             content = [
@@ -204,7 +210,12 @@ class LocalHFClient(ModelClient):
 # --- Factory --------------------------------------------------------------
 
 def make_client(spec: str) -> ModelClient:
-    """Build a client from a spec like 'flamingo', 'openai:MODEL', 'openrouter:MODEL'."""
+    """Build a client from a spec like 'af-next', 'openai:MODEL', or 'openrouter:MODEL'."""
+    if spec == "af-next" or spec.startswith("af-next:"):
+        from models.af_next import DEFAULT_MODEL_ID, DirectAFNextClient
+
+        model_id = spec.split(":", 1)[1] if ":" in spec else DEFAULT_MODEL_ID
+        return DirectAFNextClient(model_id=model_id)
     if spec.startswith("flamingo"):
         url = spec.split("@", 1)[1] if "@" in spec else None
         return FlamingoClient(url)

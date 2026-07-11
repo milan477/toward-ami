@@ -1,7 +1,8 @@
-"""Build the static GitHub Pages site for the MMAR music-understanding explorer.
+"""Build the static GitHub Pages site for the music-understanding explorer.
 
-Reads the processed MMAR questions, both models' MCQ + PIAC-judged OEQ results,
-and the live prompt sources, then emits a self-contained site under ``docs/``:
+Reads the normalized benchmark questions, available MCQ + PIAC-judged OEQ
+results, and the live prompt sources, then emits a self-contained site under
+``docs/``:
 
     docs/index.html  docs/styles.css  docs/app.js   (static, hand-written)
     docs/data/*.json                                (generated here)
@@ -10,8 +11,9 @@ and the live prompt sources, then emits a self-contained site under ``docs/``:
 Audio is transcoded WAV -> mono OGG/Vorbis so the whole payload fits comfortably
 on GitHub Pages (the source WAVs are ~1 GB; the OGGs are tens of MB).
 
-    python site/build_site.py            # full build (data + audio)
-    python site/build_site.py --no-audio # data only (fast, keeps existing oggs)
+    python renderers/site/build_site.py --list
+    python renderers/site/build_site.py --target questions --no-audio
+    python renderers/site/build_site.py --target benchmarks
 
 The model catalog is read from the newest
 ``data/models/overviews/model_overview_<date>.csv`` (source of truth) and written
@@ -35,10 +37,22 @@ sys.path.insert(0, str(ROOT))
 DOCS = ROOT / "docs"
 DATA_DIR = DOCS / "data"
 AUDIO_OUT = DOCS / "audio"
-PROCESSED = ROOT / "data" / "benchmarks" / "mmar" / "mmar_ready.csv"
+BENCHMARK_DATA = ROOT / "data" / "benchmarks"
 AUDIO_SRC = ROOT / "data" / "audio" / "mmar"
 PAPER_PDF = ROOT / "paper" / "paper.pdf"
 REPO_URL = "https://github.com/milan477/toward-ami"
+DATA_TARGETS = (
+    "meta",
+    "news",
+    "models",
+    "benchmarks",
+    "evaluation",
+    "overview",
+    "prompts",
+    "questions",
+    "paper",
+    "audio",
+)
 
 # Latest news / takeaways shown on the home page — newest first. Edit freely.
 NEWS = [
@@ -135,7 +149,206 @@ def _parse_distractors(raw: str) -> list[str]:
         return []
 
 
-def load_model(m: dict) -> dict:
+def _parse_listish(raw: str) -> list[str]:
+    if _is_empty_list_marker(raw):
+        return []
+    try:
+        val = json.loads(raw) if raw else []
+    except (json.JSONDecodeError, TypeError):
+        return [str(raw)] if raw else []
+    if isinstance(val, list):
+        return [str(x) for x in val if str(x).strip() and not _is_empty_list_marker(str(x))]
+    return [str(val)] if str(val).strip() and not _is_empty_list_marker(str(val)) else []
+
+
+def _compact_key(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", str(value).lower())
+
+
+def _display_name_map(benchmarks: list[dict]) -> dict[str, str]:
+    names = {_compact_key(b["name"]): b["name"] for b in benchmarks}
+    return {
+        "mmar": "MMAR",
+        "mmau_pro": names.get("mmaupro", "MMAU-Pro"),
+        "muchomusic": names.get("muchomusic", "MuChoMusic"),
+        **names,
+    }
+
+
+def _stage_path(dataset_dir: Path) -> Path | None:
+    name = dataset_dir.name
+    for suffix in (
+        "normalized_selected_annotated",
+        "normalized_selected",
+        "ready",
+        "normalized",
+    ):
+        path = dataset_dir / f"{name}_{suffix}.csv"
+        if path.exists():
+            return path
+    return None
+
+
+def _benchmark_stage_paths() -> list[Path]:
+    if not BENCHMARK_DATA.exists():
+        return []
+    paths = []
+    for d in sorted(BENCHMARK_DATA.iterdir()):
+        if not d.is_dir() or d.name == "overviews":
+            continue
+        path = _stage_path(d)
+        if path:
+            paths.append(path)
+    return paths
+
+
+def _audio_stem(audio_url: str) -> str:
+    first = str(audio_url or "").split(";", 1)[0].strip()
+    if not first:
+        return ""
+    if ":" in first and "/" not in first:
+        _, _, ident = first.partition(":")
+        return Path(ident).name.rsplit(".", 1)[0]
+    return Path(first).name.rsplit(".", 1)[0]
+
+
+def _skills_text(row: dict) -> str:
+    if row.get("skills"):
+        vals = _parse_listish(row["skills"])
+        if not vals and _has_empty_list_marker(row["skills"]):
+            return "none specified"
+        return ", ".join(vals) if vals else row["skills"]
+    vals = []
+    for col in ("music_knowledge", "music_reasoning", "perceptual_skills", "reasoning_skills"):
+        vals.extend(_parse_listish(row.get(col, "")))
+    seen = []
+    for val in vals:
+        if val not in seen:
+            seen.append(val)
+    return ", ".join(seen)
+
+
+def _is_empty_list_marker(raw: str) -> bool:
+    return str(raw or "").strip().replace(" ", "") in {"[]", "[][]"}
+
+
+def _has_empty_list_marker(raw: str) -> bool:
+    return "[]" in str(raw or "").replace(" ", "")
+
+
+def _site_category_values(dataset: str, row: dict) -> dict[str, list[str]]:
+    from src.analysis.statistics import category_values_for_row
+
+    categories = category_values_for_row(dataset, row)
+    for key, values in list(categories.items()):
+        categories[key] = [
+            "none specified" if _is_empty_list_marker(value) else value
+            for value in values
+        ]
+    if dataset == "mmau_pro" and _has_empty_list_marker(row.get("skills", "")) and not categories.get("skill"):
+        categories["skill"] = ["none specified"]
+    return categories
+
+
+def _row_piac(row: dict) -> str:
+    val = (row.get("category") or row.get("piac") or "").strip().lower()
+    return val if val in PIAC_ORDER else ""
+
+
+def _question_id(dataset: str, row: dict, idx: int) -> str:
+    if row.get("qid"):
+        return row["qid"]
+    stem = _audio_stem(row.get("audio_url", ""))
+    return stem or f"{dataset}:{idx + 1}"
+
+
+def load_questions(benchmarks: list[dict], models: dict[str, dict]) -> tuple[list[dict], set[tuple[str, str]], dict[str, str], list[str]]:
+    from src.analysis.statistics import (
+        _audio_duration,
+        _audio_names,
+        _build_audio_index,
+    )
+
+    display_names = _display_name_map(benchmarks)
+    questions: list[dict] = []
+    stems: set[tuple[str, str]] = set()
+    q_piac: dict[str, str] = {}
+    eval_qids: list[str] = []
+    audio_indexes: dict[str, dict] = {}
+
+    def audio_durations(dataset: str, audio_url: str) -> list[float]:
+        if dataset not in audio_indexes:
+            audio_indexes[dataset] = _build_audio_index(dataset)
+        index = audio_indexes[dataset]
+        durations = []
+        for audio_name in _audio_names(audio_url):
+            path = index.get(audio_name) or index.get(Path(audio_name).stem)
+            if not path:
+                continue
+            duration = _audio_duration(path)
+            if duration is not None:
+                durations.append(round(duration, 3))
+        return durations
+
+    for path in _benchmark_stage_paths():
+        dataset = path.parent.name
+        benchmark = display_names.get(dataset, display_names.get(_compact_key(dataset), dataset))
+        with path.open(encoding="utf-8") as f:
+            for idx, r in enumerate(csv.DictReader(f)):
+                qid = _question_id(dataset, r, idx)
+                stem = _audio_stem(r.get("audio_url", ""))
+                piac = _row_piac(r)
+                if stem:
+                    stems.add((dataset, stem))
+                if piac:
+                    q_piac[qid] = piac
+                rec = {
+                    "qid": qid,
+                    "benchmark": benchmark,
+                    "audio_dataset": dataset,
+                    "question": r.get("question", ""),
+                    "question_type": r.get("question_type", ""),
+                    "piac": piac,
+                    "category_1": r.get("category_1", ""),
+                    "category_2": r.get("category_2", ""),
+                    "category_3": r.get("category_3", ""),
+                    "category_4": r.get("category_4", ""),
+                    "skills": _skills_text(r),
+                    "answer_format": r.get("answer_format", ""),
+                    "correct_answer": r.get("correct_answer", ""),
+                    "distractors": _parse_distractors(r.get("distractors", "")),
+                    "audio_stem": stem,
+                    "audio_duration_seconds": audio_durations(dataset, r.get("audio_url", "")),
+                    "categories": _site_category_values(dataset, r),
+                }
+                has_result = False
+                for mid, data in models.items():
+                    if qid in data["mcq"] or qid in data["ans"] or qid in data["jud"]:
+                        meta = _result_metadata(data, qid)
+                        if not rec["piac"]:
+                            rec["piac"] = _row_piac(meta)
+                            piac = rec["piac"]
+                        if not rec["skills"] and meta.get("skills"):
+                            rec["skills"] = meta["skills"]
+                        if not rec["answer_format"] and meta.get("answer_format"):
+                            rec["answer_format"] = meta["answer_format"]
+                        rec[mid] = model_cell(data, qid)
+                        has_result = True
+                if has_result:
+                    if piac:
+                        q_piac[qid] = piac
+                    eval_qids.append(qid)
+                questions.append(rec)
+
+    return questions, stems, q_piac, eval_qids
+
+
+def load_model(m: dict) -> dict | None:
+    paths = [ROOT / m[k] for k in ("mcq_csv", "oeq_answers", "oeq_judged") if m.get(k)]
+    missing = [p for p in paths if not p.exists()]
+    if missing:
+        print(f"  results: skipping {m['id']} (missing {missing[0].relative_to(ROOT)})")
+        return None
     return {
         "mcq": _read_csv(ROOT / m["mcq_csv"]),
         "ans": _read_jsonl(ROOT / m["oeq_answers"]),
@@ -157,6 +370,14 @@ def model_cell(data: dict, qid: str) -> dict:
         "hallucination_level": jud.get("hallucination_level"),
         "rationale": (jud.get("rationale") or "").strip(),
     }
+
+
+def _result_metadata(data: dict, qid: str) -> dict:
+    for section in ("ans", "jud", "mcq"):
+        row = data.get(section, {}).get(qid)
+        if row:
+            return row
+    return {}
 
 
 def overview_for(data: dict, qids: list[str], q_piac: dict[str, str]) -> dict:
@@ -184,12 +405,12 @@ def overview_for(data: dict, qids: list[str], q_piac: dict[str, str]) -> dict:
 
 def build_prompts() -> list[dict]:
     """Pull the live prompt text from the pipeline modules so the tab stays true."""
-    from src.piac.prompts import (
+    from src.evaluation.prompts import (
         INSTRUCTION_MCQ, INSTRUCTION_OEQ, INSTRUCTION_OEQ_GUIDED,
-        build_mcq, build_oeq,
+        PIAC_JUDGE_PROMPT, build_mcq, build_oeq,
     )
-    from src.piac.judge import JUDGE_TEMPLATE
-    from src.piac.annotate import PROMPT_TEMPLATE as ANNOTATE_TEMPLATE
+    from src.analysis.prompts import ANNOTATION_PROMPT, category_block
+    from src.analysis.taxonomy import RULE_OF_THUMB
 
     mcq = build_mcq(
         "What instrument plays the main melody?",
@@ -246,14 +467,21 @@ def build_prompts() -> list[dict]:
                        "open-ended answer 0-4 and separately flags hallucination. The "
                        "grading rubric injected into {rubric} depends on the question's "
                        "PIAC category.",
-            "text": JUDGE_TEMPLATE,
+            "text": PIAC_JUDGE_PROMPT,
         },
         {
             "name": "Annotation prompt",
             "purpose": "Used offline to pre-populate each question's PIAC category and "
                        "answer-format hint (later reviewed by hand). Defines the four "
                        "categories and the rule of thumb by degree of ambiguity.",
-            "text": ANNOTATE_TEMPLATE,
+            "text": ANNOTATION_PROMPT.format(
+                categories=category_block(),
+                rule=RULE_OF_THUMB,
+                question="{question}",
+                qtype="{qtype}",
+                answer="{answer}",
+                options="{options}",
+            ),
         },
     ]
 
@@ -374,8 +602,8 @@ def load_benchmarks() -> list[dict]:
 
 def build_evaluation() -> dict:
     """PIAC taxonomy (the five-paragraph framing), concepts, from the live module."""
-    from src.piac.taxonomy import (
-        PIAC_ORDER, RULE_OF_THUMB, RULE_OF_THUMB_ITEMS, MOTIVATION, SKILL_AXIS,
+    from src.analysis.taxonomy import (
+        MOTIVATION, PIAC_ORDER, RULE_OF_THUMB, RULE_OF_THUMB_ITEMS, SKILL_AXIS,
     )
 
     # Verbatim from paper/paper.tex §"PIAC Framework" so the site mirrors the paper.
@@ -509,24 +737,25 @@ def _convert_one(src: str, dst: str) -> None:
              format="OGG", subtype="VORBIS")
 
 
-def transcode_audio(stems: set[str]) -> dict[str, str]:
+def transcode_audio(stems: set[tuple[str, str]]) -> dict[tuple[str, str], str]:
     import multiprocessing as mp
 
     AUDIO_OUT.mkdir(parents=True, exist_ok=True)
     ctx = mp.get_context("spawn")
-    mapping: dict[str, str] = {}
+    mapping: dict[tuple[str, str], str] = {}
     done = skipped = missing = failed = 0
     fails: list[str] = []
-    for stem in sorted(stems):
-        out = AUDIO_OUT / f"{stem}.ogg"
-        mapping[stem] = f"audio/{stem}.ogg"
+    for dataset, stem in sorted(stems):
+        out = AUDIO_OUT / dataset / f"{stem}.ogg"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        mapping[(dataset, stem)] = f"audio/{dataset}/{stem}.ogg"
         if out.exists() and out.stat().st_size > 0:
             skipped += 1
             continue
         src = AUDIO_SRC / f"{stem}.wav"
         if not src.exists():
             missing += 1
-            mapping.pop(stem, None)
+            mapping.pop((dataset, stem), None)
             continue
         tmp = out.with_suffix(".ogg.part")
         p = ctx.Process(target=_convert_one, args=(str(src), str(tmp)))
@@ -539,9 +768,9 @@ def transcode_audio(stems: set[str]) -> dict[str, str]:
             done += 1
         else:                                      # crashed/timed out on this clip
             tmp.unlink(missing_ok=True)
-            mapping.pop(stem, None)
+            mapping.pop((dataset, stem), None)
             failed += 1
-            fails.append(stem)
+            fails.append(f"{dataset}/{stem}")
     print(f"  audio: transcoded {done}, kept {skipped}, missing {missing}, failed {failed}")
     if fails:
         print("    failed clips (served without a player):", ", ".join(fails[:10]),
@@ -549,101 +778,184 @@ def transcode_audio(stems: set[str]) -> dict[str, str]:
     return mapping
 
 
-def write_site_data(bundle: dict) -> None:
-    """Emit site payload as one JSON file per section under docs/data/."""
+def existing_site_audio(stems: set[tuple[str, str]]) -> dict[tuple[str, str], str]:
+    """Map stems to website audio files already present under docs/audio."""
+    mapping: dict[tuple[str, str], str] = {}
+    for dataset, stem in stems:
+        organized = [
+            (AUDIO_OUT / dataset / f"{stem}.ogg", f"audio/{dataset}/{stem}.ogg"),
+            (AUDIO_OUT / dataset / f"{stem}.wav", f"audio/{dataset}/{stem}.wav"),
+            (AUDIO_OUT / dataset / f"{stem}.mp3", f"audio/{dataset}/{stem}.mp3"),
+            (AUDIO_OUT / dataset / "sdd" / f"{stem}.2min.mp3", f"audio/{dataset}/sdd/{stem}.2min.mp3"),
+            (AUDIO_OUT / dataset / "musiccaps" / f"{stem}.wav", f"audio/{dataset}/musiccaps/{stem}.wav"),
+        ]
+        for path, rel in organized:
+            if path.exists() and path.stat().st_size > 0:
+                mapping[(dataset, stem)] = rel
+                break
+        if (dataset, stem) in mapping:
+            continue
+        ogg = AUDIO_OUT / f"{stem}.ogg"
+        wav = AUDIO_OUT / f"{stem}.wav"
+        if ogg.exists() and ogg.stat().st_size > 0:
+            mapping[(dataset, stem)] = f"audio/{stem}.ogg"
+        elif wav.exists() and wav.stat().st_size > 0:
+            mapping[(dataset, stem)] = f"audio/{stem}.wav"
+    return mapping
+
+
+def write_json(name: str, payload) -> Path:
+    """Write one generated site JSON payload."""
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    files = {
-        "meta.json": {
-            "generated": bundle["generated"],
-            "repo_url": bundle["repo_url"],
-            "n_questions": bundle["n_questions"],
-            "piac_order": bundle["piac_order"],
-        },
-        "news.json": bundle["news"],
-        "models.json": bundle["models"],
-        "benchmarks.json": bundle["benchmarks"],
-        "evaluation.json": bundle["evaluation"],
-        "overview.json": bundle["overview"],
-        "prompts.json": bundle["prompts"],
-        "questions.json": bundle["questions"],
-    }
-    total = 0
-    for name, payload in files.items():
-        text = json.dumps(payload, ensure_ascii=False, indent=1) + "\n"
-        (DATA_DIR / name).write_text(text, encoding="utf-8")
-        total += len(text)
-    legacy = DOCS / "data.json"
-    if legacy.exists():
-        legacy.unlink()
-    print(f"  wrote docs/data/ ({total / 1e6:.2f} MB, {len(bundle['questions'])} questions)")
+    path = DATA_DIR / name
+    text = json.dumps(payload, ensure_ascii=False, indent=1) + "\n"
+    path.write_text(text, encoding="utf-8")
+    print(f"  wrote {path.relative_to(ROOT)} ({len(text) / 1e6:.2f} MB)")
+    return path
+
+
+def ensure_docs() -> None:
+    DOCS.mkdir(exist_ok=True)
+
+
+def build_meta() -> None:
+    questions_path = DATA_DIR / "questions.json"
+    n_questions = 0
+    if questions_path.exists():
+        n_questions = len(json.loads(questions_path.read_text(encoding="utf-8")))
+    write_json("meta.json", {
+        "generated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "repo_url": REPO_URL,
+        "n_questions": n_questions,
+        "piac_order": PIAC_ORDER,
+    })
+
+
+def build_news_target() -> None:
+    write_json("news.json", NEWS)
+
+
+def model_catalog_payload(all_models: list[dict] | None = None) -> list[dict]:
+    all_models = all_models or load_models()
+    return [
+        {"id": m["id"], "label": m["label"], **{k: m.get(k, "") for k in MODEL_META}}
+        for m in all_models
+    ]
+
+
+def build_models_target() -> None:
+    write_json("models.json", model_catalog_payload())
+
+
+def build_benchmarks_target() -> None:
+    write_json("benchmarks.json", load_benchmarks())
+
+
+def build_evaluation_target() -> None:
+    write_json("evaluation.json", build_evaluation())
+
+
+def build_prompts_target() -> None:
+    write_json("prompts.json", build_prompts())
+
+
+def question_payload(no_audio: bool) -> tuple[list[dict], set[tuple[str, str]], dict[str, str], list[str]]:
+    all_models = load_models()
+    eval_models = [m for m in all_models if m.get("mcq_csv")]
+    models = {}
+    for m in eval_models:
+        data = load_model(m)
+        if data:
+            models[m["id"]] = data
+    benchmarks = load_benchmarks()
+    questions, stems, q_piac, eval_qids = load_questions(benchmarks, models)
+
+    audio_map = existing_site_audio(stems)
+    if not no_audio:
+        missing_mmar = {pair for pair in stems if pair[0] == "mmar" and pair not in audio_map}
+        audio_map = {**audio_map, **transcode_audio(missing_mmar)}
+    for rec in questions:
+        dataset = rec.get("audio_dataset") or _compact_key(rec["benchmark"])
+        rec["audio"] = audio_map.get((dataset, rec["audio_stem"]))
+        del rec["audio_stem"]
+    return questions, stems, q_piac, eval_qids
+
+
+def build_questions_target(no_audio: bool) -> None:
+    questions, _, _, _ = question_payload(no_audio)
+    write_json("questions.json", questions)
+    write_json("benchmark_questions.json", questions)
+
+
+def build_overview_target() -> None:
+    all_models = load_models()
+    eval_models = [m for m in all_models if m.get("mcq_csv")]
+    models = {}
+    for m in eval_models:
+        data = load_model(m)
+        if data:
+            models[m["id"]] = data
+    benchmarks = load_benchmarks()
+    questions, _, q_piac, eval_qids = load_questions(benchmarks, models)
+    del questions
+    write_json("overview.json", {
+        mid: overview_for(data, eval_qids, q_piac)
+        for mid, data in models.items()
+    })
+
+
+def build_paper_target() -> None:
+    ensure_docs()
+    if not PAPER_PDF.exists():
+        raise FileNotFoundError(PAPER_PDF)
+    target = DOCS / "paper.pdf"
+    target.write_bytes(PAPER_PDF.read_bytes())
+    print(f"  wrote {target.relative_to(ROOT)}")
+
+
+def build_audio_target() -> None:
+    benchmarks = load_benchmarks()
+    questions, stems, _, _ = load_questions(benchmarks, {})
+    del questions
+    transcode_audio(stems)
+
+
+def _print_targets() -> None:
+    print("Available site build targets:")
+    for target in DATA_TARGETS:
+        print(f"  {target}")
+    print("\nExamples:")
+    print("  python renderers/site/build_site.py --target questions --no-audio")
+    print("  python renderers/site/build_site.py --target benchmarks")
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--no-audio", action="store_true", help="skip audio transcoding")
+    ap = argparse.ArgumentParser(description="Update one specific generated website artifact.")
+    ap.add_argument("--target", action="append", choices=DATA_TARGETS,
+                    help="specific artifact to update; repeat for multiple targets")
+    ap.add_argument("--no-audio", action="store_true", help="when targeting questions, keep existing audio links only")
+    ap.add_argument("--list", action="store_true", help="list target names")
     args = ap.parse_args()
 
-    DOCS.mkdir(exist_ok=True)
-    if PAPER_PDF.exists():                          # served at docs/paper.pdf
-        (DOCS / "paper.pdf").write_bytes(PAPER_PDF.read_bytes())
-    all_models = load_models()
-    eval_models = [m for m in all_models if m.get("mcq_csv")]
-    models = {m["id"]: load_model(m) for m in eval_models}
+    if args.list or not args.target:
+        _print_targets()
+        return
 
-    questions: list[dict] = []
-    stems: set[str] = set()
-    q_piac: dict[str, str] = {}
-    with PROCESSED.open(encoding="utf-8") as f:
-        for r in csv.DictReader(f):
-            # Result files are keyed by the audio stem, so we join on it (and use
-            # it as the display id — the processed qid is an opaque hash).
-            stem = r["audio_url"].split("/")[-1].rsplit(".", 1)[0]
-            qid = stem
-            stems.add(stem)
-            q_piac[qid] = r.get("category") or r.get("piac") or ""
-            rec = {
-                "qid": qid,
-                "benchmark": "MMAR",
-                "question": r["question"],
-                "piac": q_piac[qid],
-                "category_1": r.get("category_1", ""),
-                "category_2": r.get("category_2", ""),
-                "category_3": r.get("category_3", ""),
-                "skills": r.get("skills", ""),
-                "answer_format": r.get("answer_format", ""),
-                "correct_answer": r["correct_answer"],
-                "distractors": _parse_distractors(r.get("distractors", "")),
-                "audio_stem": stem,
-            }
-            for mid, data in models.items():
-                rec[mid] = model_cell(data, qid)
-            questions.append(rec)
-
-    audio_map = ({} if args.no_audio else transcode_audio(stems))
-    if args.no_audio:
-        audio_map = {s: f"audio/{s}.ogg" for s in stems
-                     if (AUDIO_OUT / f"{s}.ogg").exists()}
-    for rec in questions:
-        rec["audio"] = audio_map.get(rec["audio_stem"])
-        del rec["audio_stem"]
-
-    qids = [q["qid"] for q in questions]
-    bundle = {
-        "generated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "repo_url": REPO_URL,
-        "news": NEWS,
-        "benchmarks": load_benchmarks(),
-        "evaluation": build_evaluation(),
-        "n_questions": len(questions),
-        "piac_order": PIAC_ORDER,
-        "models": [{"id": m["id"], "label": m["label"],
-                    **{k: m.get(k, "") for k in MODEL_META}} for m in all_models],
-        "overview": {mid: overview_for(data, qids, q_piac)
-                     for mid, data in models.items()},
-        "questions": questions,
-        "prompts": build_prompts(),
+    ensure_docs()
+    handlers = {
+        "meta": build_meta,
+        "news": build_news_target,
+        "models": build_models_target,
+        "benchmarks": build_benchmarks_target,
+        "evaluation": build_evaluation_target,
+        "overview": build_overview_target,
+        "prompts": build_prompts_target,
+        "questions": lambda: build_questions_target(args.no_audio),
+        "paper": build_paper_target,
+        "audio": build_audio_target,
     }
-    write_site_data(bundle)
+    for target in args.target:
+        handlers[target]()
 
 
 if __name__ == "__main__":

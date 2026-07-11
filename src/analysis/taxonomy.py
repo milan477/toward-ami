@@ -1,75 +1,182 @@
+"""The PIAC taxonomy — the epistemic status of a musical claim.
+
+Four categories, distinguished by the *nature of their ground truth*:
+
+  perceptual   — measurable directly from the audio signal; single ground truth,
+                 no reasonable disagreement.
+  inferential  — derived through trained listening/analysis; expert consensus is
+                 expected, though limited disagreement remains.
+  affective    — the listener's subjective experience; no consensus expected.
+  contextual   — factual world knowledge external to the signal; single ground truth.
+
+This module is the single source of truth for the taxonomy (it supersedes the old
+HEAR/ANALYZE/FEEL/KNOW ``Level`` taxonomy). It carries, per category, the full paper
+definitions and — crucially — the **evaluation strategy** the LLM-as-judge applies
+(see ``judge.py``). It also holds the **skill** vocabulary (what musical topic a
+question probes), which reduces to *tone* and *time*.
 """
-Benchmark taxonomy: skill distribution, question format, and audio coverage.
-Outputs figures to out_dir (default: paper/figures/).
-"""
 
-from collections import Counter
-from pathlib import Path
-import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
-from catalog import load_all
+from __future__ import annotations
 
-_DEFAULT_OUT = Path(__file__).resolve().parents[2] / "paper" / "figures"
+from dataclasses import dataclass
 
+PIAC_ORDER = ["perceptual", "inferential", "affective", "contextual"]
 
-def skill_distribution(benchmarks: list[dict], out_dir: Path = _DEFAULT_OUT) -> None:
-    out_dir.mkdir(parents=True, exist_ok=True)
-    counts = Counter()
-    for b in benchmarks:
-        for skill in b.get("primary_skill") or []:
-            counts[skill] += 1
+FLEXIBILITY_NOTE = (
+    "If a question mixes categories, choose the highest-level claim that must be "
+    "established to answer it correctly. Do not classify a question as affective "
+    "just because music can evoke feelings; the question must ask for subjective "
+    "experience or expression."
+)
 
-    skills, freqs = zip(*counts.most_common()) if counts else ([], [])
-    fig, ax = plt.subplots(figsize=(8, 4))
-    ax.barh(skills, freqs)
-    ax.set_xlabel("Number of benchmarks")
-    ax.set_title("Skill coverage across benchmarks")
-    ax.xaxis.set_major_locator(ticker.MaxNLocator(integer=True))
-    plt.tight_layout()
-    fig.savefig(out_dir / "skill_distribution.pdf")
-    plt.close(fig)
-    print(f"Saved skill_distribution.pdf ({len(benchmarks)} benchmarks)")
+SKILLS = [
+    "pitch", "timbre", "loudness", "instrumentation", "lyrics",
+    "rhythm", "tempo", "meter", "form", "melody", "harmony", "chord",
+    "key", "genre", "style", "emotion", "mood", "structure",
+    "performer", "composer", "location", "date", "scene", "other",
+]
 
+SKILL_AXIS = {
+    "pitch": "tone",
+    "timbre": "tone",
+    "loudness": "tone",
+    "instrumentation": "tone",
+    "harmony": "tone",
+    "chord": "tone",
+    "key": "tone",
+    "melody": "tone",
+    "rhythm": "time",
+    "tempo": "time",
+    "meter": "time",
+    "form": "time",
+    "genre": "tone_time",
+    "style": "tone_time",
+    "lyrics": "tone_time",
+    "emotion": "tone_time",
+    "mood": "tone_time",
+    "structure": "tone_time",
+    "performer": "context",
+    "composer": "context",
+    "location": "context",
+    "date": "context",
+    "scene": "context",
+    "other": "other",
+}
 
-def format_breakdown(benchmarks: list[dict], out_dir: Path = _DEFAULT_OUT) -> None:
-    out_dir.mkdir(parents=True, exist_ok=True)
+RULE_OF_THUMB_ITEMS = [
+    {"condition": "Unambiguously extractable from the signal", "category": "perceptual"},
+    {"condition": "Tied to the listener's subjective experience", "category": "affective"},
+    {"condition": "A non-debatable external fact about the piece", "category": "contextual"},
+    {"condition": "Through trained analysis of the signal", "category": "inferential"},
+]
 
-    if len(benchmarks) == 1:
-        # Single benchmark: just list its formats as a bar chart
-        b = benchmarks[0]
-        formats = b.get("question_format") or []
-        fig, ax = plt.subplots(figsize=(5, 3))
-        ax.bar(formats, [1] * len(formats))
-        ax.set_ylabel("Present")
-        ax.set_title(f"Question formats — {b['name']}")
-        ax.set_yticks([0, 1])
-        ax.set_yticklabels(["No", "Yes"])
-        plt.tight_layout()
-        fig.savefig(out_dir / "question_format.pdf")
-        plt.close(fig)
-        print(f"Saved question_format.pdf ({b['name']}: {', '.join(formats)})")
-        return
-
-    mcq = sum(1 for b in benchmarks if "MCQ" in (b.get("question_format") or []))
-    open_ = sum(1 for b in benchmarks if "open-ended" in (b.get("question_format") or []))
-    both = sum(
-        1 for b in benchmarks
-        if "MCQ" in (b.get("question_format") or [])
-        and "open-ended" in (b.get("question_format") or [])
-    )
-    labels = ["MCQ only", "Open-ended only", "Both"]
-    sizes = [mcq - both, open_ - both, both]
-    fig, ax = plt.subplots(figsize=(5, 5))
-    ax.pie([max(s, 0) for s in sizes], labels=labels, autopct="%1.0f%%", startangle=90)
-    ax.set_title("Question format distribution")
-    plt.tight_layout()
-    fig.savefig(out_dir / "question_format.pdf")
-    plt.close(fig)
-    print("Saved question_format.pdf")
+MOTIVATION = {
+    "body": [
+        "PIAC is a framework that probes layered understanding of music; it rests on a distinction between different levels of ambiguity: none, generally agreed upon, and subject to personal experience, and distinguishes between different types of information that can be extracted or derived from the audio.",
+        "Consider the following examples. “How many notes are played in total in this audio?\" is a perceptual question, as it is directly measurable from the audio and admits a single ground truth. Therefore, its evaluation within an open-ended format is straightforward: an exact match requirement. The answer to “What does the music feel like?” shouldn't be converged on by consensus. The evaluation should admit multiple responses, using an LLM-as-a-judge or tailored similarity metrics.",
+        "Beyond the level of ambiguity, these categories also represent different axes along which we want to probe the model's understanding of music. For instance, “Where is the first climax?” presumes a musical event with consensus about its relationship to the rest of the piece, and is therefore inferential. “Where does the first climax feel like it happens?” considers the question from a listener's subjective experience and is affective. Accordingly, each question falls into one of the four categories, and both the question and its evaluation should be designed in accordance with the skill they intend to probe.",
+        "More broadly, the taxonomy organizes the content of questions, their degree of ambiguity, and the evaluation methodology.",
+    ],
+}
 
 
-if __name__ == "__main__":
-    benchmarks = load_all()
-    print(f"Loaded {len(benchmarks)} benchmark entries")
-    skill_distribution(benchmarks)
-    format_breakdown(benchmarks)
+@dataclass(frozen=True)
+class Category:
+    key: str            # perceptual / inferential / affective / contextual
+    information: str     # what the content is
+    ambiguity: str       # the nature of (dis)agreement
+    coverage: str        # what falls in the category
+    evaluation: str      # how an answer is evaluated
+    example_q: str
+    example_a: str
+    eval_strategy: str   # machine key consumed by judge.py
+
+
+CATEGORIES: dict[str, Category] = {
+    "perceptual": Category(
+        key="perceptual",
+        information="Anything measurable from the audio itself; needs neither prior "
+                    "knowledge nor active reasoning.",
+        ambiguity="No reasonable disagreement given an answer format: a note is A4 or "
+                  "it is not; an onset occurs at a time or it does not.",
+        coverage="Objective signal-level attributes: pitch, timing, duration, bpm, loudness, "
+                 "instrumentation, lyrics. NOT meter/time-signature (interpreted, e.g. "
+                 "4/4 vs 2/2) — that is inferential.",
+        evaluation="Exact semantic match, or match within a predefined tolerance.",
+        example_q="What note is played by the violin at 0:31? Answer in scientific pitch "
+                  "notation.",
+        example_a="A4.",
+        eval_strategy="binary_exact",
+    ),
+    "inferential": Category(
+        key="inferential",
+        information="Musical properties derived from the audio through trained listening "
+                    "and analytical reasoning.",
+        ambiguity="Intersubjective: trained listeners tend to converge, but some "
+                  "disagreement remains possible.",
+        coverage="Harmonic function, formal segmentation, phrase structure, genre "
+                 "attribution, voice leading, other aspects of musical organization.",
+        evaluation="Accept justified expert-annotated alternatives; a claim need only be "
+                   "substantiable in perceptual content (traceable to observable features).",
+        example_q="[B-flat grace note to an A over an A7 chord] What is the name of this "
+                  "chord?",
+        example_a="A7, or A9.",
+        eval_strategy="binary_expert_multi",
+    ),
+    "affective": Category(
+        key="affective",
+        information="How the music is experienced by a listener — expression and "
+                    "emotional response.",
+        ambiguity="Subjective by definition; should NOT be resolved by consensus — there "
+                  "is no single right answer.",
+        coverage="Perceived mood, character, tension, intimacy, energy, aesthetic quality, "
+                 "personal response.",
+        evaluation="Accommodate multiple correct answers: judge plausibility (musically "
+                    "reasonable), internal consistency, and grounding (affective claims "
+                    "supported by perceptual/inferential references).",
+        example_q="What is the most dramatic spot in the audio?",
+        example_a="Any spot a listener could reasonably conceive as most dramatic.",
+        eval_strategy="graded_affective",
+    ),
+    "contextual": Category(
+        key="contextual",
+        information="Factual, world knowledge information associated with the music through historical or "
+                    "physical context; admits a single ground truth.",
+        ambiguity="Not ambiguous in principle. When the fact is unknown, the correct "
+                  "response is to acknowledge that uncertainty.",
+        coverage="Composer, performer, title, date/period of recording, reception or "
+                 "influence. (Detecting genre from audio is inferential, not contextual. Detecting location can be contextual if a documented fact, or inferential if deduced from reverberation.)",
+        evaluation="Exact semantic match; a compatible answer of different specificity is "
+                   "accepted (reference 'China' vs answer 'Beijing').",
+        example_q="Who is the composer of the piece I just played?",
+        example_a="Mozart.",
+        eval_strategy="binary_contextual",
+    ),
+}
+
+RULE_OF_THUMB = (
+    "Rule of thumb: unambiguously extractable from the signal → perceptual; tied to the "
+    "listener's subjective experience → affective; a non-debatable external fact about the "
+    "piece → contextual; otherwise (trained analysis of the signal) → inferential."
+)
+
+
+def eval_strategy(category: str) -> str:
+    cat = CATEGORIES.get((category or "").strip().lower())
+    return cat.eval_strategy if cat else ""
+
+
+def describe(sep: str = "\n\n") -> str:
+    """Full taxonomy block for classifier/judge prompts — Qwen sees every category
+    definition, not just labels."""
+    blocks = []
+    for c in CATEGORIES.values():
+        blocks.append(
+            f"### {c.key}\n"
+            f"- Information: {c.information}\n"
+            f"- Ambiguity: {c.ambiguity}\n"
+            f"- Coverage: {c.coverage}\n"
+            f"- Evaluation: {c.evaluation}\n"
+            f"- Example — Q: {c.example_q}  A: {c.example_a}"
+        )
+    return sep.join(blocks)

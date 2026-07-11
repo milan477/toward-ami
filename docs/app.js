@@ -2,14 +2,26 @@
 
 const PIAC = ["perceptual", "inferential", "affective", "contextual"];
 const ROUTES = ["home", "models", "benchmarks", "evaluation", "results"];
+const CATEGORY_LABELS = {
+  modality: "Modality",
+  category: "Category",
+  genre: "Genre",
+  skill: "Skill",
+};
+const FILTER_LABELS = {
+  ...CATEGORY_LABELS,
+  piac: "PIAC",
+};
 const state = {
   data: null,
   benchQ: "",
+  benchSort: "name-asc",
   modelQ: "",
+  modelSort: "label-asc",
   selected: new Set(),
   selectMode: false,
   inspectName: null,
-  benchQFilters: { q: "", piac: "" },
+  benchQFilters: { q: "", categories: {} },
   benchQControlsReady: false,
 };
 
@@ -18,20 +30,34 @@ const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const pct = (x) => (x == null ? "–" : (x * 100).toFixed(1) + "%");
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) =>
   ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const inspectIcon = () => `
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M4 20h16"></path>
+    <path d="M7 17V9"></path>
+    <path d="M12 17V5"></path>
+    <path d="M17 17v-6"></path>
+  </svg>`;
+const knownPiac = (value) => {
+  const normalized = String(value || "").trim().toLowerCase();
+  return PIAC.includes(normalized) ? normalized : "";
+};
 
 init();
 
 async function loadData() {
   const base = "data/";
-  const names = ["meta", "news", "models", "benchmarks", "evaluation", "overview", "prompts", "questions"];
+  const names = ["meta", "news", "models", "benchmarks", "evaluation", "overview", "prompts", "questions",
+    "benchmark_questions"];
   const parts = await Promise.all(
     names.map((n) => fetch(`${base}${n}.json`, { cache: "no-store" }).then((r) => {
       if (!r.ok) throw new Error(`failed to load ${n}.json`);
       return r.json();
     })),
   );
-  const [meta, news, models, benchmarks, evaluation, overview, prompts, questions] = parts;
-  return { ...meta, news, models, benchmarks, evaluation, overview, prompts, questions };
+  const [meta, news, models, benchmarks, evaluation, overview, prompts, questions,
+    benchmark_questions] = parts;
+  return { ...meta, news, models, benchmarks, evaluation, overview, prompts,
+    questions: questions || benchmark_questions, benchmark_questions };
 }
 
 async function init() {
@@ -71,7 +97,7 @@ function route() {
   const { page, name } = parseRoute();
   state.inspectName = name;
   $$(".page").forEach((p) => p.classList.toggle("active", p.id === "page-" + page));
-  $$("#menu a").forEach((a) =>
+  $$(".nav-link[data-route]").forEach((a) =>
     a.classList.toggle("active", a.dataset.route === (page === "benchmark-detail" ? "benchmarks" : page)));
   closeZoom();
   const bar = $("#bench-actions");
@@ -127,6 +153,22 @@ const field = (k, v, muted, limit) => v
   : "";
 const linksHTML = (b) => (b.links || []).map((l) =>
   `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("");
+const authorDisplay = (b) => authorNamesFromBibtex(b.bibtex).join(", ");
+const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
+const textCompare = (a, b) => collator.compare(String(a || ""), String(b || ""));
+const numericFrom = (s) => {
+  const m = String(s || "").replace(/,/g, "").match(/\d+(?:\.\d+)?/);
+  return m ? Number(m[0]) : null;
+};
+const yearFrom = (s) => {
+  const years = String(s || "").match(/\b(?:19|20)\d{2}\b/g);
+  return years ? Math.max(...years.map(Number)) : null;
+};
+const compareMaybeNumber = (a, b, dir) => {
+  const av = a == null ? (dir === "asc" ? Infinity : -Infinity) : a;
+  const bv = b == null ? (dir === "asc" ? Infinity : -Infinity) : b;
+  return dir === "asc" ? av - bv : bv - av;
+};
 
 function setupBenchSearch() {
   let t;
@@ -134,11 +176,21 @@ function setupBenchSearch() {
     clearTimeout(t);
     t = setTimeout(() => { state.benchQ = e.target.value.toLowerCase().trim(); renderBenchmarks(); }, 120);
   });
+  $("#bench-sort").addEventListener("change", (e) => {
+    state.benchSort = e.target.value;
+    renderBenchmarks();
+  });
   // delegated: in select mode a click anywhere on the box toggles selection;
   // otherwise it opens the zoom view. (The round circle is just an indicator.)
   const grid = $("#benchmarks");
   grid.addEventListener("click", (e) => {
     if (e.target.closest("a")) return;
+    const inspect = e.target.closest("[data-inspect-benchmark]");
+    if (inspect) {
+      e.stopPropagation();
+      location.hash = `benchmark/${encodeURIComponent(inspect.dataset.inspectBenchmark)}`;
+      return;
+    }
     const card = e.target.closest(".bench");
     if (!card) return;
     const name = card.dataset.name;
@@ -163,9 +215,10 @@ function setupBenchSearch() {
 function renderBenchmarks() {
   const all = state.data.benchmarks || [];
   const q = state.benchQ;
-  const rows = !q ? all : all.filter((b) =>
+  const filtered = !q ? all : all.filter((b) =>
     [b.name, b.paper_title, b.domain, b.format, b.modalities, b.skills, b.sources, b.year]
       .join(" ").toLowerCase().includes(q));
+  const rows = sortBenchmarks(filtered);
   $("#bench-count").textContent = `${rows.length} of ${all.length}`;
   $("#bench-empty").hidden = rows.length > 0;
   $("#benchmarks").innerHTML = rows.map((b) => {
@@ -181,8 +234,8 @@ function renderBenchmarks() {
         <h3>${esc(b.name)}</h3>
         <span class="year">${esc(b.year)}</span>
         ${kind ? `<span class="kind">${esc(kind)}</span>` : ""}
-        ${hasQ ? `<span class="kind inspectable">questions</span>` : ""}
       </div>
+      ${hasQ ? `<button class="inspect-icon bench-inspect" type="button" data-inspect-benchmark="${esc(b.name)}" aria-label="Inspect ${esc(b.name)} questions">${inspectIcon()}<span>inspect</span></button>` : ""}
       ${b.paper_title ? `<p class="paper">${esc(b.paper_title)}</p>` : ""}
       <div class="bench-fields">
         ${field("Modalities", b.modalities, false, 20)}
@@ -193,6 +246,20 @@ function renderBenchmarks() {
       </div>
     </article>`;
   }).join("");
+}
+
+function sortBenchmarks(rows) {
+  const sorted = [...rows];
+  sorted.sort((a, b) => {
+    let cmp = 0;
+    if (state.benchSort === "year-desc") cmp = compareMaybeNumber(yearFrom(a.year), yearFrom(b.year), "desc");
+    else if (state.benchSort === "year-asc") cmp = compareMaybeNumber(yearFrom(a.year), yearFrom(b.year), "asc");
+    else if (state.benchSort === "size-desc") cmp = compareMaybeNumber(numericFrom(a.size), numericFrom(b.size), "desc");
+    else if (state.benchSort === "size-asc") cmp = compareMaybeNumber(numericFrom(a.size), numericFrom(b.size), "asc");
+    if (!cmp) cmp = textCompare(a.name, b.name);
+    return cmp;
+  });
+  return sorted;
 }
 
 /* ---------- selection + citation ---------- */
@@ -243,11 +310,104 @@ function bibFor(b) {
   ].filter(Boolean).join("\n");
 }
 
+function bibFieldValue(bibtex, fieldName) {
+  const re = new RegExp(`\\b${fieldName}\\s*=\\s*`, "i");
+  const match = re.exec(bibtex || "");
+  if (!match) return "";
+  let i = match.index + match[0].length;
+  while (/\s/.test(bibtex[i] || "")) i += 1;
+  const open = bibtex[i];
+  if (open !== "{" && open !== '"') {
+    const end = bibtex.indexOf(",", i);
+    return (end === -1 ? bibtex.slice(i) : bibtex.slice(i, end)).trim();
+  }
+  const close = open === "{" ? "}" : '"';
+  let depth = 0;
+  let out = "";
+  for (i += 1; i < bibtex.length; i += 1) {
+    const ch = bibtex[i];
+    if (open === "{" && ch === "{") {
+      depth += 1;
+      out += ch;
+    } else if (ch === close) {
+      if (depth === 0) break;
+      depth -= 1;
+      out += ch;
+    } else {
+      out += ch;
+    }
+  }
+  return out.trim();
+}
+
+function splitBibtexAuthors(authors) {
+  const parts = [];
+  let depth = 0;
+  let buf = "";
+  for (let i = 0; i < authors.length; i += 1) {
+    const rest = authors.slice(i);
+    const ch = authors[i];
+    if (ch === "{") depth += 1;
+    if (ch === "}") depth = Math.max(0, depth - 1);
+    if (depth === 0 && /^\s+and\s+/i.test(rest)) {
+      if (buf.trim()) parts.push(buf.trim());
+      buf = "";
+      i += rest.match(/^\s+and\s+/i)[0].length - 1;
+    } else {
+      buf += ch;
+    }
+  }
+  if (buf.trim()) parts.push(buf.trim());
+  return parts;
+}
+
+function cleanLatexName(name) {
+  return String(name || "")
+    .replace(/\{\\[a-zA-Z]+\s+([^{}])\}/g, "$1")
+    .replace(/\\[`'"\^~=.uvHkc]\s*\{?([^{}\s])\}?/g, "$1")
+    .replace(/\\[a-zA-Z]+/g, "")
+    .replace(/[{}]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function formatAuthorName(name) {
+  const clean = cleanLatexName(name);
+  const parts = clean.split(",").map((part) => part.trim()).filter(Boolean);
+  if (parts.length >= 2) return `${parts.slice(1).join(" ")} ${parts[0]}`.trim();
+  return clean;
+}
+
+function authorNamesFromBibtex(bibtex) {
+  const authors = bibFieldValue(bibtex, "author");
+  if (!authors) return [];
+  return splitBibtexAuthors(authors).map(formatAuthorName).filter(Boolean);
+}
+
 function exportBib() {
   const list = selectedBenchmarks();
   if (!list.length) return;
   const header = `% Citations for ${list.length} benchmark(s) — toward Artificial Musical Intelligence\n\n`;
   download("benchmarks.bib", header + list.map(bibFor).join("\n\n") + "\n", "application/x-bibtex");
+}
+
+async function copyText(text) {
+  if (navigator.clipboard?.writeText && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {}
+  }
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.setAttribute("readonly", "");
+  ta.style.position = "fixed";
+  ta.style.left = "-9999px";
+  document.body.appendChild(ta);
+  ta.select();
+  const ok = document.execCommand("copy");
+  ta.remove();
+  return ok;
 }
 
 function hfId(url) {
@@ -302,9 +462,9 @@ function download(filename, text, mime) {
 function zoomHTML(b) {
   const kind = [b.domain, b.format].filter(Boolean).join(" · ");
   const hasQ = benchesWithQuestions().has(b.name);
-  const nQ = hasQ ? questionsForBench(b.name).length : 0;
   return `
     <button class="zoom-close" type="button" data-close aria-label="Close">×</button>
+    ${hasQ ? `<button class="inspect-icon zoom-inspect" type="button" data-zoom-inspect aria-label="Inspect ${esc(b.name)} questions">${inspectIcon()}<span>inspect</span></button>` : ""}
     <div class="bench-id">
       <h3>${esc(b.name)}</h3>
       <span class="year">${esc(b.year)}</span>
@@ -314,17 +474,17 @@ function zoomHTML(b) {
     <div class="bench-fields">
       ${field("Modalities", b.modalities)}
       ${field("Size", formatSize(b.size))}
+      ${field("Authors", authorDisplay(b), true)}
       ${field("Skills", b.skills, true)}
       ${field("Sources", b.sources, true)}
       ${field("Models", b.models, true)}
       ${b.links && b.links.length ? `<div class="field"><div class="k">Links</div><div class="bench-links">${linksHTML(b)}</div></div>` : ""}
     </div>
     <div class="zoom-actions">
-      ${hasQ ? `<button type="button" class="act primary" data-zoom-inspect>Inspect questions (${nQ})</button>` : ""}
       <button type="button" class="act" data-zoom-bib>Export .bib</button>
       <button type="button" class="act" data-zoom-py disabled title="Coming soon">Python download (coming soon)</button>
     </div>
-    <pre class="cite-preview">${esc(bibFor(b))}</pre>`;
+    <pre class="cite-preview" role="button" tabindex="0" title="Click to copy citation" data-copy-cite>${esc(bibFor(b))}</pre>`;
 }
 
 function openZoom(name, origin) {
@@ -354,6 +514,25 @@ function openZoom(name, origin) {
   // wire the in-modal controls
   card.querySelector("[data-zoom-bib]").addEventListener("click", () =>
     download(`${slug(b.name)}.bib`, bibFor(b) + "\n", "application/x-bibtex"));
+  const citation = card.querySelector("[data-copy-cite]");
+  if (citation) {
+    const copyCitation = async () => {
+      const original = citation.textContent;
+      const ok = await copyText(bibFor(b));
+      citation.classList.toggle("copied", ok);
+      citation.textContent = ok ? `${original}\n\nCopied to clipboard.` : `${original}\n\nCould not copy.`;
+      setTimeout(() => {
+        citation.classList.remove("copied");
+        citation.textContent = original;
+      }, 1200);
+    };
+    citation.addEventListener("click", copyCitation);
+    citation.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      copyCitation();
+    });
+  }
   const inspect = card.querySelector("[data-zoom-inspect]");
   if (inspect) {
     inspect.addEventListener("click", () => {
@@ -536,6 +715,10 @@ function setupModelSearch() {
     clearTimeout(t);
     t = setTimeout(() => { state.modelQ = e.target.value.toLowerCase().trim(); renderModels(); }, 120);
   });
+  $("#model-sort").addEventListener("change", (e) => {
+    state.modelSort = e.target.value;
+    renderModels();
+  });
   $("#models").addEventListener("click", (e) => {
     const card = e.target.closest(".framework-card");
     if (card) openModelZoom(card.dataset.id, card);
@@ -545,9 +728,10 @@ function setupModelSearch() {
 function renderModels() {
   const all = state.data.models || [];
   const q = state.modelQ;
-  const rows = !q ? all : all.filter((m) =>
+  const filtered = !q ? all : all.filter((m) =>
     [m.label, m.developer, m.year, m.paper_title, m.id]
       .join(" ").toLowerCase().includes(q));
+  const rows = sortModels(filtered);
   $("#model-count").textContent = `${rows.length} of ${all.length}`;
   $("#models-empty").hidden = rows.length > 0;
   $("#models").innerHTML = rows.map((m) => `
@@ -558,6 +742,19 @@ function renderModels() {
       </div>
       ${m.developer ? `<p class="fw-sub">${esc(m.developer)}</p>` : ""}
     </article>`).join("");
+}
+
+function sortModels(rows) {
+  const sorted = [...rows];
+  sorted.sort((a, b) => {
+    let cmp = 0;
+    if (state.modelSort === "year-desc") cmp = compareMaybeNumber(yearFrom(a.year), yearFrom(b.year), "desc");
+    else if (state.modelSort === "year-asc") cmp = compareMaybeNumber(yearFrom(a.year), yearFrom(b.year), "asc");
+    else if (state.modelSort === "developer-asc") cmp = textCompare(a.developer, b.developer);
+    if (!cmp) cmp = textCompare(a.label, b.label);
+    return cmp;
+  });
+  return sorted;
 }
 
 function modelZoomHTML(m) {
@@ -656,12 +853,6 @@ function renderPiacTable() {
 function setupBenchQuestionControls() {
   if (state.benchQControlsReady) return;
   state.benchQControlsReady = true;
-  const pf = $("#bench-q-piac");
-  pf.innerHTML = `<option value="">all</option>` + PIAC.map((c) => `<option value="${c}">${c}</option>`).join("");
-  pf.addEventListener("change", () => {
-    state.benchQFilters.piac = pf.value;
-    renderBenchQuestions();
-  });
   let t;
   $("#bench-q-search").addEventListener("input", (e) => {
     clearTimeout(t);
@@ -669,6 +860,16 @@ function setupBenchQuestionControls() {
       state.benchQFilters.q = e.target.value.toLowerCase().trim();
       renderBenchQuestions();
     }, 140);
+  });
+  document.addEventListener("click", (event) => {
+    const target = event.target instanceof Element ? event.target : event.target?.parentElement;
+    const toggle = target?.closest(".pie-toggle");
+    if (!toggle) return;
+    const card = toggle.closest(".pie-card");
+    if (!card) return;
+    const expanded = card.classList.toggle("show-all");
+    toggle.setAttribute("aria-expanded", String(expanded));
+    toggle.textContent = expanded ? "show less" : "show all";
   });
 }
 
@@ -688,6 +889,7 @@ function renderBenchmarkDetail(name) {
   }
   const kind = [b.domain, b.format].filter(Boolean).join(" · ");
   const nQ = questionsForBench(b.name).length;
+  const benchRows = questionsForBench(b.name);
   head.innerHTML = `
     <h1 class="display sm">${esc(b.name)}</h1>
     <p class="lede">${esc(b.paper_title || b.extended || "")}</p>
@@ -700,22 +902,360 @@ function renderBenchmarkDetail(name) {
     <div class="bench-fields">
       ${field("Modalities", b.modalities)}
       ${field("Size", formatSize(b.size))}
+      ${field("Authors", authorDisplay(b), true)}
       ${field("Skills", b.skills, true)}
       ${field("Sources", b.sources, true)}
       ${b.links && b.links.length ? `<div class="field"><div class="k">Links</div><div class="bench-links">${linksHTML(b)}</div></div>` : ""}
-    </div>`;
-  state.benchQFilters = { q: "", piac: "" };
+    </div>
+    ${categoryFilterHTML(benchRows)}
+    <div id="bench-stat-fields" class="bench-fields stat-fields"></div>
+    <div id="bench-chart-wrap"></div>`;
+  state.benchQFilters = { q: "", categories: {} };
+  setupBenchmarkCategoryFilters();
   $("#bench-q-search").value = "";
-  $("#bench-q-piac").value = "";
   renderBenchQuestions();
+}
+
+function categoryFilterHTML(rows) {
+  const options = categoryOptions(rows);
+  const dims = Object.entries(FILTER_LABELS).filter(([key]) => (options[key] || []).length);
+  if (!dims.length) return "";
+  return `
+    <section class="slice-panel" aria-label="Benchmark filters">
+      <div class="slice-groups">
+        ${dims.map(([key, label]) => `
+          <fieldset class="slice-group">
+            <legend>${esc(label)}</legend>
+            <div class="slice-options">
+              ${options[key].map((value) => `
+                <label class="slice-option">
+                  <input class="slice-check" type="checkbox" data-dimension="${esc(key)}" value="${esc(value)}" />
+                  <span>${esc(value)}</span>
+                </label>`).join("")}
+            </div>
+          </fieldset>`).join("")}
+      </div>
+    </section>`;
+}
+
+function categoryOptions(rows) {
+  const out = Object.fromEntries(Object.keys(FILTER_LABELS).map((key) => [key, new Set()]));
+  rows.forEach((row) => {
+    Object.keys(CATEGORY_LABELS).forEach((key) => {
+      (row.categories?.[key] || []).forEach((value) => {
+        if (value) out[key].add(value);
+      });
+    });
+    const piac = knownPiac(row.piac);
+    if (piac) out.piac.add(piac);
+  });
+  return Object.fromEntries(
+    Object.entries(out).map(([key, values]) => [key, [...values].sort((a, b) => a.localeCompare(b))]),
+  );
+}
+
+function setupBenchmarkCategoryFilters() {
+  $$(".slice-check").forEach((input) => {
+    input.addEventListener("change", () => {
+      const categories = {};
+      $$(".slice-check:checked").forEach((checked) => {
+        const dim = checked.dataset.dimension;
+        if (!dim) return;
+        categories[dim] = categories[dim] || [];
+        categories[dim].push(checked.value);
+      });
+      state.benchQFilters.categories = categories;
+      renderBenchQuestions();
+    });
+  });
+}
+
+function computeQuestionStats(rows) {
+  let distractorTotal = 0;
+  const durations = [];
+  rows.forEach((row) => {
+    const distractorCount = (row.distractors || []).length;
+    distractorTotal += distractorCount;
+    (row.audio_duration_seconds || []).forEach((duration) => {
+      const value = Number(duration);
+      if (Number.isFinite(value)) durations.push(value);
+    });
+  });
+  const sum = durations.reduce((acc, value) => acc + value, 0);
+  return {
+    n_questions: rows.length,
+    average_audio_duration_seconds: durations.length ? sum / durations.length : null,
+    average_distractors: rows.length ? distractorTotal / rows.length : 0,
+    audio_duration_seconds: durations,
+  };
+}
+
+function updateBenchmarkStats(rows) {
+  const target = $("#bench-stat-fields");
+  const charts = $("#bench-chart-wrap");
+  const stats = computeQuestionStats(rows);
+  if (target) target.innerHTML = `
+    ${field("Questions", Number(stats.n_questions || 0).toLocaleString())}
+    ${field("Avg audio", stats.average_audio_duration_seconds == null ? "unknown" : `${Number(stats.average_audio_duration_seconds).toFixed(1)}s`)}
+    ${field("Avg distractors", Number(stats.average_distractors || 0).toFixed(2))}
+  `;
+  if (charts) charts.innerHTML = chartPanelHTML(rows, stats);
+  setupPieInteractions();
+}
+
+function chartPanelHTML(rows, stats) {
+  const charts = discreteDistributions(rows);
+  const sound = soundDistributionCardHTML(stats);
+  if (!charts.length && !sound) return "";
+  return `<section class="pie-panel" aria-label="Category distributions">
+    ${sound}
+    ${charts.map(pieChartHTML).join("")}
+  </section>`;
+}
+
+function soundDistributionCardHTML(stats) {
+  const samples = (stats.audio_duration_seconds || []).map(Number).filter((value) => Number.isFinite(value));
+  if (!samples.length) return "";
+  return `
+    <article class="pie-card sound-card" tabindex="0" data-sound-samples="${esc(JSON.stringify(samples))}">
+      <h3>Sound duration</h3>
+      ${soundHistogramHTML(samples, 8, 76)}
+    </article>`;
+}
+
+function histogramBins(values, n) {
+  if (!values.length) return [];
+  const lo = Math.min(...values);
+  const hi = Math.max(...values);
+  if (lo === hi) return [{ min: lo, max: hi, count: values.length }];
+  const width = (hi - lo) / n;
+  const bins = Array.from({ length: n }, (_, i) => ({ min: lo + i * width, max: lo + (i + 1) * width, count: 0 }));
+  values.forEach((value) => {
+    const idx = Math.min(n - 1, Math.floor((value - lo) / width));
+    bins[idx].count += 1;
+  });
+  return bins;
+}
+
+function durationLabel(value) {
+  return value >= 60 ? `${(value / 60).toFixed(value >= 600 ? 0 : 1)}m` : `${value.toFixed(0)}s`;
+}
+
+function discreteDistributions(rows) {
+  const specs = [
+    { key: "distractors", label: "Distractors", values: (row) => [`${(row.distractors || []).length}`] },
+    ...Object.entries(CATEGORY_LABELS).map(([key, label]) => ({
+      key,
+      label,
+      values: (row) => row.categories?.[key] || [],
+    })),
+    { key: "piac", label: "PIAC", values: (row) => [knownPiac(row.piac)].filter(Boolean) },
+  ];
+  return specs.map((spec) => {
+    const counts = {};
+    rows.forEach((row) => {
+      spec.values(row).forEach((value) => {
+        if (value) counts[value] = (counts[value] || 0) + 1;
+      });
+    });
+    const entries = Object.entries(counts)
+      .sort((a, b) => b[1] - a[1] || textCompare(a[0], b[0]))
+      .map(([label, count]) => ({ label, count }));
+    return { ...spec, entries };
+  }).filter((chart) => chart.entries.length);
+}
+
+function pieChartHTML(chart) {
+  const total = chart.entries.reduce((sum, entry) => sum + entry.count, 0);
+  if (!total) return "";
+  const colors = ["#4A1523", "#6E2637", "#8C3B4B", "#A9576A", "#C77A8D", "#D9A2AE", "#5E5A52", "#8A867C"];
+  const slices = chart.entries.length === 1
+    ? `<circle class="pie-slice pie-full-slice" tabindex="0" cx="50" cy="50" r="42" fill="${colors[0]}" data-label="${esc(pieSliceLabel(chart.entries[0], total))}">
+        <title>${esc(chart.entries[0].label)}: ${chart.entries[0].count} (100%)</title>
+      </circle>`
+    : (() => {
+        let start = -90;
+        return chart.entries.map((entry, i) => {
+          const sweep = (entry.count / total) * 360;
+          const path = pieSlicePath(50, 50, 42, start, start + sweep);
+          start += sweep;
+          return `<path class="pie-slice" tabindex="0" d="${path}" fill="${colors[i % colors.length]}" data-label="${esc(pieSliceLabel(entry, total))}">
+            <title>${esc(entry.label)}: ${entry.count} (${Math.round(entry.count / total * 100)}%)</title>
+          </path>`;
+        }).join("");
+      })();
+  const hasExtra = chart.entries.length > 4;
+  const legend = chart.entries.map((entry, i) => `
+    <li${i >= 4 ? ` class="pie-extra"` : ""}>
+      <span class="pie-swatch" style="--swatch:${colors[i % colors.length]}"></span>
+      <span class="pie-label">${esc(entry.label)}</span>
+      <span class="pie-count">${entry.count.toLocaleString()}</span>
+    </li>`).join("");
+  return `
+    <article class="pie-card" data-chart="${esc(chart.key)}" tabindex="0">
+      <h3>${esc(chart.label)}</h3>
+      <div class="pie-body">
+        <svg class="pie-svg" viewBox="0 0 100 100" role="img" aria-label="${esc(chart.label)} distribution">
+          ${slices}
+          <circle class="pie-hole" cx="50" cy="50" r="22"></circle>
+        </svg>
+        <div class="pie-legend-wrap">
+          <div class="pie-tip" aria-live="polite"></div>
+          <ul class="pie-legend">${legend}</ul>
+          ${hasExtra ? `<button class="pie-toggle" type="button" data-chart="${esc(chart.key)}" aria-expanded="false">show all</button>` : ""}
+        </div>
+      </div>
+    </article>`;
+}
+
+function pieSliceLabel(entry, total) {
+  return `${entry.label}: ${entry.count.toLocaleString()} (${Math.round(entry.count / total * 100)}%)`;
+}
+
+function setupPieInteractions() {
+  $$(".pie-card").forEach((card) => {
+    if (card.classList.contains("sound-card")) {
+      setupSoundCard(card);
+      return;
+    }
+    card.addEventListener("click", (event) => {
+      if (event.target.closest(".pie-toggle")) return;
+      openPieZoom(card);
+    });
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      if (event.target.closest(".pie-toggle")) return;
+      event.preventDefault();
+      openPieZoom(card);
+    });
+    card.querySelectorAll(".pie-slice").forEach((slice) => {
+      const show = () => setPieTip(card, slice.dataset.label || "");
+      const hide = () => setPieTip(card, "");
+      slice.addEventListener("mouseenter", show);
+      slice.addEventListener("focus", show);
+      slice.addEventListener("mouseleave", hide);
+      slice.addEventListener("blur", hide);
+    });
+  });
+}
+
+function setupSoundCard(card) {
+  card.addEventListener("click", () => openSoundZoom(card));
+  card.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    openSoundZoom(card);
+  });
+}
+
+function setPieTip(card, text) {
+  const tip = card.querySelector(".pie-tip");
+  if (tip) tip.textContent = text;
+}
+
+function openPieZoom(card) {
+  const clone = card.cloneNode(true);
+  clone.classList.add("pie-card-zoom", "show-all");
+  clone.querySelectorAll(".pie-toggle").forEach((button) => button.remove());
+  const html = `
+    <button class="zoom-close" type="button" data-close aria-label="Close">×</button>
+    ${clone.outerHTML}`;
+  flipZoom(html, card);
+  const zoomCard = $("#zoom-card .pie-card-zoom");
+  if (zoomCard) {
+    zoomCard.querySelectorAll(".pie-slice").forEach((slice) => {
+      const show = () => setPieTip(zoomCard, slice.dataset.label || "");
+      const hide = () => setPieTip(zoomCard, "");
+      slice.addEventListener("mouseenter", show);
+      slice.addEventListener("focus", show);
+      slice.addEventListener("mouseleave", hide);
+      slice.addEventListener("blur", hide);
+    });
+  }
+}
+
+function openSoundZoom(card) {
+  let samples = [];
+  try {
+    samples = JSON.parse(card.dataset.soundSamples || "[]");
+  } catch {
+    samples = [];
+  }
+  const html = `
+    <button class="zoom-close" type="button" data-close aria-label="Close">×</button>
+    <article class="pie-card sound-card sound-card-zoom" data-sound-samples="${esc(JSON.stringify(samples))}">
+      <h3>Sound duration</h3>
+      <label class="bin-control">Bins
+        <input id="sound-zoom-bins" type="range" min="4" max="32" step="1" value="18" />
+        <span id="sound-zoom-bin-value">18</span>
+      </label>
+      <div id="sound-zoom-hist">${soundHistogramHTML(samples, 18, 180)}</div>
+    </article>`;
+  flipZoom(html, card);
+  setupSoundZoomControls();
+}
+
+function soundHistogramHTML(samples, nBins, maxHeight = 180) {
+  const values = samples.map(Number).filter((value) => Number.isFinite(value));
+  if (!values.length) return "";
+  const bins = histogramBins(values, nBins);
+  const maxCount = Math.max(...bins.map((bin) => bin.count), 1);
+  const bars = bins.map((bin) => {
+    const h = Math.max(2, (bin.count / maxCount) * maxHeight);
+    const range = `${durationLabel(bin.min)}-${durationLabel(bin.max)}`;
+    const label = `${range}: ${bin.count}`;
+    return `<div class="mini-bar" style="--h:${h.toFixed(1)}px" title="${esc(label)}" data-label="${esc(label)}">
+      <span>${bin.count}</span>
+      <b>${esc(range)}</b>
+    </div>`;
+  }).join("");
+  return `
+    <div class="mini-hist" role="img" aria-label="Sound duration distribution">${bars}</div>
+    <div class="mini-axis">${bins.map((bin) => `<span>${esc(durationLabel(bin.min))}</span>`).join("")}</div>`;
+}
+
+function setupSoundZoomControls() {
+  const card = $("#zoom-card .sound-card-zoom");
+  const input = $("#sound-zoom-bins");
+  const value = $("#sound-zoom-bin-value");
+  const target = $("#sound-zoom-hist");
+  if (!card || !input || !target) return;
+  let samples = [];
+  try {
+    samples = JSON.parse(card.dataset.soundSamples || "[]");
+  } catch {
+    samples = [];
+  }
+  const redraw = () => {
+    const bins = Number(input.value || 18);
+    if (value) value.textContent = String(bins);
+    target.innerHTML = soundHistogramHTML(samples, bins, 180);
+  };
+  input.addEventListener("input", redraw);
+}
+
+function pieSlicePath(cx, cy, r, startDeg, endDeg) {
+  const start = polarToCartesian(cx, cy, r, endDeg);
+  const end = polarToCartesian(cx, cy, r, startDeg);
+  const largeArc = endDeg - startDeg > 180 ? 1 : 0;
+  return `M ${cx} ${cy} L ${start.x} ${start.y} A ${r} ${r} 0 ${largeArc} 0 ${end.x} ${end.y} Z`;
+}
+
+function polarToCartesian(cx, cy, r, deg) {
+  const rad = (deg - 90) * Math.PI / 180;
+  return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
 }
 
 function renderBenchQuestions() {
   const name = state.inspectName;
-  const { q, piac } = state.benchQFilters;
+  const { q, categories } = state.benchQFilters;
   const all = questionsForBench(name);
   const list = all.filter((row) => {
-    if (piac && row.piac !== piac) return false;
+    for (const [dimension, selected] of Object.entries(categories || {})) {
+      if (!selected.length) continue;
+      const values = dimension === "piac" ? [knownPiac(row.piac)].filter(Boolean) : (row.categories?.[dimension] || []);
+      if (!selected.some((value) => values.includes(value))) return false;
+    }
     if (q) {
       const hay = [row.question, row.correct_answer, row.skills, row.answer_format,
         ...(row.distractors || [])].join(" ").toLowerCase();
@@ -723,6 +1263,7 @@ function renderBenchQuestions() {
     }
     return true;
   });
+  updateBenchmarkStats(list);
   $("#bench-q-count").textContent = `${list.length} of ${all.length}`;
   $("#bench-q-empty").hidden = list.length > 0;
   $("#bench-q-empty").textContent = all.length
@@ -735,8 +1276,8 @@ function benchQuestionHTML(row) {
   const audio = row.audio
     ? `<audio controls preload="none" src="${esc(row.audio)}"></audio>`
     : `<div class="no-audio">audio unavailable for this clip</div>`;
-  const meta = [row.category_2, row.category_3, row.skills ? "skill: " + row.skills : ""]
-    .filter(Boolean).map(esc).join(" · ");
+  const meta = questionCategoryMeta(row);
+  const piac = knownPiac(row.piac);
   const distractors = (row.distractors || []).length
     ? `<p class="ref muted"><b>Distractors:</b> ${row.distractors.map(esc).join(" · ")}</p>`
     : "";
@@ -747,7 +1288,7 @@ function benchQuestionHTML(row) {
   <article class="qcard">
     <div class="qcard-top">
       <p class="q">${esc(row.question)}</p>
-      <span class="pill ${row.piac}">${esc(row.piac || "?")}</span>
+      ${piac ? `<span class="pill ${piac}">${esc(piac)}</span>` : ""}
     </div>
     <div class="qmeta">${meta}</div>
     ${audio}
@@ -755,4 +1296,16 @@ function benchQuestionHTML(row) {
     ${fmt}
     ${distractors}
   </article>`;
+}
+
+function questionCategoryMeta(row) {
+  const parts = Object.entries(CATEGORY_LABELS).map(([key, label]) => {
+    const values = row.categories?.[key] || [];
+    return values.length ? `${label}: ${values.map(esc).join(", ")}` : "";
+  }).filter(Boolean);
+  if (!parts.length) {
+    return [row.category_2, row.category_3, row.skills ? "Skill: " + row.skills : ""]
+      .filter(Boolean).map(esc).join(" · ");
+  }
+  return parts.join(" · ");
 }

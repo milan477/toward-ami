@@ -20,12 +20,14 @@ audio_url       str        path/URL identifying the audio clip
 category_1      str        top-level category label
 category_2      str        second-level category label ("" if n/a)
 category_3      str        third-level category label ("" if n/a)
+category_4      str        fourth-level category label ("" if n/a)
 
-Datasets may add extra columns after category_3 if they carry labels that do
+Datasets may add extra columns after category_4 if they carry labels that do
 not fit the hierarchy; keep the columns above in this order and append.
 """
 
 import json
+import ast
 from pathlib import Path
 
 import numpy as np
@@ -44,15 +46,53 @@ def bench_dir(name: str) -> Path:
 
 
 def bench_path(name: str, stage: str) -> Path:
-    """Path to a benchmark stage CSV: data/benchmarks/<name>/<name>_<stage>.csv.
+    """Path to a benchmark stage CSV.
 
-    Stages: raw, normalized, cleaned, ready (ready = probe-ready, formerly
-    'processed')."""
+    Stages: raw, normalized, selected, annotated. ``selected`` is the music
+    subset of normalized; ``annotated`` is selected plus analysis labels."""
+    if stage == "selected":
+        return BENCH_DIR / name / f"{name}_normalized_selected.csv"
+    if stage == "annotated":
+        return BENCH_DIR / name / f"{name}_normalized_selected_annotated.csv"
+    if stage not in {"raw", "normalized"}:
+        raise ValueError(f"Unknown benchmark stage {stage!r}. Use raw, normalized, selected, or annotated.")
     return BENCH_DIR / name / f"{name}_{stage}.csv"
+
+
+def referenced_audio_paths(name: str, stage: str = "selected") -> list[str]:
+    """Return unique audio_url paths from a benchmark stage, preserving order.
+
+    ``audio_url`` may contain one clip, several clips joined with ``; ``, or
+    legacy Python-list reprs. Leading ``./`` is removed so archive member names
+    and on-disk filenames compare consistently.
+    """
+    df = pd.read_csv(bench_path(name, stage))
+    paths: list[str] = []
+    for url in df["audio_url"]:
+        for chunk in str(url).split("; "):
+            chunk = chunk.strip()
+            if not chunk:
+                continue
+            if chunk.startswith("[") and chunk.endswith("]"):
+                try:
+                    paths.extend(str(p) for p in ast.literal_eval(chunk))
+                    continue
+                except (ValueError, SyntaxError):
+                    pass
+            paths.append(chunk)
+
+    seen, out = set(), []
+    for p in paths:
+        p = p.lstrip("./")
+        if p and p not in seen:
+            seen.add(p)
+            out.append(p)
+    return out
 
 NORMALIZED_COLUMNS = [
     "benchmark", "question", "question_type", "correct_answer",
-    "distractors", "audio_url", "category_1", "category_2", "category_3",
+    "distractors", "audio_url",
+    "category_1", "category_2", "category_3", "category_4",
 ]
 
 
@@ -161,7 +201,5 @@ def write_normalized(name: str, rows: list[dict]) -> Path:
     df = pd.DataFrame(rows, columns=columns)
     path = bench_path(name, "normalized")
     df.to_csv(path, index=False)
-    n_mcq = (df["question_type"] == "mcq").sum()
-    n_oeq = (df["question_type"] == "oeq").sum()
-    print(f"  normalized → {path}  ({len(df)} rows  mcq={n_mcq} oeq={n_oeq})")
+    print(f"  normalized → {path}  ({len(df)} rows)")
     return path

@@ -18,18 +18,21 @@ Notable quirks
 Normalization choices
 ---------------------
 - audio_url     : audio_path clips joined with "; ".
-- category_1/2/3: category → sub-cat → (unused; MMAU-Pro has no 3rd level).
+- category_1/2/3/4: category → sub-cat → (unused) → (unused).
 - extra columns : perceptual_skills, reasoning_skills (JSON lists), length_type.
 """
 
 import json
+import os
+from pathlib import Path
 
 import pandas as pd
-from huggingface_hub import hf_hub_download
 
 from common import (
+    AUDIO_DIR,
     as_list,
     clean_text,
+    referenced_audio_paths,
     resolve_correct_answer,
     to_distractors,
     write_normalized,
@@ -39,9 +42,12 @@ from common import (
 NAME         = "mmau_pro"
 HF_REPO      = "gamma-lab-umd/MMAU-Pro"
 PARQUET_FILE = "test.parquet"
+AUDIO_FILE   = "data.zip"
 
 
 def _fetch_df() -> pd.DataFrame:
+    from huggingface_hub import hf_hub_download
+
     path = hf_hub_download(HF_REPO, PARQUET_FILE, repo_type="dataset")
     return pd.read_parquet(path)
 
@@ -51,8 +57,27 @@ def _join_audio(audio_path) -> str:
 
 
 def _skills(value) -> str:
-    return json.dumps([clean_text(s) for s in as_list(value) if clean_text(s)],
-                      ensure_ascii=False)
+    return json.dumps(_skill_items(value), ensure_ascii=False)
+
+
+def _skill_items(value) -> list[str]:
+    if isinstance(value, str) and value.strip().startswith("["):
+        try:
+            parsed = json.loads(value)
+            value = parsed
+        except json.JSONDecodeError:
+            pass
+    return [clean_text(s) for s in as_list(value) if clean_text(s)]
+
+
+def _combined_skills(row: dict) -> str:
+    skills = []
+    for col in ("perceptual_skills", "reasoning_skills"):
+        for skill in _skill_items(row.get(col)):
+            skill = clean_text(skill)
+            if skill and skill not in skills:
+                skills.append(skill)
+    return json.dumps(skills, ensure_ascii=False)
 
 
 def _normalize_row(row: dict) -> dict:
@@ -68,7 +93,10 @@ def _normalize_row(row: dict) -> dict:
         "category_1":        clean_text(row.get("category", "")),
         "category_2":        clean_text(row.get("sub-cat", "")),
         "category_3":        "",
-        "skills":            _skills(row.get("perceptual_skills")) + _skills(row.get("reasoning_skills")),
+        "category_4":        "",
+        "skills":            _combined_skills(row),
+        "perceptual_skills": _skills(row.get("perceptual_skills")),
+        "reasoning_skills":  _skills(row.get("reasoning_skills")),
         "length_type":       clean_text(row.get("length_type", "")),
     }
 
@@ -84,5 +112,51 @@ def download_mmau_pro() -> None:
     write_normalized(NAME, [_normalize_row(r) for r in df.to_dict("records")])
 
 
+def _hf_headers() -> dict:
+    tok = os.environ.get("HF_TOKEN")
+    return {"Authorization": f"Bearer {tok}"} if tok else {}
+
+
+def download_mmau_pro_audio() -> Path:
+    """Range-fetch referenced MMAU-Pro clips from the dataset zip."""
+    from huggingface_hub import hf_hub_url
+    from remotezip import RemoteZip
+
+    out_dir = AUDIO_DIR / NAME
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    wanted = referenced_audio_paths(NAME)
+    missing = [p for p in wanted if not (out_dir / Path(p).name).exists()]
+    print(f"[{NAME}] {len(wanted)} clips referenced, {len(missing)} to fetch")
+    if not missing:
+        print(f"  audio      → {out_dir}  (all present)")
+        return out_dir
+
+    url = hf_hub_url(HF_REPO, AUDIO_FILE, repo_type="dataset")
+    fetched, not_found = 0, []
+    with RemoteZip(url, headers=_hf_headers()) as z:
+        names = set(z.namelist())
+        by_stem = {Path(n).stem: n for n in names}
+        for rel in missing:
+            member = rel if rel in names else by_stem.get(Path(rel).stem)
+            if member is None:
+                not_found.append(rel)
+                continue
+            with z.open(member) as src:
+                (out_dir / Path(rel).name).write_bytes(src.read())
+            fetched += 1
+            if fetched % 100 == 0:
+                print(f"    {fetched}/{len(missing)} …")
+
+    print(f"  audio      → {out_dir}  ({fetched} fetched)")
+    if not_found:
+        print(f"  WARNING: {len(not_found)} referenced clips not found in zip")
+    return out_dir
+
+
 if __name__ == "__main__":
+    from clean import clean_dataset
+
     download_mmau_pro()
+    clean_dataset(NAME)
+    download_mmau_pro_audio()

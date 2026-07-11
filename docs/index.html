@@ -16,14 +16,21 @@
       <video class="vid-bg" src="vid.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
       <span>AMI</span>
     </a>
-    <nav class="menu" id="menu">
-      <video class="vid-bg" src="vid.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
-      <a href="#home" data-route="home">Home</a>
-      <a href="#models" data-route="models">Models</a>
-      <a href="#benchmarks" data-route="benchmarks">Benchmarks</a>
-      <a href="#evaluation" data-route="evaluation">Evaluation</a>
-      <a href="#results" data-route="results">Results</a>
-    </nav>
+    <div class="nav-cluster">
+      <nav class="menu" id="menu">
+        <video class="vid-bg" src="vid.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
+        <a class="nav-link" href="#models" data-route="models">Models</a>
+        <a class="nav-link" href="#benchmarks" data-route="benchmarks">Benchmarks</a>
+        <a class="nav-link" href="#evaluation" data-route="evaluation">Evaluation</a>
+        <a class="nav-link" href="#results" data-route="results">Results</a>
+      </nav>
+      <a class="home-bubble nav-link" href="#home" data-route="home" aria-label="Home">
+        <video class="vid-bg" src="vid.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4.5 10.7 12 4.6l7.5 6.1v8.1a1.6 1.6 0 0 1-1.6 1.6h-4.1v-5.6h-3.6v5.6H6.1a1.6 1.6 0 0 1-1.6-1.6v-8.1Z" />
+        </svg>
+      </a>
+    </div>
   </div>
 </header>
 
@@ -55,6 +62,15 @@
     </header>
     <div class="controls">
       <input type="search" id="bench-search" placeholder="Search benchmarks…" />
+      <label>Sort
+        <select id="bench-sort">
+          <option value="name-asc">A-Z</option>
+          <option value="year-desc">Newest</option>
+          <option value="year-asc">Oldest</option>
+          <option value="size-desc">Largest</option>
+          <option value="size-asc">Smallest</option>
+        </select>
+      </label>
       <span class="count" id="bench-count"></span>
     </div>
     <div class="bench-toolbar">
@@ -73,9 +89,6 @@
     <h2 class="section-title">Questions</h2>
     <div class="controls">
       <input type="search" id="bench-q-search" placeholder="Search questions, answers, skills…" />
-      <label>PIAC
-        <select id="bench-q-piac"><option value="">all</option></select>
-      </label>
       <span class="count" id="bench-q-count"></span>
     </div>
     <div id="bench-q-cards" class="qcards"></div>
@@ -90,6 +103,14 @@
     </header>
     <div class="controls">
       <input type="search" id="model-search" placeholder="Search models…" />
+      <label>Sort
+        <select id="model-sort">
+          <option value="label-asc">A-Z</option>
+          <option value="year-desc">Newest</option>
+          <option value="year-asc">Oldest</option>
+          <option value="developer-asc">Developer</option>
+        </select>
+      </label>
       <span class="count" id="model-count"></span>
     </div>
     <p class="hint">Click a model for release date, creators, and paper.</p>

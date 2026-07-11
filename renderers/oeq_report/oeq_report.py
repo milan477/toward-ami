@@ -1,6 +1,6 @@
 """Generate a self-contained HTML viewer for an OEQ results CSV.
 
-Reads a <stamp>_summary.csv produced by run_mmar_af_next_oeq.py (columns: qid,
+Reads a <stamp>_summary.csv produced by src.experiments.exp_0_mcq_oeq (columns: qid,
 category_1, category_2, category_3, question, reference_answer, response,
 judge_score, judge_score_norm, judge_rationale, skipped, error) and writes a
 single static HTML file with the rows embedded — open it directly in a browser
@@ -8,7 +8,7 @@ single static HTML file with the rows embedded — open it directly in a browser
 sortable columns, color-coded scores, and summary stats.
 
 Usage:
-    python renderers/oeq_report/oeq_report.py                       # latest music-oeq CSV
+    python renderers/oeq_report/oeq_report.py                       # latest OEQ CSV
     python renderers/oeq_report/oeq_report.py path/to/summary.csv   # specific CSV
     python renderers/oeq_report/oeq_report.py summary.csv -o view.html
 """
@@ -28,7 +28,7 @@ from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parents[2]
 AUDIO_ROOT = ROOT / "data" / "audio"
-DEFAULT_GLOB = str(ROOT / "results" / "mmar" / "af-next" / "music-oeq" / "*_summary.csv")
+DEFAULT_GLOB = str(ROOT / "results" / "*" / "*" / "*-oeq-piac" / "*_summary.csv")
 AUDIO_EXTS = {".wav", ".mp3", ".flac", ".ogg", ".m4a", ".opus"}
 MIME = {".wav": "audio/wav", ".mp3": "audio/mpeg", ".flac": "audio/flac",
         ".ogg": "audio/ogg", ".m4a": "audio/mp4", ".opus": "audio/opus"}
@@ -50,7 +50,7 @@ def _resolve_audio(name: str) -> Path | None:
     idx = _audio_index()
     return idx.get(name) or idx.get(name.rsplit(".", 1)[0])
 
-COLUMNS = ["qid", "category", "category_1", "category_2", "category_3", "question",
+COLUMNS = ["qid", "category", "category_1", "category_2", "category_3", "category_4", "question",
            "answer_format", "example_answer", "prompt", "reference_answer",
            "response", "judge_score", "judge_score_norm", "judge_rationale",
            "skipped", "error"]
@@ -129,7 +129,7 @@ HTML_TEMPLATE = """<!doctype html>
 </head>
 <body>
 <header>
-  <h1>Audio Flamingo Next — OEQ answers, Qwen-judged</h1>
+  <h1>OEQ answers, Qwen-judged</h1>
   <div class="sub">__SUBTITLE__</div>
   <div class="stats" id="stats"></div>
 </header>

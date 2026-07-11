@@ -1,0 +1,5656 @@
+{
+  "benchmark": "muchomusic",
+  "stage": "normalized",
+  "resolved_stage": "normalized",
+  "path": "data/benchmarks/muchomusic/muchomusic_normalized.csv",
+  "missing": false,
+  "n_questions": 1187,
+  "n_audio_files": 644,
+  "n_questions_with_audio": 1187,
+  "question_type_distribution": {
+    "mcq": 1187
+  },
+  "question_nature_distribution": {},
+  "average_distractors": 3.0,
+  "max_distractors": 3,
+  "n_questions_with_distractors": 1187,
+  "pct_questions_with_distractors": 1.0,
+  "distractor_count_distribution": {
+    "3": 1187
+  },
+  "category_1_distribution": {
+    "Rock": 255,
+    "Electronic": 222,
+    "Folk, World, & Country": 192,
+    "Pop": 135,
+    "Hip Hop": 77,
+    "Classical": 60,
+    "Funk / Soul": 58,
+    "Latin": 57,
+    "Reggae": 54,
+    "Jazz": 52,
+    "Blues": 25
+  },
+  "category_2_distribution": {
+    "(blank)": 1187
+  },
+  "category_3_distribution": {
+    "(blank)": 1187
+  },
+  "category_4_distribution": {
+    "(blank)": 1187
+  },
+  "columns": [
+    "benchmark",
+    "question",
+    "question_type",
+    "correct_answer",
+    "distractors",
+    "audio_url",
+    "category_1",
+    "category_2",
+    "category_3",
+    "category_4",
+    "audio_source",
+    "music_knowledge",
+    "music_reasoning",
+    "odd_question"
+  ],
+  "n_audio_files_with_duration": 444,
+  "n_audio_files_missing_duration": 200,
+  "average_audio_duration_seconds": 10.002,
+  "median_audio_duration_seconds": 10.0,
+  "min_audio_duration_seconds": 9.915,
+  "max_audio_duration_seconds": 10.008,
+  "total_audio_duration_seconds": 4440.83,
+  "audio_duration_seconds": [
+    9.915,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.005,
+    10.005,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008,
+    10.008
+  ],
+  "audio_duration_histogram": [
+    {
+      "min": 9.915,
+      "max": 9.923,
+      "count": 1
+    },
+    {
+      "min": 9.923,
+      "max": 9.93,
+      "count": 0
+    },
+    {
+      "min": 9.93,
+      "max": 9.938,
+      "count": 0
+    },
+    {
+      "min": 9.938,
+      "max": 9.946,
+      "count": 0
+    },
+    {
+      "min": 9.946,
+      "max": 9.954,
+      "count": 0
+    },
+    {
+      "min": 9.954,
+      "max": 9.961,
+      "count": 0
+    },
+    {
+      "min": 9.961,
+      "max": 9.969,
+      "count": 0
+    },
+    {
+      "min": 9.969,
+      "max": 9.977,
+      "count": 0
+    },
+    {
+      "min": 9.977,
+      "max": 9.985,
+      "count": 0
+    },
+    {
+      "min": 9.985,
+      "max": 9.992,
+      "count": 0
+    },
+    {
+      "min": 9.992,
+      "max": 10.0,
+      "count": 325
+    },
+    {
+      "min": 10.0,
+      "max": 10.008,
+      "count": 118
+    }
+  ],
+  "by_category": {
+    "modality": {
+      "title": "Modality",
+      "values": {
+        "music": {
+          "n_questions": 1187,
+          "n_audio_files": 644,
+          "n_questions_with_audio": 1187,
+          "question_type_distribution": {
+            "mcq": 1187
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 1187,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 1187
+          },
+          "category_1_distribution": {
+            "Rock": 255,
+            "Electronic": 222,
+            "Folk, World, & Country": 192,
+            "Pop": 135,
+            "Hip Hop": 77,
+            "Classical": 60,
+            "Funk / Soul": 58,
+            "Latin": 57,
+            "Reggae": 54,
+            "Jazz": 52,
+            "Blues": 25
+          },
+          "category_2_distribution": {
+            "(blank)": 1187
+          },
+          "category_3_distribution": {
+            "(blank)": 1187
+          },
+          "category_4_distribution": {
+            "(blank)": 1187
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 444,
+          "n_audio_files_missing_duration": 200,
+          "average_audio_duration_seconds": 10.002,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 9.915,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 4440.83,
+          "audio_duration_seconds": [
+            9.915,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.005,
+            10.005,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 9.915,
+              "max": 9.923,
+              "count": 1
+            },
+            {
+              "min": 9.923,
+              "max": 9.93,
+              "count": 0
+            },
+            {
+              "min": 9.93,
+              "max": 9.938,
+              "count": 0
+            },
+            {
+              "min": 9.938,
+              "max": 9.946,
+              "count": 0
+            },
+            {
+              "min": 9.946,
+              "max": 9.954,
+              "count": 0
+            },
+            {
+              "min": 9.954,
+              "max": 9.961,
+              "count": 0
+            },
+            {
+              "min": 9.961,
+              "max": 9.969,
+              "count": 0
+            },
+            {
+              "min": 9.969,
+              "max": 9.977,
+              "count": 0
+            },
+            {
+              "min": 9.977,
+              "max": 9.985,
+              "count": 0
+            },
+            {
+              "min": 9.985,
+              "max": 9.992,
+              "count": 0
+            },
+            {
+              "min": 9.992,
+              "max": 10.0,
+              "count": 325
+            },
+            {
+              "min": 10.0,
+              "max": 10.008,
+              "count": 118
+            }
+          ],
+          "filter": {
+            "dimension": "modality",
+            "title": "Modality",
+            "value": "music"
+          }
+        }
+      }
+    },
+    "category": {
+      "title": "Category",
+      "values": {}
+    },
+    "genre": {
+      "title": "Genre",
+      "values": {
+        "Blues": {
+          "n_questions": 25,
+          "n_audio_files": 13,
+          "n_questions_with_audio": 25,
+          "question_type_distribution": {
+            "mcq": 25
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 25,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 25
+          },
+          "category_1_distribution": {
+            "Blues": 25
+          },
+          "category_2_distribution": {
+            "(blank)": 25
+          },
+          "category_3_distribution": {
+            "(blank)": 25
+          },
+          "category_4_distribution": {
+            "(blank)": 25
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 9,
+          "n_audio_files_missing_duration": 4,
+          "average_audio_duration_seconds": 10.003,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 90.031,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 5
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 4
+            }
+          ],
+          "filter": {
+            "dimension": "genre",
+            "title": "Genre",
+            "value": "Blues"
+          }
+        },
+        "Classical": {
+          "n_questions": 60,
+          "n_audio_files": 33,
+          "n_questions_with_audio": 60,
+          "question_type_distribution": {
+            "mcq": 60
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 60,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 60
+          },
+          "category_1_distribution": {
+            "Classical": 60
+          },
+          "category_2_distribution": {
+            "(blank)": 60
+          },
+          "category_3_distribution": {
+            "(blank)": 60
+          },
+          "category_4_distribution": {
+            "(blank)": 60
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 18,
+          "n_audio_files_missing_duration": 15,
+          "average_audio_duration_seconds": 10.002,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 180.039,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 13
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 5
+            }
+          ],
+          "filter": {
+            "dimension": "genre",
+            "title": "Genre",
+            "value": "Classical"
+          }
+        },
+        "Electronic": {
+          "n_questions": 222,
+          "n_audio_files": 127,
+          "n_questions_with_audio": 222,
+          "question_type_distribution": {
+            "mcq": 222
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 222,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 222
+          },
+          "category_1_distribution": {
+            "Electronic": 222
+          },
+          "category_2_distribution": {
+            "(blank)": 222
+          },
+          "category_3_distribution": {
+            "(blank)": 222
+          },
+          "category_4_distribution": {
+            "(blank)": 222
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 73,
+          "n_audio_files_missing_duration": 54,
+          "average_audio_duration_seconds": 10.002,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 730.161,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.005,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 52
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 1
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 20
+            }
+          ],
+          "filter": {
+            "dimension": "genre",
+            "title": "Genre",
+            "value": "Electronic"
+          }
+        },
+        "Folk, World, & Country": {
+          "n_questions": 192,
+          "n_audio_files": 101,
+          "n_questions_with_audio": 192,
+          "question_type_distribution": {
+            "mcq": 192
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 192,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 192
+          },
+          "category_1_distribution": {
+            "Folk, World, & Country": 192
+          },
+          "category_2_distribution": {
+            "(blank)": 192
+          },
+          "category_3_distribution": {
+            "(blank)": 192
+          },
+          "category_4_distribution": {
+            "(blank)": 192
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 72,
+          "n_audio_files_missing_duration": 29,
+          "average_audio_duration_seconds": 10.001,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 720.107,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.005,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 58
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 1
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 13
+            }
+          ],
+          "filter": {
+            "dimension": "genre",
+            "title": "Genre",
+            "value": "Folk, World, & Country"
+          }
+        },
+        "Funk / Soul": {
+          "n_questions": 58,
+          "n_audio_files": 27,
+          "n_questions_with_audio": 58,
+          "question_type_distribution": {
+            "mcq": 58
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 58,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 58
+          },
+          "category_1_distribution": {
+            "Funk / Soul": 58
+          },
+          "category_2_distribution": {
+            "(blank)": 58
+          },
+          "category_3_distribution": {
+            "(blank)": 58
+          },
+          "category_4_distribution": {
+            "(blank)": 58
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 23,
+          "n_audio_files_missing_duration": 4,
+          "average_audio_duration_seconds": 10.002,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 230.047,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 17
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 6
+            }
+          ],
+          "filter": {
+            "dimension": "genre",
+            "title": "Genre",
+            "value": "Funk / Soul"
+          }
+        },
+        "Hip Hop": {
+          "n_questions": 77,
+          "n_audio_files": 47,
+          "n_questions_with_audio": 77,
+          "question_type_distribution": {
+            "mcq": 77
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 77,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 77
+          },
+          "category_1_distribution": {
+            "Hip Hop": 77
+          },
+          "category_2_distribution": {
+            "(blank)": 77
+          },
+          "category_3_distribution": {
+            "(blank)": 77
+          },
+          "category_4_distribution": {
+            "(blank)": 77
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 38,
+          "n_audio_files_missing_duration": 9,
+          "average_audio_duration_seconds": 10.003,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 380.133,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 21
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 17
+            }
+          ],
+          "filter": {
+            "dimension": "genre",
+            "title": "Genre",
+            "value": "Hip Hop"
+          }
+        },
+        "Jazz": {
+          "n_questions": 52,
+          "n_audio_files": 26,
+          "n_questions_with_audio": 52,
+          "question_type_distribution": {
+            "mcq": 52
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 52,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 52
+          },
+          "category_1_distribution": {
+            "Jazz": 52
+          },
+          "category_2_distribution": {
+            "(blank)": 52
+          },
+          "category_3_distribution": {
+            "(blank)": 52
+          },
+          "category_4_distribution": {
+            "(blank)": 52
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 18,
+          "n_audio_files_missing_duration": 8,
+          "average_audio_duration_seconds": 10.003,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 180.047,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 12
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 6
+            }
+          ],
+          "filter": {
+            "dimension": "genre",
+            "title": "Genre",
+            "value": "Jazz"
+          }
+        },
+        "Latin": {
+          "n_questions": 57,
+          "n_audio_files": 29,
+          "n_questions_with_audio": 57,
+          "question_type_distribution": {
+            "mcq": 57
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 57,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 57
+          },
+          "category_1_distribution": {
+            "Latin": 57
+          },
+          "category_2_distribution": {
+            "(blank)": 57
+          },
+          "category_3_distribution": {
+            "(blank)": 57
+          },
+          "category_4_distribution": {
+            "(blank)": 57
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 23,
+          "n_audio_files_missing_duration": 6,
+          "average_audio_duration_seconds": 10.001,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 230.031,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 19
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 4
+            }
+          ],
+          "filter": {
+            "dimension": "genre",
+            "title": "Genre",
+            "value": "Latin"
+          }
+        },
+        "Pop": {
+          "n_questions": 135,
+          "n_audio_files": 74,
+          "n_questions_with_audio": 135,
+          "question_type_distribution": {
+            "mcq": 135
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 135,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 135
+          },
+          "category_1_distribution": {
+            "Pop": 135
+          },
+          "category_2_distribution": {
+            "(blank)": 135
+          },
+          "category_3_distribution": {
+            "(blank)": 135
+          },
+          "category_4_distribution": {
+            "(blank)": 135
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 67,
+          "n_audio_files_missing_duration": 7,
+          "average_audio_duration_seconds": 10.0,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 9.915,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 670.009,
+          "audio_duration_seconds": [
+            9.915,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 9.915,
+              "max": 9.923,
+              "count": 1
+            },
+            {
+              "min": 9.923,
+              "max": 9.93,
+              "count": 0
+            },
+            {
+              "min": 9.93,
+              "max": 9.938,
+              "count": 0
+            },
+            {
+              "min": 9.938,
+              "max": 9.946,
+              "count": 0
+            },
+            {
+              "min": 9.946,
+              "max": 9.954,
+              "count": 0
+            },
+            {
+              "min": 9.954,
+              "max": 9.961,
+              "count": 0
+            },
+            {
+              "min": 9.961,
+              "max": 9.969,
+              "count": 0
+            },
+            {
+              "min": 9.969,
+              "max": 9.977,
+              "count": 0
+            },
+            {
+              "min": 9.977,
+              "max": 9.985,
+              "count": 0
+            },
+            {
+              "min": 9.985,
+              "max": 9.992,
+              "count": 0
+            },
+            {
+              "min": 9.992,
+              "max": 10.0,
+              "count": 54
+            },
+            {
+              "min": 10.0,
+              "max": 10.008,
+              "count": 12
+            }
+          ],
+          "filter": {
+            "dimension": "genre",
+            "title": "Genre",
+            "value": "Pop"
+          }
+        },
+        "Reggae": {
+          "n_questions": 54,
+          "n_audio_files": 30,
+          "n_questions_with_audio": 54,
+          "question_type_distribution": {
+            "mcq": 54
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 54,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 54
+          },
+          "category_1_distribution": {
+            "Reggae": 54
+          },
+          "category_2_distribution": {
+            "(blank)": 54
+          },
+          "category_3_distribution": {
+            "(blank)": 54
+          },
+          "category_4_distribution": {
+            "(blank)": 54
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 25,
+          "n_audio_files_missing_duration": 5,
+          "average_audio_duration_seconds": 10.002,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 250.047,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 19
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 6
+            }
+          ],
+          "filter": {
+            "dimension": "genre",
+            "title": "Genre",
+            "value": "Reggae"
+          }
+        },
+        "Rock": {
+          "n_questions": 255,
+          "n_audio_files": 137,
+          "n_questions_with_audio": 255,
+          "question_type_distribution": {
+            "mcq": 255
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 255,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 255
+          },
+          "category_1_distribution": {
+            "Rock": 255
+          },
+          "category_2_distribution": {
+            "(blank)": 255
+          },
+          "category_3_distribution": {
+            "(blank)": 255
+          },
+          "category_4_distribution": {
+            "(blank)": 255
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 78,
+          "n_audio_files_missing_duration": 59,
+          "average_audio_duration_seconds": 10.002,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 780.179,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 55
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 23
+            }
+          ],
+          "filter": {
+            "dimension": "genre",
+            "title": "Genre",
+            "value": "Rock"
+          }
+        }
+      }
+    },
+    "skill": {
+      "title": "Skill",
+      "values": {
+        "dynamics and expression": {
+          "n_questions": 8,
+          "n_audio_files": 8,
+          "n_questions_with_audio": 8,
+          "question_type_distribution": {
+            "mcq": 8
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 8,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 8
+          },
+          "category_1_distribution": {
+            "Electronic": 2,
+            "Funk / Soul": 2,
+            "Rock": 2,
+            "Jazz": 1,
+            "Classical": 1
+          },
+          "category_2_distribution": {
+            "(blank)": 8
+          },
+          "category_3_distribution": {
+            "(blank)": 8
+          },
+          "category_4_distribution": {
+            "(blank)": 8
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 5,
+          "n_audio_files_missing_duration": 3,
+          "average_audio_duration_seconds": 10.003,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 50.016,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 3
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 2
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "dynamics and expression"
+          }
+        },
+        "functional context": {
+          "n_questions": 77,
+          "n_audio_files": 77,
+          "n_questions_with_audio": 77,
+          "question_type_distribution": {
+            "mcq": 77
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 77,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 77
+          },
+          "category_1_distribution": {
+            "Electronic": 13,
+            "Rock": 13,
+            "Folk, World, & Country": 13,
+            "Pop": 11,
+            "Jazz": 9,
+            "Classical": 5,
+            "Hip Hop": 4,
+            "Funk / Soul": 3,
+            "Latin": 3,
+            "Blues": 2,
+            "Reggae": 1
+          },
+          "category_2_distribution": {
+            "(blank)": 77
+          },
+          "category_3_distribution": {
+            "(blank)": 77
+          },
+          "category_4_distribution": {
+            "(blank)": 77
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 61,
+          "n_audio_files_missing_duration": 16,
+          "average_audio_duration_seconds": 10.001,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 9.915,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 610.045,
+          "audio_duration_seconds": [
+            9.915,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.005,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 9.915,
+              "max": 9.923,
+              "count": 1
+            },
+            {
+              "min": 9.923,
+              "max": 9.93,
+              "count": 0
+            },
+            {
+              "min": 9.93,
+              "max": 9.938,
+              "count": 0
+            },
+            {
+              "min": 9.938,
+              "max": 9.946,
+              "count": 0
+            },
+            {
+              "min": 9.946,
+              "max": 9.954,
+              "count": 0
+            },
+            {
+              "min": 9.954,
+              "max": 9.961,
+              "count": 0
+            },
+            {
+              "min": 9.961,
+              "max": 9.969,
+              "count": 0
+            },
+            {
+              "min": 9.969,
+              "max": 9.977,
+              "count": 0
+            },
+            {
+              "min": 9.977,
+              "max": 9.985,
+              "count": 0
+            },
+            {
+              "min": 9.985,
+              "max": 9.992,
+              "count": 0
+            },
+            {
+              "min": 9.992,
+              "max": 10.0,
+              "count": 43
+            },
+            {
+              "min": 10.0,
+              "max": 10.008,
+              "count": 17
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "functional context"
+          }
+        },
+        "genre and style": {
+          "n_questions": 198,
+          "n_audio_files": 192,
+          "n_questions_with_audio": 198,
+          "question_type_distribution": {
+            "mcq": 198
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 198,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 198
+          },
+          "category_1_distribution": {
+            "Rock": 52,
+            "Electronic": 37,
+            "Folk, World, & Country": 26,
+            "Pop": 22,
+            "Hip Hop": 13,
+            "Classical": 10,
+            "Funk / Soul": 10,
+            "Reggae": 8,
+            "Latin": 8,
+            "Jazz": 8,
+            "Blues": 4
+          },
+          "category_2_distribution": {
+            "(blank)": 198
+          },
+          "category_3_distribution": {
+            "(blank)": 198
+          },
+          "category_4_distribution": {
+            "(blank)": 198
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 127,
+          "n_audio_files_missing_duration": 65,
+          "average_audio_duration_seconds": 10.001,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 9.915,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 1270.133,
+          "audio_duration_seconds": [
+            9.915,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 9.915,
+              "max": 9.923,
+              "count": 1
+            },
+            {
+              "min": 9.923,
+              "max": 9.93,
+              "count": 0
+            },
+            {
+              "min": 9.93,
+              "max": 9.938,
+              "count": 0
+            },
+            {
+              "min": 9.938,
+              "max": 9.946,
+              "count": 0
+            },
+            {
+              "min": 9.946,
+              "max": 9.954,
+              "count": 0
+            },
+            {
+              "min": 9.954,
+              "max": 9.961,
+              "count": 0
+            },
+            {
+              "min": 9.961,
+              "max": 9.969,
+              "count": 0
+            },
+            {
+              "min": 9.969,
+              "max": 9.977,
+              "count": 0
+            },
+            {
+              "min": 9.977,
+              "max": 9.985,
+              "count": 0
+            },
+            {
+              "min": 9.985,
+              "max": 9.992,
+              "count": 0
+            },
+            {
+              "min": 9.992,
+              "max": 10.0,
+              "count": 98
+            },
+            {
+              "min": 10.0,
+              "max": 10.008,
+              "count": 28
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "genre and style"
+          }
+        },
+        "harmony": {
+          "n_questions": 28,
+          "n_audio_files": 26,
+          "n_questions_with_audio": 28,
+          "question_type_distribution": {
+            "mcq": 28
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 28,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 28
+          },
+          "category_1_distribution": {
+            "Rock": 7,
+            "Pop": 6,
+            "Funk / Soul": 4,
+            "Classical": 3,
+            "Jazz": 2,
+            "Electronic": 2,
+            "Reggae": 2,
+            "Folk, World, & Country": 2
+          },
+          "category_2_distribution": {
+            "(blank)": 28
+          },
+          "category_3_distribution": {
+            "(blank)": 28
+          },
+          "category_4_distribution": {
+            "(blank)": 28
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 22,
+          "n_audio_files_missing_duration": 4,
+          "average_audio_duration_seconds": 10.003,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 220.076,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.005,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 12
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 1
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 9
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "harmony"
+          }
+        },
+        "historical and cultural context": {
+          "n_questions": 28,
+          "n_audio_files": 28,
+          "n_questions_with_audio": 28,
+          "question_type_distribution": {
+            "mcq": 28
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 28,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 28
+          },
+          "category_1_distribution": {
+            "Electronic": 8,
+            "Folk, World, & Country": 7,
+            "Rock": 4,
+            "Hip Hop": 2,
+            "Jazz": 2,
+            "Latin": 2,
+            "Reggae": 2,
+            "Classical": 1
+          },
+          "category_2_distribution": {
+            "(blank)": 28
+          },
+          "category_3_distribution": {
+            "(blank)": 28
+          },
+          "category_4_distribution": {
+            "(blank)": 28
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 18,
+          "n_audio_files_missing_duration": 10,
+          "average_audio_duration_seconds": 10.001,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 180.016,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 16
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 2
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "historical and cultural context"
+          }
+        },
+        "instrumentation": {
+          "n_questions": 429,
+          "n_audio_files": 361,
+          "n_questions_with_audio": 429,
+          "question_type_distribution": {
+            "mcq": 429
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 429,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 429
+          },
+          "category_1_distribution": {
+            "Rock": 85,
+            "Electronic": 80,
+            "Folk, World, & Country": 79,
+            "Pop": 41,
+            "Hip Hop": 25,
+            "Classical": 23,
+            "Funk / Soul": 23,
+            "Jazz": 22,
+            "Latin": 22,
+            "Reggae": 17,
+            "Blues": 12
+          },
+          "category_2_distribution": {
+            "(blank)": 429
+          },
+          "category_3_distribution": {
+            "(blank)": 429
+          },
+          "category_4_distribution": {
+            "(blank)": 429
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 255,
+          "n_audio_files_missing_duration": 106,
+          "average_audio_duration_seconds": 10.002,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 2550.497,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.005,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 191
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 1
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 63
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "instrumentation"
+          }
+        },
+        "lyrics": {
+          "n_questions": 35,
+          "n_audio_files": 35,
+          "n_questions_with_audio": 35,
+          "question_type_distribution": {
+            "mcq": 35
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 35,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 35
+          },
+          "category_1_distribution": {
+            "Folk, World, & Country": 10,
+            "Rock": 9,
+            "Electronic": 6,
+            "Pop": 5,
+            "Latin": 3,
+            "Hip Hop": 1,
+            "Reggae": 1
+          },
+          "category_2_distribution": {
+            "(blank)": 35
+          },
+          "category_3_distribution": {
+            "(blank)": 35
+          },
+          "category_4_distribution": {
+            "(blank)": 35
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 14,
+          "n_audio_files_missing_duration": 21,
+          "average_audio_duration_seconds": 10.002,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 140.031,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 10
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 4
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "lyrics"
+          }
+        },
+        "melody": {
+          "n_questions": 46,
+          "n_audio_files": 46,
+          "n_questions_with_audio": 46,
+          "question_type_distribution": {
+            "mcq": 46
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 46,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 46
+          },
+          "category_1_distribution": {
+            "Electronic": 10,
+            "Rock": 8,
+            "Pop": 8,
+            "Folk, World, & Country": 6,
+            "Reggae": 3,
+            "Hip Hop": 3,
+            "Jazz": 2,
+            "Classical": 2,
+            "Funk / Soul": 2,
+            "Blues": 1,
+            "Latin": 1
+          },
+          "category_2_distribution": {
+            "(blank)": 46
+          },
+          "category_3_distribution": {
+            "(blank)": 46
+          },
+          "category_4_distribution": {
+            "(blank)": 46
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 37,
+          "n_audio_files_missing_duration": 9,
+          "average_audio_duration_seconds": 10.002,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 370.089,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.005,
+            10.005,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 25
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 2
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 10
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "melody"
+          }
+        },
+        "metre and rhythm": {
+          "n_questions": 90,
+          "n_audio_files": 87,
+          "n_questions_with_audio": 90,
+          "question_type_distribution": {
+            "mcq": 90
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 90,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 90
+          },
+          "category_1_distribution": {
+            "Electronic": 17,
+            "Rock": 17,
+            "Pop": 15,
+            "Folk, World, & Country": 11,
+            "Latin": 9,
+            "Hip Hop": 6,
+            "Jazz": 5,
+            "Reggae": 4,
+            "Classical": 3,
+            "Funk / Soul": 3
+          },
+          "category_2_distribution": {
+            "(blank)": 90
+          },
+          "category_3_distribution": {
+            "(blank)": 90
+          },
+          "category_4_distribution": {
+            "(blank)": 90
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 68,
+          "n_audio_files_missing_duration": 19,
+          "average_audio_duration_seconds": 10.002,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 680.117,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 53
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 15
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "metre and rhythm"
+          }
+        },
+        "mood and expression": {
+          "n_questions": 205,
+          "n_audio_files": 191,
+          "n_questions_with_audio": 205,
+          "question_type_distribution": {
+            "mcq": 205
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 205,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 205
+          },
+          "category_1_distribution": {
+            "Rock": 45,
+            "Electronic": 43,
+            "Folk, World, & Country": 31,
+            "Classical": 17,
+            "Pop": 16,
+            "Reggae": 15,
+            "Hip Hop": 9,
+            "Funk / Soul": 9,
+            "Jazz": 7,
+            "Latin": 7,
+            "Blues": 6
+          },
+          "category_2_distribution": {
+            "(blank)": 205
+          },
+          "category_3_distribution": {
+            "(blank)": 205
+          },
+          "category_4_distribution": {
+            "(blank)": 205
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 118,
+          "n_audio_files_missing_duration": 73,
+          "average_audio_duration_seconds": 10.002,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 1180.289,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 81
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 37
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "mood and expression"
+          }
+        },
+        "performance": {
+          "n_questions": 173,
+          "n_audio_files": 159,
+          "n_questions_with_audio": 173,
+          "question_type_distribution": {
+            "mcq": 173
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 173,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 173
+          },
+          "category_1_distribution": {
+            "Rock": 50,
+            "Electronic": 28,
+            "Folk, World, & Country": 22,
+            "Pop": 18,
+            "Hip Hop": 16,
+            "Funk / Soul": 10,
+            "Latin": 9,
+            "Classical": 7,
+            "Reggae": 6,
+            "Jazz": 5,
+            "Blues": 2
+          },
+          "category_2_distribution": {
+            "(blank)": 173
+          },
+          "category_3_distribution": {
+            "(blank)": 173
+          },
+          "category_4_distribution": {
+            "(blank)": 173
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 117,
+          "n_audio_files_missing_duration": 42,
+          "average_audio_duration_seconds": 10.002,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 9.915,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 1170.204,
+          "audio_duration_seconds": [
+            9.915,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 9.915,
+              "max": 9.923,
+              "count": 1
+            },
+            {
+              "min": 9.923,
+              "max": 9.93,
+              "count": 0
+            },
+            {
+              "min": 9.93,
+              "max": 9.938,
+              "count": 0
+            },
+            {
+              "min": 9.938,
+              "max": 9.946,
+              "count": 0
+            },
+            {
+              "min": 9.946,
+              "max": 9.954,
+              "count": 0
+            },
+            {
+              "min": 9.954,
+              "max": 9.961,
+              "count": 0
+            },
+            {
+              "min": 9.961,
+              "max": 9.969,
+              "count": 0
+            },
+            {
+              "min": 9.969,
+              "max": 9.977,
+              "count": 0
+            },
+            {
+              "min": 9.977,
+              "max": 9.985,
+              "count": 0
+            },
+            {
+              "min": 9.985,
+              "max": 9.992,
+              "count": 0
+            },
+            {
+              "min": 9.992,
+              "max": 10.0,
+              "count": 79
+            },
+            {
+              "min": 10.0,
+              "max": 10.008,
+              "count": 37
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "performance"
+          }
+        },
+        "sound texture": {
+          "n_questions": 76,
+          "n_audio_files": 71,
+          "n_questions_with_audio": 76,
+          "question_type_distribution": {
+            "mcq": 76
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 76,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 76
+          },
+          "category_1_distribution": {
+            "Electronic": 23,
+            "Pop": 13,
+            "Rock": 11,
+            "Hip Hop": 7,
+            "Latin": 6,
+            "Folk, World, & Country": 6,
+            "Reggae": 4,
+            "Classical": 2,
+            "Jazz": 2,
+            "Funk / Soul": 2
+          },
+          "category_2_distribution": {
+            "(blank)": 76
+          },
+          "category_3_distribution": {
+            "(blank)": 76
+          },
+          "category_4_distribution": {
+            "(blank)": 76
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 60,
+          "n_audio_files_missing_duration": 11,
+          "average_audio_duration_seconds": 10.002,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 600.14,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 42
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 18
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "sound texture"
+          }
+        },
+        "structure": {
+          "n_questions": 19,
+          "n_audio_files": 18,
+          "n_questions_with_audio": 19,
+          "question_type_distribution": {
+            "mcq": 19
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 19,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 19
+          },
+          "category_1_distribution": {
+            "Electronic": 5,
+            "Rock": 4,
+            "Hip Hop": 3,
+            "Classical": 3,
+            "Reggae": 1,
+            "Folk, World, & Country": 1,
+            "Jazz": 1,
+            "Pop": 1
+          },
+          "category_2_distribution": {
+            "(blank)": 19
+          },
+          "category_3_distribution": {
+            "(blank)": 19
+          },
+          "category_4_distribution": {
+            "(blank)": 19
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 5,
+          "n_audio_files_missing_duration": 13,
+          "average_audio_duration_seconds": 10.002,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 50.008,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 4
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 1
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "structure"
+          }
+        },
+        "temporal relations between elements": {
+          "n_questions": 40,
+          "n_audio_files": 40,
+          "n_questions_with_audio": 40,
+          "question_type_distribution": {
+            "mcq": 40
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 40,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 40
+          },
+          "category_1_distribution": {
+            "Electronic": 14,
+            "Rock": 6,
+            "Classical": 6,
+            "Reggae": 4,
+            "Pop": 3,
+            "Folk, World, & Country": 3,
+            "Latin": 2,
+            "Funk / Soul": 1,
+            "Hip Hop": 1
+          },
+          "category_2_distribution": {
+            "(blank)": 40
+          },
+          "category_3_distribution": {
+            "(blank)": 40
+          },
+          "category_4_distribution": {
+            "(blank)": 40
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4",
+            "audio_source",
+            "music_knowledge",
+            "music_reasoning",
+            "odd_question"
+          ],
+          "n_audio_files_with_duration": 19,
+          "n_audio_files_missing_duration": 21,
+          "average_audio_duration_seconds": 10.002,
+          "median_audio_duration_seconds": 10.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 10.008,
+          "total_audio_duration_seconds": 190.047,
+          "audio_duration_seconds": [
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008,
+            10.008
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 10.001,
+              "count": 13
+            },
+            {
+              "min": 10.001,
+              "max": 10.001,
+              "count": 0
+            },
+            {
+              "min": 10.001,
+              "max": 10.002,
+              "count": 0
+            },
+            {
+              "min": 10.002,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.003,
+              "count": 0
+            },
+            {
+              "min": 10.003,
+              "max": 10.004,
+              "count": 0
+            },
+            {
+              "min": 10.004,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.005,
+              "count": 0
+            },
+            {
+              "min": 10.005,
+              "max": 10.006,
+              "count": 0
+            },
+            {
+              "min": 10.006,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.007,
+              "count": 0
+            },
+            {
+              "min": 10.007,
+              "max": 10.008,
+              "count": 6
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "temporal relations between elements"
+          }
+        }
+      }
+    }
+  }
+}

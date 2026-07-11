@@ -6,3 +6,5 @@ __pycache__/
 *.egg-info/
 data/audio
 CLAUDE.md
+AGENTS.md
+docs/audio/

@@ -1,8 +1,13 @@
-"""Download + normalize benchmark datasets.
+"""Download + normalize + select + fetch audio for benchmark datasets.
 
-Each dataset has a specialized download function that writes two CSVs:
-  data/benchmarks/<name>/<name>_raw.csv         source dataset, exactly as is
-  data/benchmarks/<name>/<name>_normalized.csv  canonical schema (see download/common.py)
+For each dataset this writes:
+
+  data/benchmarks/<name>/<name>_raw.csv
+  data/benchmarks/<name>/<name>_normalized.csv
+  data/benchmarks/<name>/<name>_normalized_selected.csv
+
+then downloads the audio clips referenced by ``normalized_selected`` into
+``data/audio/<name>/``.
 
 Usage
 -----
@@ -12,33 +17,50 @@ python download/run.py --list      # show registered datasets
 """
 
 import argparse
+import importlib
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-from benchmark_mmar import download_mmar
-from benchmark_mmau_pro import download_mmau_pro
-from benchmark_muchomusic import download_muchomusic
+from audio import DATASETS as AUDIO_DATASETS, download_audio
+from clean import MODALITY_COLUMN, clean_dataset
 
-# Register one download function per dataset here.
+# Register one metadata download function per dataset here.
 DATASETS = {
-    "mmar": download_mmar,
-    "mmau_pro": download_mmau_pro,
-    "muchomusic": download_muchomusic,
+    "mmar": ("benchmark_mmar", "download_mmar"),
+    "mmau_pro": ("benchmark_mmau_pro", "download_mmau_pro"),
+    "muchomusic": ("benchmark_muchomusic", "download_muchomusic"),
 }
 
 
+def _load_download(name: str):
+    module_name, fn_name = DATASETS[name]
+    return getattr(importlib.import_module(module_name), fn_name)
+
+
 def download_dataset(name: str) -> None:
+    """raw → normalized → normalized_selected → audio (from selected)."""
     if name == "all":
-        for fn in DATASETS.values():
-            fn()
+        for dataset in DATASETS:
+            download_dataset(dataset)
         return
     if name not in DATASETS:
         raise ValueError(
             f"Dataset {name!r} not found. Available: {', '.join(sorted(DATASETS))}"
         )
-    DATASETS[name]()
+
+    _load_download(name)()
+
+    if name in MODALITY_COLUMN:
+        clean_dataset(name)
+    else:
+        print(f"[{name}] no music-selection rule registered; skipping normalized_selected")
+
+    if name in AUDIO_DATASETS:
+        download_audio(name)
+    else:
+        print(f"[{name}] no audio downloader registered; skipping audio")
 
 
 if __name__ == "__main__":

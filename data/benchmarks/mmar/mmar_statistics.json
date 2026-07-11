@@ -1,0 +1,4648 @@
+{
+  "benchmark": "mmar",
+  "stage": "normalized",
+  "resolved_stage": "normalized",
+  "path": "data/benchmarks/mmar/mmar_normalized.csv",
+  "missing": false,
+  "n_questions": 1000,
+  "n_audio_files": 1000,
+  "n_questions_with_audio": 1000,
+  "question_type_distribution": {
+    "mcq": 1000
+  },
+  "question_nature_distribution": {},
+  "average_distractors": 2.654,
+  "max_distractors": 6,
+  "n_questions_with_distractors": 1000,
+  "pct_questions_with_distractors": 1.0,
+  "distractor_count_distribution": {
+    "3": 815,
+    "1": 171,
+    "2": 10,
+    "4": 3,
+    "6": 1
+  },
+  "category_1_distribution": {
+    "speech": 294,
+    "mix-sound-speech": 218,
+    "music": 206,
+    "sound": 165,
+    "mix-music-speech": 82,
+    "mix-sound-music-speech": 24,
+    "mix-sound-music": 11
+  },
+  "category_2_distribution": {
+    "Semantic Layer": 412,
+    "Perception Layer": 404,
+    "Cultural Layer": 141,
+    "Signal Layer": 43
+  },
+  "category_3_distribution": {
+    "Content Analysis": 304,
+    "Environmental Perception and Reasoning": 149,
+    "Counting and Statistics": 99,
+    "Professional Knowledge and Reasoning": 71,
+    "Music Theory": 63,
+    "Emotion and Intention": 60,
+    "Culture of Speaker": 52,
+    "Correlation Analysis": 50,
+    "Speaker Analysis": 48,
+    "Temporal Analysis": 28,
+    "Acoustic Quality Analysis": 18,
+    "Anomaly Detection": 17,
+    "Spatial Analysis": 15,
+    "Imagination": 10,
+    "Aesthetic Evaluation": 8,
+    "Audio Difference Analysis": 8
+  },
+  "category_4_distribution": {
+    "(blank)": 1000
+  },
+  "columns": [
+    "benchmark",
+    "question",
+    "question_type",
+    "correct_answer",
+    "distractors",
+    "audio_url",
+    "category_1",
+    "category_2",
+    "category_3",
+    "category_4"
+  ],
+  "n_audio_files_with_duration": 323,
+  "n_audio_files_missing_duration": 677,
+  "average_audio_duration_seconds": 24.07,
+  "median_audio_duration_seconds": 28.0,
+  "min_audio_duration_seconds": 4.0,
+  "max_audio_duration_seconds": 56.0,
+  "total_audio_duration_seconds": 7774.454,
+  "audio_duration_seconds": [
+    4.0,
+    6.0,
+    7.0,
+    7.0,
+    7.0,
+    7.0,
+    8.0,
+    9.0,
+    9.0,
+    9.0,
+    9.0,
+    9.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    10.0,
+    11.0,
+    11.0,
+    11.0,
+    11.0,
+    11.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.0,
+    12.608,
+    13.0,
+    13.0,
+    13.0,
+    13.0,
+    13.0,
+    13.939,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.0,
+    14.022,
+    14.752,
+    15.0,
+    15.0,
+    15.0,
+    15.0,
+    15.0,
+    15.939,
+    16.0,
+    16.0,
+    16.0,
+    16.0,
+    16.0,
+    16.0,
+    16.022,
+    16.939,
+    17.0,
+    17.0,
+    17.0,
+    17.0,
+    17.0,
+    17.001,
+    18.0,
+    18.0,
+    18.0,
+    18.0,
+    18.0,
+    18.0,
+    18.0,
+    18.0,
+    18.0,
+    19.0,
+    19.0,
+    19.0,
+    19.0,
+    19.0,
+    19.0,
+    19.0,
+    19.482,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.0,
+    20.022,
+    20.023,
+    21.0,
+    21.0,
+    21.0,
+    22.0,
+    22.0,
+    22.0,
+    22.0,
+    22.0,
+    22.0,
+    22.0,
+    22.0,
+    22.0,
+    22.0,
+    22.0,
+    22.988,
+    23.0,
+    23.0,
+    23.0,
+    23.0,
+    23.0,
+    23.0,
+    23.022,
+    23.05,
+    24.0,
+    24.0,
+    24.0,
+    24.0,
+    24.474,
+    25.0,
+    25.0,
+    25.0,
+    25.0,
+    25.0,
+    25.0,
+    25.0,
+    25.043,
+    25.867,
+    25.939,
+    26.0,
+    26.0,
+    26.0,
+    26.0,
+    26.0,
+    26.0,
+    26.61,
+    27.0,
+    27.0,
+    27.0,
+    27.0,
+    27.0,
+    27.0,
+    27.022,
+    28.0,
+    28.0,
+    28.0,
+    28.0,
+    28.0,
+    28.0,
+    28.0,
+    28.0,
+    28.0,
+    28.0,
+    28.0,
+    28.445,
+    29.0,
+    29.0,
+    29.0,
+    29.0,
+    29.0,
+    29.0,
+    29.0,
+    29.0,
+    29.0,
+    29.043,
+    29.427,
+    29.907,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.001,
+    30.001,
+    30.065,
+    30.939,
+    30.939,
+    31.0,
+    31.001,
+    31.877,
+    32.043,
+    56.0
+  ],
+  "audio_duration_histogram": [
+    {
+      "min": 4.0,
+      "max": 8.333,
+      "count": 7
+    },
+    {
+      "min": 8.333,
+      "max": 12.667,
+      "count": 31
+    },
+    {
+      "min": 12.667,
+      "max": 17.0,
+      "count": 29
+    },
+    {
+      "min": 17.0,
+      "max": 21.333,
+      "count": 39
+    },
+    {
+      "min": 21.333,
+      "max": 25.667,
+      "count": 33
+    },
+    {
+      "min": 25.667,
+      "max": 30.0,
+      "count": 40
+    },
+    {
+      "min": 30.0,
+      "max": 34.333,
+      "count": 143
+    },
+    {
+      "min": 34.333,
+      "max": 38.667,
+      "count": 0
+    },
+    {
+      "min": 38.667,
+      "max": 43.0,
+      "count": 0
+    },
+    {
+      "min": 43.0,
+      "max": 47.333,
+      "count": 0
+    },
+    {
+      "min": 47.333,
+      "max": 51.667,
+      "count": 0
+    },
+    {
+      "min": 51.667,
+      "max": 56.0,
+      "count": 1
+    }
+  ],
+  "by_category": {
+    "modality": {
+      "title": "Modality",
+      "values": {
+        "mix-music-speech": {
+          "n_questions": 82,
+          "n_audio_files": 82,
+          "n_questions_with_audio": 82,
+          "question_type_distribution": {
+            "mcq": 82
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.512,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 82,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 62,
+            "1": 20
+          },
+          "category_1_distribution": {
+            "mix-music-speech": 82
+          },
+          "category_2_distribution": {
+            "Semantic Layer": 47,
+            "Perception Layer": 20,
+            "Cultural Layer": 11,
+            "Signal Layer": 4
+          },
+          "category_3_distribution": {
+            "Content Analysis": 39,
+            "Counting and Statistics": 8,
+            "Emotion and Intention": 6,
+            "Environmental Perception and Reasoning": 5,
+            "Culture of Speaker": 4,
+            "Temporal Analysis": 3,
+            "Music Theory": 3,
+            "Imagination": 3,
+            "Anomaly Detection": 3,
+            "Professional Knowledge and Reasoning": 3,
+            "Speaker Analysis": 2,
+            "Acoustic Quality Analysis": 1,
+            "Aesthetic Evaluation": 1,
+            "Correlation Analysis": 1
+          },
+          "category_4_distribution": {
+            "(blank)": 82
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 82,
+          "n_audio_files_missing_duration": 0,
+          "average_audio_duration_seconds": 21.511,
+          "median_audio_duration_seconds": 22.0,
+          "min_audio_duration_seconds": 7.0,
+          "max_audio_duration_seconds": 30.0,
+          "total_audio_duration_seconds": 1763.88,
+          "audio_duration_seconds": [
+            7.0,
+            9.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            11.0,
+            11.0,
+            11.0,
+            12.0,
+            12.0,
+            12.0,
+            12.0,
+            12.608,
+            13.0,
+            13.0,
+            13.0,
+            14.0,
+            14.0,
+            14.0,
+            14.752,
+            15.0,
+            15.0,
+            16.0,
+            17.0,
+            17.0,
+            18.0,
+            18.0,
+            18.0,
+            18.0,
+            18.0,
+            19.0,
+            19.0,
+            19.0,
+            19.482,
+            20.0,
+            20.0,
+            20.0,
+            21.0,
+            22.0,
+            22.0,
+            22.0,
+            22.988,
+            23.0,
+            23.0,
+            23.05,
+            24.0,
+            24.0,
+            25.0,
+            25.0,
+            25.0,
+            26.0,
+            27.0,
+            27.0,
+            27.0,
+            28.0,
+            28.0,
+            29.0,
+            29.0,
+            29.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 7.0,
+              "max": 8.917,
+              "count": 1
+            },
+            {
+              "min": 8.917,
+              "max": 10.833,
+              "count": 5
+            },
+            {
+              "min": 10.833,
+              "max": 12.75,
+              "count": 8
+            },
+            {
+              "min": 12.75,
+              "max": 14.667,
+              "count": 6
+            },
+            {
+              "min": 14.667,
+              "max": 16.583,
+              "count": 4
+            },
+            {
+              "min": 16.583,
+              "max": 18.5,
+              "count": 7
+            },
+            {
+              "min": 18.5,
+              "max": 20.417,
+              "count": 7
+            },
+            {
+              "min": 20.417,
+              "max": 22.333,
+              "count": 4
+            },
+            {
+              "min": 22.333,
+              "max": 24.25,
+              "count": 6
+            },
+            {
+              "min": 24.25,
+              "max": 26.167,
+              "count": 4
+            },
+            {
+              "min": 26.167,
+              "max": 28.083,
+              "count": 5
+            },
+            {
+              "min": 28.083,
+              "max": 30.0,
+              "count": 25
+            }
+          ],
+          "filter": {
+            "dimension": "modality",
+            "title": "Modality",
+            "value": "mix-music-speech"
+          }
+        },
+        "mix-sound-music": {
+          "n_questions": 11,
+          "n_audio_files": 11,
+          "n_questions_with_audio": 11,
+          "question_type_distribution": {
+            "mcq": 11
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 3.0,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 11,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 11
+          },
+          "category_1_distribution": {
+            "mix-sound-music": 11
+          },
+          "category_2_distribution": {
+            "Perception Layer": 8,
+            "Cultural Layer": 2,
+            "Signal Layer": 1
+          },
+          "category_3_distribution": {
+            "Environmental Perception and Reasoning": 6,
+            "Professional Knowledge and Reasoning": 2,
+            "Temporal Analysis": 1,
+            "Anomaly Detection": 1,
+            "Music Theory": 1
+          },
+          "category_4_distribution": {
+            "(blank)": 11
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 11,
+          "n_audio_files_missing_duration": 0,
+          "average_audio_duration_seconds": 16.727,
+          "median_audio_duration_seconds": 15.0,
+          "min_audio_duration_seconds": 7.0,
+          "max_audio_duration_seconds": 28.0,
+          "total_audio_duration_seconds": 184.0,
+          "audio_duration_seconds": [
+            7.0,
+            7.0,
+            12.0,
+            14.0,
+            15.0,
+            15.0,
+            20.0,
+            20.0,
+            21.0,
+            25.0,
+            28.0
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 7.0,
+              "max": 8.75,
+              "count": 2
+            },
+            {
+              "min": 8.75,
+              "max": 10.5,
+              "count": 0
+            },
+            {
+              "min": 10.5,
+              "max": 12.25,
+              "count": 1
+            },
+            {
+              "min": 12.25,
+              "max": 14.0,
+              "count": 0
+            },
+            {
+              "min": 14.0,
+              "max": 15.75,
+              "count": 3
+            },
+            {
+              "min": 15.75,
+              "max": 17.5,
+              "count": 0
+            },
+            {
+              "min": 17.5,
+              "max": 19.25,
+              "count": 0
+            },
+            {
+              "min": 19.25,
+              "max": 21.0,
+              "count": 2
+            },
+            {
+              "min": 21.0,
+              "max": 22.75,
+              "count": 1
+            },
+            {
+              "min": 22.75,
+              "max": 24.5,
+              "count": 0
+            },
+            {
+              "min": 24.5,
+              "max": 26.25,
+              "count": 1
+            },
+            {
+              "min": 26.25,
+              "max": 28.0,
+              "count": 1
+            }
+          ],
+          "filter": {
+            "dimension": "modality",
+            "title": "Modality",
+            "value": "mix-sound-music"
+          }
+        },
+        "mix-sound-music-speech": {
+          "n_questions": 24,
+          "n_audio_files": 24,
+          "n_questions_with_audio": 24,
+          "question_type_distribution": {
+            "mcq": 24
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.75,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 24,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 21,
+            "1": 3
+          },
+          "category_1_distribution": {
+            "mix-sound-music-speech": 24
+          },
+          "category_2_distribution": {
+            "Perception Layer": 13,
+            "Semantic Layer": 10,
+            "Cultural Layer": 1
+          },
+          "category_3_distribution": {
+            "Environmental Perception and Reasoning": 10,
+            "Content Analysis": 8,
+            "Emotion and Intention": 2,
+            "Correlation Analysis": 2,
+            "Professional Knowledge and Reasoning": 1,
+            "Counting and Statistics": 1
+          },
+          "category_4_distribution": {
+            "(blank)": 24
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 24,
+          "n_audio_files_missing_duration": 0,
+          "average_audio_duration_seconds": 19.705,
+          "median_audio_duration_seconds": 20.0,
+          "min_audio_duration_seconds": 4.0,
+          "max_audio_duration_seconds": 30.0,
+          "total_audio_duration_seconds": 472.919,
+          "audio_duration_seconds": [
+            4.0,
+            9.0,
+            12.0,
+            12.0,
+            14.0,
+            15.0,
+            16.0,
+            16.0,
+            17.0,
+            17.0,
+            19.0,
+            19.0,
+            20.0,
+            20.0,
+            22.0,
+            23.0,
+            24.0,
+            24.474,
+            25.0,
+            28.0,
+            28.0,
+            28.445,
+            30.0,
+            30.0
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 4.0,
+              "max": 6.167,
+              "count": 1
+            },
+            {
+              "min": 6.167,
+              "max": 8.333,
+              "count": 0
+            },
+            {
+              "min": 8.333,
+              "max": 10.5,
+              "count": 1
+            },
+            {
+              "min": 10.5,
+              "max": 12.667,
+              "count": 2
+            },
+            {
+              "min": 12.667,
+              "max": 14.833,
+              "count": 1
+            },
+            {
+              "min": 14.833,
+              "max": 17.0,
+              "count": 3
+            },
+            {
+              "min": 17.0,
+              "max": 19.167,
+              "count": 4
+            },
+            {
+              "min": 19.167,
+              "max": 21.333,
+              "count": 2
+            },
+            {
+              "min": 21.333,
+              "max": 23.5,
+              "count": 2
+            },
+            {
+              "min": 23.5,
+              "max": 25.667,
+              "count": 3
+            },
+            {
+              "min": 25.667,
+              "max": 27.833,
+              "count": 0
+            },
+            {
+              "min": 27.833,
+              "max": 30.0,
+              "count": 5
+            }
+          ],
+          "filter": {
+            "dimension": "modality",
+            "title": "Modality",
+            "value": "mix-sound-music-speech"
+          }
+        },
+        "mix-sound-speech": {
+          "n_questions": 218,
+          "n_audio_files": 218,
+          "n_questions_with_audio": 218,
+          "question_type_distribution": {
+            "mcq": 218
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.642,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 218,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 177,
+            "1": 37,
+            "2": 4
+          },
+          "category_1_distribution": {
+            "mix-sound-speech": 218
+          },
+          "category_2_distribution": {
+            "Perception Layer": 102,
+            "Semantic Layer": 90,
+            "Cultural Layer": 20,
+            "Signal Layer": 6
+          },
+          "category_3_distribution": {
+            "Content Analysis": 72,
+            "Environmental Perception and Reasoning": 62,
+            "Correlation Analysis": 20,
+            "Counting and Statistics": 14,
+            "Professional Knowledge and Reasoning": 12,
+            "Emotion and Intention": 11,
+            "Speaker Analysis": 7,
+            "Culture of Speaker": 4,
+            "Anomaly Detection": 4,
+            "Temporal Analysis": 4,
+            "Imagination": 3,
+            "Aesthetic Evaluation": 1,
+            "Acoustic Quality Analysis": 1,
+            "Music Theory": 1,
+            "Audio Difference Analysis": 1,
+            "Spatial Analysis": 1
+          },
+          "category_4_distribution": {
+            "(blank)": 218
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 0,
+          "n_audio_files_missing_duration": 218,
+          "average_audio_duration_seconds": null,
+          "median_audio_duration_seconds": null,
+          "min_audio_duration_seconds": null,
+          "max_audio_duration_seconds": null,
+          "total_audio_duration_seconds": 0.0,
+          "audio_duration_seconds": [],
+          "audio_duration_histogram": [],
+          "filter": {
+            "dimension": "modality",
+            "title": "Modality",
+            "value": "mix-sound-speech"
+          }
+        },
+        "music": {
+          "n_questions": 206,
+          "n_audio_files": 206,
+          "n_questions_with_audio": 206,
+          "question_type_distribution": {
+            "mcq": 206
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.947,
+          "max_distractors": 6,
+          "n_questions_with_distractors": 206,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 195,
+            "1": 8,
+            "4": 2,
+            "6": 1
+          },
+          "category_1_distribution": {
+            "music": 206
+          },
+          "category_2_distribution": {
+            "Perception Layer": 105,
+            "Cultural Layer": 57,
+            "Semantic Layer": 30,
+            "Signal Layer": 14
+          },
+          "category_3_distribution": {
+            "Music Theory": 57,
+            "Professional Knowledge and Reasoning": 39,
+            "Counting and Statistics": 29,
+            "Content Analysis": 21,
+            "Temporal Analysis": 12,
+            "Culture of Speaker": 11,
+            "Acoustic Quality Analysis": 8,
+            "Emotion and Intention": 6,
+            "Aesthetic Evaluation": 5,
+            "Anomaly Detection": 3,
+            "Audio Difference Analysis": 3,
+            "Correlation Analysis": 3,
+            "Speaker Analysis": 3,
+            "Spatial Analysis": 3,
+            "Imagination": 2,
+            "Environmental Perception and Reasoning": 1
+          },
+          "category_4_distribution": {
+            "(blank)": 206
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 206,
+          "n_audio_files_missing_duration": 0,
+          "average_audio_duration_seconds": 25.989,
+          "median_audio_duration_seconds": 30.0,
+          "min_audio_duration_seconds": 6.0,
+          "max_audio_duration_seconds": 56.0,
+          "total_audio_duration_seconds": 5353.654,
+          "audio_duration_seconds": [
+            6.0,
+            7.0,
+            8.0,
+            9.0,
+            9.0,
+            9.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            11.0,
+            11.0,
+            12.0,
+            12.0,
+            13.0,
+            13.0,
+            13.939,
+            14.0,
+            14.0,
+            14.022,
+            15.939,
+            16.0,
+            16.0,
+            16.0,
+            16.022,
+            16.939,
+            17.0,
+            17.001,
+            18.0,
+            18.0,
+            18.0,
+            18.0,
+            19.0,
+            19.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.022,
+            20.023,
+            21.0,
+            22.0,
+            22.0,
+            22.0,
+            22.0,
+            22.0,
+            22.0,
+            22.0,
+            23.0,
+            23.0,
+            23.0,
+            23.022,
+            24.0,
+            25.0,
+            25.0,
+            25.043,
+            25.867,
+            25.939,
+            26.0,
+            26.0,
+            26.0,
+            26.0,
+            26.0,
+            26.61,
+            27.0,
+            27.0,
+            27.0,
+            27.022,
+            28.0,
+            28.0,
+            28.0,
+            28.0,
+            28.0,
+            28.0,
+            29.0,
+            29.0,
+            29.0,
+            29.0,
+            29.0,
+            29.0,
+            29.043,
+            29.427,
+            29.907,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.001,
+            30.001,
+            30.065,
+            30.939,
+            30.939,
+            31.0,
+            31.001,
+            31.877,
+            32.043,
+            56.0
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 6.0,
+              "max": 10.167,
+              "count": 13
+            },
+            {
+              "min": 10.167,
+              "max": 14.333,
+              "count": 10
+            },
+            {
+              "min": 14.333,
+              "max": 18.5,
+              "count": 12
+            },
+            {
+              "min": 18.5,
+              "max": 22.667,
+              "count": 16
+            },
+            {
+              "min": 22.667,
+              "max": 26.833,
+              "count": 16
+            },
+            {
+              "min": 26.833,
+              "max": 31.0,
+              "count": 134
+            },
+            {
+              "min": 31.0,
+              "max": 35.167,
+              "count": 4
+            },
+            {
+              "min": 35.167,
+              "max": 39.333,
+              "count": 0
+            },
+            {
+              "min": 39.333,
+              "max": 43.5,
+              "count": 0
+            },
+            {
+              "min": 43.5,
+              "max": 47.667,
+              "count": 0
+            },
+            {
+              "min": 47.667,
+              "max": 51.833,
+              "count": 0
+            },
+            {
+              "min": 51.833,
+              "max": 56.0,
+              "count": 1
+            }
+          ],
+          "filter": {
+            "dimension": "modality",
+            "title": "Modality",
+            "value": "music"
+          }
+        },
+        "sound": {
+          "n_questions": 165,
+          "n_audio_files": 165,
+          "n_questions_with_audio": 165,
+          "question_type_distribution": {
+            "mcq": 165
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.642,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 165,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 134,
+            "1": 28,
+            "2": 3
+          },
+          "category_1_distribution": {
+            "sound": 165
+          },
+          "category_2_distribution": {
+            "Perception Layer": 123,
+            "Semantic Layer": 16,
+            "Signal Layer": 14,
+            "Cultural Layer": 12
+          },
+          "category_3_distribution": {
+            "Environmental Perception and Reasoning": 56,
+            "Counting and Statistics": 29,
+            "Correlation Analysis": 21,
+            "Content Analysis": 15,
+            "Professional Knowledge and Reasoning": 11,
+            "Spatial Analysis": 9,
+            "Temporal Analysis": 7,
+            "Acoustic Quality Analysis": 7,
+            "Audio Difference Analysis": 4,
+            "Anomaly Detection": 3,
+            "Speaker Analysis": 1,
+            "Music Theory": 1,
+            "Aesthetic Evaluation": 1
+          },
+          "category_4_distribution": {
+            "(blank)": 165
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 0,
+          "n_audio_files_missing_duration": 165,
+          "average_audio_duration_seconds": null,
+          "median_audio_duration_seconds": null,
+          "min_audio_duration_seconds": null,
+          "max_audio_duration_seconds": null,
+          "total_audio_duration_seconds": 0.0,
+          "audio_duration_seconds": [],
+          "audio_duration_histogram": [],
+          "filter": {
+            "dimension": "modality",
+            "title": "Modality",
+            "value": "sound"
+          }
+        },
+        "speech": {
+          "n_questions": 294,
+          "n_audio_files": 294,
+          "n_questions_with_audio": 294,
+          "question_type_distribution": {
+            "mcq": 294
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.483,
+          "max_distractors": 4,
+          "n_questions_with_distractors": 294,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 215,
+            "1": 75,
+            "2": 3,
+            "4": 1
+          },
+          "category_1_distribution": {
+            "speech": 294
+          },
+          "category_2_distribution": {
+            "Semantic Layer": 219,
+            "Cultural Layer": 38,
+            "Perception Layer": 33,
+            "Signal Layer": 4
+          },
+          "category_3_distribution": {
+            "Content Analysis": 149,
+            "Speaker Analysis": 35,
+            "Emotion and Intention": 35,
+            "Culture of Speaker": 33,
+            "Counting and Statistics": 18,
+            "Environmental Perception and Reasoning": 9,
+            "Professional Knowledge and Reasoning": 3,
+            "Anomaly Detection": 3,
+            "Correlation Analysis": 3,
+            "Spatial Analysis": 2,
+            "Imagination": 2,
+            "Acoustic Quality Analysis": 1,
+            "Temporal Analysis": 1
+          },
+          "category_4_distribution": {
+            "(blank)": 294
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 0,
+          "n_audio_files_missing_duration": 294,
+          "average_audio_duration_seconds": null,
+          "median_audio_duration_seconds": null,
+          "min_audio_duration_seconds": null,
+          "max_audio_duration_seconds": null,
+          "total_audio_duration_seconds": 0.0,
+          "audio_duration_seconds": [],
+          "audio_duration_histogram": [],
+          "filter": {
+            "dimension": "modality",
+            "title": "Modality",
+            "value": "speech"
+          }
+        }
+      }
+    },
+    "category": {
+      "title": "Category",
+      "values": {
+        "Cultural Layer": {
+          "n_questions": 141,
+          "n_audio_files": 141,
+          "n_questions_with_audio": 141,
+          "question_type_distribution": {
+            "mcq": 141
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.766,
+          "max_distractors": 6,
+          "n_questions_with_distractors": 141,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 118,
+            "1": 18,
+            "2": 2,
+            "4": 2,
+            "6": 1
+          },
+          "category_1_distribution": {
+            "music": 57,
+            "speech": 38,
+            "mix-sound-speech": 20,
+            "sound": 12,
+            "mix-music-speech": 11,
+            "mix-sound-music": 2,
+            "mix-sound-music-speech": 1
+          },
+          "category_2_distribution": {
+            "Cultural Layer": 141
+          },
+          "category_3_distribution": {
+            "Professional Knowledge and Reasoning": 71,
+            "Culture of Speaker": 52,
+            "Imagination": 10,
+            "Aesthetic Evaluation": 8
+          },
+          "category_4_distribution": {
+            "(blank)": 141
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 71,
+          "n_audio_files_missing_duration": 70,
+          "average_audio_duration_seconds": 26.149,
+          "median_audio_duration_seconds": 30.0,
+          "min_audio_duration_seconds": 7.0,
+          "max_audio_duration_seconds": 56.0,
+          "total_audio_duration_seconds": 1856.586,
+          "audio_duration_seconds": [
+            7.0,
+            7.0,
+            7.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            13.0,
+            15.0,
+            15.939,
+            18.0,
+            18.0,
+            18.0,
+            20.0,
+            20.022,
+            21.0,
+            22.0,
+            22.0,
+            23.0,
+            26.0,
+            26.0,
+            26.61,
+            27.0,
+            28.0,
+            29.0,
+            29.0,
+            29.907,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.065,
+            32.043,
+            56.0
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 7.0,
+              "max": 11.083,
+              "count": 7
+            },
+            {
+              "min": 11.083,
+              "max": 15.167,
+              "count": 2
+            },
+            {
+              "min": 15.167,
+              "max": 19.25,
+              "count": 4
+            },
+            {
+              "min": 19.25,
+              "max": 23.333,
+              "count": 6
+            },
+            {
+              "min": 23.333,
+              "max": 27.417,
+              "count": 4
+            },
+            {
+              "min": 27.417,
+              "max": 31.5,
+              "count": 46
+            },
+            {
+              "min": 31.5,
+              "max": 35.583,
+              "count": 1
+            },
+            {
+              "min": 35.583,
+              "max": 39.667,
+              "count": 0
+            },
+            {
+              "min": 39.667,
+              "max": 43.75,
+              "count": 0
+            },
+            {
+              "min": 43.75,
+              "max": 47.833,
+              "count": 0
+            },
+            {
+              "min": 47.833,
+              "max": 51.917,
+              "count": 0
+            },
+            {
+              "min": 51.917,
+              "max": 56.0,
+              "count": 1
+            }
+          ],
+          "filter": {
+            "dimension": "category",
+            "title": "Category",
+            "value": "Cultural Layer"
+          }
+        },
+        "Perception Layer": {
+          "n_questions": 404,
+          "n_audio_files": 404,
+          "n_questions_with_audio": 404,
+          "question_type_distribution": {
+            "mcq": 404
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.822,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 404,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 367,
+            "1": 35,
+            "2": 2
+          },
+          "category_1_distribution": {
+            "sound": 123,
+            "music": 105,
+            "mix-sound-speech": 102,
+            "speech": 33,
+            "mix-music-speech": 20,
+            "mix-sound-music-speech": 13,
+            "mix-sound-music": 8
+          },
+          "category_2_distribution": {
+            "Perception Layer": 404
+          },
+          "category_3_distribution": {
+            "Environmental Perception and Reasoning": 149,
+            "Counting and Statistics": 99,
+            "Music Theory": 63,
+            "Correlation Analysis": 50,
+            "Temporal Analysis": 28,
+            "Spatial Analysis": 15
+          },
+          "category_4_distribution": {
+            "(blank)": 404
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 146,
+          "n_audio_files_missing_duration": 258,
+          "average_audio_duration_seconds": 23.59,
+          "median_audio_duration_seconds": 27.0,
+          "min_audio_duration_seconds": 4.0,
+          "max_audio_duration_seconds": 31.877,
+          "total_audio_duration_seconds": 3444.102,
+          "audio_duration_seconds": [
+            4.0,
+            6.0,
+            7.0,
+            8.0,
+            9.0,
+            9.0,
+            9.0,
+            9.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            11.0,
+            11.0,
+            12.0,
+            12.0,
+            12.0,
+            12.0,
+            12.0,
+            13.0,
+            13.0,
+            13.939,
+            14.0,
+            14.0,
+            14.0,
+            14.0,
+            15.0,
+            15.0,
+            15.0,
+            16.0,
+            16.022,
+            17.0,
+            17.0,
+            17.001,
+            18.0,
+            18.0,
+            18.0,
+            18.0,
+            18.0,
+            19.0,
+            19.0,
+            19.0,
+            19.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            21.0,
+            22.0,
+            22.0,
+            22.0,
+            22.0,
+            22.0,
+            22.0,
+            22.0,
+            24.0,
+            24.0,
+            24.0,
+            25.0,
+            25.0,
+            25.0,
+            25.0,
+            25.043,
+            25.867,
+            25.939,
+            26.0,
+            26.0,
+            26.0,
+            27.0,
+            27.0,
+            27.0,
+            28.0,
+            28.0,
+            28.0,
+            28.0,
+            28.0,
+            29.0,
+            29.0,
+            29.0,
+            29.0,
+            29.043,
+            29.427,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.001,
+            30.939,
+            31.001,
+            31.877
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 4.0,
+              "max": 6.323,
+              "count": 2
+            },
+            {
+              "min": 6.323,
+              "max": 8.646,
+              "count": 2
+            },
+            {
+              "min": 8.646,
+              "max": 10.969,
+              "count": 8
+            },
+            {
+              "min": 10.969,
+              "max": 13.292,
+              "count": 9
+            },
+            {
+              "min": 13.292,
+              "max": 15.615,
+              "count": 8
+            },
+            {
+              "min": 15.615,
+              "max": 17.939,
+              "count": 5
+            },
+            {
+              "min": 17.939,
+              "max": 20.262,
+              "count": 16
+            },
+            {
+              "min": 20.262,
+              "max": 22.585,
+              "count": 8
+            },
+            {
+              "min": 22.585,
+              "max": 24.908,
+              "count": 3
+            },
+            {
+              "min": 24.908,
+              "max": 27.231,
+              "count": 13
+            },
+            {
+              "min": 27.231,
+              "max": 29.554,
+              "count": 11
+            },
+            {
+              "min": 29.554,
+              "max": 31.877,
+              "count": 61
+            }
+          ],
+          "filter": {
+            "dimension": "category",
+            "title": "Category",
+            "value": "Perception Layer"
+          }
+        },
+        "Semantic Layer": {
+          "n_questions": 412,
+          "n_audio_files": 412,
+          "n_questions_with_audio": 412,
+          "question_type_distribution": {
+            "mcq": 412
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.483,
+          "max_distractors": 4,
+          "n_questions_with_distractors": 412,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 302,
+            "1": 105,
+            "2": 4,
+            "4": 1
+          },
+          "category_1_distribution": {
+            "speech": 219,
+            "mix-sound-speech": 90,
+            "mix-music-speech": 47,
+            "music": 30,
+            "sound": 16,
+            "mix-sound-music-speech": 10
+          },
+          "category_2_distribution": {
+            "Semantic Layer": 412
+          },
+          "category_3_distribution": {
+            "Content Analysis": 304,
+            "Emotion and Intention": 60,
+            "Speaker Analysis": 48
+          },
+          "category_4_distribution": {
+            "(blank)": 412
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 87,
+          "n_audio_files_missing_duration": 325,
+          "average_audio_duration_seconds": 23.665,
+          "median_audio_duration_seconds": 25.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 31.0,
+          "total_audio_duration_seconds": 2058.866,
+          "audio_duration_seconds": [
+            10.0,
+            11.0,
+            11.0,
+            11.0,
+            12.0,
+            12.0,
+            12.0,
+            12.0,
+            12.608,
+            13.0,
+            13.0,
+            14.0,
+            14.752,
+            15.0,
+            16.0,
+            16.0,
+            16.0,
+            16.0,
+            17.0,
+            17.0,
+            18.0,
+            19.0,
+            19.0,
+            19.0,
+            19.482,
+            20.0,
+            20.0,
+            20.0,
+            20.023,
+            21.0,
+            22.0,
+            22.0,
+            22.988,
+            23.0,
+            23.0,
+            23.0,
+            23.0,
+            23.0,
+            23.022,
+            23.05,
+            24.0,
+            24.474,
+            25.0,
+            25.0,
+            26.0,
+            27.0,
+            27.0,
+            27.022,
+            28.0,
+            28.0,
+            28.0,
+            28.0,
+            28.445,
+            29.0,
+            29.0,
+            29.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.001,
+            31.0
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 11.75,
+              "count": 4
+            },
+            {
+              "min": 11.75,
+              "max": 13.5,
+              "count": 7
+            },
+            {
+              "min": 13.5,
+              "max": 15.25,
+              "count": 3
+            },
+            {
+              "min": 15.25,
+              "max": 17.0,
+              "count": 4
+            },
+            {
+              "min": 17.0,
+              "max": 18.75,
+              "count": 3
+            },
+            {
+              "min": 18.75,
+              "max": 20.5,
+              "count": 8
+            },
+            {
+              "min": 20.5,
+              "max": 22.25,
+              "count": 3
+            },
+            {
+              "min": 22.25,
+              "max": 24.0,
+              "count": 8
+            },
+            {
+              "min": 24.0,
+              "max": 25.75,
+              "count": 4
+            },
+            {
+              "min": 25.75,
+              "max": 27.5,
+              "count": 4
+            },
+            {
+              "min": 27.5,
+              "max": 29.25,
+              "count": 8
+            },
+            {
+              "min": 29.25,
+              "max": 31.0,
+              "count": 31
+            }
+          ],
+          "filter": {
+            "dimension": "category",
+            "title": "Category",
+            "value": "Semantic Layer"
+          }
+        },
+        "Signal Layer": {
+          "n_questions": 43,
+          "n_audio_files": 43,
+          "n_questions_with_audio": 43,
+          "question_type_distribution": {
+            "mcq": 43
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.349,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 43,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 28,
+            "1": 13,
+            "2": 2
+          },
+          "category_1_distribution": {
+            "music": 14,
+            "sound": 14,
+            "mix-sound-speech": 6,
+            "speech": 4,
+            "mix-music-speech": 4,
+            "mix-sound-music": 1
+          },
+          "category_2_distribution": {
+            "Signal Layer": 43
+          },
+          "category_3_distribution": {
+            "Acoustic Quality Analysis": 18,
+            "Anomaly Detection": 17,
+            "Audio Difference Analysis": 8
+          },
+          "category_4_distribution": {
+            "(blank)": 43
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 19,
+          "n_audio_files_missing_duration": 24,
+          "average_audio_duration_seconds": 21.837,
+          "median_audio_duration_seconds": 25.0,
+          "min_audio_duration_seconds": 9.0,
+          "max_audio_duration_seconds": 30.939,
+          "total_audio_duration_seconds": 414.899,
+          "audio_duration_seconds": [
+            9.0,
+            10.0,
+            10.0,
+            14.0,
+            14.0,
+            14.022,
+            16.0,
+            16.939,
+            17.0,
+            25.0,
+            28.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.939
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 9.0,
+              "max": 10.828,
+              "count": 3
+            },
+            {
+              "min": 10.828,
+              "max": 12.656,
+              "count": 0
+            },
+            {
+              "min": 12.656,
+              "max": 14.485,
+              "count": 3
+            },
+            {
+              "min": 14.485,
+              "max": 16.313,
+              "count": 1
+            },
+            {
+              "min": 16.313,
+              "max": 18.141,
+              "count": 2
+            },
+            {
+              "min": 18.141,
+              "max": 19.97,
+              "count": 0
+            },
+            {
+              "min": 19.97,
+              "max": 21.798,
+              "count": 0
+            },
+            {
+              "min": 21.798,
+              "max": 23.626,
+              "count": 0
+            },
+            {
+              "min": 23.626,
+              "max": 25.454,
+              "count": 1
+            },
+            {
+              "min": 25.454,
+              "max": 27.282,
+              "count": 0
+            },
+            {
+              "min": 27.282,
+              "max": 29.111,
+              "count": 1
+            },
+            {
+              "min": 29.111,
+              "max": 30.939,
+              "count": 8
+            }
+          ],
+          "filter": {
+            "dimension": "category",
+            "title": "Category",
+            "value": "Signal Layer"
+          }
+        }
+      }
+    },
+    "genre": {
+      "title": "Genre",
+      "values": {}
+    },
+    "skill": {
+      "title": "Skill",
+      "values": {
+        "Acoustic Quality Analysis": {
+          "n_questions": 18,
+          "n_audio_files": 18,
+          "n_questions_with_audio": 18,
+          "question_type_distribution": {
+            "mcq": 18
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.722,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 18,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 15,
+            "1": 2,
+            "2": 1
+          },
+          "category_1_distribution": {
+            "music": 8,
+            "sound": 7,
+            "mix-sound-speech": 1,
+            "mix-music-speech": 1,
+            "speech": 1
+          },
+          "category_2_distribution": {
+            "Signal Layer": 18
+          },
+          "category_3_distribution": {
+            "Acoustic Quality Analysis": 18
+          },
+          "category_4_distribution": {
+            "(blank)": 18
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 9,
+          "n_audio_files_missing_duration": 9,
+          "average_audio_duration_seconds": 23.211,
+          "median_audio_duration_seconds": 30.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 30.939,
+          "total_audio_duration_seconds": 208.899,
+          "audio_duration_seconds": [
+            10.0,
+            14.022,
+            16.939,
+            17.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.939
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 11.745,
+              "count": 1
+            },
+            {
+              "min": 11.745,
+              "max": 13.49,
+              "count": 0
+            },
+            {
+              "min": 13.49,
+              "max": 15.235,
+              "count": 1
+            },
+            {
+              "min": 15.235,
+              "max": 16.98,
+              "count": 1
+            },
+            {
+              "min": 16.98,
+              "max": 18.725,
+              "count": 1
+            },
+            {
+              "min": 18.725,
+              "max": 20.47,
+              "count": 0
+            },
+            {
+              "min": 20.47,
+              "max": 22.214,
+              "count": 0
+            },
+            {
+              "min": 22.214,
+              "max": 23.959,
+              "count": 0
+            },
+            {
+              "min": 23.959,
+              "max": 25.704,
+              "count": 0
+            },
+            {
+              "min": 25.704,
+              "max": 27.449,
+              "count": 0
+            },
+            {
+              "min": 27.449,
+              "max": 29.194,
+              "count": 0
+            },
+            {
+              "min": 29.194,
+              "max": 30.939,
+              "count": 5
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "Acoustic Quality Analysis"
+          }
+        },
+        "Aesthetic Evaluation": {
+          "n_questions": 8,
+          "n_audio_files": 8,
+          "n_questions_with_audio": 8,
+          "question_type_distribution": {
+            "mcq": 8
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.875,
+          "max_distractors": 4,
+          "n_questions_with_distractors": 8,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 6,
+            "1": 1,
+            "4": 1
+          },
+          "category_1_distribution": {
+            "music": 5,
+            "mix-sound-speech": 1,
+            "sound": 1,
+            "mix-music-speech": 1
+          },
+          "category_2_distribution": {
+            "Cultural Layer": 8
+          },
+          "category_3_distribution": {
+            "Aesthetic Evaluation": 8
+          },
+          "category_4_distribution": {
+            "(blank)": 8
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 6,
+          "n_audio_files_missing_duration": 2,
+          "average_audio_duration_seconds": 22.5,
+          "median_audio_duration_seconds": 23.0,
+          "min_audio_duration_seconds": 13.0,
+          "max_audio_duration_seconds": 30.0,
+          "total_audio_duration_seconds": 135.0,
+          "audio_duration_seconds": [
+            13.0,
+            18.0,
+            21.0,
+            23.0,
+            30.0,
+            30.0
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 13.0,
+              "max": 14.417,
+              "count": 1
+            },
+            {
+              "min": 14.417,
+              "max": 15.833,
+              "count": 0
+            },
+            {
+              "min": 15.833,
+              "max": 17.25,
+              "count": 0
+            },
+            {
+              "min": 17.25,
+              "max": 18.667,
+              "count": 1
+            },
+            {
+              "min": 18.667,
+              "max": 20.083,
+              "count": 0
+            },
+            {
+              "min": 20.083,
+              "max": 21.5,
+              "count": 1
+            },
+            {
+              "min": 21.5,
+              "max": 22.917,
+              "count": 0
+            },
+            {
+              "min": 22.917,
+              "max": 24.333,
+              "count": 1
+            },
+            {
+              "min": 24.333,
+              "max": 25.75,
+              "count": 0
+            },
+            {
+              "min": 25.75,
+              "max": 27.167,
+              "count": 0
+            },
+            {
+              "min": 27.167,
+              "max": 28.583,
+              "count": 0
+            },
+            {
+              "min": 28.583,
+              "max": 30.0,
+              "count": 2
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "Aesthetic Evaluation"
+          }
+        },
+        "Anomaly Detection": {
+          "n_questions": 17,
+          "n_audio_files": 17,
+          "n_questions_with_audio": 17,
+          "question_type_distribution": {
+            "mcq": 17
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 1.765,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 17,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "1": 10,
+            "3": 6,
+            "2": 1
+          },
+          "category_1_distribution": {
+            "mix-sound-speech": 4,
+            "speech": 3,
+            "music": 3,
+            "mix-music-speech": 3,
+            "sound": 3,
+            "mix-sound-music": 1
+          },
+          "category_2_distribution": {
+            "Signal Layer": 17
+          },
+          "category_3_distribution": {
+            "Anomaly Detection": 17
+          },
+          "category_4_distribution": {
+            "(blank)": 17
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 7,
+          "n_audio_files_missing_duration": 10,
+          "average_audio_duration_seconds": 19.571,
+          "median_audio_duration_seconds": 14.0,
+          "min_audio_duration_seconds": 9.0,
+          "max_audio_duration_seconds": 30.0,
+          "total_audio_duration_seconds": 137.0,
+          "audio_duration_seconds": [
+            9.0,
+            10.0,
+            14.0,
+            14.0,
+            30.0,
+            30.0,
+            30.0
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 9.0,
+              "max": 10.75,
+              "count": 2
+            },
+            {
+              "min": 10.75,
+              "max": 12.5,
+              "count": 0
+            },
+            {
+              "min": 12.5,
+              "max": 14.25,
+              "count": 2
+            },
+            {
+              "min": 14.25,
+              "max": 16.0,
+              "count": 0
+            },
+            {
+              "min": 16.0,
+              "max": 17.75,
+              "count": 0
+            },
+            {
+              "min": 17.75,
+              "max": 19.5,
+              "count": 0
+            },
+            {
+              "min": 19.5,
+              "max": 21.25,
+              "count": 0
+            },
+            {
+              "min": 21.25,
+              "max": 23.0,
+              "count": 0
+            },
+            {
+              "min": 23.0,
+              "max": 24.75,
+              "count": 0
+            },
+            {
+              "min": 24.75,
+              "max": 26.5,
+              "count": 0
+            },
+            {
+              "min": 26.5,
+              "max": 28.25,
+              "count": 0
+            },
+            {
+              "min": 28.25,
+              "max": 30.0,
+              "count": 3
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "Anomaly Detection"
+          }
+        },
+        "Audio Difference Analysis": {
+          "n_questions": 8,
+          "n_audio_files": 8,
+          "n_questions_with_audio": 8,
+          "question_type_distribution": {
+            "mcq": 8
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.75,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 8,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 7,
+            "1": 1
+          },
+          "category_1_distribution": {
+            "sound": 4,
+            "music": 3,
+            "mix-sound-speech": 1
+          },
+          "category_2_distribution": {
+            "Signal Layer": 8
+          },
+          "category_3_distribution": {
+            "Audio Difference Analysis": 8
+          },
+          "category_4_distribution": {
+            "(blank)": 8
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 3,
+          "n_audio_files_missing_duration": 5,
+          "average_audio_duration_seconds": 23.0,
+          "median_audio_duration_seconds": 25.0,
+          "min_audio_duration_seconds": 16.0,
+          "max_audio_duration_seconds": 28.0,
+          "total_audio_duration_seconds": 69.0,
+          "audio_duration_seconds": [
+            16.0,
+            25.0,
+            28.0
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 16.0,
+              "max": 17.0,
+              "count": 1
+            },
+            {
+              "min": 17.0,
+              "max": 18.0,
+              "count": 0
+            },
+            {
+              "min": 18.0,
+              "max": 19.0,
+              "count": 0
+            },
+            {
+              "min": 19.0,
+              "max": 20.0,
+              "count": 0
+            },
+            {
+              "min": 20.0,
+              "max": 21.0,
+              "count": 0
+            },
+            {
+              "min": 21.0,
+              "max": 22.0,
+              "count": 0
+            },
+            {
+              "min": 22.0,
+              "max": 23.0,
+              "count": 0
+            },
+            {
+              "min": 23.0,
+              "max": 24.0,
+              "count": 0
+            },
+            {
+              "min": 24.0,
+              "max": 25.0,
+              "count": 0
+            },
+            {
+              "min": 25.0,
+              "max": 26.0,
+              "count": 1
+            },
+            {
+              "min": 26.0,
+              "max": 27.0,
+              "count": 0
+            },
+            {
+              "min": 27.0,
+              "max": 28.0,
+              "count": 1
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "Audio Difference Analysis"
+          }
+        },
+        "Content Analysis": {
+          "n_questions": 304,
+          "n_audio_files": 304,
+          "n_questions_with_audio": 304,
+          "question_type_distribution": {
+            "mcq": 304
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.424,
+          "max_distractors": 4,
+          "n_questions_with_distractors": 304,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 213,
+            "1": 86,
+            "2": 4,
+            "4": 1
+          },
+          "category_1_distribution": {
+            "speech": 149,
+            "mix-sound-speech": 72,
+            "mix-music-speech": 39,
+            "music": 21,
+            "sound": 15,
+            "mix-sound-music-speech": 8
+          },
+          "category_2_distribution": {
+            "Semantic Layer": 304
+          },
+          "category_3_distribution": {
+            "Content Analysis": 304
+          },
+          "category_4_distribution": {
+            "(blank)": 304
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 68,
+          "n_audio_files_missing_duration": 236,
+          "average_audio_duration_seconds": 23.24,
+          "median_audio_duration_seconds": 25.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 30.001,
+          "total_audio_duration_seconds": 1580.348,
+          "audio_duration_seconds": [
+            10.0,
+            11.0,
+            11.0,
+            12.0,
+            12.0,
+            12.0,
+            12.0,
+            12.608,
+            13.0,
+            13.0,
+            14.0,
+            14.752,
+            15.0,
+            16.0,
+            16.0,
+            16.0,
+            17.0,
+            17.0,
+            19.0,
+            19.0,
+            19.0,
+            19.482,
+            20.0,
+            20.0,
+            20.023,
+            21.0,
+            22.0,
+            22.0,
+            22.988,
+            23.0,
+            23.0,
+            23.0,
+            23.0,
+            23.05,
+            25.0,
+            25.0,
+            27.0,
+            28.0,
+            28.0,
+            28.0,
+            28.445,
+            29.0,
+            29.0,
+            29.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.001
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 11.667,
+              "count": 3
+            },
+            {
+              "min": 11.667,
+              "max": 13.334,
+              "count": 7
+            },
+            {
+              "min": 13.334,
+              "max": 15.0,
+              "count": 3
+            },
+            {
+              "min": 15.0,
+              "max": 16.667,
+              "count": 3
+            },
+            {
+              "min": 16.667,
+              "max": 18.334,
+              "count": 2
+            },
+            {
+              "min": 18.334,
+              "max": 20.001,
+              "count": 6
+            },
+            {
+              "min": 20.001,
+              "max": 21.667,
+              "count": 2
+            },
+            {
+              "min": 21.667,
+              "max": 23.334,
+              "count": 8
+            },
+            {
+              "min": 23.334,
+              "max": 25.001,
+              "count": 2
+            },
+            {
+              "min": 25.001,
+              "max": 26.668,
+              "count": 0
+            },
+            {
+              "min": 26.668,
+              "max": 28.334,
+              "count": 4
+            },
+            {
+              "min": 28.334,
+              "max": 30.001,
+              "count": 28
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "Content Analysis"
+          }
+        },
+        "Correlation Analysis": {
+          "n_questions": 50,
+          "n_audio_files": 50,
+          "n_questions_with_audio": 50,
+          "question_type_distribution": {
+            "mcq": 50
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.5,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 50,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 37,
+            "1": 12,
+            "2": 1
+          },
+          "category_1_distribution": {
+            "sound": 21,
+            "mix-sound-speech": 20,
+            "speech": 3,
+            "music": 3,
+            "mix-sound-music-speech": 2,
+            "mix-music-speech": 1
+          },
+          "category_2_distribution": {
+            "Perception Layer": 50
+          },
+          "category_3_distribution": {
+            "Correlation Analysis": 50
+          },
+          "category_4_distribution": {
+            "(blank)": 50
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 6,
+          "n_audio_files_missing_duration": 44,
+          "average_audio_duration_seconds": 21.333,
+          "median_audio_duration_seconds": 22.0,
+          "min_audio_duration_seconds": 12.0,
+          "max_audio_duration_seconds": 30.0,
+          "total_audio_duration_seconds": 128.0,
+          "audio_duration_seconds": [
+            12.0,
+            17.0,
+            17.0,
+            22.0,
+            30.0,
+            30.0
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 12.0,
+              "max": 13.5,
+              "count": 1
+            },
+            {
+              "min": 13.5,
+              "max": 15.0,
+              "count": 0
+            },
+            {
+              "min": 15.0,
+              "max": 16.5,
+              "count": 0
+            },
+            {
+              "min": 16.5,
+              "max": 18.0,
+              "count": 2
+            },
+            {
+              "min": 18.0,
+              "max": 19.5,
+              "count": 0
+            },
+            {
+              "min": 19.5,
+              "max": 21.0,
+              "count": 0
+            },
+            {
+              "min": 21.0,
+              "max": 22.5,
+              "count": 1
+            },
+            {
+              "min": 22.5,
+              "max": 24.0,
+              "count": 0
+            },
+            {
+              "min": 24.0,
+              "max": 25.5,
+              "count": 0
+            },
+            {
+              "min": 25.5,
+              "max": 27.0,
+              "count": 0
+            },
+            {
+              "min": 27.0,
+              "max": 28.5,
+              "count": 0
+            },
+            {
+              "min": 28.5,
+              "max": 30.0,
+              "count": 2
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "Correlation Analysis"
+          }
+        },
+        "Counting and Statistics": {
+          "n_questions": 99,
+          "n_audio_files": 99,
+          "n_questions_with_audio": 99,
+          "question_type_distribution": {
+            "mcq": 99
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.96,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 99,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 97,
+            "1": 2
+          },
+          "category_1_distribution": {
+            "sound": 29,
+            "music": 29,
+            "speech": 18,
+            "mix-sound-speech": 14,
+            "mix-music-speech": 8,
+            "mix-sound-music-speech": 1
+          },
+          "category_2_distribution": {
+            "Perception Layer": 99
+          },
+          "category_3_distribution": {
+            "Counting and Statistics": 99
+          },
+          "category_4_distribution": {
+            "(blank)": 99
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 38,
+          "n_audio_files_missing_duration": 61,
+          "average_audio_duration_seconds": 25.158,
+          "median_audio_duration_seconds": 30.0,
+          "min_audio_duration_seconds": 4.0,
+          "max_audio_duration_seconds": 30.0,
+          "total_audio_duration_seconds": 956.0,
+          "audio_duration_seconds": [
+            4.0,
+            6.0,
+            9.0,
+            13.0,
+            14.0,
+            15.0,
+            18.0,
+            19.0,
+            19.0,
+            22.0,
+            22.0,
+            22.0,
+            27.0,
+            27.0,
+            29.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 4.0,
+              "max": 6.167,
+              "count": 2
+            },
+            {
+              "min": 6.167,
+              "max": 8.333,
+              "count": 0
+            },
+            {
+              "min": 8.333,
+              "max": 10.5,
+              "count": 1
+            },
+            {
+              "min": 10.5,
+              "max": 12.667,
+              "count": 0
+            },
+            {
+              "min": 12.667,
+              "max": 14.833,
+              "count": 2
+            },
+            {
+              "min": 14.833,
+              "max": 17.0,
+              "count": 1
+            },
+            {
+              "min": 17.0,
+              "max": 19.167,
+              "count": 3
+            },
+            {
+              "min": 19.167,
+              "max": 21.333,
+              "count": 0
+            },
+            {
+              "min": 21.333,
+              "max": 23.5,
+              "count": 3
+            },
+            {
+              "min": 23.5,
+              "max": 25.667,
+              "count": 0
+            },
+            {
+              "min": 25.667,
+              "max": 27.833,
+              "count": 2
+            },
+            {
+              "min": 27.833,
+              "max": 30.0,
+              "count": 24
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "Counting and Statistics"
+          }
+        },
+        "Culture of Speaker": {
+          "n_questions": 52,
+          "n_audio_files": 52,
+          "n_questions_with_audio": 52,
+          "question_type_distribution": {
+            "mcq": 52
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.615,
+          "max_distractors": 6,
+          "n_questions_with_distractors": 52,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 37,
+            "1": 11,
+            "2": 2,
+            "4": 1,
+            "6": 1
+          },
+          "category_1_distribution": {
+            "speech": 33,
+            "music": 11,
+            "mix-sound-speech": 4,
+            "mix-music-speech": 4
+          },
+          "category_2_distribution": {
+            "Cultural Layer": 52
+          },
+          "category_3_distribution": {
+            "Culture of Speaker": 52
+          },
+          "category_4_distribution": {
+            "(blank)": 52
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 15,
+          "n_audio_files_missing_duration": 37,
+          "average_audio_duration_seconds": 26.138,
+          "median_audio_duration_seconds": 30.0,
+          "min_audio_duration_seconds": 7.0,
+          "max_audio_duration_seconds": 56.0,
+          "total_audio_duration_seconds": 392.065,
+          "audio_duration_seconds": [
+            7.0,
+            10.0,
+            10.0,
+            10.0,
+            29.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.065,
+            56.0
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 7.0,
+              "max": 11.083,
+              "count": 4
+            },
+            {
+              "min": 11.083,
+              "max": 15.167,
+              "count": 0
+            },
+            {
+              "min": 15.167,
+              "max": 19.25,
+              "count": 0
+            },
+            {
+              "min": 19.25,
+              "max": 23.333,
+              "count": 0
+            },
+            {
+              "min": 23.333,
+              "max": 27.417,
+              "count": 0
+            },
+            {
+              "min": 27.417,
+              "max": 31.5,
+              "count": 10
+            },
+            {
+              "min": 31.5,
+              "max": 35.583,
+              "count": 0
+            },
+            {
+              "min": 35.583,
+              "max": 39.667,
+              "count": 0
+            },
+            {
+              "min": 39.667,
+              "max": 43.75,
+              "count": 0
+            },
+            {
+              "min": 43.75,
+              "max": 47.833,
+              "count": 0
+            },
+            {
+              "min": 47.833,
+              "max": 51.917,
+              "count": 0
+            },
+            {
+              "min": 51.917,
+              "max": 56.0,
+              "count": 1
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "Culture of Speaker"
+          }
+        },
+        "Emotion and Intention": {
+          "n_questions": 60,
+          "n_audio_files": 60,
+          "n_questions_with_audio": 60,
+          "question_type_distribution": {
+            "mcq": 60
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.633,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 60,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 49,
+            "1": 11
+          },
+          "category_1_distribution": {
+            "speech": 35,
+            "mix-sound-speech": 11,
+            "mix-music-speech": 6,
+            "music": 6,
+            "mix-sound-music-speech": 2
+          },
+          "category_2_distribution": {
+            "Semantic Layer": 60
+          },
+          "category_3_distribution": {
+            "Emotion and Intention": 60
+          },
+          "category_4_distribution": {
+            "(blank)": 60
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 14,
+          "n_audio_files_missing_duration": 46,
+          "average_audio_duration_seconds": 25.321,
+          "median_audio_duration_seconds": 30.0,
+          "min_audio_duration_seconds": 11.0,
+          "max_audio_duration_seconds": 31.0,
+          "total_audio_duration_seconds": 354.496,
+          "audio_duration_seconds": [
+            11.0,
+            16.0,
+            18.0,
+            23.022,
+            24.0,
+            24.474,
+            27.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            31.0
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 11.0,
+              "max": 12.667,
+              "count": 1
+            },
+            {
+              "min": 12.667,
+              "max": 14.333,
+              "count": 0
+            },
+            {
+              "min": 14.333,
+              "max": 16.0,
+              "count": 0
+            },
+            {
+              "min": 16.0,
+              "max": 17.667,
+              "count": 1
+            },
+            {
+              "min": 17.667,
+              "max": 19.333,
+              "count": 1
+            },
+            {
+              "min": 19.333,
+              "max": 21.0,
+              "count": 0
+            },
+            {
+              "min": 21.0,
+              "max": 22.667,
+              "count": 0
+            },
+            {
+              "min": 22.667,
+              "max": 24.333,
+              "count": 2
+            },
+            {
+              "min": 24.333,
+              "max": 26.0,
+              "count": 1
+            },
+            {
+              "min": 26.0,
+              "max": 27.667,
+              "count": 1
+            },
+            {
+              "min": 27.667,
+              "max": 29.333,
+              "count": 0
+            },
+            {
+              "min": 29.333,
+              "max": 31.0,
+              "count": 7
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "Emotion and Intention"
+          }
+        },
+        "Environmental Perception and Reasoning": {
+          "n_questions": 149,
+          "n_audio_files": 149,
+          "n_questions_with_audio": 149,
+          "question_type_distribution": {
+            "mcq": 149
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.799,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 149,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 134,
+            "1": 15
+          },
+          "category_1_distribution": {
+            "mix-sound-speech": 62,
+            "sound": 56,
+            "mix-sound-music-speech": 10,
+            "speech": 9,
+            "mix-sound-music": 6,
+            "mix-music-speech": 5,
+            "music": 1
+          },
+          "category_2_distribution": {
+            "Perception Layer": 149
+          },
+          "category_3_distribution": {
+            "Environmental Perception and Reasoning": 149
+          },
+          "category_4_distribution": {
+            "(blank)": 149
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 22,
+          "n_audio_files_missing_duration": 127,
+          "average_audio_duration_seconds": 19.091,
+          "median_audio_duration_seconds": 20.0,
+          "min_audio_duration_seconds": 7.0,
+          "max_audio_duration_seconds": 30.0,
+          "total_audio_duration_seconds": 420.001,
+          "audio_duration_seconds": [
+            7.0,
+            9.0,
+            9.0,
+            12.0,
+            12.0,
+            14.0,
+            15.0,
+            18.0,
+            19.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            21.0,
+            24.0,
+            24.0,
+            25.0,
+            25.0,
+            28.0,
+            28.0,
+            30.0
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 7.0,
+              "max": 8.917,
+              "count": 1
+            },
+            {
+              "min": 8.917,
+              "max": 10.833,
+              "count": 2
+            },
+            {
+              "min": 10.833,
+              "max": 12.75,
+              "count": 2
+            },
+            {
+              "min": 12.75,
+              "max": 14.667,
+              "count": 1
+            },
+            {
+              "min": 14.667,
+              "max": 16.583,
+              "count": 1
+            },
+            {
+              "min": 16.583,
+              "max": 18.5,
+              "count": 1
+            },
+            {
+              "min": 18.5,
+              "max": 20.417,
+              "count": 6
+            },
+            {
+              "min": 20.417,
+              "max": 22.333,
+              "count": 1
+            },
+            {
+              "min": 22.333,
+              "max": 24.25,
+              "count": 2
+            },
+            {
+              "min": 24.25,
+              "max": 26.167,
+              "count": 2
+            },
+            {
+              "min": 26.167,
+              "max": 28.083,
+              "count": 2
+            },
+            {
+              "min": 28.083,
+              "max": 30.0,
+              "count": 1
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "Environmental Perception and Reasoning"
+          }
+        },
+        "Imagination": {
+          "n_questions": 10,
+          "n_audio_files": 10,
+          "n_questions_with_audio": 10,
+          "question_type_distribution": {
+            "mcq": 10
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.2,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 10,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 6,
+            "1": 4
+          },
+          "category_1_distribution": {
+            "mix-music-speech": 3,
+            "mix-sound-speech": 3,
+            "speech": 2,
+            "music": 2
+          },
+          "category_2_distribution": {
+            "Cultural Layer": 10
+          },
+          "category_3_distribution": {
+            "Imagination": 10
+          },
+          "category_4_distribution": {
+            "(blank)": 10
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 5,
+          "n_audio_files_missing_duration": 5,
+          "average_audio_duration_seconds": 23.8,
+          "median_audio_duration_seconds": 26.0,
+          "min_audio_duration_seconds": 15.0,
+          "max_audio_duration_seconds": 30.0,
+          "total_audio_duration_seconds": 119.0,
+          "audio_duration_seconds": [
+            15.0,
+            18.0,
+            26.0,
+            30.0,
+            30.0
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 15.0,
+              "max": 16.25,
+              "count": 1
+            },
+            {
+              "min": 16.25,
+              "max": 17.5,
+              "count": 0
+            },
+            {
+              "min": 17.5,
+              "max": 18.75,
+              "count": 1
+            },
+            {
+              "min": 18.75,
+              "max": 20.0,
+              "count": 0
+            },
+            {
+              "min": 20.0,
+              "max": 21.25,
+              "count": 0
+            },
+            {
+              "min": 21.25,
+              "max": 22.5,
+              "count": 0
+            },
+            {
+              "min": 22.5,
+              "max": 23.75,
+              "count": 0
+            },
+            {
+              "min": 23.75,
+              "max": 25.0,
+              "count": 0
+            },
+            {
+              "min": 25.0,
+              "max": 26.25,
+              "count": 1
+            },
+            {
+              "min": 26.25,
+              "max": 27.5,
+              "count": 0
+            },
+            {
+              "min": 27.5,
+              "max": 28.75,
+              "count": 0
+            },
+            {
+              "min": 28.75,
+              "max": 30.0,
+              "count": 2
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "Imagination"
+          }
+        },
+        "Music Theory": {
+          "n_questions": 63,
+          "n_audio_files": 63,
+          "n_questions_with_audio": 63,
+          "question_type_distribution": {
+            "mcq": 63
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.968,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 63,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 62,
+            "1": 1
+          },
+          "category_1_distribution": {
+            "music": 57,
+            "mix-music-speech": 3,
+            "mix-sound-speech": 1,
+            "sound": 1,
+            "mix-sound-music": 1
+          },
+          "category_2_distribution": {
+            "Perception Layer": 63
+          },
+          "category_3_distribution": {
+            "Music Theory": 63
+          },
+          "category_4_distribution": {
+            "(blank)": 63
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 61,
+          "n_audio_files_missing_duration": 2,
+          "average_audio_duration_seconds": 24.149,
+          "median_audio_duration_seconds": 28.0,
+          "min_audio_duration_seconds": 8.0,
+          "max_audio_duration_seconds": 31.877,
+          "total_audio_duration_seconds": 1473.099,
+          "audio_duration_seconds": [
+            8.0,
+            9.0,
+            10.0,
+            10.0,
+            10.0,
+            11.0,
+            12.0,
+            13.0,
+            13.939,
+            14.0,
+            14.0,
+            16.0,
+            16.022,
+            17.001,
+            18.0,
+            18.0,
+            18.0,
+            19.0,
+            20.0,
+            22.0,
+            24.0,
+            25.0,
+            25.0,
+            25.043,
+            25.867,
+            25.939,
+            26.0,
+            26.0,
+            26.0,
+            28.0,
+            28.0,
+            28.0,
+            29.0,
+            29.043,
+            29.427,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.939,
+            31.001,
+            31.877
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 8.0,
+              "max": 9.99,
+              "count": 2
+            },
+            {
+              "min": 9.99,
+              "max": 11.979,
+              "count": 4
+            },
+            {
+              "min": 11.979,
+              "max": 13.969,
+              "count": 3
+            },
+            {
+              "min": 13.969,
+              "max": 15.959,
+              "count": 2
+            },
+            {
+              "min": 15.959,
+              "max": 17.949,
+              "count": 3
+            },
+            {
+              "min": 17.949,
+              "max": 19.938,
+              "count": 4
+            },
+            {
+              "min": 19.938,
+              "max": 21.928,
+              "count": 1
+            },
+            {
+              "min": 21.928,
+              "max": 23.918,
+              "count": 1
+            },
+            {
+              "min": 23.918,
+              "max": 25.908,
+              "count": 5
+            },
+            {
+              "min": 25.908,
+              "max": 27.898,
+              "count": 4
+            },
+            {
+              "min": 27.898,
+              "max": 29.887,
+              "count": 6
+            },
+            {
+              "min": 29.887,
+              "max": 31.877,
+              "count": 26
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "Music Theory"
+          }
+        },
+        "Professional Knowledge and Reasoning": {
+          "n_questions": 71,
+          "n_audio_files": 71,
+          "n_questions_with_audio": 71,
+          "question_type_distribution": {
+            "mcq": 71
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.944,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 71,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 69,
+            "1": 2
+          },
+          "category_1_distribution": {
+            "music": 39,
+            "mix-sound-speech": 12,
+            "sound": 11,
+            "speech": 3,
+            "mix-music-speech": 3,
+            "mix-sound-music": 2,
+            "mix-sound-music-speech": 1
+          },
+          "category_2_distribution": {
+            "Cultural Layer": 71
+          },
+          "category_3_distribution": {
+            "Professional Knowledge and Reasoning": 71
+          },
+          "category_4_distribution": {
+            "(blank)": 71
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 45,
+          "n_audio_files_missing_duration": 26,
+          "average_audio_duration_seconds": 26.9,
+          "median_audio_duration_seconds": 30.0,
+          "min_audio_duration_seconds": 7.0,
+          "max_audio_duration_seconds": 32.043,
+          "total_audio_duration_seconds": 1210.521,
+          "audio_duration_seconds": [
+            7.0,
+            7.0,
+            10.0,
+            15.939,
+            18.0,
+            20.0,
+            20.022,
+            22.0,
+            22.0,
+            26.0,
+            26.61,
+            27.0,
+            28.0,
+            29.0,
+            29.907,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            32.043
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 7.0,
+              "max": 9.087,
+              "count": 2
+            },
+            {
+              "min": 9.087,
+              "max": 11.174,
+              "count": 1
+            },
+            {
+              "min": 11.174,
+              "max": 13.261,
+              "count": 0
+            },
+            {
+              "min": 13.261,
+              "max": 15.348,
+              "count": 0
+            },
+            {
+              "min": 15.348,
+              "max": 17.435,
+              "count": 1
+            },
+            {
+              "min": 17.435,
+              "max": 19.521,
+              "count": 1
+            },
+            {
+              "min": 19.521,
+              "max": 21.608,
+              "count": 2
+            },
+            {
+              "min": 21.608,
+              "max": 23.695,
+              "count": 2
+            },
+            {
+              "min": 23.695,
+              "max": 25.782,
+              "count": 0
+            },
+            {
+              "min": 25.782,
+              "max": 27.869,
+              "count": 3
+            },
+            {
+              "min": 27.869,
+              "max": 29.956,
+              "count": 3
+            },
+            {
+              "min": 29.956,
+              "max": 32.043,
+              "count": 30
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "Professional Knowledge and Reasoning"
+          }
+        },
+        "Spatial Analysis": {
+          "n_questions": 15,
+          "n_audio_files": 15,
+          "n_questions_with_audio": 15,
+          "question_type_distribution": {
+            "mcq": 15
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.533,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 15,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 11,
+            "1": 3,
+            "2": 1
+          },
+          "category_1_distribution": {
+            "sound": 9,
+            "music": 3,
+            "speech": 2,
+            "mix-sound-speech": 1
+          },
+          "category_2_distribution": {
+            "Perception Layer": 15
+          },
+          "category_3_distribution": {
+            "Spatial Analysis": 15
+          },
+          "category_4_distribution": {
+            "(blank)": 15
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 3,
+          "n_audio_files_missing_duration": 12,
+          "average_audio_duration_seconds": 17.0,
+          "median_audio_duration_seconds": 11.0,
+          "min_audio_duration_seconds": 10.0,
+          "max_audio_duration_seconds": 30.0,
+          "total_audio_duration_seconds": 51.0,
+          "audio_duration_seconds": [
+            10.0,
+            11.0,
+            30.0
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 10.0,
+              "max": 11.667,
+              "count": 2
+            },
+            {
+              "min": 11.667,
+              "max": 13.333,
+              "count": 0
+            },
+            {
+              "min": 13.333,
+              "max": 15.0,
+              "count": 0
+            },
+            {
+              "min": 15.0,
+              "max": 16.667,
+              "count": 0
+            },
+            {
+              "min": 16.667,
+              "max": 18.333,
+              "count": 0
+            },
+            {
+              "min": 18.333,
+              "max": 20.0,
+              "count": 0
+            },
+            {
+              "min": 20.0,
+              "max": 21.667,
+              "count": 0
+            },
+            {
+              "min": 21.667,
+              "max": 23.333,
+              "count": 0
+            },
+            {
+              "min": 23.333,
+              "max": 25.0,
+              "count": 0
+            },
+            {
+              "min": 25.0,
+              "max": 26.667,
+              "count": 0
+            },
+            {
+              "min": 26.667,
+              "max": 28.333,
+              "count": 0
+            },
+            {
+              "min": 28.333,
+              "max": 30.0,
+              "count": 1
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "Spatial Analysis"
+          }
+        },
+        "Speaker Analysis": {
+          "n_questions": 48,
+          "n_audio_files": 48,
+          "n_questions_with_audio": 48,
+          "question_type_distribution": {
+            "mcq": 48
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.667,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 48,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 40,
+            "1": 8
+          },
+          "category_1_distribution": {
+            "speech": 35,
+            "mix-sound-speech": 7,
+            "music": 3,
+            "mix-music-speech": 2,
+            "sound": 1
+          },
+          "category_2_distribution": {
+            "Semantic Layer": 48
+          },
+          "category_3_distribution": {
+            "Speaker Analysis": 48
+          },
+          "category_4_distribution": {
+            "(blank)": 48
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 5,
+          "n_audio_files_missing_duration": 43,
+          "average_audio_duration_seconds": 24.804,
+          "median_audio_duration_seconds": 26.0,
+          "min_audio_duration_seconds": 20.0,
+          "max_audio_duration_seconds": 28.0,
+          "total_audio_duration_seconds": 124.022,
+          "audio_duration_seconds": [
+            20.0,
+            23.0,
+            26.0,
+            27.022,
+            28.0
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 20.0,
+              "max": 20.667,
+              "count": 1
+            },
+            {
+              "min": 20.667,
+              "max": 21.333,
+              "count": 0
+            },
+            {
+              "min": 21.333,
+              "max": 22.0,
+              "count": 0
+            },
+            {
+              "min": 22.0,
+              "max": 22.667,
+              "count": 0
+            },
+            {
+              "min": 22.667,
+              "max": 23.333,
+              "count": 1
+            },
+            {
+              "min": 23.333,
+              "max": 24.0,
+              "count": 0
+            },
+            {
+              "min": 24.0,
+              "max": 24.667,
+              "count": 0
+            },
+            {
+              "min": 24.667,
+              "max": 25.333,
+              "count": 0
+            },
+            {
+              "min": 25.333,
+              "max": 26.0,
+              "count": 0
+            },
+            {
+              "min": 26.0,
+              "max": 26.667,
+              "count": 1
+            },
+            {
+              "min": 26.667,
+              "max": 27.333,
+              "count": 1
+            },
+            {
+              "min": 27.333,
+              "max": 28.0,
+              "count": 1
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "Speaker Analysis"
+          }
+        },
+        "Temporal Analysis": {
+          "n_questions": 28,
+          "n_audio_files": 28,
+          "n_questions_with_audio": 28,
+          "question_type_distribution": {
+            "mcq": 28
+          },
+          "question_nature_distribution": {},
+          "average_distractors": 2.857,
+          "max_distractors": 3,
+          "n_questions_with_distractors": 28,
+          "pct_questions_with_distractors": 1.0,
+          "distractor_count_distribution": {
+            "3": 26,
+            "1": 2
+          },
+          "category_1_distribution": {
+            "music": 12,
+            "sound": 7,
+            "mix-sound-speech": 4,
+            "mix-music-speech": 3,
+            "mix-sound-music": 1,
+            "speech": 1
+          },
+          "category_2_distribution": {
+            "Perception Layer": 28
+          },
+          "category_3_distribution": {
+            "Temporal Analysis": 28
+          },
+          "category_4_distribution": {
+            "(blank)": 28
+          },
+          "columns": [
+            "benchmark",
+            "question",
+            "question_type",
+            "correct_answer",
+            "distractors",
+            "audio_url",
+            "category_1",
+            "category_2",
+            "category_3",
+            "category_4"
+          ],
+          "n_audio_files_with_duration": 16,
+          "n_audio_files_missing_duration": 12,
+          "average_audio_duration_seconds": 26.0,
+          "median_audio_duration_seconds": 30.0,
+          "min_audio_duration_seconds": 12.0,
+          "max_audio_duration_seconds": 30.001,
+          "total_audio_duration_seconds": 416.001,
+          "audio_duration_seconds": [
+            12.0,
+            15.0,
+            20.0,
+            22.0,
+            22.0,
+            27.0,
+            29.0,
+            29.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.0,
+            30.001
+          ],
+          "audio_duration_histogram": [
+            {
+              "min": 12.0,
+              "max": 13.5,
+              "count": 1
+            },
+            {
+              "min": 13.5,
+              "max": 15.0,
+              "count": 1
+            },
+            {
+              "min": 15.0,
+              "max": 16.5,
+              "count": 0
+            },
+            {
+              "min": 16.5,
+              "max": 18.0,
+              "count": 0
+            },
+            {
+              "min": 18.0,
+              "max": 19.5,
+              "count": 0
+            },
+            {
+              "min": 19.5,
+              "max": 21.001,
+              "count": 1
+            },
+            {
+              "min": 21.001,
+              "max": 22.501,
+              "count": 2
+            },
+            {
+              "min": 22.501,
+              "max": 24.001,
+              "count": 0
+            },
+            {
+              "min": 24.001,
+              "max": 25.501,
+              "count": 0
+            },
+            {
+              "min": 25.501,
+              "max": 27.001,
+              "count": 1
+            },
+            {
+              "min": 27.001,
+              "max": 28.501,
+              "count": 0
+            },
+            {
+              "min": 28.501,
+              "max": 30.001,
+              "count": 10
+            }
+          ],
+          "filter": {
+            "dimension": "skill",
+            "title": "Skill",
+            "value": "Temporal Analysis"
+          }
+        }
+      }
+    }
+  }
+}

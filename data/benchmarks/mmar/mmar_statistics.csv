@@ -1,0 +1,2 @@
+benchmark,resolved_stage,n_questions,n_audio_files,average_audio_duration_seconds,median_audio_duration_seconds,average_distractors,n_questions_with_distractors,pct_questions_with_distractors
+mmar,normalized,1000,1000,24.07,28.0,2.654,1000,1.0

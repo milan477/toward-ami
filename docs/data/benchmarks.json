@@ -114,12 +114,12 @@
    },
    {
     "label": "GitHub",
-    "url": "https://mulab-mir.github.io/muchomusic"
+    "url": "https://github.com/mulab-mir/muchomusic"
    }
   ],
   "paper_url": "https://arxiv.org/abs/2408.01337",
   "hf_url": "https://huggingface.co/datasets/mulab-mir/muchomusic",
-  "code_url": "https://mulab-mir.github.io/muchomusic",
+  "code_url": "https://github.com/mulab-mir/muchomusic",
   "bibtex": "@misc{weckMuChoMusicEvaluatingMusic2024,\n  title = {{{MuChoMusic}}: {{Evaluating Music Understanding}} in {{Multimodal Audio-Language Models}}},\n  shorttitle = {{{MuChoMusic}}},\n  author = {Weck, Benno and Manco, Ilaria and Benetos, Emmanouil and Quinton, Elio and Fazekas, George and Bogdanov, Dmitry},\n  year = 2024,\n  month = aug,\n  number = {arXiv:2408.01337},\n  eprint = {2408.01337},\n  primaryclass = {cs},\n  publisher = {arXiv},\n  doi = {10.48550/arXiv.2408.01337},\n  archiveprefix = {arXiv},\n}",
   "status": "confirmed"
  },
@@ -222,10 +222,10 @@
   "domain": "Multi-task",
   "format": "MCQ",
   "year": "2025",
-  "modalities": "Sound, music, speech, mix",
+  "modalities": "Sound, music, speech, and their mixes",
   "skills": "16 skills across Signal, Perception, and Semantic & Cultural: Acoustic Quality Analysis, Anomaly Detection, Audio Difference Analysis, Spatial Analysis, Temporal Analysis, Correlation Analysis, Counting and Statistics, Music Theory, Environmental Perception and Reasoning, Content Analysis, Emotion and Intention, Speaker Analysis, Culture of Speaker, Imagination, Aesthetic Analysis, Professional Knowledge & Reasoning",
   "sources": "Real-world internet videos",
-  "size": "1000",
+  "size": "323 music-related questions (1,000 in total)",
   "models": "",
   "links": [
    {
