@@ -21,10 +21,7 @@
   "developer": "Google DeepMind",
   "year": "2025",
   "paper_title": "Gemini 3 Flash Model Card",
-  "paper_url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-Flash-Model-Card.pdf",
-  "mcq_csv": "results/mmar/gemini-3-flash-preview/music/2026-07-01_04-33-34_summary.csv",
-  "oeq_answers": "results/mmar/gemini-3-flash-preview/music-oeq-piac/.oeq_answers.jsonl",
-  "oeq_judged": "results/mmar/gemini-3-flash-preview/music-oeq-piac/.oeq_piac_judged.jsonl"
+  "paper_url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-Flash-Model-Card.pdf"
  },
  {
   "id": "qwen-omni",
@@ -56,10 +53,7 @@
   "developer": "NVIDIA & University of Maryland",
   "year": "2026",
   "paper_title": "Audio Flamingo Next: Next-Generation Open Audio-Language Models for Speech, Sound, and Music",
-  "paper_url": "https://arxiv.org/abs/2604.10905",
-  "mcq_csv": "results/mmar/af-next/music/2026-07-01_01-54-58_summary.csv",
-  "oeq_answers": "results/mmar/af-next/music-oeq-piac/.oeq_answers.jsonl",
-  "oeq_judged": "results/mmar/af-next/music-oeq-piac/.oeq_piac_judged.jsonl"
+  "paper_url": "https://arxiv.org/abs/2604.10905"
  },
  {
   "id": "music-flamingo",
@@ -72,8 +66,8 @@
  {
   "id": "gamma",
   "label": "GaMMA",
-  "developer": "Fudan University",
-  "year": "& ByteDance2026",
+  "developer": "Fudan University & ByteDance",
+  "year": "2026",
   "paper_title": "GaMMA: Towards Joint Global-Temporal Music Understanding in Large Multimodal Models",
   "paper_url": "https://arxiv.org/abs/2605.00371"
  },
