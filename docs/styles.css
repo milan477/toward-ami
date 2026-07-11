@@ -49,7 +49,7 @@ body {
   flex-direction: column;
 }
 ::selection { background: rgba(0, 0, 0, 0.08); color: inherit; }
-h1, h2, h3, .lede, .display { text-wrap: balance; }
+h1, h2, h3, .display { text-wrap: balance; }
 a { color: var(--accent); text-decoration: none; }
 
 .inline-link, .prose a, .bench-links a, .page-links a {
@@ -91,7 +91,7 @@ a { color: var(--accent); text-decoration: none; }
 main { flex: 1; max-width: var(--wide); width: 100%; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 2.5rem); }
 .page { display: none; max-width: var(--col); margin: 0 auto; padding: clamp(48px, 9vw, 96px) 0 120px; }
 .page.active { display: block; }
-#page-benchmarks, #page-evaluation, #page-results, #page-models { max-width: none; }
+#page-benchmarks, #page-benchmark-detail, #page-evaluation, #page-results, #page-models { max-width: none; }
 
 /* ---------- display type ---------- */
 .display {
@@ -99,9 +99,9 @@ main { flex: 1; max-width: var(--wide); width: 100%; margin: 0 auto; padding: 0 
   font-size: clamp(36px, 5.5vw, 52px); color: var(--fg); margin: 0 0 18px; max-width: 18ch;
 }
 .display.sm { font-size: clamp(32px, 4.5vw, 42px); max-width: none; }
-.lede { font-size: 20px; font-weight: 400; line-height: 1.45; color: var(--fg-soft); max-width: none; margin: 0; }
-.page-head { margin-bottom: 6px; }
-.page-head .lede { max-width: none; }
+.lede { font-size: 20px; font-weight: 400; line-height: 1.45; color: var(--fg-soft); max-width: none; width: 100%; margin: 0; text-wrap: pretty; }
+.page-head { margin-bottom: 6px; width: 100%; }
+.page-head .lede { max-width: none; width: 100%; }
 .disclaimer { font-size: 14px; color: var(--fg-mute); font-style: italic; margin: 10px 0 0; }
 .section-sub { color: var(--fg-soft); margin: 0 0 28px; max-width: none; line-height: 1.45; }
 
@@ -113,6 +113,14 @@ main { flex: 1; max-width: var(--wide); width: 100%; margin: 0 auto; padding: 0 
 /* ---------- home (corner layout) ---------- */
 #page-home { max-width: none; padding: clamp(24px, 4vw, 48px) 0 0; }
 .home-grid { min-height: calc(100dvh - 240px); display: flex; flex-direction: column; }
+.home-toward {
+  font-size: clamp(14px, 1.6vw, 18px);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--fg);
+  margin: 0 0 10px;
+  letter-spacing: 0.02em;
+}
 .home-title {
   font-weight: 600; letter-spacing: -0.04em; line-height: 1.0;
   font-size: clamp(46px, 9vw, 104px); max-width: 15ch; margin: 0;
@@ -256,6 +264,24 @@ main { flex: 1; max-width: var(--wide); width: 100%; margin: 0 auto; padding: 0 
 .zoom-actions { display: flex; align-items: center; gap: 14px; margin: 24px 0 16px; flex-wrap: wrap; }
 .zoom-actions .act { border-color: rgba(0,0,0,0.3); color: rgba(0,0,0,0.8); }
 .zoom-actions .act:hover { background: rgba(0,0,0,0.06); }
+.zoom-actions .act.primary {
+  background: var(--bordeaux); border-color: var(--bordeaux); color: #fff;
+}
+.zoom-actions .act.primary:hover { background: #3a1019; border-color: #3a1019; }
+.bench-id .kind.inspectable { color: var(--bordeaux); font-weight: 600; }
+
+/* benchmark detail page */
+.back-link {
+  display: inline-block; font-size: 13px; color: var(--fg-mute); text-decoration: none;
+  margin: 0 0 18px;
+}
+.back-link:hover { color: var(--fg); text-decoration: underline; }
+.bench-detail-tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 8px 0 0; }
+.bench-detail-tags .year,
+.bench-detail-tags .kind { font-size: 13px; color: var(--fg-mute); }
+.bench-detail-meta { margin: 28px 0 8px; }
+.bench-detail-meta .bench-fields { margin: 0; }
+.ref.muted { color: var(--fg-soft); font-size: 14.5px; margin-top: -12px; }
 .zoom-check { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; color: rgba(0,0,0,0.75); cursor: pointer; }
 .zoom-check input { width: 16px; height: 16px; accent-color: var(--bordeaux); }
 .cite-preview {
@@ -393,10 +419,51 @@ main { flex: 1; max-width: var(--wide); width: 100%; margin: 0 auto; padding: 0 
 .prompt.open .chev::before { content: "\2212"; }
 .prompt-body { display: none; padding: 0 0 24px; }
 .prompt.open .prompt-body { display: block; }
-.prompt-body pre {
+.prompt-body pre,
+.prompt-example {
   margin: 0; padding: 18px; background: var(--surface-muted); border: 1px solid var(--line);
-  border-radius: 10px; font-size: 12.5px; line-height: 1.55; white-space: pre-wrap;
+  border-radius: 0; font-size: 12.5px; line-height: 1.55; white-space: pre-wrap;
   font-family: ui-monospace, "SF Mono", Menlo, monospace; color: #3a3a37; letter-spacing: 0;
+}
+.oeq-variants {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 0 0 16px;
+}
+.oeq-variants:has(> :only-child) {
+  grid-template-columns: 1fr;
+}
+.oeq-variant {
+  margin: 0;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  background: var(--surface-muted);
+}
+.oeq-variant pre {
+  margin: 8px 0 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--fg-soft);
+}
+.oeq-example-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg-mute);
+  font-weight: 500;
+  margin: 16px 0 6px;
+}
+.oeq-variant pre.oeq-example {
+  margin: 0;
+  padding: 12px 14px;
+  background: rgba(0,0,0,0.04);
+  border: 1px solid rgba(0,0,0,0.06);
+  color: var(--fg);
+  font-size: 12.5px;
 }
 
 /* ---------- results ---------- */
@@ -462,7 +529,8 @@ main { flex: 1; max-width: var(--wide); width: 100%; margin: 0 auto; padding: 0 
 /* ---------- footer ---------- */
 .foot { background: var(--accent); color: #fff; margin-top: auto; }
 .foot-inner {
-  max-width: var(--wide); margin: 0 auto; padding: 2.5rem clamp(1.5rem, 5vw, 2.5rem);
+  max-width: var(--wide); width: 100%; margin: 0 auto;
+  padding: 2.5rem clamp(1.5rem, 5vw, 2.5rem);
   display: flex; justify-content: space-between; align-items: baseline; gap: 20px;
   font-size: 13px; color: #fff;
 }
@@ -536,7 +604,8 @@ main { flex: 1; max-width: var(--wide); width: 100%; margin: 0 auto; padding: 0 
   .prompt-head { padding: 1rem 0; gap: 12px; }
   .prompt-head h4 { font-size: 15px; }
   .prompt-head .purpose { font-size: 12.5px; }
-  .prompt-body pre { padding: 12px; font-size: 11px; }
+  .prompt-body pre, .prompt-example { padding: 12px; font-size: 11px; }
+  .oeq-variants { grid-template-columns: 1fr; }
 
   .model-compare { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.5rem; }
   .model-panel h3 { font-size: 16px; margin-bottom: 10px; }

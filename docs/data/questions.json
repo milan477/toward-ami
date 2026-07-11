@@ -32,7 +32,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer contradicts the reference answer and lacks grounding in the audio features."
   },
-  "audio": "audio/BV1vc411S7ro_00-00-00_00-00-30.ogg"
+  "audio": "audio/BV1vc411S7ro_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "pUZeSYsU0Uk_00-01-40_00-02-00",
@@ -67,7 +68,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference and is grounded in the affective qualities of the music."
   },
-  "audio": "audio/pUZeSYsU0Uk_00-01-40_00-02-00.ogg"
+  "audio": "audio/pUZeSYsU0Uk_00-01-40_00-02-00.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "5cV1y1uDhpk_00-00-00_00-00-22",
@@ -104,7 +106,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference and is a valid inferential response based on the audio clip."
   },
-  "audio": "audio/5cV1y1uDhpk_00-00-00_00-00-22.ogg"
+  "audio": "audio/5cV1y1uDhpk_00-00-00_00-00-22.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "__sJVNK0enM_00-00-00_00-00-19",
@@ -141,7 +144,8 @@
    "hallucination_level": "none",
    "rationale": "The answer directly matches the reference and is grounded in the task's structure."
   },
-  "audio": "audio/__sJVNK0enM_00-00-00_00-00-19.ogg"
+  "audio": "audio/__sJVNK0enM_00-00-00_00-00-19.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "v2oCIDFP4oU_00-00-29_00-00-59",
@@ -178,7 +182,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The answer claims there are 2 instrument types, but the reference states there are 3, indicating a perceptual error."
   },
-  "audio": "audio/v2oCIDFP4oU_00-00-29_00-00-59.ogg"
+  "audio": "audio/v2oCIDFP4oU_00-00-29_00-00-59.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "NePo2M4Ckjg_00-00-07_00-00-37",
@@ -215,7 +220,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference and is grounded in the affective qualities of the music."
   },
-  "audio": "audio/NePo2M4Ckjg_00-00-07_00-00-37.ogg"
+  "audio": "audio/NePo2M4Ckjg_00-00-07_00-00-37.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "M5PGztUl3yA_00-00-00_00-00-09",
@@ -250,7 +256,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference and is a direct, correct response to the inferential question."
   },
-  "audio": "audio/M5PGztUl3yA_00-00-00_00-00-09.ogg"
+  "audio": "audio/M5PGztUl3yA_00-00-00_00-00-09.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "jHIt9oHFLsw_00-00-08_00-00-20",
@@ -287,7 +294,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies the instruments as trumpet and trombone, matching the reference answer exactly."
   },
-  "audio": "audio/jHIt9oHFLsw_00-00-08_00-00-20.ogg"
+  "audio": "audio/jHIt9oHFLsw_00-00-08_00-00-20.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "qzk9dctRXu4_00-00-00_00-00-09",
@@ -324,7 +332,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer contradicts the reference answer which states 4 types, indicating an incorrect inferential claim."
   },
-  "audio": "audio/qzk9dctRXu4_00-00-00_00-00-09.ogg"
+  "audio": "audio/qzk9dctRXu4_00-00-00_00-00-09.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "FhfMAFeC-vE_00-00-00_00-00-09",
@@ -361,7 +370,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The model's answer claims there are 3 types of drums or cymbals, but the reference answer is 4, indicating a perceptual error."
   },
-  "audio": "audio/FhfMAFeC-vE_00-00-00_00-00-09.ogg"
+  "audio": "audio/FhfMAFeC-vE_00-00-00_00-00-09.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "GuPAJytvDo8_00-00-00_00-00-10",
@@ -398,7 +408,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies bass and drums as the instruments simulated, which aligns with the reference answer of percussion and bass, with drums being a valid synonym for percussion in this context."
   },
-  "audio": "audio/GuPAJytvDo8_00-00-00_00-00-10.ogg"
+  "audio": "audio/GuPAJytvDo8_00-00-00_00-00-10.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "7uZZjQUnzUU_00-00-00_00-00-06",
@@ -435,7 +446,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The answer provides a count of 16, which does not match the reference answer of 26, and makes a confident claim about the number of notes without proper grounding in the audio."
   },
-  "audio": "audio/7uZZjQUnzUU_00-00-00_00-00-06.ogg"
+  "audio": "audio/7uZZjQUnzUU_00-00-00_00-00-06.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "rgdTe8EzC4Y_00-00-02_00-00-31",
@@ -472,7 +484,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference and is a valid inferential response to the question."
   },
-  "audio": "audio/rgdTe8EzC4Y_00-00-02_00-00-31.ogg"
+  "audio": "audio/rgdTe8EzC4Y_00-00-02_00-00-31.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "gSPXyqsKuU8_00-00-02_00-00-32",
@@ -507,7 +520,8 @@
    "hallucination_level": "none",
    "rationale": "The model's answer matches the reference answer and is correct."
   },
-  "audio": "audio/gSPXyqsKuU8_00-00-02_00-00-32.ogg"
+  "audio": "audio/gSPXyqsKuU8_00-00-02_00-00-32.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "8CDI_UdPLSQ_00-00-00_00-00-16",
@@ -544,7 +558,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The model's answer does not match the reference answer and provides an incorrect time interval for the drop."
   },
-  "audio": "audio/8CDI_UdPLSQ_00-00-00_00-00-16.ogg"
+  "audio": "audio/8CDI_UdPLSQ_00-00-00_00-00-16.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "HKAzWpuk7OA_00-00-00_00-00-30",
@@ -581,7 +596,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer contradicts the reference answer and lacks grounding in the audio features."
   },
-  "audio": "audio/HKAzWpuk7OA_00-00-00_00-00-30.ogg"
+  "audio": "audio/HKAzWpuk7OA_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "dwFl9wj-9i8_00-00-00_00-00-28",
@@ -618,7 +634,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer contradicts the reference answer and lacks justification or grounding in the audio features."
   },
-  "audio": "audio/dwFl9wj-9i8_00-00-00_00-00-28.ogg"
+  "audio": "audio/dwFl9wj-9i8_00-00-00_00-00-28.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "zOEIJZs_jWg_00-00-00_00-00-22",
@@ -655,7 +672,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies the action of singing with a higher pitch, which aligns with the reference answer."
   },
-  "audio": "audio/zOEIJZs_jWg_00-00-00_00-00-22.ogg"
+  "audio": "audio/zOEIJZs_jWg_00-00-00_00-00-22.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "Kz0lYu7D8hI_00-00-00_00-00-30",
@@ -692,7 +710,8 @@
    "hallucination_level": "contextual",
    "rationale": "The answer 'One' contradicts the reference answer 'Two' for a contextual fact."
   },
-  "audio": "audio/Kz0lYu7D8hI_00-00-00_00-00-30.ogg"
+  "audio": "audio/Kz0lYu7D8hI_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "SYplnnyOCi4_00-00-00_00-00-26",
@@ -729,7 +748,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer describes a call-and-response style, which is not supported by the reference answer of three people taking turns singing one word each."
   },
-  "audio": "audio/SYplnnyOCi4_00-00-00_00-00-26.ogg"
+  "audio": "audio/SYplnnyOCi4_00-00-00_00-00-26.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "xhhjoy4t0uw_00-00-00_00-00-12",
@@ -764,7 +784,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference and is a valid response to the inferential question."
   },
-  "audio": "audio/xhhjoy4t0uw_00-00-00_00-00-12.ogg"
+  "audio": "audio/xhhjoy4t0uw_00-00-00_00-00-12.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1jJ411X7zV_00-05-15_00-05-33",
@@ -801,7 +822,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies the singing style as yodeling, matching the reference answer."
   },
-  "audio": "audio/BV1jJ411X7zV_00-05-15_00-05-33.ogg"
+  "audio": "audio/BV1jJ411X7zV_00-05-15_00-05-33.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "MdTS6-fbNH0_00-02-20_00-02-50",
@@ -838,7 +860,8 @@
    "hallucination_level": "none",
    "rationale": "The model correctly identifies the performance as a cappella, which is a valid and accurate category that encompasses barbershop quartet."
   },
-  "audio": "audio/MdTS6-fbNH0_00-02-20_00-02-50.ogg"
+  "audio": "audio/MdTS6-fbNH0_00-02-20_00-02-50.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "qhSEKxQjOpY_00-00-00_00-00-14",
@@ -875,7 +898,8 @@
    "hallucination_level": "none",
    "rationale": "Overtone singing is a valid and equivalent term for throat singing, matching the reference answer."
   },
-  "audio": "audio/qhSEKxQjOpY_00-00-00_00-00-14.ogg"
+  "audio": "audio/qhSEKxQjOpY_00-00-00_00-00-14.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "paSXoPlxIIA_00-02-37_00-03-07",
@@ -912,7 +936,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies the Romantic period, matching the reference answer."
   },
-  "audio": "audio/paSXoPlxIIA_00-02-37_00-03-07.ogg"
+  "audio": "audio/paSXoPlxIIA_00-02-37_00-03-07.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1Wc411u7AK_00-00-02_00-00-30",
@@ -949,7 +974,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer of 'Four' does not match the reference answer of 'Three' and is not supported by the audio features."
   },
-  "audio": "audio/BV1Wc411u7AK_00-00-02_00-00-30.ogg"
+  "audio": "audio/BV1Wc411u7AK_00-00-02_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "AINNvq_NSxg_00-00-11_00-00-36",
@@ -986,7 +1012,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer contradicts the reference answer without providing any perceptual or inferential reasoning to support the claim."
   },
-  "audio": "audio/AINNvq_NSxg_00-00-11_00-00-36.ogg"
+  "audio": "audio/AINNvq_NSxg_00-00-11_00-00-36.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "8Y2so1g_qwo_00-00-00_00-00-18",
@@ -1021,7 +1048,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference and is grounded in the affective qualities of the audio."
   },
-  "audio": "audio/8Y2so1g_qwo_00-00-00_00-00-18.ogg"
+  "audio": "audio/8Y2so1g_qwo_00-00-00_00-00-18.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BTAXb1Q-Amk_00-00-00_00-00-10",
@@ -1058,7 +1086,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies Christmas as the holiday, which is a plausible and grounded response based on typical musical associations with the holiday."
   },
-  "audio": "audio/BTAXb1Q-Amk_00-00-00_00-00-10.ogg"
+  "audio": "audio/BTAXb1Q-Amk_00-00-00_00-00-10.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "cnJRYqRxnaw_00-00-00_00-00-07",
@@ -1095,7 +1124,8 @@
    "hallucination_level": "contextual",
    "rationale": "The answer '2010s' does not match the reference answer '2000s', which is the correct decade for the release of the audio clip."
   },
-  "audio": "audio/cnJRYqRxnaw_00-00-00_00-00-07.ogg"
+  "audio": "audio/cnJRYqRxnaw_00-00-00_00-00-07.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1BdXWYMEDM_00-00-00_00-00-23",
@@ -1132,7 +1162,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference answer exactly."
   },
-  "audio": "audio/BV1BdXWYMEDM_00-00-00_00-00-23.ogg"
+  "audio": "audio/BV1BdXWYMEDM_00-00-00_00-00-23.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV17yX6YSEiD_00-00-00_00-00-28",
@@ -1169,7 +1200,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer of 'Trumpet' is incorrect and not supported by the audio features, which indicate the lead instrument is a violin."
   },
-  "audio": "audio/BV17yX6YSEiD_00-00-00_00-00-28.ogg"
+  "audio": "audio/BV17yX6YSEiD_00-00-00_00-00-28.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1ts411g7XE_00-00-00_00-00-30",
@@ -1206,7 +1238,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference answer and is directly grounded in the audio analysis."
   },
-  "audio": "audio/BV1ts411g7XE_00-00-00_00-00-30.ogg"
+  "audio": "audio/BV1ts411g7XE_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1zso1YkENT_00-00-00_00-00-14",
@@ -1243,7 +1276,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The model's answer does not match the reference answer and contains incorrect note sequences."
   },
-  "audio": "audio/BV1zso1YkENT_00-00-00_00-00-14.ogg"
+  "audio": "audio/BV1zso1YkENT_00-00-00_00-00-14.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1v3411V7ES_00-00-00_00-00-20",
@@ -1280,7 +1314,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The answer claims the modulation begins at the 4th second, which directly contradicts the reference answer of the 10th second."
   },
-  "audio": "audio/BV1v3411V7ES_00-00-00_00-00-20.ogg"
+  "audio": "audio/BV1v3411V7ES_00-00-00_00-00-20.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "OnkTUKtxRic_00-00-50_00-01-20",
@@ -1317,7 +1352,8 @@
    "hallucination_level": "none",
    "rationale": "The answer is plausible and grounded in musical elements, though slightly less specific than the reference answer."
   },
-  "audio": "audio/OnkTUKtxRic_00-00-50_00-01-20.ogg"
+  "audio": "audio/OnkTUKtxRic_00-00-50_00-01-20.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "mDqMRydUNos_00-01-45_00-02-15",
@@ -1354,7 +1390,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer introduces an unrelated scenario (basketball) not present in the audio clip, making it an unsupported inferential claim."
   },
-  "audio": "audio/mDqMRydUNos_00-01-45_00-02-15.ogg"
+  "audio": "audio/mDqMRydUNos_00-01-45_00-02-15.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "QIjKijhv1OU_00-01-37_00-02-07",
@@ -1391,7 +1428,8 @@
    "hallucination_level": "contextual",
    "rationale": "The model's answer 'Slav Squat' does not match the reference answer 'adidas outfit' and is not a recognized cultural symbol associated with the audio clip."
   },
-  "audio": "audio/QIjKijhv1OU_00-01-37_00-02-07.ogg"
+  "audio": "audio/QIjKijhv1OU_00-01-37_00-02-07.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "lpc1lEJ-SRc_00-04-34_00-05-04",
@@ -1428,7 +1466,8 @@
    "hallucination_level": "contextual",
    "rationale": "The answer contradicts the reference fact which states the original version appeared in the 17-18th century."
   },
-  "audio": "audio/lpc1lEJ-SRc_00-04-34_00-05-04.ogg"
+  "audio": "audio/lpc1lEJ-SRc_00-04-34_00-05-04.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "EXjyU9M9mII_00-00-00_00-00-30",
@@ -1465,7 +1504,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer of 4 is incorrect and not supported by the reference answer of 6, indicating a hallucination in the inferential reasoning."
   },
-  "audio": "audio/EXjyU9M9mII_00-00-00_00-00-30.ogg"
+  "audio": "audio/EXjyU9M9mII_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "B2UwFhik5pM_00-00-53_00-01-23",
@@ -1502,7 +1542,8 @@
    "hallucination_level": "none",
    "rationale": "The answer provides a valid musical change that could reduce humor, and it is grounded in a plausible musical adjustment."
   },
-  "audio": "audio/B2UwFhik5pM_00-00-53_00-01-23.ogg"
+  "audio": "audio/B2UwFhik5pM_00-00-53_00-01-23.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "qK6vKqQYrAA_00-00-00_00-00-29",
@@ -1539,7 +1580,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer claims a humorous interaction between specific chords not mentioned in the reference, and the inference is not supported by the audio features."
   },
-  "audio": "audio/qK6vKqQYrAA_00-00-00_00-00-29.ogg"
+  "audio": "audio/qK6vKqQYrAA_00-00-00_00-00-29.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "FGEK85M-wmw_00-00-00_00-00-19",
@@ -1576,7 +1618,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer makes an inferential claim about vocal techniques without sufficient grounding in the audio features, and the reference answer is not matched."
   },
-  "audio": "audio/FGEK85M-wmw_00-00-00_00-00-19.ogg"
+  "audio": "audio/FGEK85M-wmw_00-00-00_00-00-19.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "MbhNbtbVUag_00-00-00_00-00-30",
@@ -1613,7 +1656,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The answer claims the performer covers the bell hole 1 time, which contradicts the reference answer of 2 times."
   },
-  "audio": "audio/MbhNbtbVUag_00-00-00_00-00-30.ogg"
+  "audio": "audio/MbhNbtbVUag_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "SYplnnyOCi4_00-00-00_00-00-27",
@@ -1650,7 +1694,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The answer claims there are 5 singers, which directly contradicts the reference answer of 3."
   },
-  "audio": "audio/SYplnnyOCi4_00-00-00_00-00-27.ogg"
+  "audio": "audio/SYplnnyOCi4_00-00-00_00-00-27.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "OSNssXDTyeg_00-00-00_00-00-30",
@@ -1687,7 +1732,8 @@
    "hallucination_level": "contextual",
    "rationale": "The answer does not match the reference fact that 'it's the conductor's birthday today' and makes a claim about a live orchestra and applause that is not supported by the reference."
   },
-  "audio": "audio/OSNssXDTyeg_00-00-00_00-00-30.ogg"
+  "audio": "audio/OSNssXDTyeg_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "uxthZLy0Ftk_00-02-16_00-02-26",
@@ -1724,7 +1770,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference answer and is a valid inferential response."
   },
-  "audio": "audio/uxthZLy0Ftk_00-02-16_00-02-26.ogg"
+  "audio": "audio/uxthZLy0Ftk_00-02-16_00-02-26.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "5o1KYoXO6l4_00-01-11_00-01-19",
@@ -1761,7 +1808,8 @@
    "hallucination_level": "none",
    "rationale": "The model correctly identified the composition technique as 'Canon', which matches the reference answer."
   },
-  "audio": "audio/5o1KYoXO6l4_00-01-11_00-01-19.ogg"
+  "audio": "audio/5o1KYoXO6l4_00-01-11_00-01-19.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "y4uF5rxiZDI_00-06-17_00-06-28",
@@ -1798,7 +1846,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference answer and is a valid chord symbol for the fifth chord."
   },
-  "audio": "audio/y4uF5rxiZDI_00-06-17_00-06-28.ogg"
+  "audio": "audio/y4uF5rxiZDI_00-06-17_00-06-28.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "Y0pfqI4xbVs_00-00-00_00-00-18",
@@ -1835,7 +1884,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer claims a key (E major) that contradicts the reference answer (A minor), indicating an incorrect inferential judgment."
   },
-  "audio": "audio/Y0pfqI4xbVs_00-00-00_00-00-18.ogg"
+  "audio": "audio/Y0pfqI4xbVs_00-00-00_00-00-18.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1kt411c7QT_00-00-00_00-00-17",
@@ -1872,7 +1922,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model incorrectly identified the cadence as IAC instead of the correct PAC, which is a clear inferential error based on the reference answer."
   },
-  "audio": "audio/BV1kt411c7QT_00-00-00_00-00-17.ogg"
+  "audio": "audio/BV1kt411c7QT_00-00-00_00-00-17.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1tv411z7J1_00-00-00_00-00-30",
@@ -1909,7 +1960,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies the musical key as F Major, matching the reference answer and aligning with the expected format."
   },
-  "audio": "audio/BV1tv411z7J1_00-00-00_00-00-30.ogg"
+  "audio": "audio/BV1tv411z7J1_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "E1M_jEHJtrE_00-00-00_00-00-10",
@@ -1946,7 +1998,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model incorrectly identifies 'alberti bass' as the compositional technique, which is not supported by the reference answer 'transition' and lacks grounding in the audio features."
   },
-  "audio": "audio/E1M_jEHJtrE_00-00-00_00-00-10.ogg"
+  "audio": "audio/E1M_jEHJtrE_00-00-00_00-00-10.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "GQLBcczwI8s_00-00-00_00-00-30",
@@ -1983,7 +2036,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The answer provides a time (18 seconds) that does not match the reference (26 seconds), indicating a perceptual hallucination."
   },
-  "audio": "audio/GQLBcczwI8s_00-00-00_00-00-30.ogg"
+  "audio": "audio/GQLBcczwI8s_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1xX4y1y721_00-00-00_00-00-15_combined",
@@ -2020,7 +2074,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference and is a valid inferential conclusion."
   },
-  "audio": "audio/BV1xX4y1y721_00-00-00_00-00-15_combined.ogg"
+  "audio": "audio/BV1xX4y1y721_00-00-00_00-00-15_combined.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1Z54y157gT_00-00-27_00-00-41_combined",
@@ -2057,7 +2112,8 @@
    "hallucination_level": "contextual",
    "rationale": "The answer incorrectly claims the music is sung in Japanese, which is not a valid ground truth for determining if the singers are from the same country."
   },
-  "audio": "audio/BV1Z54y157gT_00-00-27_00-00-41_combined.ogg"
+  "audio": "audio/BV1Z54y157gT_00-00-27_00-00-41_combined.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1Av4y1K7PD_00-00-00_00-00-30",
@@ -2094,7 +2150,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model incorrectly identifies the reversed chord as Gb(add9), whereas the correct answer is Bbm(add9). The model's inference is based on an incorrect sequence of notes."
   },
-  "audio": "audio/BV1Av4y1K7PD_00-00-00_00-00-30.ogg"
+  "audio": "audio/BV1Av4y1K7PD_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV19s411D7Jo_00-00-20_00-00-50",
@@ -2131,7 +2188,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies the harmonic relationships and atmosphere, aligning with the reference and expert analysis."
   },
-  "audio": "audio/BV19s411D7Jo_00-00-20_00-00-50.ogg"
+  "audio": "audio/BV19s411D7Jo_00-00-20_00-00-50.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1F24y1Q7aa_00-00-00_00-00-30",
@@ -2168,7 +2226,8 @@
    "hallucination_level": "none",
    "rationale": "The answer 'Strolling' is plausible and similar in affect to the reference 'Marching', and is grounded in the general rhythmic and mood characteristics of the audio."
   },
-  "audio": "audio/BV1F24y1Q7aa_00-00-00_00-00-30.ogg"
+  "audio": "audio/BV1F24y1Q7aa_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1Kz4y1m7PX_00-00-50_00-01-20",
@@ -2205,7 +2264,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The answer claims the melody sequence appears 2 times, but the reference states it appears 1 time, which is a direct perceptual error."
   },
-  "audio": "audio/BV1Kz4y1m7PX_00-00-50_00-01-20.ogg"
+  "audio": "audio/BV1Kz4y1m7PX_00-00-50_00-01-20.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1As411U7gu_00-00-16_00-00-46",
@@ -2242,7 +2302,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model incorrectly identifies the genre as Ragtime, which is not supported by the reference answer of Piano Concerto."
   },
-  "audio": "audio/BV1As411U7gu_00-00-16_00-00-46.ogg"
+  "audio": "audio/BV1As411U7gu_00-00-16_00-00-46.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1Z7411R7r2_00-00-00_00-00-30",
@@ -2279,7 +2340,8 @@
    "hallucination_level": "none",
    "rationale": "The answer 'Quiet night' is plausible, consistent, and grounded in the affective description of a calm, serene atmosphere, similar to the reference 'Tranquil moonlit night'."
   },
-  "audio": "audio/BV1Z7411R7r2_00-00-00_00-00-30.ogg"
+  "audio": "audio/BV1Z7411R7r2_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV16j411E7Z9_00-00-13_00-00-34",
@@ -2317,7 +2379,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer introduces an inferential claim about simulating imagery (water) without aligning with the reference answer or providing perceptual evidence from the audio."
   },
-  "audio": "audio/BV16j411E7Z9_00-00-13_00-00-34.ogg"
+  "audio": "audio/BV16j411E7Z9_00-00-13_00-00-34.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1LE411h7pR_00-00-33_00-00-59",
@@ -2354,7 +2417,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer introduces concepts (arpeggiated accompaniment, chromaticism) not supported by the audio clip's melody development, which is better described as repeated note and sequence."
   },
-  "audio": "audio/BV1LE411h7pR_00-00-33_00-00-59.ogg"
+  "audio": "audio/BV1LE411h7pR_00-00-33_00-00-59.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1mCk8Y5E2Y_00-00-20_00-00-46",
@@ -2391,7 +2455,8 @@
    "hallucination_level": "none",
    "rationale": "The answer provides two valid musical characteristics that are consistent with expert analysis of the audio clip."
   },
-  "audio": "audio/BV1mCk8Y5E2Y_00-00-20_00-00-46.ogg"
+  "audio": "audio/BV1mCk8Y5E2Y_00-00-20_00-00-46.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1CV4y1p7Ce_00-01-55_00-02-25",
@@ -2428,7 +2493,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference answer and is a valid expert response to the inferential question."
   },
-  "audio": "audio/BV1CV4y1p7Ce_00-01-55_00-02-25.ogg"
+  "audio": "audio/BV1CV4y1p7Ce_00-01-55_00-02-25.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "hPjGzRk3XrE_00-03-17_00-03-47",
@@ -2465,7 +2531,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The model's answer describes a cello's timbre, which is not the correct instrument (pipe organ) as per the reference."
   },
-  "audio": "audio/hPjGzRk3XrE_00-03-17_00-03-47.ogg"
+  "audio": "audio/hPjGzRk3XrE_00-03-17_00-03-47.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "lw7DEtmoqws_00-01-10_00-01-40",
@@ -2502,7 +2569,8 @@
    "hallucination_level": "none",
    "rationale": "The answer exactly matches the reference answer of 2."
   },
-  "audio": "audio/lw7DEtmoqws_00-01-10_00-01-40.ogg"
+  "audio": "audio/lw7DEtmoqws_00-01-10_00-01-40.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "MntNiX-XXfE_00-02-45_00-03-15",
@@ -2539,7 +2607,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The model claims 12 notes were played, but the reference answer states 0 notes, indicating a perceptual hallucination."
   },
-  "audio": "audio/MntNiX-XXfE_00-02-45_00-03-15.ogg"
+  "audio": "audio/MntNiX-XXfE_00-02-45_00-03-15.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "vfDXOqE7OXQ_00-11-19_00-11-49",
@@ -2576,7 +2645,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies the number of strings (3) and provides a valid instrument name (shamisen) that matches the reference."
   },
-  "audio": "audio/vfDXOqE7OXQ_00-11-19_00-11-49.ogg"
+  "audio": "audio/vfDXOqE7OXQ_00-11-19_00-11-49.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "V-zEdz2yo-Y_00-00-00_00-00-18",
@@ -2613,7 +2683,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The answer claims the timpani played 10 times, which directly contradicts the reference answer of 7, indicating a perceptual hallucination."
   },
-  "audio": "audio/V-zEdz2yo-Y_00-00-00_00-00-18.ogg"
+  "audio": "audio/V-zEdz2yo-Y_00-00-00_00-00-18.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "H3ixLqnHqCg_00-00-00_00-00-13",
@@ -2650,7 +2721,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer of 2 is incorrect compared to the reference answer of 7, indicating a hallucination in the inferential analysis."
   },
-  "audio": "audio/H3ixLqnHqCg_00-00-00_00-00-13.ogg"
+  "audio": "audio/H3ixLqnHqCg_00-00-00_00-00-13.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "gSFLW0-1Jyc_00-09-40_00-10-02",
@@ -2687,7 +2759,8 @@
    "hallucination_level": "none",
    "rationale": "The answer accurately describes a musical development consistent with the reference answer, focusing on tempo and instrumentation."
   },
-  "audio": "audio/gSFLW0-1Jyc_00-09-40_00-10-02.ogg"
+  "audio": "audio/gSFLW0-1Jyc_00-09-40_00-10-02.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "zar3EpCxKr0_00-01-05_00-01-27",
@@ -2724,7 +2797,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model incorrectly orders the instruments, placing Guzheng before Percussive Groups and Chinese fiddles/bowed-string family after Suona, which contradicts the reference answer."
   },
-  "audio": "audio/zar3EpCxKr0_00-01-05_00-01-27.ogg"
+  "audio": "audio/zar3EpCxKr0_00-01-05_00-01-27.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "oLWpgWuUaU4_00-10-35_00-11-05",
@@ -2761,7 +2835,8 @@
    "hallucination_level": "none",
    "rationale": "The answer exactly matches the reference answer."
   },
-  "audio": "audio/oLWpgWuUaU4_00-10-35_00-11-05.ogg"
+  "audio": "audio/oLWpgWuUaU4_00-10-35_00-11-05.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "LvJAV6le2No_00-00-40_00-00-50",
@@ -2798,7 +2873,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer incorrectly describes the spatial movement of the trumpet as left to right, while the reference indicates front to back, which is an inferential claim not supported by the audio."
   },
-  "audio": "audio/LvJAV6le2No_00-00-40_00-00-50.ogg"
+  "audio": "audio/LvJAV6le2No_00-00-40_00-00-50.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "-iRy-hX2qdk_00-00-00_00-00-11",
@@ -2835,7 +2911,8 @@
    "hallucination_level": "none",
    "rationale": "The model's answer matches the reference answer exactly, indicating correct identification of the words using reverb."
   },
-  "audio": "audio/-iRy-hX2qdk_00-00-00_00-00-11.ogg"
+  "audio": "audio/-iRy-hX2qdk_00-00-00_00-00-11.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "LN2f4ZDAY9U_00-00-42_00-01-12",
@@ -2870,7 +2947,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The answer contradicts the reference answer which states there is a percussion instrument in the audio."
   },
-  "audio": "audio/LN2f4ZDAY9U_00-00-42_00-01-12.ogg"
+  "audio": "audio/LN2f4ZDAY9U_00-00-42_00-01-12.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "oCvt-aePCDQ_00-00-05_00-00-35",
@@ -2907,7 +2985,8 @@
    "hallucination_level": "contextual",
    "rationale": "The answer incorrectly identifies the university, which does not match the reference fact."
   },
-  "audio": "audio/oCvt-aePCDQ_00-00-05_00-00-35.ogg"
+  "audio": "audio/oCvt-aePCDQ_00-00-05_00-00-35.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "oRjkCZdKreA_00-01-45_00-02-15",
@@ -2944,7 +3023,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer of 'China' is incorrect and not supported by the reference answer 'Korea'."
   },
-  "audio": "audio/oRjkCZdKreA_00-01-45_00-02-15.ogg"
+  "audio": "audio/oRjkCZdKreA_00-01-45_00-02-15.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "tTbY_EeC9Wg_00-00-00_00-00-30",
@@ -2981,7 +3061,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer incorrectly identifies the country as China, while the reference answer is India, indicating a hallucination in the inferential claim."
   },
-  "audio": "audio/tTbY_EeC9Wg_00-00-00_00-00-30.ogg"
+  "audio": "audio/tTbY_EeC9Wg_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "PpPB5U9YXoU_00-02-44_00-03-14",
@@ -3018,7 +3099,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The model's answer claims there were 12 bird calls, which directly contradicts the reference answer of 0."
   },
-  "audio": "audio/PpPB5U9YXoU_00-02-44_00-03-14.ogg"
+  "audio": "audio/PpPB5U9YXoU_00-02-44_00-03-14.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "dJ_BXI7OF_8_00-05-37_00-06-07",
@@ -3055,7 +3137,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies 1 type of instrument, matching the reference answer."
   },
-  "audio": "audio/dJ_BXI7OF_8_00-05-37_00-06-07.ogg"
+  "audio": "audio/dJ_BXI7OF_8_00-05-37_00-06-07.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "qx8hrhBZJ98_00-01-32_00-02-02",
@@ -3092,7 +3175,8 @@
    "hallucination_level": "none",
    "rationale": "Steppe is a valid synonym for open grassland and is considered a correct answer in this context."
   },
-  "audio": "audio/qx8hrhBZJ98_00-01-32_00-02-02.ogg"
+  "audio": "audio/qx8hrhBZJ98_00-01-32_00-02-02.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "hW98pgs3py0_00-04-10_00-04-40",
@@ -3129,7 +3213,8 @@
    "hallucination_level": "contextual",
    "rationale": "The answer 'Snake skin' is not a valid material for the Soundboard in the bowed string lute as per the reference answer, which is 'Wood or coconut shell'."
   },
-  "audio": "audio/hW98pgs3py0_00-04-10_00-04-40.ogg"
+  "audio": "audio/hW98pgs3py0_00-04-10_00-04-40.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "4oUjH0szF4I_00-00-50_00-01-20",
@@ -3166,7 +3251,8 @@
    "hallucination_level": "none",
    "rationale": "The answer provides a reasonable inferential explanation based on perceptual observations of the audio, aligning with the question's inferential nature."
   },
-  "audio": "audio/4oUjH0szF4I_00-00-50_00-01-20.ogg"
+  "audio": "audio/4oUjH0szF4I_00-00-50_00-01-20.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "-wiRivDMIYM_00-00-02_00-00-32",
@@ -3203,7 +3289,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer makes an inferential claim about the musician's intent that is not supported by the audio clip or the reference answer."
   },
-  "audio": "audio/-wiRivDMIYM_00-00-02_00-00-32.ogg"
+  "audio": "audio/-wiRivDMIYM_00-00-02_00-00-32.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "VeFzYPKbz1g_00-00-05_00-00-35",
@@ -3240,7 +3327,8 @@
    "hallucination_level": "contextual",
    "rationale": "The answer 'Kazoo' is incorrect; the reference answer is 'Recorder', and the model's answer does not match the factual ground truth."
   },
-  "audio": "audio/VeFzYPKbz1g_00-00-05_00-00-35.ogg"
+  "audio": "audio/VeFzYPKbz1g_00-00-05_00-00-35.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "uvqo3yBREFw_00-00-05_00-00-35",
@@ -3277,7 +3365,8 @@
    "hallucination_level": "contextual",
    "rationale": "The answer incorrectly identifies the music as Renaissance and Baroque, which are not the correct historical genres for the audio clip."
   },
-  "audio": "audio/uvqo3yBREFw_00-00-05_00-00-35.ogg"
+  "audio": "audio/uvqo3yBREFw_00-00-05_00-00-35.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BBvC5vS10aA_00-03-46_00-04-16",
@@ -3314,7 +3403,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer includes instruments not present in the reference answer and introduces an incorrect order, which is an inferential claim not supported by the audio."
   },
-  "audio": "audio/BBvC5vS10aA_00-03-46_00-04-16.ogg"
+  "audio": "audio/BBvC5vS10aA_00-03-46_00-04-16.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV16Q4y1N7V6_00-00-10_00-00-40",
@@ -3351,7 +3441,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference and is a valid inferential response based on the audio content."
   },
-  "audio": "audio/BV16Q4y1N7V6_00-00-10_00-00-40.ogg"
+  "audio": "audio/BV16Q4y1N7V6_00-00-10_00-00-40.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "8AF-Sm8d8yk_00-01-28_00-01-51",
@@ -3388,7 +3479,8 @@
    "hallucination_level": "contextual",
    "rationale": "The answer introduces an ungrounded claim about the moon being the true love, which contradicts the reference answer and lacks any basis in the audio clip."
   },
-  "audio": "audio/8AF-Sm8d8yk_00-01-28_00-01-51.ogg"
+  "audio": "audio/8AF-Sm8d8yk_00-01-28_00-01-51.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "7my5baoCVv8_00-03-10_00-03-30",
@@ -3425,7 +3517,8 @@
    "hallucination_level": "none",
    "rationale": "The answer provides a plausible and specific reason for the audience's laughter that aligns with the inferential category and is grounded in the audio content."
   },
-  "audio": "audio/7my5baoCVv8_00-03-10_00-03-30.ogg"
+  "audio": "audio/7my5baoCVv8_00-03-10_00-03-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1gK4y1t7gv_00-07-08_00-07-38",
@@ -3462,7 +3555,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer introduces an ungrounded inferential claim about the bishop's actions and the convict's intentions, which are not supported by the audio clip."
   },
-  "audio": "audio/BV1gK4y1t7gv_00-07-08_00-07-38.ogg"
+  "audio": "audio/BV1gK4y1t7gv_00-07-08_00-07-38.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1gK4y1t7gv_00-49-43_00-50-13",
@@ -3499,7 +3593,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer 'Cruel and abusive' is an inferential claim that lacks sufficient grounding in the audio clip's content and contradicts the reference answer."
   },
-  "audio": "audio/BV1gK4y1t7gv_00-49-43_00-50-13.ogg"
+  "audio": "audio/BV1gK4y1t7gv_00-49-43_00-50-13.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "L4HUTaExyfo_00-00-41_00-01-11",
@@ -3536,7 +3631,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The answer claims 6 times, which does not match the reference answer of 2 times."
   },
-  "audio": "audio/L4HUTaExyfo_00-00-41_00-01-11.ogg"
+  "audio": "audio/L4HUTaExyfo_00-00-41_00-01-11.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1Mb4y177Nd_00-00-06_00-00-36",
@@ -3573,7 +3669,8 @@
    "hallucination_level": "none",
    "rationale": "The answer provides a reasonable inferential explanation that aligns with the reference answer, and is grounded in the audio content."
   },
-  "audio": "audio/BV1Mb4y177Nd_00-00-06_00-00-36.ogg"
+  "audio": "audio/BV1Mb4y177Nd_00-00-06_00-00-36.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "SQadcm_dwEM_00-01-05_00-02-01",
@@ -3608,7 +3705,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies the choir as adult and explains why it is not a children's song, aligning with the reference answer."
   },
-  "audio": "audio/SQadcm_dwEM_00-01-05_00-02-01.ogg"
+  "audio": "audio/SQadcm_dwEM_00-01-05_00-02-01.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "PAWfmULFrnM_00-01-05_00-01-32",
@@ -3645,7 +3743,8 @@
    "hallucination_level": "contextual",
    "rationale": "The answer 'Yuan Dynasty' is incorrect; the reference answer is 'Ming Dynasty'."
   },
-  "audio": "audio/PAWfmULFrnM_00-01-05_00-01-32.ogg"
+  "audio": "audio/PAWfmULFrnM_00-01-05_00-01-32.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "7XZQZ8KL3as_00-00-46_00-01-16",
@@ -3682,7 +3781,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies the era and country as 'Revolutionary War era, USA', matching the reference fact."
   },
-  "audio": "audio/7XZQZ8KL3as_00-00-46_00-01-16.ogg"
+  "audio": "audio/7XZQZ8KL3as_00-00-46_00-01-16.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1LT4y1x7GX_00-00-01_00-00-31",
@@ -3719,7 +3819,8 @@
    "hallucination_level": "none",
    "rationale": "The answer is plausible, consistent, and grounded in the emotional and thematic elements of the audio, aligning with the reference's inspirational theme."
   },
-  "audio": "audio/BV1LT4y1x7GX_00-00-01_00-00-31.ogg"
+  "audio": "audio/BV1LT4y1x7GX_00-00-01_00-00-31.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "Ch6Ae9DT6Ko_00-04-03_00-04-31",
@@ -3756,7 +3857,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer introduces a claim about the philosopher's role that is not supported by the audio and contradicts the reference answer."
   },
-  "audio": "audio/Ch6Ae9DT6Ko_00-04-03_00-04-31.ogg"
+  "audio": "audio/Ch6Ae9DT6Ko_00-04-03_00-04-31.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV12b411W7yu_00-01-04_00-01-34",
@@ -3793,7 +3895,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer incorrectly identifies the musical periods as Classical and Romantic, which do not align with the reference answer of Jazz and Impressionism."
   },
-  "audio": "audio/BV12b411W7yu_00-01-04_00-01-34.ogg"
+  "audio": "audio/BV12b411W7yu_00-01-04_00-01-34.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1D84y1c737_00-00-46_00-01-16",
@@ -3830,7 +3933,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer introduces a high-pitched note not mentioned in the reference, which is an unsupported inferential claim."
   },
-  "audio": "audio/BV1D84y1c737_00-00-46_00-01-16.ogg"
+  "audio": "audio/BV1D84y1c737_00-00-46_00-01-16.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1P741187CB_00-01-26_00-01-56",
@@ -3867,7 +3971,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies the lyrical inaccuracy about the number of gates in Beijing, matching the reference answer."
   },
-  "audio": "audio/BV1P741187CB_00-01-26_00-01-56.ogg"
+  "audio": "audio/BV1P741187CB_00-01-26_00-01-56.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "LGs_vGt0MY8_00-00-01_00-00-31",
@@ -3904,7 +4009,8 @@
    "hallucination_level": "none",
    "rationale": "The answer is plausible, consistent, and grounded in the affective qualities of the audio, aligning with the reference answer."
   },
-  "audio": "audio/LGs_vGt0MY8_00-00-01_00-00-31.ogg"
+  "audio": "audio/LGs_vGt0MY8_00-00-01_00-00-31.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1E3411d7fi_00-04-09_00-04-39",
@@ -3941,7 +4047,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer introduces a new narrative (friend in Shanghai, illness) not present in the audio or reference, making the inference unsupported."
   },
-  "audio": "audio/BV1E3411d7fi_00-04-09_00-04-39.ogg"
+  "audio": "audio/BV1E3411d7fi_00-04-09_00-04-39.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1mifMY4Ebq_00-02-41_00-03-10",
@@ -3981,7 +4088,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies the criticism of colonialist undertones and aligns with the reference's contextual and inferential claims."
   },
-  "audio": "audio/BV1mifMY4Ebq_00-02-41_00-03-10.ogg"
+  "audio": "audio/BV1mifMY4Ebq_00-02-41_00-03-10.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1iW411372Z_00-00-22_00-00-52",
@@ -4018,7 +4126,8 @@
    "hallucination_level": "none",
    "rationale": "The answer aligns with the reference fact about the era of early liberation and Chinese industrialization, and is semantically compatible with the reference."
   },
-  "audio": "audio/BV1iW411372Z_00-00-22_00-00-52.ogg"
+  "audio": "audio/BV1iW411372Z_00-00-22_00-00-52.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1s1421k7qo_multi_segment",
@@ -4055,7 +4164,8 @@
    "hallucination_level": "none",
    "rationale": "The model correctly identifies the two styles as different, with reasonable and valid genre classifications."
   },
-  "audio": "audio/BV1s1421k7qo_multi_segment.ogg"
+  "audio": "audio/BV1s1421k7qo_multi_segment.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1ez4y167gM_multi_segment",
@@ -4092,7 +4202,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference answer and is grounded in the audio content."
   },
-  "audio": "audio/BV1ez4y167gM_multi_segment.ogg"
+  "audio": "audio/BV1ez4y167gM_multi_segment.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1Ph411C7S5_00-00-30_00-01-00",
@@ -4129,7 +4240,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer 'J-Pop' is not a valid scene name and does not match the reference answer, which lists specific scenes."
   },
-  "audio": "audio/BV1Ph411C7S5_00-00-30_00-01-00.ogg"
+  "audio": "audio/BV1Ph411C7S5_00-00-30_00-01-00.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1yu4m1N74b_00-00-30_00-01-00",
@@ -4166,7 +4278,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies the recording as a studio recording and aligns with the reference answer, with a reasonable inference about the environment."
   },
-  "audio": "audio/BV1yu4m1N74b_00-00-30_00-01-00.ogg"
+  "audio": "audio/BV1yu4m1N74b_00-00-30_00-01-00.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1ig41157wq_00-00-28_00-00-58",
@@ -4203,7 +4316,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer introduces 'modern electronic music' which is not supported by the audio and contradicts the reference answer."
   },
-  "audio": "audio/BV1ig41157wq_00-00-28_00-00-58.ogg"
+  "audio": "audio/BV1ig41157wq_00-00-28_00-00-58.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1c5411V7xv_00-03-01_00-03-14",
@@ -4240,7 +4354,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies 'Scat' as the technique used, matching the reference answer."
   },
-  "audio": "audio/BV1c5411V7xv_00-03-01_00-03-14.ogg"
+  "audio": "audio/BV1c5411V7xv_00-03-01_00-03-14.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1uj421d77j_00-00-30_00-01-00",
@@ -4277,7 +4392,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference answer and is a valid, expert-agreed response to the inferential question."
   },
-  "audio": "audio/BV1uj421d77j_00-00-30_00-01-00.ogg"
+  "audio": "audio/BV1uj421d77j_00-00-30_00-01-00.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1bZ4y1E79V_00-00-00_00-00-30",
@@ -4314,7 +4430,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model incorrectly identifies the audio as Trot, while the reference states it is not Trot. The answer includes unverified claims about rhythm, vocal techniques, and instrumentation that are not supported by the audio."
   },
-  "audio": "audio/BV1bZ4y1E79V_00-00-00_00-00-30.ogg"
+  "audio": "audio/BV1bZ4y1E79V_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1VN411H7nt_00-00-18_00-00-35",
@@ -4351,7 +4468,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer claims a female singer is present and describes processing effects not mentioned in the reference, which states there is no female voice and only a male voice with specific effects."
   },
-  "audio": "audio/BV1VN411H7nt_00-00-18_00-00-35.ogg"
+  "audio": "audio/BV1VN411H7nt_00-00-18_00-00-35.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV122R9YkEig_00-00-22_00-00-52",
@@ -4388,7 +4506,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model incorrectly identifies the music as Peking Opera, while the reference answer is Cantonese Opera, which is a distinct type of Chinese opera."
   },
-  "audio": "audio/BV122R9YkEig_00-00-22_00-00-52.ogg"
+  "audio": "audio/BV122R9YkEig_00-00-22_00-00-52.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV19t411Z7oA_00-00-20_00-00-50",
@@ -4425,7 +4544,8 @@
    "hallucination_level": "none",
    "rationale": "The answer 'Male Lead' is a valid and equivalent term to the reference answer 'Old Male Lead' and is grounded in the audio's content."
   },
-  "audio": "audio/BV19t411Z7oA_00-00-20_00-00-50.ogg"
+  "audio": "audio/BV19t411Z7oA_00-00-20_00-00-50.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1Rz4y1H7uz_00-00-25_00-00-41",
@@ -4462,7 +4582,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model confidently claims the trumpet section plays the melody, which contradicts the reference answer of the violin section."
   },
-  "audio": "audio/BV1Rz4y1H7uz_00-00-25_00-00-41.ogg"
+  "audio": "audio/BV1Rz4y1H7uz_00-00-25_00-00-41.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1rx411X7EL_00-00-00_00-00-30",
@@ -4499,7 +4620,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model claims 'falsetto form' which is not a recognized musical form term and does not match the reference answer 'Opera aria'."
   },
-  "audio": "audio/BV1rx411X7EL_00-00-00_00-00-30.ogg"
+  "audio": "audio/BV1rx411X7EL_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1UN4y1P7F4_00-00-18_00-00-48",
@@ -4536,7 +4658,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference and is a valid response to the inferential question."
   },
-  "audio": "audio/BV1UN4y1P7F4_00-00-18_00-00-48.ogg"
+  "audio": "audio/BV1UN4y1P7F4_00-00-18_00-00-48.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV15a411S7M1_00-00-28_00-00-48",
@@ -4573,7 +4696,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The answer claims pitch instability and going off-key, which are not mentioned in the reference answer about distortion, making it a hallucination at the perceptual level."
   },
-  "audio": "audio/BV15a411S7M1_00-00-28_00-00-48.ogg"
+  "audio": "audio/BV15a411S7M1_00-00-28_00-00-48.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV129ZgYfEaD_00-00-00_00-00-30",
@@ -4610,7 +4734,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies a solo performer role (Tenor) which is a valid alternative to the reference answer (Male Baritone), both being male vocal solo roles."
   },
-  "audio": "audio/BV129ZgYfEaD_00-00-00_00-00-30.ogg"
+  "audio": "audio/BV129ZgYfEaD_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1oa411r7mi_00-00-30_00-01-00",
@@ -4647,7 +4772,8 @@
    "hallucination_level": "none",
    "rationale": "The answer 'Rock and roll elements' is a reasonable variation of the reference answer 'Rock elements' and aligns with the inferential category."
   },
-  "audio": "audio/BV1oa411r7mi_00-00-30_00-01-00.ogg"
+  "audio": "audio/BV1oa411r7mi_00-00-30_00-01-00.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1hW411M7Dk_00-01-00_00-01-30",
@@ -4684,7 +4810,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies 1 member for the bass part, matching the reference answer exactly."
   },
-  "audio": "audio/BV1hW411M7Dk_00-01-00_00-01-30.ogg"
+  "audio": "audio/BV1hW411M7Dk_00-01-00_00-01-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1524y1e7Q5_00-00-00_00-00-30",
@@ -4721,7 +4848,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The model incorrectly states the dynamic range as 96dB, while the reference is 48dB. The calculation provided is based on a misunderstanding of how dynamic range is determined for audio files."
   },
-  "audio": "audio/BV1524y1e7Q5_00-00-00_00-00-30.ogg"
+  "audio": "audio/BV1524y1e7Q5_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1Fx421y76J_00-00-00_00-00-27",
@@ -4758,7 +4886,8 @@
    "hallucination_level": "contextual",
    "rationale": "The answer 'West Africa' does not match the reference answer 'South Africa', and the model made a confident claim about the region without sufficient evidence."
   },
-  "audio": "audio/BV1Fx421y76J_00-00-00_00-00-27.ogg"
+  "audio": "audio/BV1Fx421y76J_00-00-00_00-00-27.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1LT411H7vi_00-02-21_00-02-50",
@@ -4795,7 +4924,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies two styles (K-pop and Jersey Club) as per the reference, with a minor variation in order that does not affect correctness."
   },
-  "audio": "audio/BV1LT411H7vi_00-02-21_00-02-50.ogg"
+  "audio": "audio/BV1LT411H7vi_00-02-21_00-02-50.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1V5KVeYEaY_00-00-00_00-00-30",
@@ -4832,7 +4962,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model confidently claims 'First' which contradicts the reference answer 'Has not appeared', indicating a hallucination in inferential reasoning."
   },
-  "audio": "audio/BV1V5KVeYEaY_00-00-00_00-00-30.ogg"
+  "audio": "audio/BV1V5KVeYEaY_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1ku411d77M_00-17-38_00-18-08",
@@ -4869,7 +5000,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer contradicts the reference answer which states only one motif is used, indicating an incorrect inferential claim."
   },
-  "audio": "audio/BV1ku411d77M_00-17-38_00-18-08.ogg"
+  "audio": "audio/BV1ku411d77M_00-17-38_00-18-08.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1Lq421A7sn_00-00-05_00-00-33",
@@ -4906,7 +5038,8 @@
    "hallucination_level": "none",
    "rationale": "The model's answer aligns with the reference by describing an asymmetrical structure with irregular phrase lengths, which is a valid inferential interpretation."
   },
-  "audio": "audio/BV1Lq421A7sn_00-00-05_00-00-33.ogg"
+  "audio": "audio/BV1Lq421A7sn_00-00-05_00-00-33.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1PD421H7FH_00-00-20_00-00-50",
@@ -4943,7 +5076,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer introduces an unverified inferential claim about instrument decoration that is not supported by the reference or the audio clip."
   },
-  "audio": "audio/BV1PD421H7FH_00-00-20_00-00-50.ogg"
+  "audio": "audio/BV1PD421H7FH_00-00-20_00-00-50.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1pb411v7HR_00-00-04_00-00-34",
@@ -4980,7 +5114,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer contradicts the reference answer and lacks grounding in the audio features."
   },
-  "audio": "audio/BV1pb411v7HR_00-00-04_00-00-34.ogg"
+  "audio": "audio/BV1pb411v7HR_00-00-04_00-00-34.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1ny4y1W7hX_00-10-00_00-10-23",
@@ -5017,7 +5152,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer introduces an inferential claim about 'space and depth' without grounding in the audio features or aligning with the reference answer about cadence formation."
   },
-  "audio": "audio/BV1ny4y1W7hX_00-10-00_00-10-23.ogg"
+  "audio": "audio/BV1ny4y1W7hX_00-10-00_00-10-23.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1oW411h7ow_00-00-38_00-01-08",
@@ -5054,7 +5190,8 @@
    "hallucination_level": "affective",
    "rationale": "The answer makes an affective claim about the mood of the music without providing any perceptual evidence or matching the reference answer."
   },
-  "audio": "audio/BV1oW411h7ow_00-00-38_00-01-08.ogg"
+  "audio": "audio/BV1oW411h7ow_00-00-38_00-01-08.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV16d4y1J7TM_00-00-00_00-00-30",
@@ -5091,7 +5228,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference answer and is a valid inference based on the audio clip."
   },
-  "audio": "audio/BV16d4y1J7TM_00-00-00_00-00-30.ogg"
+  "audio": "audio/BV16d4y1J7TM_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1pf4y1171R_00-00-17_00-00-47",
@@ -5128,7 +5266,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer is an incorrect variation of the folk song title and does not align with the reference answer or any valid alternative."
   },
-  "audio": "audio/BV1pf4y1171R_00-00-17_00-00-47.ogg"
+  "audio": "audio/BV1pf4y1171R_00-00-17_00-00-47.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1Nu411F7Hi_00-00-28_00-00-50",
@@ -5165,7 +5304,8 @@
    "hallucination_level": "contextual",
    "rationale": "The model's answer 'Qinghai-Tibet Plateau' does not match the reference 'Southwest China Hengduan Mountains', and there is no evidence in the audio to support this claim."
   },
-  "audio": "audio/BV1Nu411F7Hi_00-00-28_00-00-50.ogg"
+  "audio": "audio/BV1Nu411F7Hi_00-00-28_00-00-50.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV16V411Q75V_00-00-30_00-01-00",
@@ -5202,7 +5342,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies the tune's origin and provides a plausible era based on historical context, aligning with the reference fact."
   },
-  "audio": "audio/BV16V411Q75V_00-00-30_00-01-00.ogg"
+  "audio": "audio/BV16V411Q75V_00-00-30_00-01-00.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1RdZEY8E8T_00-00-15_00-00-25",
@@ -5239,7 +5380,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer of 'Trumpet' does not match the reference answer 'Oboe' and lacks sufficient grounding in the audio features to justify the inference."
   },
-  "audio": "audio/BV1RdZEY8E8T_00-00-15_00-00-25.ogg"
+  "audio": "audio/BV1RdZEY8E8T_00-00-15_00-00-25.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1wv4y1f7Mh_multi_segment",
@@ -5276,7 +5418,8 @@
    "hallucination_level": "contextual",
    "rationale": "The answer contradicts the reference fact which states the first is the father of the second and the second is the brother of the third, while the model incorrectly claims all three are brothers."
   },
-  "audio": "audio/BV1wv4y1f7Mh_multi_segment.ogg"
+  "audio": "audio/BV1wv4y1f7Mh_multi_segment.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV19r4y1t7fG_multi_segment",
@@ -5313,7 +5456,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer contradicts the reference answer and lacks justification based on observable audio features."
   },
-  "audio": "audio/BV19r4y1t7fG_multi_segment.ogg"
+  "audio": "audio/BV19r4y1t7fG_multi_segment.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1hg4y1C7eN_multi_segment",
@@ -5350,7 +5494,8 @@
    "hallucination_level": "none",
    "rationale": "The answer accurately identifies perceptual and inferential differences between the two audio segments and aligns with the reference answer."
   },
-  "audio": "audio/BV1hg4y1C7eN_multi_segment.ogg"
+  "audio": "audio/BV1hg4y1C7eN_multi_segment.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1ft4y1c77B_multi_segment",
@@ -5387,7 +5532,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The model incorrectly identifies the lowest pitch as G3, while the reference answer is C3, indicating a perceptual error in pitch identification."
   },
-  "audio": "audio/BV1ft4y1c77B_multi_segment.ogg"
+  "audio": "audio/BV1ft4y1c77B_multi_segment.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1paw8enE3n_multi_segment",
@@ -5424,7 +5570,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer 'Swing and Hemiola' does not match the reference answer 'Anticipation and Delay' and is not a valid inferential response to the question about rhythmic techniques."
   },
-  "audio": "audio/BV1paw8enE3n_multi_segment.ogg"
+  "audio": "audio/BV1paw8enE3n_multi_segment.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1wZ421U7Ws_multi_segment",
@@ -5461,7 +5608,8 @@
    "hallucination_level": "none",
    "rationale": "The answer provides approximate years between the periods that are close to the reference, and the reasoning is grounded in the musical styles mentioned."
   },
-  "audio": "audio/BV1wZ421U7Ws_multi_segment.ogg"
+  "audio": "audio/BV1wZ421U7Ws_multi_segment.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV15ZovYgEfg_multi_segment",
@@ -5498,7 +5646,8 @@
    "hallucination_level": "none",
    "rationale": "Arranging is a valid and closely related process to orchestration in the composition process, and both are considered inferential in the PIAC framework."
   },
-  "audio": "audio/BV15ZovYgEfg_multi_segment.ogg"
+  "audio": "audio/BV15ZovYgEfg_multi_segment.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1pp421S7fs_multi_segment",
@@ -5535,7 +5684,8 @@
    "hallucination_level": "none",
    "rationale": "The answer exactly matches the reference answer."
   },
-  "audio": "audio/BV1pp421S7fs_multi_segment.ogg"
+  "audio": "audio/BV1pp421S7fs_multi_segment.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1z6421u7m3_00-00-03_00-00-33",
@@ -5572,7 +5722,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer does not match the reference or any reasonable alternative and includes incorrect chord symbols not present in the audio."
   },
-  "audio": "audio/BV1z6421u7m3_00-00-03_00-00-33.ogg"
+  "audio": "audio/BV1z6421u7m3_00-00-03_00-00-33.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV13j421S7Fo_00-00-29_00-00-59",
@@ -5609,7 +5760,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer contradicts the reference answer and provides an incorrect comparison of chord occurrences."
   },
-  "audio": "audio/BV13j421S7Fo_00-00-29_00-00-59.ogg"
+  "audio": "audio/BV13j421S7Fo_00-00-29_00-00-59.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1qD4y1V7YL_00-00-45_00-01-15",
@@ -5646,7 +5798,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The model's answer does not match the reference lyric phrase and is not grounded in the audio content."
   },
-  "audio": "audio/BV1qD4y1V7YL_00-00-45_00-01-15.ogg"
+  "audio": "audio/BV1qD4y1V7YL_00-00-45_00-01-15.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV17r4y1C7KB_00-00-28_00-00-58",
@@ -5683,7 +5836,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer does not align with the reference answer and lacks justification for its claim about the audio clip."
   },
-  "audio": "audio/BV17r4y1C7KB_00-00-28_00-00-58.ogg"
+  "audio": "audio/BV17r4y1C7KB_00-00-28_00-00-58.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1764y1b7cs_00-00-06_00-00-36",
@@ -5720,7 +5874,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer incorrectly states the number of modulations as 1, while the reference indicates 5 modulations in the harmonic minor, showing a clear inferential error."
   },
-  "audio": "audio/BV1764y1b7cs_00-00-06_00-00-36.ogg"
+  "audio": "audio/BV1764y1b7cs_00-00-06_00-00-36.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1dP4y167EX_00-03-29_00-04-00",
@@ -5757,7 +5912,8 @@
    "hallucination_level": "contextual",
    "rationale": "The answer contradicts the reference fact by attributing the laughter to a mistake rather than a confident handover to the audience."
   },
-  "audio": "audio/BV1dP4y167EX_00-03-29_00-04-00.ogg"
+  "audio": "audio/BV1dP4y167EX_00-03-29_00-04-00.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1nH4y1u7kt_00-00-00_00-00-30",
@@ -5794,7 +5950,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer includes 'syncopated meows' which is not a recognized blues rhythm technique and 'shuffle rhythm' is not supported by the audio clip."
   },
-  "audio": "audio/BV1nH4y1u7kt_00-00-00_00-00-30.ogg"
+  "audio": "audio/BV1nH4y1u7kt_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1nTsZeDE2H_00-00-55_00-01-25",
@@ -5831,7 +5988,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model incorrectly claims the tempo speeds up, which contradicts the reference answer and lacks support from the audio."
   },
-  "audio": "audio/BV1nTsZeDE2H_00-00-55_00-01-25.ogg"
+  "audio": "audio/BV1nTsZeDE2H_00-00-55_00-01-25.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1Zx411E7Yp_00-02-14_00-02-44",
@@ -5868,7 +6026,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer claims an inferential conclusion (F Dorian mode) without sufficient grounding in the audio features, which contradicts the reference answer of C Dorian mode."
   },
-  "audio": "audio/BV1Zx411E7Yp_00-02-14_00-02-44.ogg"
+  "audio": "audio/BV1Zx411E7Yp_00-02-14_00-02-44.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV15k4y1r7Zz_00-01-57_00-02-27",
@@ -5905,7 +6064,8 @@
    "hallucination_level": "none",
    "rationale": "The answer is a reasonable alternative to the reference answer and aligns with the inferential category."
   },
-  "audio": "audio/BV15k4y1r7Zz_00-01-57_00-02-27.ogg"
+  "audio": "audio/BV15k4y1r7Zz_00-01-57_00-02-27.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1hB4y1p7Ui_00-00-07_00-00-37",
@@ -5942,7 +6102,8 @@
    "hallucination_level": "none",
    "rationale": "The model's answer matches the reference answer exactly, indicating correct identification of the representative piece for the main instrument."
   },
-  "audio": "audio/BV1hB4y1p7Ui_00-00-07_00-00-37.ogg"
+  "audio": "audio/BV1hB4y1p7Ui_00-00-07_00-00-37.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV17G4y1h7Hm_00-00-17_00-00-43",
@@ -5979,7 +6140,8 @@
    "hallucination_level": "contextual",
    "rationale": "The answer 1972 does not match the reference answer 1949, which is the correct year for the establishment of diplomatic relations between the countries in question."
   },
-  "audio": "audio/BV17G4y1h7Hm_00-00-17_00-00-43.ogg"
+  "audio": "audio/BV17G4y1h7Hm_00-00-17_00-00-43.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1Fw411i7Cj_00-01-38_00-02-08",
@@ -6016,7 +6178,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer incorrectly states the number of key changes as 2, while the reference answer is 4, indicating a hallucination in the inferential analysis."
   },
-  "audio": "audio/BV1Fw411i7Cj_00-01-38_00-02-08.ogg"
+  "audio": "audio/BV1Fw411i7Cj_00-01-38_00-02-08.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1hLw8ewEPQ_00-00-03_00-00-33",
@@ -6053,7 +6216,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies the counts of ritardando and diminuendo as 2 and 1 respectively, which matches the reference answer's structure and is a valid inferential response."
   },
-  "audio": "audio/BV1hLw8ewEPQ_00-00-03_00-00-33.ogg"
+  "audio": "audio/BV1hLw8ewEPQ_00-00-03_00-00-33.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1xx9yYGEvf_00-00-03_00-00-33",
@@ -6090,7 +6254,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly matches the reference answer and is a valid inferential response."
   },
-  "audio": "audio/BV1xx9yYGEvf_00-00-03_00-00-33.ogg"
+  "audio": "audio/BV1xx9yYGEvf_00-00-03_00-00-33.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1mA1zYVE5v_00-00-07_00-00-32",
@@ -6127,7 +6292,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer provides an incorrect chord symbol and makes an inferential claim about harmony during rubato without grounding in the audio features."
   },
-  "audio": "audio/BV1mA1zYVE5v_00-00-07_00-00-32.ogg"
+  "audio": "audio/BV1mA1zYVE5v_00-00-07_00-00-32.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1hd4y1M7Xy_00-00-00_00-00-30",
@@ -6164,7 +6330,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The answer 'Behind' does not match the reference answer 'Left', and there is no evidence in the answer to support this claim based on the audio."
   },
-  "audio": "audio/BV1hd4y1M7Xy_00-00-00_00-00-30.ogg"
+  "audio": "audio/BV1hd4y1M7Xy_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1RW4y1U7yL_00-00-25_00-00-55",
@@ -6201,7 +6368,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer of 5 is incorrect compared to the reference answer of 3, and the reasoning lacks proper grounding in the audio features."
   },
-  "audio": "audio/BV1RW4y1U7yL_00-00-25_00-00-55.ogg"
+  "audio": "audio/BV1RW4y1U7yL_00-00-25_00-00-55.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV12B4y1G7ex_00-00-00_00-00-23",
@@ -6238,7 +6406,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies the action of tuning, which aligns with the reference answer and is a reasonable inference based on the instrument mentioned."
   },
-  "audio": "audio/BV12B4y1G7ex_00-00-00_00-00-23.ogg"
+  "audio": "audio/BV12B4y1G7ex_00-00-00_00-00-23.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1iHCoYTEGi_00-00-01_00-00-28",
@@ -6275,7 +6444,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer of 4 contradicts the reference answer of 2, indicating an incorrect inferential claim about the audio."
   },
-  "audio": "audio/BV1iHCoYTEGi_00-00-01_00-00-28.ogg"
+  "audio": "audio/BV1iHCoYTEGi_00-00-01_00-00-28.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1GM4y1P7rx_00-02-15_00-02-45",
@@ -6312,7 +6482,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer of 2 contradicts the reference answer of 3, indicating an incorrect inferential claim."
   },
-  "audio": "audio/BV1GM4y1P7rx_00-02-15_00-02-45.ogg"
+  "audio": "audio/BV1GM4y1P7rx_00-02-15_00-02-45.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1QDqDYhEDj_00-00-42_00-01-12",
@@ -6349,7 +6520,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer claims a specific mode (F Lydian) without any perceptual or inferential evidence from the audio, contradicting the reference answer of Locrian mode."
   },
-  "audio": "audio/BV1QDqDYhEDj_00-00-42_00-01-12.ogg"
+  "audio": "audio/BV1QDqDYhEDj_00-00-42_00-01-12.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1JZ421e73t_00-00-00_00-00-30",
@@ -6386,7 +6558,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer incorrectly identifies the modes as Lydian to Mixolydian, which does not match the reference answer or any valid expert interpretation of the audio."
   },
-  "audio": "audio/BV1JZ421e73t_00-00-00_00-00-30.ogg"
+  "audio": "audio/BV1JZ421e73t_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1w14y197XU_00-00-38_00-01-08",
@@ -6423,7 +6596,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model incorrectly identifies the mode and historical period, which are key inferential claims not supported by the audio features."
   },
-  "audio": "audio/BV1w14y197XU_00-00-38_00-01-08.ogg"
+  "audio": "audio/BV1w14y197XU_00-00-38_00-01-08.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1AV4y1S7YH_00-00-01_00-00-31",
@@ -6460,7 +6634,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer provides incorrect chords that do not match the reference or any valid expert analysis."
   },
-  "audio": "audio/BV1AV4y1S7YH_00-00-01_00-00-31.ogg"
+  "audio": "audio/BV1AV4y1S7YH_00-00-01_00-00-31.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1M9R2YREpj_00-02-58_00-03-26",
@@ -6497,7 +6672,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer incorrectly identifies the transformation relations and omits the repeated 'Parallel Transformation' and 'Leading-tone Exchange' from the reference, which are essential to the correct sequence."
   },
-  "audio": "audio/BV1M9R2YREpj_00-02-58_00-03-26.ogg"
+  "audio": "audio/BV1M9R2YREpj_00-02-58_00-03-26.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1F441177Cq_00-00-20_00-00-50",
@@ -6534,7 +6710,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies key elements of swing feel (walking bass, syncopated snare, rhythmic piano) and aligns with the reference answer."
   },
-  "audio": "audio/BV1F441177Cq_00-00-20_00-00-50.ogg"
+  "audio": "audio/BV1F441177Cq_00-00-20_00-00-50.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1ds411h7hu_00-00-31_00-01-01",
@@ -6571,7 +6748,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model incorrectly states the number of rhythm changes and mischaracterizes the pattern, which is an inferential claim not supported by the audio."
   },
-  "audio": "audio/BV1ds411h7hu_00-00-31_00-01-01.ogg"
+  "audio": "audio/BV1ds411h7hu_00-00-31_00-01-01.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1QLynYbEKW_00-00-00_00-00-26",
@@ -6608,7 +6786,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer does not match the reference or any reasonable alternative, and the chord names provided are not supported by the audio features."
   },
-  "audio": "audio/BV1QLynYbEKW_00-00-00_00-00-26.ogg"
+  "audio": "audio/BV1QLynYbEKW_00-00-00_00-00-26.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1ax411t7Hk_00-00-28_00-00-54",
@@ -6645,7 +6824,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model incorrectly identifies '10' as a technique, which is not a valid technique and contradicts the reference answer."
   },
-  "audio": "audio/BV1ax411t7Hk_00-00-28_00-00-54.ogg"
+  "audio": "audio/BV1ax411t7Hk_00-00-28_00-00-54.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1EHR6YpEMN_00-00-08_00-00-38",
@@ -6682,7 +6862,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer infers a vocal performance without evidence from the audio clip, which features a violinist, not a vocalist."
   },
-  "audio": "audio/BV1EHR6YpEMN_00-00-08_00-00-38.ogg"
+  "audio": "audio/BV1EHR6YpEMN_00-00-08_00-00-38.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1v4dAY7EGc_00-01-00_00-01-30",
@@ -6719,7 +6900,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer of 2 pitch types and no change in dynamics or speed contradicts the reference answer and lacks grounding in the audio features."
   },
-  "audio": "audio/BV1v4dAY7EGc_00-01-00_00-01-30.ogg"
+  "audio": "audio/BV1v4dAY7EGc_00-01-00_00-01-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1Lx4y1b7w9_00-00-10_00-00-40",
@@ -6756,7 +6938,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer provides an incorrect chord progression that does not match the reference or any reasonable expert-valid answer."
   },
-  "audio": "audio/BV1Lx4y1b7w9_00-00-10_00-00-40.ogg"
+  "audio": "audio/BV1Lx4y1b7w9_00-00-10_00-00-40.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1AeZzYTEKq_00-00-24_00-00-54",
@@ -6793,7 +6976,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference answer and correctly identifies the number of modulations."
   },
-  "audio": "audio/BV1AeZzYTEKq_00-00-24_00-00-54.ogg"
+  "audio": "audio/BV1AeZzYTEKq_00-00-24_00-00-54.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1qo4y1A7xc_00-00-15_00-00-45",
@@ -6830,7 +7014,8 @@
    "hallucination_level": "none",
    "rationale": "The answer does not match the reference ground truth of 13."
   },
-  "audio": "audio/BV1qo4y1A7xc_00-00-15_00-00-45.ogg"
+  "audio": "audio/BV1qo4y1A7xc_00-00-15_00-00-45.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1Q4411b7zo_multi_segment",
@@ -6867,7 +7052,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer provides an incorrect key modulation that does not match the reference or any reasonable expert analysis."
   },
-  "audio": "audio/BV1Q4411b7zo_multi_segment.ogg"
+  "audio": "audio/BV1Q4411b7zo_multi_segment.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1dptdekEuM_00-00-00_00-00-29",
@@ -6904,7 +7090,8 @@
    "hallucination_level": "contextual",
    "rationale": "The model's answer lists countries that do not match the reference answer of UK, Japan, UK."
   },
-  "audio": "audio/BV1dptdekEuM_00-00-00_00-00-29.ogg"
+  "audio": "audio/BV1dptdekEuM_00-00-00_00-00-29.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1TiojYkEUs_00-00-34_00-00-56",
@@ -6941,7 +7128,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies the interval as an octave, which matches the reference answer and is a valid inferential conclusion based on the audio."
   },
-  "audio": "audio/BV1TiojYkEUs_00-00-34_00-00-56.ogg"
+  "audio": "audio/BV1TiojYkEUs_00-00-34_00-00-56.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1KmRMYLEBa_00-00-00_00-00-30",
@@ -6978,7 +7166,8 @@
    "hallucination_level": "contextual",
    "rationale": "The answer omits Cantonese, which is part of the reference answer, leading to a contextual hallucination."
   },
-  "audio": "audio/BV1KmRMYLEBa_00-00-00_00-00-30.ogg"
+  "audio": "audio/BV1KmRMYLEBa_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1GY411W7aY_00-07-34_00-08-04",
@@ -7015,7 +7204,8 @@
    "hallucination_level": "contextual",
    "rationale": "The model's answer 'The Typewriter' does not match the reference answer 'Water Concerto', and there is no evidence in the audio to support the claim."
   },
-  "audio": "audio/BV1GY411W7aY_00-07-34_00-08-04.ogg"
+  "audio": "audio/BV1GY411W7aY_00-07-34_00-08-04.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1T54y147p3_multi_segment",
@@ -7052,7 +7242,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer introduces ungrounded claims about the singer's voice and breath control, which are not perceptible from the audio clip and contradict the reference answer."
   },
-  "audio": "audio/BV1T54y147p3_multi_segment.ogg"
+  "audio": "audio/BV1T54y147p3_multi_segment.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1MY411P7Qn_00-00-00_00-00-10",
@@ -7089,7 +7280,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The answer provides an incorrect numerical value for the number of sample points, which is a perceptual fact."
   },
-  "audio": "audio/BV1MY411P7Qn_00-00-00_00-00-10.ogg"
+  "audio": "audio/BV1MY411P7Qn_00-00-00_00-00-10.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1P4411677K_00-00-00_00-00-20",
@@ -7127,7 +7319,8 @@
    "hallucination_level": "none",
    "rationale": "The answer provides a reasonable estimate of performance level based on the reference and is grounded in the audio's perceptual features."
   },
-  "audio": "audio/BV1P4411677K_00-00-00_00-00-20.ogg"
+  "audio": "audio/BV1P4411677K_00-00-00_00-00-20.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1qq4y1n7Xj_00-00-00_00-00-30",
@@ -7164,7 +7357,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies the 1950-60s as a plausible period based on the described audio features, aligning with the reference answer."
   },
-  "audio": "audio/BV1qq4y1n7Xj_00-00-00_00-00-30.ogg"
+  "audio": "audio/BV1qq4y1n7Xj_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1Z54y1N7Rv_00-00-12_00-00-42",
@@ -7201,7 +7395,8 @@
    "hallucination_level": "contextual",
    "rationale": "The model's answer claims the main audience was Chinese truck drivers and gamers, which contradicts the reference answer of Yunnan rural and urban-rural residents."
   },
-  "audio": "audio/BV1Z54y1N7Rv_00-00-12_00-00-42.ogg"
+  "audio": "audio/BV1Z54y1N7Rv_00-00-12_00-00-42.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1SNw5eXEDJ_00-00-00_00-00-24",
@@ -7238,7 +7433,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model incorrectly identifies a glottal stop as the phonetic phenomenon, which is not a technique associated with bamboo flute and contradicts the reference answer."
   },
-  "audio": "audio/BV1SNw5eXEDJ_00-00-00_00-00-24.ogg"
+  "audio": "audio/BV1SNw5eXEDJ_00-00-00_00-00-24.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1EPs9eTE6W_00-01-29_00-01-59",
@@ -7275,7 +7471,8 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies the historical figure's role and migration details, with a slight temporal difference (mid-19th century vs. late 19th century) that is semantically compatible."
   },
-  "audio": "audio/BV1EPs9eTE6W_00-01-29_00-01-59.ogg"
+  "audio": "audio/BV1EPs9eTE6W_00-01-29_00-01-59.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1kx411m7UN_00-02-45_00-03-15",
@@ -7312,7 +7509,8 @@
    "hallucination_level": "contextual",
    "rationale": "The model's answer claims the song is 'Ode to Joy' from Beethoven's Symphony No. 9, which is incorrect as the reference answer is 'Peking University campus song'."
   },
-  "audio": "audio/BV1kx411m7UN_00-02-45_00-03-15.ogg"
+  "audio": "audio/BV1kx411m7UN_00-02-45_00-03-15.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1KK411H7aR_00-01-00_00-01-30",
@@ -7349,7 +7547,8 @@
    "hallucination_level": "none",
    "rationale": "The answer aligns with the reference answer by addressing the conflict between justice and personal redemption, which is a valid inferential interpretation of the audio clip."
   },
-  "audio": "audio/BV1KK411H7aR_00-01-00_00-01-30.ogg"
+  "audio": "audio/BV1KK411H7aR_00-01-00_00-01-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1fZ4y1W7ZU_multi_segment",
@@ -7386,7 +7585,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The model claims 'heavy digital noise' which is not mentioned in the reference answer, introducing an ungrounded perceptual claim."
   },
-  "audio": "audio/BV1fZ4y1W7ZU_multi_segment.ogg"
+  "audio": "audio/BV1fZ4y1W7ZU_multi_segment.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1tb4y1M7K5_00-01-41_00-01-57",
@@ -7423,7 +7623,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The model incorrectly states the speed ratio between the first and second audio as 2:1 instead of 4:1, which is a perceptual error."
   },
-  "audio": "audio/BV1tb4y1M7K5_00-01-41_00-01-57.ogg"
+  "audio": "audio/BV1tb4y1M7K5_00-01-41_00-01-57.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1gL411j7mL_00-00-02_00-00-31",
@@ -7460,7 +7661,8 @@
    "hallucination_level": "none",
    "rationale": "The answer matches the reference answer and is a valid inferential response based on musical key modulation patterns."
   },
-  "audio": "audio/BV1gL411j7mL_00-00-02_00-00-31.ogg"
+  "audio": "audio/BV1gL411j7mL_00-00-02_00-00-31.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1nFfoYjE2b_00-03-03_00-03-33",
@@ -7497,7 +7699,8 @@
    "hallucination_level": "perceptual",
    "rationale": "The answer claims the dotted quarter note appears eight times, which directly contradicts the reference answer of seven times."
   },
-  "audio": "audio/BV1nFfoYjE2b_00-03-03_00-03-33.ogg"
+  "audio": "audio/BV1nFfoYjE2b_00-03-03_00-03-33.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV1624y1u7Fj_00-00-00_00-00-30",
@@ -7534,7 +7737,8 @@
    "hallucination_level": "inferential",
    "rationale": "The answer contradicts the reference answer and lacks grounding in the audio features."
   },
-  "audio": "audio/BV1624y1u7Fj_00-00-00_00-00-30.ogg"
+  "audio": "audio/BV1624y1u7Fj_00-00-00_00-00-30.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV14P411Z73J_00-00-00_00-00-22",
@@ -7571,7 +7775,8 @@
    "hallucination_level": "inferential",
    "rationale": "The model's answer of 11 is incorrect compared to the reference answer of 10, indicating an inferential hallucination."
   },
-  "audio": "audio/BV14P411Z73J_00-00-00_00-00-22.ogg"
+  "audio": "audio/BV14P411Z73J_00-00-00_00-00-22.ogg",
+  "benchmark": "MMAR"
  },
  {
   "qid": "BV19x411L7Ff_multi_segment",
@@ -7608,6 +7813,7 @@
    "hallucination_level": "none",
    "rationale": "The answer correctly identifies improvements in orchestration and provides plausible changes that align with the reference answer."
   },
-  "audio": "audio/BV19x411L7Ff_multi_segment.ogg"
+  "audio": "audio/BV19x411L7Ff_multi_segment.ogg",
+  "benchmark": "MMAR"
  }
 ]

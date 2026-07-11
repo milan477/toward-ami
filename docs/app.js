@@ -1,8 +1,17 @@
 "use strict";
 
 const PIAC = ["perceptual", "inferential", "affective", "contextual"];
-const ROUTES = ["home", "benchmarks", "models", "evaluation", "results"];
-const state = { data: null, filters: { q: "", piac: "" }, benchQ: "", modelQ: "", selected: new Set(), selectMode: false };
+const ROUTES = ["home", "models", "benchmarks", "evaluation", "results"];
+const state = {
+  data: null,
+  benchQ: "",
+  modelQ: "",
+  selected: new Set(),
+  selectMode: false,
+  inspectName: null,
+  benchQFilters: { q: "", piac: "" },
+  benchQControlsReady: false,
+};
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -38,6 +47,7 @@ async function init() {
   renderNews();
   setupBenchSearch();
   setupModelSearch();
+  setupBenchQuestionControls();
   renderBenchmarks();
   renderModels();
   renderEvaluation();
@@ -48,15 +58,36 @@ async function init() {
 }
 
 /* ---------- routing ---------- */
+function parseRoute() {
+  const raw = (location.hash || "#home").slice(1);
+  if (raw.startsWith("benchmark/")) {
+    return { page: "benchmark-detail", name: decodeURIComponent(raw.slice("benchmark/".length)) };
+  }
+  const page = ROUTES.includes(raw) ? raw : "home";
+  return { page, name: null };
+}
+
 function route() {
-  let r = (location.hash || "#home").slice(1);
-  if (!ROUTES.includes(r)) r = "home";
-  $$(".page").forEach((p) => p.classList.toggle("active", p.id === "page-" + r));
-  $$("#menu a").forEach((a) => a.classList.toggle("active", a.dataset.route === r));
+  const { page, name } = parseRoute();
+  state.inspectName = name;
+  $$(".page").forEach((p) => p.classList.toggle("active", p.id === "page-" + page));
+  $$("#menu a").forEach((a) =>
+    a.classList.toggle("active", a.dataset.route === (page === "benchmark-detail" ? "benchmarks" : page)));
   closeZoom();
   const bar = $("#bench-actions");
-  if (bar) bar.style.display = r === "benchmarks" ? "" : "none";
+  if (bar) bar.style.display = page === "benchmarks" ? "" : "none";
+  if (page === "benchmark-detail") renderBenchmarkDetail(name);
   window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
+}
+
+function benchesWithQuestions() {
+  return new Set(
+    (state.data.questions || []).map((q) => q.benchmark).filter(Boolean),
+  );
+}
+
+function questionsForBench(name) {
+  return (state.data.questions || []).filter((q) => q.benchmark === name);
 }
 
 /* ---------- home: news ---------- */
@@ -140,8 +171,9 @@ function renderBenchmarks() {
   $("#benchmarks").innerHTML = rows.map((b) => {
     const kind = [b.domain, b.format].filter(Boolean).join(" · ");
     const on = state.selected.has(b.name);
+    const hasQ = benchesWithQuestions().has(b.name);
     return `
-    <article class="bench${on ? " selected" : ""}" data-name="${esc(b.name)}">
+    <article class="bench${on ? " selected" : ""}${hasQ ? " has-questions" : ""}" data-name="${esc(b.name)}">
       <label class="bench-select" data-name="${esc(b.name)}" title="Select for citation">
         <input type="checkbox" ${on ? "checked" : ""} aria-label="Select ${esc(b.name)}" />
       </label>
@@ -149,6 +181,7 @@ function renderBenchmarks() {
         <h3>${esc(b.name)}</h3>
         <span class="year">${esc(b.year)}</span>
         ${kind ? `<span class="kind">${esc(kind)}</span>` : ""}
+        ${hasQ ? `<span class="kind inspectable">questions</span>` : ""}
       </div>
       ${b.paper_title ? `<p class="paper">${esc(b.paper_title)}</p>` : ""}
       <div class="bench-fields">
@@ -268,6 +301,8 @@ function download(filename, text, mime) {
 /* ---------- zoom ---------- */
 function zoomHTML(b) {
   const kind = [b.domain, b.format].filter(Boolean).join(" · ");
+  const hasQ = benchesWithQuestions().has(b.name);
+  const nQ = hasQ ? questionsForBench(b.name).length : 0;
   return `
     <button class="zoom-close" type="button" data-close aria-label="Close">×</button>
     <div class="bench-id">
@@ -285,6 +320,7 @@ function zoomHTML(b) {
       ${b.links && b.links.length ? `<div class="field"><div class="k">Links</div><div class="bench-links">${linksHTML(b)}</div></div>` : ""}
     </div>
     <div class="zoom-actions">
+      ${hasQ ? `<button type="button" class="act primary" data-zoom-inspect>Inspect questions (${nQ})</button>` : ""}
       <button type="button" class="act" data-zoom-bib>Export .bib</button>
       <button type="button" class="act" data-zoom-py disabled title="Coming soon">Python download (coming soon)</button>
     </div>
@@ -318,6 +354,13 @@ function openZoom(name, origin) {
   // wire the in-modal controls
   card.querySelector("[data-zoom-bib]").addEventListener("click", () =>
     download(`${slug(b.name)}.bib`, bibFor(b) + "\n", "application/x-bibtex"));
+  const inspect = card.querySelector("[data-zoom-inspect]");
+  if (inspect) {
+    inspect.addEventListener("click", () => {
+      closeZoom();
+      location.hash = `benchmark/${encodeURIComponent(b.name)}`;
+    });
+  }
 }
 
 /* ---------- home: about / "Learn more" ---------- */
@@ -372,7 +415,7 @@ function motivationHTML(ev) {
     </span>`).join("");
   return `
     <aside class="rule-of-thumb framework-motivation">
-      <p class="rule-of-thumb-title">Motivation</p>
+      <p class="rule-of-thumb-lede">Motivation</p>
       <div class="motivation-body">
         ${paras}
         ${m.example_prompt ? `<p class="motivation-example-q">${esc(m.example_prompt)}</p>` : ""}
@@ -392,8 +435,8 @@ function ruleOfThumbHTML(ev) {
       </li>`).join("");
     return `
       <aside class="rule-of-thumb">
-        <p class="rule-of-thumb-title">Rule of thumb</p>
-        <p class="rule-of-thumb-lede">By degree of ambiguity</p>
+
+        <p class="rule-of-thumb-lede">Rule of thumb</p>
         <ul class="rule-of-thumb-list">${rows}</ul>
       </aside>`;
   }
@@ -454,17 +497,30 @@ function openEvalZoom(key, origin) {
 }
 
 function renderPrompts() {
-  $("#prompts").innerHTML = (state.data.prompts || []).map((p, i) => `
-    <div class="prompt${i === 0 ? " open" : ""}">
-      <div class="prompt-head" data-idx="${i}">
+  $("#prompts").innerHTML = (state.data.prompts || []).map((p) => {
+    const variants = (p.variants || []).length
+      ? `<div class="oeq-variants">${p.variants.map((v) => `
+          <aside class="oeq-variant">
+            <p class="rule-of-thumb-title">${esc(v.label)}</p>
+            <pre>${esc(v.text)}</pre>
+            ${v.example ? `<p class="oeq-example-label">Example built prompt</p><pre class="oeq-example">${esc(v.example)}</pre>` : ""}
+          </aside>`).join("")}</div>`
+      : "";
+    const body = variants
+      ? variants
+      : (p.text ? `<pre class="prompt-example">${esc(p.text)}</pre>` : "");
+    return `
+    <div class="prompt">
+      <div class="prompt-head">
         <div>
           <h4>${esc(p.name)}</h4>
           <p class="purpose">${esc(p.purpose)}</p>
         </div>
         <span class="chev"></span>
       </div>
-      <div class="prompt-body"><pre>${esc(p.text)}</pre></div>
-    </div>`).join("");
+      <div class="prompt-body">${body}</div>
+    </div>`;
+  }).join("");
   $$("#prompts .prompt-head").forEach((h) =>
     h.addEventListener("click", () => h.closest(".prompt").classList.toggle("open")));
 }
@@ -570,8 +626,6 @@ function renderResults() {
   }).join("");
 
   renderPiacTable();
-  setupResultControls();
-  renderCards();
 }
 
 function renderPiacTable() {
@@ -598,50 +652,97 @@ function renderPiacTable() {
   $("#piac-table").innerHTML = html + "</tbody>";
 }
 
-function setupResultControls() {
-  const pf = $("#piac-filter");
+/* ---------- benchmark detail / inspect questions ---------- */
+function setupBenchQuestionControls() {
+  if (state.benchQControlsReady) return;
+  state.benchQControlsReady = true;
+  const pf = $("#bench-q-piac");
   pf.innerHTML = `<option value="">all</option>` + PIAC.map((c) => `<option value="${c}">${c}</option>`).join("");
-  pf.addEventListener("change", () => { state.filters.piac = pf.value; renderCards(); });
-  let t;
-  $("#search").addEventListener("input", (e) => {
-    clearTimeout(t);
-    t = setTimeout(() => { state.filters.q = e.target.value.toLowerCase().trim(); renderCards(); }, 140);
+  pf.addEventListener("change", () => {
+    state.benchQFilters.piac = pf.value;
+    renderBenchQuestions();
   });
-  const inspectBtn = $("#inspect-benchmark");
-  const panel = $("#questions-panel");
-  inspectBtn.addEventListener("click", () => {
-    const open = panel.hidden;
-    panel.hidden = !open;
-    inspectBtn.setAttribute("aria-expanded", String(open));
-    inspectBtn.textContent = open ? "Hide questions" : "Inspect benchmark";
+  let t;
+  $("#bench-q-search").addEventListener("input", (e) => {
+    clearTimeout(t);
+    t = setTimeout(() => {
+      state.benchQFilters.q = e.target.value.toLowerCase().trim();
+      renderBenchQuestions();
+    }, 140);
   });
 }
 
-function renderCards() {
-  const { q, piac } = state.filters;
-  const models = evalModels();
-  const list = state.data.questions.filter((row) => {
+function renderBenchmarkDetail(name) {
+  const b = benchByName(name);
+  const head = $("#bench-detail-head");
+  const meta = $("#bench-detail-meta");
+  if (!b) {
+    head.innerHTML = `<h1 class="display sm">Benchmark not found</h1>
+      <p class="lede">No catalog entry for “${esc(name)}”.</p>`;
+    meta.innerHTML = "";
+    $("#bench-q-cards").innerHTML = "";
+    $("#bench-q-count").textContent = "";
+    $("#bench-q-empty").hidden = false;
+    $("#bench-q-empty").textContent = "No questions available.";
+    return;
+  }
+  const kind = [b.domain, b.format].filter(Boolean).join(" · ");
+  const nQ = questionsForBench(b.name).length;
+  head.innerHTML = `
+    <h1 class="display sm">${esc(b.name)}</h1>
+    <p class="lede">${esc(b.paper_title || b.extended || "")}</p>
+    <p class="bench-detail-tags">
+      ${b.year ? `<span class="year">${esc(b.year)}</span>` : ""}
+      ${kind ? `<span class="kind">${esc(kind)}</span>` : ""}
+      <span class="kind">${nQ} question${nQ === 1 ? "" : "s"}</span>
+    </p>`;
+  meta.innerHTML = `
+    <div class="bench-fields">
+      ${field("Modalities", b.modalities)}
+      ${field("Size", formatSize(b.size))}
+      ${field("Skills", b.skills, true)}
+      ${field("Sources", b.sources, true)}
+      ${b.links && b.links.length ? `<div class="field"><div class="k">Links</div><div class="bench-links">${linksHTML(b)}</div></div>` : ""}
+    </div>`;
+  state.benchQFilters = { q: "", piac: "" };
+  $("#bench-q-search").value = "";
+  $("#bench-q-piac").value = "";
+  renderBenchQuestions();
+}
+
+function renderBenchQuestions() {
+  const name = state.inspectName;
+  const { q, piac } = state.benchQFilters;
+  const all = questionsForBench(name);
+  const list = all.filter((row) => {
     if (piac && row.piac !== piac) return false;
     if (q) {
-      const hay = [row.question, row.correct_answer, row.skills,
-        ...models.map((m) => row[m.id]?.oeq_response)].join(" ").toLowerCase();
+      const hay = [row.question, row.correct_answer, row.skills, row.answer_format,
+        ...(row.distractors || [])].join(" ").toLowerCase();
       if (!hay.includes(q)) return false;
     }
     return true;
   });
-  $("#count").textContent = `${list.length} of ${state.data.questions.length}`;
-  $("#empty").hidden = list.length > 0;
-  $("#cards").innerHTML = list.map(cardHTML).join("");
+  $("#bench-q-count").textContent = `${list.length} of ${all.length}`;
+  $("#bench-q-empty").hidden = list.length > 0;
+  $("#bench-q-empty").textContent = all.length
+    ? "No questions match."
+    : "Questions for this benchmark are not loaded on the site yet.";
+  $("#bench-q-cards").innerHTML = list.map(benchQuestionHTML).join("");
 }
 
-function cardHTML(row) {
-  const models = evalModels();
+function benchQuestionHTML(row) {
   const audio = row.audio
     ? `<audio controls preload="none" src="${esc(row.audio)}"></audio>`
     : `<div class="no-audio">audio unavailable for this clip</div>`;
   const meta = [row.category_2, row.category_3, row.skills ? "skill: " + row.skills : ""]
     .filter(Boolean).map(esc).join(" · ");
-  const answers = models.map((m) => modelAnswer(m, row[m.id])).join("");
+  const distractors = (row.distractors || []).length
+    ? `<p class="ref muted"><b>Distractors:</b> ${row.distractors.map(esc).join(" · ")}</p>`
+    : "";
+  const fmt = row.answer_format
+    ? `<p class="ref muted"><b>Answer format:</b> ${esc(row.answer_format)}</p>`
+    : "";
   return `
   <article class="qcard">
     <div class="qcard-top">
@@ -651,21 +752,7 @@ function cardHTML(row) {
     <div class="qmeta">${meta}</div>
     ${audio}
     <p class="ref"><b>Reference:</b> ${esc(row.correct_answer)}</p>
-    <div class="answers">${answers}</div>
+    ${fmt}
+    ${distractors}
   </article>`;
-}
-
-function modelAnswer(m, cell) {
-  cell = cell || {};
-  const oeqRight = (cell.oeq_score ?? 0) >= 0.5;
-  const scoreTxt = cell.oeq_score == null ? "–" : cell.oeq_score.toFixed(2);
-  const mark = (ok) => `<span class="mark ${ok ? "ok" : "no"}">${ok ? "correct" : "incorrect"}</span>`;
-  // The models' own answers (MCQ prediction, OEQ response text) are hidden;
-  // only the correctness marks and judge score are shown.
-  return `
-    <div class="mans">
-      <div class="who">${esc(m.label)}</div>
-      <div class="line"><span class="k">Multiple choice</span>${mark(cell.mcq_correct)}</div>
-      <div class="line"><span class="k">Open-ended</span>${mark(oeqRight)}<span class="score">score ${scoreTxt}</span></div>
-    </div>`;
 }

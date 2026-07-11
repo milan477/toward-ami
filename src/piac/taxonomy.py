@@ -134,20 +134,25 @@ MOTIVATION = {
             "PIAC is a framework that probes layered understanding of music, designed as a "
             "paradigm for benchmarks to organize evaluation around, conceptually and in practice, "
             "when assessing audio-language models in open-ended tasks. The framework rests on a "
-            "distinction between four levels of ambiguity."
+            "distinction between different levels of ambiguity: none, some, and a lot."
         ),
         (
             "Consider a few examples. “How many notes are played in total in this audio?” is a "
             "perceptual question, as it is directly measurable from the audio and admits a single "
             "ground truth, and therefore perfectly suitable for an open-ended format with an exact "
-            "match requirement."
+            "match requirement. The answer to “What does the music feel like?” shouldn't be "
+            "converged on by consensus. The evaluation should admit multiple responses, either "
+            "using an LLM-as-a-judge or tailored similarity metrics. Understanding which "
+            "perceptual or inferential features support the affective experience may uncover "
+            "superficial or hallucinatory claims."
         ),
         (
-            "The answer to “What does the music feel like?” shouldn't be converged on by consensus. "
-            "The evaluation should admit multiple responses, either using an LLM-as-a-judge or "
-            "tailored similarity metrics. Understanding which perceptual or inferential features "
-            "support the affective experience may prevent a model from making superficial or "
-            "hallucinatory claims."
+            "Beyond the level of ambiguity, these categories also encode how we want a model to "
+            "think. If we require a clear, shareable account of what counts as a climax—grounded "
+            "in form, harmony, or dynamics—the question should be designed as inferential. If we "
+            "treat climax as a listener’s felt peak with no single correct answer, the question "
+            "is affective. The taxonomy therefore organizes the content of questions, their "
+            "degree of ambiguity, and the evaluation standard we attach to them."
         ),
     ],
 }

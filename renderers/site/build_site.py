@@ -188,18 +188,23 @@ def build_prompts() -> list[dict]:
         INSTRUCTION_MCQ, INSTRUCTION_OEQ, INSTRUCTION_OEQ_GUIDED,
         build_mcq, build_oeq,
     )
-    from src.piac.judge import JUDGE_TEMPLATE, STRATEGY_RUBRIC
+    from src.piac.judge import JUDGE_TEMPLATE
     from src.piac.annotate import PROMPT_TEMPLATE as ANNOTATE_TEMPLATE
 
-    mcq_ex = build_mcq(
+    mcq = build_mcq(
         "What instrument plays the main melody?",
-        "Violin", ["Piano", "Flute", "Trumpet"], "demo-qid")["prompt"]
-    oeq_ex = build_oeq(
+        "Violin", ["Piano", "Flute", "Trumpet"], "demo-qid")
+    oeq_unguided_ex = build_oeq(
+        "What does the music feel like?", "Melancholic")["prompt"]
+    oeq_guided_ex = build_oeq(
         "What instrument plays the main melody?", "Violin",
         answer_format="a single instrument name", example="Cello")["prompt"]
 
-    rubric_block = "\n\n".join(
-        f"[{k}]\n{v}" for k, v in STRATEGY_RUBRIC.items())
+    mcq_options = "\n".join(
+        f"{ltr}. {opt}" for ltr, opt in zip("ABCDEFGH", mcq["options"]))
+    mcq_example = (
+        f"Question: What instrument plays the main melody?\n\n{mcq_options}"
+    )
 
     return [
         {
@@ -208,34 +213,40 @@ def build_prompts() -> list[dict]:
                        "deterministically per question and the model returns only a "
                        "letter; graded automatically against the correct option. This "
                        "is the 'apparent' score.",
-            "text": f"Instruction:\n{INSTRUCTION_MCQ}\n\nExample built prompt:\n{mcq_ex}",
+            "variants": [
+                {
+                    "label": "Instruction",
+                    "text": INSTRUCTION_MCQ,
+                    "example": mcq_example,
+                },
+            ],
         },
         {
             "name": "OEQ prompt",
             "purpose": "The same question with the options stripped away. The model "
-                       "must produce the answer unaided, in 1-2 sentences. Graded by "
-                       "the PIAC judge below; this is the 'actual' score. A per-question "
-                       "answer-format hint steers only the form of the answer, never its "
-                       "content.",
-            "text": (f"Instruction (unguided):\n{INSTRUCTION_OEQ}\n\n"
-                     f"Instruction (format-guided):\n{INSTRUCTION_OEQ_GUIDED}\n\n"
-                     f"Example built prompt:\n{oeq_ex}"),
+                       "must produce the answer unaided. Graded by the PIAC judge "
+                       "below; this is the 'actual' score. A per-question answer-format "
+                       "hint steers only the form of the answer, never its content.",
+            "variants": [
+                {
+                    "label": "Unguided",
+                    "text": INSTRUCTION_OEQ,
+                    "example": oeq_unguided_ex,
+                },
+                {
+                    "label": "Format-guided",
+                    "text": INSTRUCTION_OEQ_GUIDED,
+                    "example": oeq_guided_ex,
+                },
+            ],
         },
         {
             "name": "PIAC judge prompt",
             "purpose": "A category-aware LLM-as-judge (local Qwen3) that grades each "
                        "open-ended answer 0-4 and separately flags hallucination. The "
                        "grading rubric injected into {rubric} depends on the question's "
-                       "PIAC category (see the four rubrics below).",
+                       "PIAC category.",
             "text": JUDGE_TEMPLATE,
-        },
-        {
-            "name": "Judge rubrics (per PIAC category)",
-            "purpose": "The category-specific grading rule slotted into the judge "
-                       "prompt. Perceptual/contextual/inferential are graded binary "
-                       "(4 or 0); affective is graded 0-4 on plausibility, consistency "
-                       "and grounding.",
-            "text": rubric_block,
         },
         {
             "name": "Annotation prompt",
@@ -592,6 +603,7 @@ def main() -> None:
             q_piac[qid] = r.get("category") or r.get("piac") or ""
             rec = {
                 "qid": qid,
+                "benchmark": "MMAR",
                 "question": r["question"],
                 "piac": q_piac[qid],
                 "category_1": r.get("category_1", ""),

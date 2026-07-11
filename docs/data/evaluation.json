@@ -1,5 +1,5 @@
 {
- "intro": "Evaluation is organized through PIAC, a listener-centered taxonomy created around four modes of musical engagement, each corresponding to a distinct degree of evaluation ambiguity: Perceptual, Inferential, Affective, and Contextual content. Each of the four categories comes with a defined evaluation methodology to systematically assess Audio-Language Models in open-ended tasks.",
+ "intro": "PIAC is a listener-centered taxonomy created around four modes of musical engagement — Perceptual, Inferential, Affective, and Contextual — each corresponding to a distinct degree of evaluation ambiguity, from none, to generally agreed upon, to subject to personal experience. It is designed as a paradigm for benchmarks to organize evaluation around when assessing audio-language models in open-ended tasks.",
  "categories": [
   {
    "key": "perceptual",
@@ -102,9 +102,10 @@
  },
  "motivation": {
   "body": [
-   "PIAC is a framework that probes layered understanding of music, designed as a paradigm for benchmarks to organize evaluation around, conceptually and in practice, when assessing audio-language models in open-ended tasks. The framework rests on a distinction between four levels of ambiguity.",
-   "Consider a few examples. “How many notes are played in total in this audio?\" is a perceptual question, as it is directly measurable from the audio and admits a single ground truth, and therefore perfectly suitable for an open-ended format with an exact match requirement.",
-   "The answer to “What does the music feel like?” shouldn't be converged on by consensus. The evaluation should admit multiple responses, either using an LLM-as-a-judge or tailored similarity metrics. Understanding which perceptual or inferential features support the affective experience may shed light on potential superficial or hallucinatory claims."
+   "PIAC is a framework that probes layered understanding of music, designed as a paradigm for benchmarks to organize evaluation around when assessing audio-language models in open-ended tasks. The framework rests on a distinction between different levels of ambiguity: none, generally agreed upon, and subject to personal experience.",
+   "Consider the following examples. “How many notes are played in total in this audio?\" is a perceptual question, as it is directly measurable from the audio and admits a single ground truth. Therefore, its evaluation is straightforward: an exact match requirement within an open-ended format. The answer to “What does the music feel like?” shouldn't be converged on by consensus. The evaluation should admit multiple responses, either using an LLM-as-a-judge or tailored similarity metrics. In addition, understanding which perceptual or inferential features support the affective experience may uncover superficial or hallucinatory claims.",
+   "Beyond the level of ambiguity, these categories also represent different axes along which we want to probe the model's understanding of music. For instance, “Where is the first climax?” presumes a musical event with consensus about its existence and location, and is inferential, while “Where does the first climax feel like it happens?” considers the question from a listener's subjective experience and is affective. Accordingly, each question falls into one of the four categories, and both the question and its evaluation should be designed in accordance with what they intend to ask.",
+   "More broadly, the taxonomy organizes the content of questions, their degree of ambiguity, and the evaluation standard we attach to them."
   ]
  }
 }

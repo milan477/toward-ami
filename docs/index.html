@@ -19,8 +19,8 @@
     <nav class="menu" id="menu">
       <video class="vid-bg" src="vid.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
       <a href="#home" data-route="home">Home</a>
-      <a href="#benchmarks" data-route="benchmarks">Benchmarks</a>
       <a href="#models" data-route="models">Models</a>
+      <a href="#benchmarks" data-route="benchmarks">Benchmarks</a>
       <a href="#evaluation" data-route="evaluation">Evaluation</a>
       <a href="#results" data-route="results">Results</a>
     </nav>
@@ -31,7 +31,10 @@
   <!-- HOME -->
   <section class="page home" id="page-home">
     <div class="home-grid">
-      <h1 class="display home-title">Artificial<br />Musical<br />Intelligence</h1>
+      <div class="home-hero">
+        <p class="home-toward">toward</p>
+        <h1 class="display home-title">Artificial<br />Musical<br />Intelligence</h1>
+      </div>
       <div class="home-bottom">
         <div class="home-desc">
           <p class="lede">An open platform created to advance research on artificial musical intelligence. Explore models, benchmarks, and more.</p>
@@ -57,9 +60,26 @@
     <div class="bench-toolbar">
       <button id="sel-toggle" class="sel-toggle" type="button" aria-pressed="false">Select</button>
     </div>
-    <p class="hint">Click to see more details. Press Select, then pick multiple to cite or download in bulk.</p>
+    <p class="hint">Click to see more details. Press Select, then pick multiple to cite or download in bulk. Benchmarks with questions loaded on the site can be inspected.</p>
     <div id="benchmarks" class="bench-list"></div>
     <div id="bench-empty" class="empty" hidden>No benchmarks match.</div>
+  </section>
+
+  <!-- BENCHMARK DETAIL (inspect questions) -->
+  <section class="page" id="page-benchmark-detail">
+    <a class="back-link" href="#benchmarks">← All benchmarks</a>
+    <header class="page-head" id="bench-detail-head"></header>
+    <div id="bench-detail-meta" class="bench-detail-meta"></div>
+    <h2 class="section-title">Questions</h2>
+    <div class="controls">
+      <input type="search" id="bench-q-search" placeholder="Search questions, answers, skills…" />
+      <label>PIAC
+        <select id="bench-q-piac"><option value="">all</option></select>
+      </label>
+      <span class="count" id="bench-q-count"></span>
+    </div>
+    <div id="bench-q-cards" class="qcards"></div>
+    <div id="bench-q-empty" class="empty" hidden>No questions match.</div>
   </section>
 
   <!-- MODELS -->
@@ -90,8 +110,6 @@
     <article id="piac" class="prose"></article>
 
     <h2 class="section-title">Prompts</h2>
-    <p class="section-sub">The exact prompt text driving every stage of the pipeline,
-      pulled from the source modules.</p>
     <div id="prompts" class="prompts"></div>
   </section>
 
@@ -109,22 +127,6 @@
 
     <h2 class="section-title">By PIAC category</h2>
     <div class="table-wrap"><table id="piac-table" class="data-table"></table></div>
-
-    <h2 class="section-title">Questions</h2>
-    <button id="inspect-benchmark" class="inspect-btn" type="button" aria-expanded="false">
-      Inspect benchmark
-    </button>
-    <div id="questions-panel" class="questions-panel" hidden>
-      <div class="controls">
-        <input type="search" id="search" placeholder="Search questions, answers, skills…" />
-        <label>PIAC
-          <select id="piac-filter"><option value="">all</option></select>
-        </label>
-        <span class="count" id="count"></span>
-      </div>
-      <div id="cards" class="qcards"></div>
-      <div id="empty" class="empty" hidden>No questions match.</div>
-    </div>
   </section>
 </main>
 
@@ -143,7 +145,7 @@
 <footer class="foot">
   <div class="foot-inner">
     <span>toward Artificial Musical Intelligence</span>
-    <span><a id="foot-repo" href="https://github.com/milan477/toward-ami" target="_blank" rel="noopener">GitHub</a></span>
+    <a id="foot-repo" href="https://github.com/milan477/toward-ami" target="_blank" rel="noopener">Fork on GitHub</a>
   </div>
 </footer>
 
