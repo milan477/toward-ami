@@ -6,12 +6,15 @@ results, and the live prompt sources, then emits a self-contained site under
 
     docs/index.html  docs/styles.css  docs/app.js   (static, hand-written)
     docs/data/*.json                                (generated here)
-    docs/audio/<stem>.ogg                           (transcoded from data/audio/mmar)
+    docs/audio/<dataset>/...                        (local audio, gitignored)
 
-Audio is transcoded WAV -> mono OGG/Vorbis so the whole payload fits comfortably
-on GitHub Pages (the source WAVs are ~1 GB; the OGGs are tens of MB).
+Audio can be served locally from gitignored ``docs/audio`` while developing, or
+from an external static host by setting ``AMI_AUDIO_BASE_URL`` before building
+the site JSON. The hosted layout mirrors ``data/audio/<dataset>/...`` so the
+website can play all available benchmark clips without committing the audio.
 
     python renderers/site/build_site.py --list
+    AMI_AUDIO_BASE_URL=https://example.com/audio python renderers/site/build_site.py --target questions --no-audio
     python renderers/site/build_site.py --target questions --no-audio
     python renderers/site/build_site.py --target benchmarks
 
@@ -26,10 +29,12 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
@@ -37,10 +42,12 @@ sys.path.insert(0, str(ROOT))
 DOCS = ROOT / "docs"
 DATA_DIR = DOCS / "data"
 AUDIO_OUT = DOCS / "audio"
+AUDIO_DATA = ROOT / "data" / "audio"
 BENCHMARK_DATA = ROOT / "data" / "benchmarks"
 AUDIO_SRC = ROOT / "data" / "audio" / "mmar"
 PAPER_PDF = ROOT / "paper" / "paper.pdf"
 REPO_URL = "https://github.com/milan477/toward-ami"
+HOSTED_AUDIO_BASE_URL = os.environ.get("AMI_AUDIO_BASE_URL", "").rstrip("/")
 DATA_TARGETS = (
     "meta",
     "news",
@@ -804,6 +811,53 @@ def existing_site_audio(stems: set[tuple[str, str]]) -> dict[tuple[str, str], st
     return mapping
 
 
+def _audio_lookup_keys(stem: str) -> tuple[str, ...]:
+    return (
+        stem,
+        f"{stem}.wav",
+        f"{stem}.mp3",
+        f"{stem}.ogg",
+        f"{stem}.flac",
+        f"{stem}.m4a",
+        f"{stem}.opus",
+        f"{stem}.2min",
+        f"{stem}.2min.mp3",
+    )
+
+
+def hosted_audio(stems: set[tuple[str, str]]) -> dict[tuple[str, str], str]:
+    """Map stems to externally hosted audio URLs mirroring data/audio."""
+    if not HOSTED_AUDIO_BASE_URL:
+        return {}
+
+    from src.analysis.statistics import _build_audio_index
+
+    mapping: dict[tuple[str, str], str] = {}
+    indexes: dict[str, dict[str, Path]] = {}
+    for dataset, stem in stems:
+        if dataset not in indexes:
+            indexes[dataset] = _build_audio_index(dataset)
+        index = indexes[dataset]
+        path = None
+        for key in _audio_lookup_keys(stem):
+            path = index.get(key)
+            if path:
+                break
+        if not path:
+            continue
+        try:
+            rel = path.relative_to(AUDIO_DATA)
+        except ValueError:
+            rel = Path(dataset) / path.name
+        mapping[(dataset, stem)] = f"{HOSTED_AUDIO_BASE_URL}/{quote(rel.as_posix(), safe='/')}"
+
+    print(
+        f"  audio: hosted {len(mapping)}/{len(stems)} available clips "
+        f"from {HOSTED_AUDIO_BASE_URL}"
+    )
+    return mapping
+
+
 def write_json(name: str, payload) -> Path:
     """Write one generated site JSON payload."""
     DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -870,8 +924,8 @@ def question_payload(no_audio: bool) -> tuple[list[dict], set[tuple[str, str]], 
     benchmarks = load_benchmarks()
     questions, stems, q_piac, eval_qids = load_questions(benchmarks, models)
 
-    audio_map = existing_site_audio(stems)
-    if not no_audio:
+    audio_map = hosted_audio(stems) if HOSTED_AUDIO_BASE_URL else existing_site_audio(stems)
+    if not no_audio and not HOSTED_AUDIO_BASE_URL:
         missing_mmar = {pair for pair in stems if pair[0] == "mmar" and pair not in audio_map}
         audio_map = {**audio_map, **transcode_audio(missing_mmar)}
     for rec in questions:
