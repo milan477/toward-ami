@@ -96,9 +96,9 @@
   "code_url": "https://github.com/Sakshi113/MMAU",
   "bibtex": "@misc{sakshiMMAUMassiveMultiTask2024,\n  title = {{{MMAU}}: {{A Massive Multi-Task Audio Understanding}} and {{Reasoning Benchmark}}},\n  shorttitle = {{{MMAU}}},\n  author = {Sakshi, S. and Tyagi, Utkarsh and Kumar, Sonal and Seth, Ashish and Selvakumar, Ramaneswaran and Nieto, Oriol and Duraiswami, Ramani and Ghosh, Sreyan and Manocha, Dinesh},\n  year = 2024,\n  month = oct,\n  number = {arXiv:2410.19168},\n  eprint = {2410.19168},\n  primaryclass = {eess},\n  publisher = {arXiv},\n  doi = {10.48550/arXiv.2410.19168},\n  archiveprefix = {arXiv},\n}",
   "status": "confirmed",
-  "question_count": 0,
-  "has_questions": false,
-  "questions_url": ""
+  "question_count": 334,
+  "has_questions": true,
+  "questions_url": "data/questions/mmau.json"
  },
  {
   "name": "MuChoMusic",
@@ -365,10 +365,10 @@
  },
  {
   "name": "HumMusQA",
-  "extended": "HumMusQA: A Human-written Music Understanding QA Benchmark  Dataset",
-  "paper_title": "HumMusQA: A Human-written Music Understanding QA Benchmark  Dataset",
+  "extended": "HumMusQA: A Human-written Music Understanding QA Benchmark Dataset",
+  "paper_title": "HumMusQA: A Human-written Music Understanding QA Benchmark Dataset",
   "domain": "Multi-task",
-  "format": "",
+  "format": "MCQ",
   "year": "2026",
   "modalities": "Music",
   "skills": "13 categories",
@@ -388,11 +388,11 @@
   "paper_url": "http://arxiv.org/abs/2603.27877",
   "hf_url": "",
   "code_url": "",
-  "bibtex": "@inproceedings{weckHumMusQAHumanwrittenMusic2026,\n  title = {{{HumMusQA}}: {{A Human-written Music Understanding QA Benchmark Dataset}}},\n  shorttitle = {{{HumMusQA}}},\n  booktitle = {Proceedings of the 4th {{Workshop}} on {{NLP}} for {{Music}} and {{Audio}} ({{NLP4MusA}} 2026)},\n  author = {Weck, Benno and Puentes, Pablo and Poltronieri, Andrea and Prabhu, Satyajeet and Bogdanov, Dmitry},\n  date = {2026},\n  eprint = {2603.27877},\n  eprinttype = {arXiv},\n  eprintclass = {cs.CL},\n  pages = {58--67},\n  doi = {10.18653/v1/2026.nlp4musa-1.9},\n  url = {http://arxiv.org/abs/2603.27877},\n}",
+  "bibtex": "@inproceedings{weck-etal-2026-hummusqa, title = {HumMusQA: A Human-written Music Understanding QA Benchmark Dataset}, author = {Weck, Benno and Puentes, Pablo and Poltronieri, Andrea and Prabhu, Satyajeet and Bogdanov, Dmitry}, booktitle = {Proceedings of the 4th Workshop on NLP for Music and Audio}, year = {2026}, pages = {58--67}, doi = {10.18653/v1/2026.nlp4musa-1.9}, url = {https://aclanthology.org/2026.nlp4musa-1.9/}}",
   "status": "confirmed",
-  "question_count": 0,
-  "has_questions": false,
-  "questions_url": ""
+  "question_count": 320,
+  "has_questions": true,
+  "questions_url": "data/questions/hummusqa.json"
  },
  {
   "name": "MuseBench",
@@ -401,8 +401,8 @@
   "domain": "Multi-modal, multi-task",
   "format": "TF",
   "year": "2026",
-  "modalities": "Music: Audio, text, image",
-  "skills": "music theory understanding, (2) sheet music understanding, and (3) performance audio analysis (performance evaluation: key accuracy, completeness; consistency evaluation: tempo stability, speed)",
+  "modalities": "Music in audio, text, and image format",
+  "skills": "music theory understanding, sheet music understanding, and performance audio analysis (performance evaluation: key accuracy, completeness; consistency evaluation: tempo stability, speed)",
   "sources": "public domain (older archive sources) or provided directly by performers under Creative Commons licenses  (precise origin undisclosed)",
   "size": "513 recordings",
   "models": "",
@@ -479,8 +479,8 @@
   "code_url": "",
   "bibtex": "@misc{dujardinPitchBenchMeasuringPitch2026,\n  title = {{{PitchBench}}: {{Measuring Pitch Hearing}} in {{Audio-Language Models}}},\n  shorttitle = {{{PitchBench}}},\n  author = {Dujardin, Milan Liessens and Yu, Song-Ze and {Thomas-Smith}, Craver Corbyn and Chan, David M. and Nguyen, Karina},\n  year = 2026,\n  month = may,\n  number = {arXiv:2605.26176},\n  eprint = {2605.26176},\n  primaryclass = {cs.SD},\n  publisher = {arXiv},\n  doi = {10.48550/arXiv.2605.26176},\n  archiveprefix = {arXiv},\n}",
   "status": "confirmed",
-  "question_count": 0,
-  "has_questions": false,
-  "questions_url": ""
+  "question_count": 15648,
+  "has_questions": true,
+  "questions_url": "data/questions/pitchbench.json"
  }
 ]

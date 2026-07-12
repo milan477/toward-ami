@@ -28,9 +28,13 @@ from clean import MODALITY_COLUMN, clean_dataset
 
 # Register one metadata download function per dataset here.
 DATASETS = {
+    "hummusqa": ("benchmark_hummusqa", "download_hummusqa"),
+    "mmau": ("benchmark_mmau", "download_mmau"),
     "mmar": ("benchmark_mmar", "download_mmar"),
     "mmau_pro": ("benchmark_mmau_pro", "download_mmau_pro"),
     "muchomusic": ("benchmark_muchomusic", "download_muchomusic"),
+    "parsa_bench": ("benchmark_parsa_bench", "download_parsa_bench"),
+    "pitchbench": ("benchmark_pitchbench", "download_pitchbench"),
 }
 
 

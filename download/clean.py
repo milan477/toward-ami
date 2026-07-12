@@ -26,9 +26,13 @@ from common import BENCH_DIR, bench_dir, bench_path
 # Per-dataset: which normalized column holds the audio modality label.
 # None = the whole dataset is music; keep every row.
 MODALITY_COLUMN = {
+    "hummusqa": None,
+    "mmau": "category_1",
     "mmar": "category_1",
     "mmau_pro": "category_1",
     "muchomusic": None,
+    "parsa_bench": None,
+    "pitchbench": None,
 }
 
 

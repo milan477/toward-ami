@@ -110,20 +110,8 @@ Factual Music Comprehension Benchmark,?,Assessing Factual Music Comprehension In
   url = {http://arxiv.org/abs/2511.05550},
   pubstate = {prepublished},
 }",confirmed
-HumMusQA,?,HumMusQA: A Human-written Music Understanding QA Benchmark  Dataset,Multi-task,?,2026,Music,13 categories,Hand-crafted,320,http://arxiv.org/abs/2603.27877,https://doi.org/10.5281/zenodo.18462524,?,"@inproceedings{weckHumMusQAHumanwrittenMusic2026,
-  title = {{{HumMusQA}}: {{A Human-written Music Understanding QA Benchmark Dataset}}},
-  shorttitle = {{{HumMusQA}}},
-  booktitle = {Proceedings of the 4th {{Workshop}} on {{NLP}} for {{Music}} and {{Audio}} ({{NLP4MusA}} 2026)},
-  author = {Weck, Benno and Puentes, Pablo and Poltronieri, Andrea and Prabhu, Satyajeet and Bogdanov, Dmitry},
-  date = {2026},
-  eprint = {2603.27877},
-  eprinttype = {arXiv},
-  eprintclass = {cs.CL},
-  pages = {58--67},
-  doi = {10.18653/v1/2026.nlp4musa-1.9},
-  url = {http://arxiv.org/abs/2603.27877},
-}",confirmed
-MuseBench,/,MuseAgent-1: Interactive Grounded Multimodal Understanding of Music  Scores and Performance Audio,"Multi-modal, multi-task",TF,2026,"Music: Audio, text, image","music theory understanding, (2) sheet music understanding, and (3) performance audio analysis (performance evaluation: key accuracy, completeness; consistency evaluation: tempo stability, speed)",public domain (older archive sources) or provided directly by performers under Creative Commons licenses  (precise origin undisclosed),513 recordings,http://arxiv.org/abs/2601.11968,?,?,"@online{zhaoMuseAgent1InteractiveGrounded2026a,
+HumMusQA,?,HumMusQA: A Human-written Music Understanding QA Benchmark Dataset,Multi-task,MCQ,2026,Music,13 categories,Hand-crafted,320,http://arxiv.org/abs/2603.27877,https://doi.org/10.5281/zenodo.18462524,?,"@inproceedings{weck-etal-2026-hummusqa, title = {HumMusQA: A Human-written Music Understanding QA Benchmark Dataset}, author = {Weck, Benno and Puentes, Pablo and Poltronieri, Andrea and Prabhu, Satyajeet and Bogdanov, Dmitry}, booktitle = {Proceedings of the 4th Workshop on NLP for Music and Audio}, year = {2026}, pages = {58--67}, doi = {10.18653/v1/2026.nlp4musa-1.9}, url = {https://aclanthology.org/2026.nlp4musa-1.9/}}",confirmed
+MuseBench,/,MuseAgent-1: Interactive Grounded Multimodal Understanding of Music  Scores and Performance Audio,"Multi-modal, multi-task",TF,2026,"Music in audio, text, and image format","music theory understanding, sheet music understanding, and performance audio analysis (performance evaluation: key accuracy, completeness; consistency evaluation: tempo stability, speed)",public domain (older archive sources) or provided directly by performers under Creative Commons licenses  (precise origin undisclosed),513 recordings,http://arxiv.org/abs/2601.11968,?,?,"@online{zhaoMuseAgent1InteractiveGrounded2026a,
   title = {{{MuseAgent-1}}: {{Interactive Grounded Multimodal Understanding}} of {{Music Scores}} and {{Performance Audio}}},
   shorttitle = {{{MuseAgent-1}}},
   author = {Zhao, Qihao and Cao, Yunqi and Huang, Yangyu and Leong, Hui Yi and Zhang, Fan and Yap, Kim-Hui and Hu, Wei},

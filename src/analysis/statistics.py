@@ -123,6 +123,13 @@ def category_values_for_row(benchmark: str, row: dict) -> dict[str, list[str]]:
             "genre": [],
             "skill": skills,
         }
+    if benchmark == "mmau":
+        return {
+            "modality": _category_cell_values(row.get("category_1", "")),
+            "category": _category_cell_values(row.get("category_2", "")),
+            "genre": [],
+            "skill": _category_cell_values(row.get("category_3", "")),
+        }
     if benchmark == "muchomusic":
         skills = _parse_listish(row.get("music_knowledge", "")) + _parse_listish(row.get("music_reasoning", ""))
         return {
@@ -130,6 +137,27 @@ def category_values_for_row(benchmark: str, row: dict) -> dict[str, list[str]]:
             "category": [],
             "genre": _category_cell_values(row.get("category_1", "")),
             "skill": _dedupe(skills),
+        }
+    if benchmark == "hummusqa":
+        return {
+            "modality": ["music"],
+            "category": _category_cell_values(row.get("category_2", "")),
+            "genre": [],
+            "skill": _category_cell_values(row.get("category_3", "")) + _category_cell_values(row.get("category_4", "")),
+        }
+    if benchmark == "pitchbench":
+        return {
+            "modality": ["music"],
+            "category": _category_cell_values(row.get("category_2", "")),
+            "genre": [],
+            "skill": _category_cell_values(row.get("category_3", "")) + _category_cell_values(row.get("category_4", "")),
+        }
+    if benchmark == "parsa_bench":
+        return {
+            "modality": _category_cell_values(row.get("category_1", "")),
+            "category": _category_cell_values(row.get("category_2", "")),
+            "genre": [],
+            "skill": _category_cell_values(row.get("task", "")),
         }
     return {
         "modality": _category_cell_values(row.get("category_1", "")),
@@ -145,7 +173,7 @@ def _audio_names(raw: str) -> list[str]:
         piece = piece.strip()
         if not piece:
             continue
-        name = piece.split("/")[-1]
+        name = piece.replace("\\", "/").lstrip("./")
         if ":" in name:
             name = name.split(":", 1)[1]
         if name:
@@ -161,6 +189,10 @@ def _build_audio_index(name: str) -> dict[str, Path]:
             continue
         for path in root.rglob("*"):
             if path.is_file() and path.suffix.lower() in AUDIO_EXTENSIONS:
+                try:
+                    index.setdefault(path.relative_to(root).as_posix(), path)
+                except ValueError:
+                    pass
                 index.setdefault(path.name, path)
                 index.setdefault(path.stem, path)
     return index

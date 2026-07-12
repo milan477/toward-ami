@@ -170,10 +170,14 @@ def _serialize_cell(value):
     List/dict cells are JSON-serialized (embedded newlines become escaped \\n);
     string cells have whitespace (incl. newlines) collapsed to single spaces.
     """
+    if isinstance(value, (bytes, bytearray)):
+        return f"<{len(value)} bytes>"
     if isinstance(value, np.ndarray):
         value = value.tolist()
+    if isinstance(value, list):
+        return json.dumps([_serialize_cell(v) for v in value], ensure_ascii=False)
     if isinstance(value, (list, dict)):
-        return json.dumps(value, ensure_ascii=False)
+        return json.dumps({k: _serialize_cell(v) for k, v in value.items()}, ensure_ascii=False)
     if isinstance(value, str):
         return " ".join(value.split())
     return value
