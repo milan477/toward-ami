@@ -40,6 +40,19 @@ def _subset(path: str) -> str:
     return Path(path).parts[0]
 
 
+def _subset_skill(subset: str) -> str:
+    """Human-readable tested skill from names like pitchbench_a1_single_pitch_id."""
+    label = subset
+    if label.startswith("pitchbench_"):
+        label = label.removeprefix("pitchbench_")
+    label = label.split("_", 1)[1] if "_" in label else label
+    return clean_text(label.replace("_", " ")).capitalize()
+
+
+def _source_label(source: str) -> str:
+    return clean_text(str(source or "").replace("_", " ")).capitalize()
+
+
 def _audio_name(row: dict, idx: int) -> str:
     audio = row.get("audio") or {}
     path = clean_text(audio.get("path", ""))
@@ -82,6 +95,7 @@ def _normalized_rows() -> list[dict]:
     rows = []
     for parquet in _parquet_files():
         subset = _subset(parquet)
+        skill = _subset_skill(subset)
         df = _fetch_subset(parquet)
         print(f"  normalized subset {subset} ({len(df)} rows)", flush=True)
         for idx, row in enumerate(df.to_dict("records")):
@@ -97,10 +111,11 @@ def _normalized_rows() -> list[dict]:
                     "distractors": "[]",
                     "audio_url": _audio_url(subset, row, idx),
                     "category_1": "music",
-                    "category_2": subset,
-                    "category_3": answer_format,
-                    "category_4": clean_text(row.get("source", "")),
+                    "category_2": _source_label(row.get("source", "")),
+                    "category_3": skill,
+                    "category_4": answer_format,
                     "subset": subset,
+                    "skill": skill,
                     "answer_format": answer_format,
                     "gt_midi": clean_text(row.get("gt_midi", "")),
                     "gt_abc": clean_text(row.get("gt_abc", "")),

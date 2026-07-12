@@ -1054,7 +1054,8 @@ function renderBenchmarkDetailLoading(b) {
 
 function categoryFilterHTML(rows) {
   const options = categoryOptions(rows);
-  const dims = Object.entries(FILTER_LABELS).filter(([key]) => (options[key] || []).length);
+  const labels = categoryLabelsForRows(rows);
+  const dims = Object.entries({ ...labels, piac: "PIAC" }).filter(([key]) => (options[key] || []).length);
   if (!dims.length) return "";
   return `
     <section class="slice-panel" aria-label="Benchmark filters">
@@ -1072,6 +1073,11 @@ function categoryFilterHTML(rows) {
           </fieldset>`).join("")}
       </div>
     </section>`;
+}
+
+function categoryLabelsForRows(rows) {
+  const benchmark = rows.find((row) => row.benchmark)?.benchmark;
+  return benchmark === "PitchBench" ? { ...CATEGORY_LABELS, category: "Source" } : CATEGORY_LABELS;
 }
 
 function categoryOptions(rows) {
@@ -1179,9 +1185,10 @@ function durationLabel(value) {
 }
 
 function discreteDistributions(rows) {
+  const labels = categoryLabelsForRows(rows);
   const specs = [
     { key: "distractors", label: "Distractors", values: (row) => [`${(row.distractors || []).length}`] },
-    ...Object.entries(CATEGORY_LABELS).map(([key, label]) => ({
+    ...Object.entries(labels).map(([key, label]) => ({
       key,
       label,
       values: (row) => row.categories?.[key] || [],
