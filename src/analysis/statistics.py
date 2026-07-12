@@ -141,9 +141,9 @@ def category_values_for_row(benchmark: str, row: dict) -> dict[str, list[str]]:
     if benchmark == "hummusqa":
         return {
             "modality": ["music"],
-            "category": _category_cell_values(row.get("category_2", "")),
+            "category": _category_cell_values(row.get("category_1", "")),
             "genre": [],
-            "skill": _category_cell_values(row.get("category_3", "")) + _category_cell_values(row.get("category_4", "")),
+            "skill": _category_cell_values(row.get("category_2", "")),
         }
     if benchmark == "pitchbench":
         return {

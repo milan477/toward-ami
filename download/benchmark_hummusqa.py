@@ -3,6 +3,7 @@
 Source: https://doi.org/10.5281/zenodo.18462524
 """
 
+import json
 from pathlib import Path
 from urllib.request import urlopen
 from zipfile import BadZipFile, ZipFile
@@ -40,6 +41,12 @@ def _fetch_df() -> pd.DataFrame:
     return qa.merge(meta, on="Song link", how="left")
 
 
+def _secondary_skills(value) -> str:
+    skills = [clean_text(part) for part in str(value or "").split(";")]
+    skills = [skill for skill in skills if skill and skill.lower() != "nan"]
+    return json.dumps(skills, ensure_ascii=False)
+
+
 def _normalize_row(row: dict, idx: int) -> dict:
     choices = [
         row.get("True answer"),
@@ -55,10 +62,10 @@ def _normalize_row(row: dict, idx: int) -> dict:
         "correct_answer": correct,
         "distractors": to_distractors(choices, correct),
         "audio_url": _audio_name(row, idx),
-        "category_1": "music",
-        "category_2": clean_text(row.get("Main Category", "")),
-        "category_3": clean_text(row.get("Secondary Categories", "")),
-        "category_4": clean_text(row.get("Difficulty", "")),
+        "category_1": clean_text(row.get("Main Category", "")),
+        "category_2": _secondary_skills(row.get("Secondary Categories", "")),
+        "category_3": clean_text(row.get("Difficulty", "")),
+        "category_4": "",
         "track_id": _track_id(row.get("Song link", "")),
         "start_time": clean_text(row.get("start time", "")),
         "end_time": clean_text(row.get("end time", "")),

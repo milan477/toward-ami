@@ -7,10 +7,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which of the following best fits the guitar pattern heard at the beginning of this excerpt?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Musical Texture",
-  "category_4": "Low",
+  "category_1": "Melody",
+  "category_2": "[\"Musical Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "riff",
@@ -31,8 +31,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Musical Texture",
-    "Low"
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -44,10 +43,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which section of the song follows this harmonic progression: vi, IV, I, V?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Structure",
-  "category_3": "Harmony",
-  "category_4": "High",
+  "category_1": "Structure",
+  "category_2": "[\"Harmony\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "chorus",
@@ -68,8 +67,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Harmony",
-    "High"
+    "Harmony"
    ]
   },
   "audio": null
@@ -81,10 +79,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of beat do you hear in the drums?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Genre and Style",
-  "category_4": "Low",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "rock",
@@ -105,8 +103,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style",
-    "Low"
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -118,10 +115,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of accompaniment best defines the beginning of the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Musical Texture",
-  "category_3": "Harmony",
-  "category_4": "Medium",
+  "category_1": "Musical Texture",
+  "category_2": "[\"Harmony\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "arpeggios",
@@ -142,8 +139,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Harmony",
-    "Medium"
+    "Harmony"
    ]
   },
   "audio": null
@@ -155,10 +151,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of articulation best defines the melody of this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Mood and Expression",
-  "category_4": "Low",
+  "category_1": "Performance",
+  "category_2": "[\"Mood and Expression\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "legato",
@@ -179,8 +175,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression",
-    "Low"
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -192,10 +187,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What level of ornamentation is present in the melody?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Performance",
-  "category_4": "Medium",
+  "category_1": "Melody",
+  "category_2": "[\"Performance\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "high",
@@ -216,8 +211,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "Medium"
+    "Performance"
    ]
   },
   "audio": null
@@ -229,10 +223,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of beat do you hear in the drums?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "four on the floor",
@@ -252,9 +246,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Metre and Rhythm"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -265,10 +257,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How many chords are played in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Harmony",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "two",
@@ -288,9 +280,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Harmony"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -301,10 +291,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of filter is applied to the melodic instruments at the beginning of the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Sound Texture",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Low Pass Filter",
@@ -324,9 +314,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Sound Texture"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -337,10 +325,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What effect is applied to the vocals in this track?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Performance",
-  "category_4": "Low",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Performance\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "pitch correction",
@@ -361,8 +349,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "Low"
+    "Performance"
    ]
   },
   "audio": null
@@ -374,10 +361,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What note of the chords does the bass play during the verse?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Instrumentation;Musical Texture",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[\"Instrumentation\", \"Musical Texture\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "1st (fundamental)",
@@ -398,8 +385,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Musical Texture",
-    "High"
+    "Instrumentation",
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -411,10 +398,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What instrument plays the lead sound in the introduction?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture;Structure",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\", \"Structure\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Synthesizer",
@@ -435,8 +422,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture;Structure",
-    "Low"
+    "Sound Texture",
+    "Structure"
    ]
   },
   "audio": null
@@ -448,10 +435,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What time signature do you hear in this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "4/4",
@@ -471,9 +458,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Metre and Rhythm"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -484,10 +469,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which instrument is introduced in the chorus?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Structure",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Structure\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "shaker",
@@ -508,8 +493,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "Low"
+    "Structure"
    ]
   },
   "audio": null
@@ -521,10 +505,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Where is the shaker positioned in the stereo field?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Instrumentation",
-  "category_4": "Low",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "left",
@@ -545,8 +529,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Low"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -558,10 +541,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of synthesizer sound predominates in the chorus behind the vocals?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "pad",
@@ -582,8 +565,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Medium"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -595,10 +577,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How are the hi-hats played in this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Instrumentation;Metre and Rhythm",
-  "category_4": "Medium",
+  "category_1": "Performance",
+  "category_2": "[\"Instrumentation\", \"Metre and Rhythm\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "closed",
@@ -619,8 +601,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Metre and Rhythm",
-    "Medium"
+    "Instrumentation",
+    "Metre and Rhythm"
    ]
   },
   "audio": null
@@ -632,10 +614,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "During the introduction, there is a low-pass filter that is changing its frequency. Could you say in which direction it is shifting?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Structure",
-  "category_4": "Medium",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Structure\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "up",
@@ -656,8 +638,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "Medium"
+    "Structure"
    ]
   },
   "audio": null
@@ -669,10 +650,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "During the introduction, the kick is played twice in each bar. On which beats?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "one and between the second and the third beat",
@@ -693,8 +674,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Medium"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -706,10 +686,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "During the sax solo, what scale is the electric piano using?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Harmony",
-  "category_4": "High",
+  "category_1": "Melody",
+  "category_2": "[\"Harmony\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "blues",
@@ -730,8 +710,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Harmony",
-    "High"
+    "Harmony"
    ]
   },
   "audio": null
@@ -743,10 +722,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "In the introduction, the snare is played on the...",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Instrumentation;Sound Texture",
-  "category_4": "Medium",
+  "category_1": "Performance",
+  "category_2": "[\"Instrumentation\", \"Sound Texture\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "rim (rimshot)",
@@ -767,8 +746,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Sound Texture",
-    "Medium"
+    "Instrumentation",
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -780,10 +759,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "During the introduction, the bass and the lead play their melodies in a...",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Musical Texture",
-  "category_4": "Medium",
+  "category_1": "Melody",
+  "category_2": "[\"Musical Texture\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "parallel motion",
@@ -804,8 +783,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Musical Texture",
-    "Medium"
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -817,10 +795,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "During the chorus, we can hear a very popular type of synthesizer sound. Can you guess its name?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "supersaw",
@@ -841,8 +819,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Medium"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -854,10 +831,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which of these tempos is most accurate for the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Performance",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Performance\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "125 bpm",
@@ -878,8 +855,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "Medium"
+    "Performance"
    ]
   },
   "audio": null
@@ -891,10 +867,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "When the drums start playing, we can hear something known as...",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "",
-  "category_4": "High",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "metric modulation",
@@ -914,9 +890,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Metre and Rhythm"
    ],
    "genre": [],
-   "skill": [
-    "High"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -927,10 +901,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of pattern is the bass following in the verse?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Instrumentation",
-  "category_4": "High",
+  "category_1": "Melody",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "minor pentatonic",
@@ -951,8 +925,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "High"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -964,10 +937,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What effect predominates in the electric guitar's sound?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Instrumentation",
-  "category_4": "Low",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Distortion",
@@ -988,8 +961,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Low"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -1001,10 +973,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "The beginning of the song starts with a change in dynamics. What is this called?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Mood and Expression",
-  "category_4": "Low",
+  "category_1": "Performance",
+  "category_2": "[\"Mood and Expression\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "crescendo",
@@ -1025,8 +997,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression",
-    "Low"
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -1038,10 +1009,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the interval between the two voices that play the melody?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Musical Texture;Harmony",
-  "category_4": "Medium",
+  "category_1": "Melody",
+  "category_2": "[\"Musical Texture\", \"Harmony\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "octave",
@@ -1062,8 +1033,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Musical Texture;Harmony",
-    "Medium"
+    "Musical Texture",
+    "Harmony"
    ]
   },
   "audio": null
@@ -1075,10 +1046,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the name of the ornament played by the piano in the melody?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Performance",
-  "category_4": "Medium",
+  "category_1": "Melody",
+  "category_2": "[\"Performance\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "up arpeggio",
@@ -1099,8 +1070,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "Medium"
+    "Performance"
    ]
   },
   "audio": null
@@ -1112,10 +1082,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "The melody starts with four notes on D. Can you guess which note is played after?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Melody",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "C#",
@@ -1135,9 +1105,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Melody"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -1148,10 +1116,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "This verse of the tune is written...",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Melody",
-  "category_4": "Low",
+  "category_1": "Harmony",
+  "category_2": "[\"Melody\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "In a major key",
@@ -1172,8 +1140,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Melody",
-    "Low"
+    "Melody"
    ]
   },
   "audio": null
@@ -1185,10 +1152,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the time signature of the tune?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "4/4",
@@ -1208,9 +1175,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Metre and Rhythm"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -1221,10 +1186,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What compositional technique do the piano and the drums use in the introduction?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Musical Texture",
-  "category_3": "Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Musical Texture",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "call and response (also known as question and answer)",
@@ -1245,8 +1210,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Medium"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -1258,10 +1222,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "In the verse there is a dissonance that doesn't belong the key and mode of the tune. Do you know which one is it?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Harmony",
-  "category_4": "High",
+  "category_1": "Melody",
+  "category_2": "[\"Harmony\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Ab",
@@ -1282,8 +1246,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Harmony",
-    "High"
+    "Harmony"
    ]
   },
   "audio": null
@@ -1295,10 +1258,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What element does the piano player introduce in the piano solo?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Musical Texture;Performance",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[\"Musical Texture\", \"Performance\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Block chord voicing solo",
@@ -1319,8 +1282,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Musical Texture;Performance",
-    "High"
+    "Musical Texture",
+    "Performance"
    ]
   },
   "audio": null
@@ -1332,10 +1295,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which percussion instrument plays during the verse?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Structure",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Structure\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "conga",
@@ -1356,8 +1319,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "Medium"
+    "Structure"
    ]
   },
   "audio": null
@@ -1369,10 +1331,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Here, the singer uses a specific vocal technique. Do you know what it's called?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Sound Texture",
-  "category_4": "Low",
+  "category_1": "Performance",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Falsetto",
@@ -1393,8 +1355,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Low"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -1406,10 +1367,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of instruments predominate in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Acoustic",
@@ -1430,8 +1391,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Low"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -1443,10 +1403,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "The piano introduction features a typical accompaniment style from a specific country. Which country is it?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "Historical and Cultural Context;Instrumentation;Metre and Rhythm",
-  "category_4": "Medium",
+  "category_1": "Genre and Style",
+  "category_2": "[\"Historical and Cultural Context\", \"Instrumentation\", \"Metre and Rhythm\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Cuba",
@@ -1467,8 +1427,9 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Historical and Cultural Context;Instrumentation;Metre and Rhythm",
-    "Medium"
+    "Historical and Cultural Context",
+    "Instrumentation",
+    "Metre and Rhythm"
    ]
   },
   "audio": null
@@ -1480,10 +1441,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "The guitar is a typical accompaniment from a specific country. Which country is it?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Historical and Cultural Context;Genre and Style",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Historical and Cultural Context\", \"Genre and Style\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Brazil",
@@ -1504,8 +1465,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Historical and Cultural Context;Genre and Style",
-    "Medium"
+    "Historical and Cultural Context",
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -1517,10 +1478,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the singer pursuing with her tone?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "Performance;Sound Texture",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[\"Performance\", \"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Sensuality",
@@ -1541,8 +1502,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance;Sound Texture",
-    "Low"
+    "Performance",
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -1554,10 +1515,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How would you define the harmonic rhythm of this tune?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Metre and Rhythm",
-  "category_4": "Medium",
+  "category_1": "Harmony",
+  "category_2": "[\"Metre and Rhythm\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Steady",
@@ -1578,8 +1539,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Metre and Rhythm",
-    "Medium"
+    "Metre and Rhythm"
    ]
   },
   "audio": null
@@ -1591,10 +1551,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How could you call the section after the second verse?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Structure",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Structure",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "C section or bridge",
@@ -1614,9 +1574,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Structure"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -1627,10 +1585,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "In what decade could this song be created?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Historical and Cultural Context",
-  "category_3": "Genre and Style;Sound Texture;Performance;Instrumentation",
-  "category_4": "Low",
+  "category_1": "Historical and Cultural Context",
+  "category_2": "[\"Genre and Style\", \"Sound Texture\", \"Performance\", \"Instrumentation\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "2010",
@@ -1651,8 +1609,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style;Sound Texture;Performance;Instrumentation",
-    "Low"
+    "Genre and Style",
+    "Sound Texture",
+    "Performance",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -1664,10 +1624,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What level of musicianship is required for a synth bass player to perform this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Performance",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Beginner",
@@ -1688,8 +1648,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Medium"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -1701,10 +1660,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the intention behind adding new voices in the last section?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Musical Texture",
-  "category_3": "Mood and Expression;Structure;Instrumentation",
-  "category_4": "Low",
+  "category_1": "Musical Texture",
+  "category_2": "[\"Mood and Expression\", \"Structure\", \"Instrumentation\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Increase energy",
@@ -1725,8 +1684,9 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression;Structure;Instrumentation",
-    "Low"
+    "Mood and Expression",
+    "Structure",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -1738,10 +1698,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Does this song have a differentiated chorus section?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Structure",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Structure",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "No, it is very similar to the verse",
@@ -1761,9 +1721,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Structure"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -1774,10 +1732,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the most obvious digital music techniques used in this tune?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Instrumentation",
-  "category_4": "Low",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Vocal sampling techniques",
@@ -1798,8 +1756,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Low"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -1811,10 +1768,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Where would you imagine this song being played?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Functional Context",
-  "category_3": "Mood and Expression;Genre and Style",
-  "category_4": "Low",
+  "category_1": "Functional Context",
+  "category_2": "[\"Mood and Expression\", \"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "In a night club",
@@ -1835,8 +1792,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression;Genre and Style",
-    "Low"
+    "Mood and Expression",
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -1848,10 +1805,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What would you expect a professional jazz musician to say about this tune?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "Melody;Musical Texture;Structure",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[\"Melody\", \"Musical Texture\", \"Structure\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "It is very monotonous",
@@ -1872,8 +1829,9 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Melody;Musical Texture;Structure",
-    "Low"
+    "Melody",
+    "Musical Texture",
+    "Structure"
    ]
   },
   "audio": null
@@ -1885,10 +1843,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How would you describe the electric guitar motif?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Instrumentation",
-  "category_4": "Low",
+  "category_1": "Melody",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "repetitive",
@@ -1909,8 +1867,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Low"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -1922,10 +1879,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Does this tune explore any themes other than love?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Lyrics",
-  "category_3": "Mood and Expression",
-  "category_4": "Low",
+  "category_1": "Lyrics",
+  "category_2": "[\"Mood and Expression\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "No",
@@ -1946,8 +1903,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression",
-    "Low"
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -1959,10 +1915,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What level of humor does this song display?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "It is a serious tune",
@@ -1982,9 +1938,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Mood and Expression"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -1995,10 +1949,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the harmonic interval between the voices in the first two notes of the verse?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Melody;Musical Texture",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[\"Melody\", \"Musical Texture\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "4th",
@@ -2019,8 +1973,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Melody;Musical Texture",
-    "High"
+    "Melody",
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -2032,10 +1986,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What harmonic technique is used during the chorus?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Structure",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[\"Structure\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Secondary dominants",
@@ -2056,8 +2010,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "High"
+    "Structure"
    ]
   },
   "audio": null
@@ -2069,10 +2022,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which guitar comping style can we here in the tune?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "Instrumentation;Performance;Historical and Cultural Context",
-  "category_4": "Low",
+  "category_1": "Genre and Style",
+  "category_2": "[\"Instrumentation\", \"Performance\", \"Historical and Cultural Context\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "bossa nova",
@@ -2093,8 +2046,9 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Performance;Historical and Cultural Context",
-    "Low"
+    "Instrumentation",
+    "Performance",
+    "Historical and Cultural Context"
    ]
   },
   "audio": null
@@ -2106,10 +2060,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which country does this tune remind you of?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Historical and Cultural Context",
-  "category_3": "Genre and Style",
-  "category_4": "Low",
+  "category_1": "Historical and Cultural Context",
+  "category_2": "[\"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Brazil",
@@ -2130,8 +2084,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style",
-    "Low"
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -2143,10 +2096,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What effect do the brushes have on the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Mood and Expression;Performance;Instrumentation",
-  "category_4": "Low",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Mood and Expression\", \"Performance\", \"Instrumentation\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "More intimacy",
@@ -2167,8 +2120,9 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression;Performance;Instrumentation",
-    "Low"
+    "Mood and Expression",
+    "Performance",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -2180,10 +2134,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which instrumentalist do you think is the leader of the band?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Performance",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Performance\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "pianist",
@@ -2204,8 +2158,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "Low"
+    "Performance"
    ]
   },
   "audio": null
@@ -2217,10 +2170,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What music genre does the introduction remind you of?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Genre and Style",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Bolero",
@@ -2240,9 +2193,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Genre and Style"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -2253,10 +2204,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How much fusion between genres and countries is there in this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "Historical and Cultural Context",
-  "category_4": "Low",
+  "category_1": "Genre and Style",
+  "category_2": "[\"Historical and Cultural Context\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "high",
@@ -2277,8 +2228,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Historical and Cultural Context",
-    "Low"
+    "Historical and Cultural Context"
    ]
   },
   "audio": null
@@ -2290,10 +2240,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What effect introduces the kick in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Metre and Rhythm;Genre and Style",
-  "category_4": "Low",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Metre and Rhythm\", \"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "It creates an electronic vive",
@@ -2314,8 +2264,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Metre and Rhythm;Genre and Style",
-    "Low"
+    "Metre and Rhythm",
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -2327,10 +2277,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What surprises you about the harmony in this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "It has many second dominants",
@@ -2350,9 +2300,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Harmony"
    ],
    "genre": [],
-   "skill": [
-    "High"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -2363,10 +2311,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which music genre does the introduction remind you of?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Genre and Style",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Ragtime",
@@ -2386,9 +2334,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Genre and Style"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -2399,10 +2345,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What could this music be used for?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Functional Context",
-  "category_3": "Mood and Expression",
-  "category_4": "Low",
+  "category_1": "Functional Context",
+  "category_2": "[\"Mood and Expression\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "A movie",
@@ -2423,8 +2369,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression",
-    "Low"
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -2436,10 +2381,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What are your thoughts on the piano bass voice of the outro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "Instrumentation;Sound Texture;Musical Texture",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[\"Instrumentation\", \"Sound Texture\", \"Musical Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "It creates an old-fashioned feeling",
@@ -2460,8 +2405,9 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Sound Texture;Musical Texture",
-    "Low"
+    "Instrumentation",
+    "Sound Texture",
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -2473,10 +2419,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What feeling does the music aim to create?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "melancholy",
@@ -2496,9 +2442,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Mood and Expression"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -2509,10 +2453,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What level of musicianship do the instrumentalists display in this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Performance",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "beginner",
@@ -2532,9 +2476,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Performance"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -2545,10 +2487,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What stands out when you listen the beginning of this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Performance",
-  "category_4": "Low",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Performance\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "The poor rhythm skills of some musicians",
@@ -2569,8 +2511,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "Low"
+    "Performance"
    ]
   },
   "audio": null
@@ -2582,10 +2523,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What harmonic interval does the electric guitar use during its solo?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Melody;Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Harmony",
+  "category_2": "[\"Melody\", \"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "8va",
@@ -2606,8 +2547,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Melody;Instrumentation",
-    "Medium"
+    "Melody",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -2619,10 +2560,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the longest section of the tune?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Structure",
-  "category_3": "Performance",
-  "category_4": "Medium",
+  "category_1": "Structure",
+  "category_2": "[\"Performance\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Solos",
@@ -2643,8 +2584,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "Medium"
+    "Performance"
    ]
   },
   "audio": null
@@ -2656,10 +2596,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which instrument plays the lead sounds in the intro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Synth",
@@ -2680,8 +2620,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Low"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -2693,10 +2632,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of synths are firstly introduced in the intro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Sequenced",
@@ -2717,8 +2656,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Medium"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -2730,10 +2668,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of choral music does the intro remind you of?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "Historical and Cultural Context",
-  "category_4": "Low",
+  "category_1": "Genre and Style",
+  "category_2": "[\"Historical and Cultural Context\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Gregorian chant",
@@ -2754,8 +2692,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Historical and Cultural Context",
-    "Low"
+    "Historical and Cultural Context"
    ]
   },
   "audio": null
@@ -2767,10 +2704,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which guitar technique is used at the beginning of the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Instrumentation",
-  "category_4": "Low",
+  "category_1": "Performance",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Riff",
@@ -2791,8 +2728,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Low"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -2804,10 +2740,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of instruments are used during the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Digital electronic",
@@ -2828,8 +2764,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Low"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -2841,10 +2776,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the predominant tempo of the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "136bpm",
@@ -2864,9 +2799,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Metre and Rhythm"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -2877,10 +2810,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of string instrument is heard at the beginning?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Banjo",
@@ -2901,8 +2834,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Low"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -2914,10 +2846,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What genre does the song evoke?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Genre and Style",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Latin music",
@@ -2937,9 +2869,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Genre and Style"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -2950,10 +2880,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which continent does the rhythm of the song remind you of?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Genre and Style;Historical and Cultural Context",
-  "category_4": "Low",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Genre and Style\", \"Historical and Cultural Context\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "South America",
@@ -2974,8 +2904,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style;Historical and Cultural Context",
-    "Low"
+    "Genre and Style",
+    "Historical and Cultural Context"
    ]
   },
   "audio": null
@@ -2987,10 +2917,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the tempo of the intro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Performance;Structure",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Performance\", \"Structure\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Adagio",
@@ -3011,8 +2941,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance;Structure",
-    "Medium"
+    "Performance",
+    "Structure"
    ]
   },
   "audio": null
@@ -3024,10 +2954,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How many chords are played in the intro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Structure",
-  "category_4": "Medium",
+  "category_1": "Harmony",
+  "category_2": "[\"Structure\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "2",
@@ -3048,8 +2978,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "Medium"
+    "Structure"
    ]
   },
   "audio": null
@@ -3061,10 +2990,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of chord does the guitar play right at the beginning of the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Instrumentation",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Major 7",
@@ -3085,8 +3014,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "High"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -3098,10 +3026,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of accompaniment does the guitar play?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Musical Texture",
-  "category_3": "Harmony;Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Musical Texture",
+  "category_2": "[\"Harmony\", \"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Arpeggios",
@@ -3122,8 +3050,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Harmony;Instrumentation",
-    "Medium"
+    "Harmony",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -3135,10 +3063,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What human sound does the lead instrument resemble in the introduction?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Instrumentation",
-  "category_4": "Low",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Whistle",
@@ -3159,8 +3087,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Low"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -3172,10 +3099,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which instrument creates a mood of excitement in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Mood and Expression",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Mood and Expression\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Digital Pads",
@@ -3196,8 +3123,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression",
-    "Medium"
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -3209,10 +3135,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of chord does the guitar play right at the beginning of the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Instrumentation",
-  "category_4": "Low",
+  "category_1": "Harmony",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Minor",
@@ -3233,8 +3159,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Low"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -3246,10 +3171,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which is the first interval sung by the lead voice?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Melody",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "perfect 5th",
@@ -3269,9 +3194,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Melody"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -3282,10 +3205,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How does the drummer create anticipation for the final verse?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Metre and Rhythm;Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Performance",
+  "category_2": "[\"Metre and Rhythm\", \"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Toms and snare fill",
@@ -3306,8 +3229,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Metre and Rhythm;Instrumentation",
-    "Medium"
+    "Metre and Rhythm",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -3319,10 +3242,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which country does the song evoke?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Historical and Cultural Context",
-  "category_3": "Genre and Style;Instrumentation;Mood and Expression",
-  "category_4": "Low",
+  "category_1": "Historical and Cultural Context",
+  "category_2": "[\"Genre and Style\", \"Instrumentation\", \"Mood and Expression\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Spain",
@@ -3343,8 +3266,9 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style;Instrumentation;Mood and Expression",
-    "Low"
+    "Genre and Style",
+    "Instrumentation",
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -3356,10 +3280,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which guitar instrumental technique is used in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Instrumentation;Genre and Style",
-  "category_4": "Low",
+  "category_1": "Performance",
+  "category_2": "[\"Instrumentation\", \"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Flamenco Strum",
@@ -3380,8 +3304,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Genre and Style",
-    "Low"
+    "Instrumentation",
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -3393,10 +3317,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of bass is used in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Double Bass",
@@ -3416,9 +3340,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Instrumentation"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -3429,10 +3351,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kinds of string instruments are used in the intro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Digital Synth Strings",
@@ -3453,8 +3375,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Low"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -3466,10 +3387,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What emotions does the song create?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Joyful",
@@ -3489,9 +3410,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Mood and Expression"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -3502,10 +3421,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How many chords does the song use?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Harmony",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "4",
@@ -3525,9 +3444,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Harmony"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -3538,10 +3455,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "In what style is the acoustic guitar accompanying?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "Instrumentation",
-  "category_4": "Low",
+  "category_1": "Genre and Style",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Flamenco",
@@ -3562,8 +3479,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Low"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -3575,10 +3491,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of drums are used in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Digital pads",
@@ -3599,8 +3515,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Medium"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -3612,10 +3527,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which country do you imagine this song is from?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Historical and Cultural Context",
-  "category_3": "Genre and Style",
-  "category_4": "Low",
+  "category_1": "Historical and Cultural Context",
+  "category_2": "[\"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "USA",
@@ -3636,8 +3551,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style",
-    "Low"
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -3649,10 +3563,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which instrument plays the lead sound in the introduction?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "High",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Muted trombone",
@@ -3673,8 +3587,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "High"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -3686,10 +3599,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which interval is played in the first two notes of the trombone?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Instrumentation",
-  "category_4": "High",
+  "category_1": "Melody",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "8a",
@@ -3710,8 +3623,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "High"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -3723,10 +3635,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of saxophone plays the solo?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Tenor Sax",
@@ -3747,8 +3659,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Medium"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -3760,10 +3671,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the time signature of the tune?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "2/2",
@@ -3783,9 +3694,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Metre and Rhythm"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -3796,10 +3705,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of bass is used in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Electric bass",
@@ -3820,8 +3729,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Medium"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -3833,10 +3741,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What part of the drums is used to set the beat in the intro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Metre and Rhythm",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Metre and Rhythm\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Hi hats",
@@ -3857,8 +3765,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Metre and Rhythm",
-    "Medium"
+    "Metre and Rhythm"
    ]
   },
   "audio": null
@@ -3870,10 +3777,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of jazz ensemble plays the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Genre and Style",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Trio",
@@ -3894,8 +3801,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style",
-    "Low"
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -3907,10 +3813,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of rhythm is used by the bass line in the intro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Syncopation",
@@ -3931,8 +3837,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Medium"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -3944,10 +3849,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What style of jazz would you say this tune is?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "Mood and Expression",
-  "category_4": "Low",
+  "category_1": "Genre and Style",
+  "category_2": "[\"Mood and Expression\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Lounge",
@@ -3968,8 +3873,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression",
-    "Low"
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -3981,10 +3885,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which instrument predominates in the solos?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Performance",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Performance\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Upright bass",
@@ -4005,8 +3909,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "Low"
+    "Performance"
    ]
   },
   "audio": null
@@ -4018,10 +3921,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which piano technique is used during this part of the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Musical Texture;Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Performance",
+  "category_2": "[\"Musical Texture\", \"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Broken chords",
@@ -4042,8 +3945,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Musical Texture;Instrumentation",
-    "Medium"
+    "Musical Texture",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -4055,10 +3958,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What could this music be used for?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Functional Context",
-  "category_3": "Genre and Style",
-  "category_4": "Low",
+  "category_1": "Functional Context",
+  "category_2": "[\"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Soundtrack",
@@ -4079,8 +3982,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style",
-    "Low"
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -4092,10 +3994,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which instrument is used to create contrast?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Cello",
@@ -4115,9 +4017,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Instrumentation"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -4128,10 +4028,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which country do you think the music is from?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Historical and Cultural Context",
-  "category_3": "Genre and Style",
-  "category_4": "Low",
+  "category_1": "Historical and Cultural Context",
+  "category_2": "[\"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Jamaica",
@@ -4152,8 +4052,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style",
-    "Low"
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -4165,10 +4064,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of scale is used in the guitar motif?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "",
-  "category_4": "High",
+  "category_1": "Melody",
+  "category_2": "[]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "E minor",
@@ -4188,9 +4087,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Melody"
    ],
    "genre": [],
-   "skill": [
-    "High"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -4201,10 +4098,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which piano technique predominantly is used during the accompaniment?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Musical Texture",
-  "category_3": "Performance;Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Musical Texture",
+  "category_2": "[\"Performance\", \"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Rhythmic Arpeggios",
@@ -4225,8 +4122,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance;Instrumentation",
-    "Medium"
+    "Performance",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -4238,10 +4135,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of harmonic progression predominates in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "ii-V-I",
@@ -4261,9 +4158,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Harmony"
    ],
    "genre": [],
-   "skill": [
-    "High"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -4274,10 +4169,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "There is a motif that is constantly repeated throughout the solo. Do you know which one?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Structure",
-  "category_4": "High",
+  "category_1": "Melody",
+  "category_2": "[\"Structure\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "B4-D5-G4-B4-E4-G4",
@@ -4298,8 +4193,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "High"
+    "Structure"
    ]
   },
   "audio": null
@@ -4311,10 +4205,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of jazz ensemble plays the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Genre and Style",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Quartet",
@@ -4335,8 +4229,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style",
-    "Low"
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -4348,10 +4241,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What impression does the singer aim to create with her singing style?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "Performance",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[\"Performance\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "naturality",
@@ -4372,8 +4265,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "Low"
+    "Performance"
    ]
   },
   "audio": null
@@ -4385,10 +4277,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "There is a chord that is out of key. Do you know which one?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Structure",
-  "category_4": "Medium",
+  "category_1": "Harmony",
+  "category_2": "[\"Structure\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Second chord of the chorus",
@@ -4409,8 +4301,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "Medium"
+    "Structure"
    ]
   },
   "audio": null
@@ -4422,10 +4313,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which instrument stands out at the front of the mix?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Vocals",
@@ -4446,8 +4337,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Low"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -4459,10 +4349,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the main part of this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Structure",
-  "category_3": "Performance",
-  "category_4": "Medium",
+  "category_1": "Structure",
+  "category_2": "[\"Performance\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "the solos",
@@ -4483,8 +4373,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "Medium"
+    "Performance"
    ]
   },
   "audio": null
@@ -4496,10 +4385,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How would you describe the comping style of the double bass?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Metre and Rhythm;Instrumentation;Musical Texture;Performance",
-  "category_4": "Medium",
+  "category_1": "Harmony",
+  "category_2": "[\"Metre and Rhythm\", \"Instrumentation\", \"Musical Texture\", \"Performance\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "walking bass",
@@ -4520,8 +4409,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Metre and Rhythm;Instrumentation;Musical Texture;Performance",
-    "Medium"
+    "Metre and Rhythm",
+    "Instrumentation",
+    "Musical Texture",
+    "Performance"
    ]
   },
   "audio": null
@@ -4533,10 +4424,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What effect does the piano aim to create when playing the pedal point?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Musical Texture",
-  "category_3": "Harmony;Mood and Expression",
-  "category_4": "Low",
+  "category_1": "Musical Texture",
+  "category_2": "[\"Harmony\", \"Mood and Expression\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "tension",
@@ -4557,8 +4448,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Harmony;Mood and Expression",
-    "Low"
+    "Harmony",
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -4570,10 +4461,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the main purpose of this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Functional Context",
-  "category_3": "Mood and Expression;Genre and Style",
-  "category_4": "Low",
+  "category_1": "Functional Context",
+  "category_2": "[\"Mood and Expression\", \"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "to make people dance",
@@ -4594,8 +4485,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression;Genre and Style",
-    "Low"
+    "Mood and Expression",
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -4607,10 +4498,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What emotion is mainly conveyed in this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "joy",
@@ -4630,9 +4521,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Mood and Expression"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -4643,10 +4532,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which instrumental section give this tune its unique sound?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "brass section",
@@ -4667,8 +4556,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Low"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -4680,10 +4568,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Why would you say this is a rumba?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Genre and Style",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Genre and Style\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "because of the rhythm of the background guitar",
@@ -4704,8 +4592,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style",
-    "Medium"
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -4717,10 +4604,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which country do you think this music is from?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Historical and Cultural Context",
-  "category_3": "Genre and Style;Instrumentation",
-  "category_4": "Low",
+  "category_1": "Historical and Cultural Context",
+  "category_2": "[\"Genre and Style\", \"Instrumentation\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Spain",
@@ -4741,8 +4628,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style;Instrumentation",
-    "Low"
+    "Genre and Style",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -4754,10 +4641,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What intervals create dissonance in the background guitar?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Harmony",
-  "category_4": "Medium",
+  "category_1": "Melody",
+  "category_2": "[\"Harmony\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "4ths",
@@ -4778,8 +4665,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Harmony",
-    "Medium"
+    "Harmony"
    ]
   },
   "audio": null
@@ -4791,10 +4677,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What technique does this introduction aim to recreate?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Sound Texture",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Sampling",
@@ -4814,9 +4700,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Sound Texture"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -4827,10 +4711,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What gives the drums their unique house jazz sound?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture;Performance;Genre and Style",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\", \"Performance\", \"Genre and Style\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Ride",
@@ -4851,8 +4735,9 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture;Performance;Genre and Style",
-    "Medium"
+    "Sound Texture",
+    "Performance",
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -4864,10 +4749,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What might be a reason this song is called \"Scattered Knowledge\"?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Instrumentation;Structure",
-  "category_4": "Low",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Instrumentation\", \"Structure\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "because there are many audio sample scattered throughout the song",
@@ -4888,8 +4773,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Structure",
-    "Low"
+    "Instrumentation",
+    "Structure"
    ]
   },
   "audio": null
@@ -4901,10 +4786,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What rhythmic pattern is used by the percussion throughout the entire song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Instrumentation",
-  "category_4": "High",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "3+3+2",
@@ -4925,8 +4810,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "High"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -4938,10 +4822,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which region of the world do you think the rhythm is from?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Historical and Cultural Context;Genre and Style",
-  "category_4": "Low",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Historical and Cultural Context\", \"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Arab world",
@@ -4962,8 +4846,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Historical and Cultural Context;Genre and Style",
-    "Low"
+    "Historical and Cultural Context",
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -4975,10 +4859,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of accompaniment instruments are used in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Digital Synths",
@@ -4999,8 +4883,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Low"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -5012,10 +4895,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Where do you think the song could be played?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Functional Context",
-  "category_3": "Genre and Style",
-  "category_4": "Low",
+  "category_1": "Functional Context",
+  "category_2": "[\"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Lounge bar",
@@ -5036,8 +4919,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style",
-    "Low"
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -5049,10 +4931,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which instrument predominates in the solos?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Performance",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Performance\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Vibraphone",
@@ -5073,8 +4955,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "Medium"
+    "Performance"
    ]
   },
   "audio": null
@@ -5086,10 +4967,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of articulation is used by lead synth in the introduction?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Instrumentation;Sound Texture",
-  "category_4": "Medium",
+  "category_1": "Performance",
+  "category_2": "[\"Instrumentation\", \"Sound Texture\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Legato",
@@ -5110,8 +4991,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Sound Texture",
-    "Medium"
+    "Instrumentation",
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -5123,10 +5004,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which instrument predominates in the accompaniment?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Ukulele",
@@ -5147,8 +5028,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Medium"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -5160,10 +5040,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Where is this kind of string instrument mostly used?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Historical and Cultural Context",
-  "category_3": "Instrumentation",
-  "category_4": "Low",
+  "category_1": "Historical and Cultural Context",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "South america",
@@ -5184,8 +5064,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Low"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -5197,10 +5076,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of emotions does the song evoke?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Joy",
@@ -5220,9 +5099,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Mood and Expression"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -5233,10 +5110,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the predominant key in the intro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Structure;Melody",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[\"Structure\", \"Melody\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "B-flat Major",
@@ -5257,8 +5134,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure;Melody",
-    "High"
+    "Structure",
+    "Melody"
    ]
   },
   "audio": null
@@ -5270,10 +5147,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of interval is created between the lead voice and the backing vocalist?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Harmony",
-  "category_4": "High",
+  "category_1": "Melody",
+  "category_2": "[\"Harmony\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Major intervals",
@@ -5294,8 +5171,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Harmony",
-    "High"
+    "Harmony"
    ]
   },
   "audio": null
@@ -5307,10 +5183,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What instrument is used to introduce the climax of the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Structure",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Structure\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Tambourine",
@@ -5331,8 +5207,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "Low"
+    "Structure"
    ]
   },
   "audio": null
@@ -5344,10 +5219,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of technique best describes the bass line?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Musical Texture",
-  "category_3": "Performance;Metre and Rhythm;Harmony",
-  "category_4": "Low",
+  "category_1": "Musical Texture",
+  "category_2": "[\"Performance\", \"Metre and Rhythm\", \"Harmony\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Repeating Pattern",
@@ -5368,8 +5243,9 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance;Metre and Rhythm;Harmony",
-    "Low"
+    "Performance",
+    "Metre and Rhythm",
+    "Harmony"
    ]
   },
   "audio": null
@@ -5381,10 +5257,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How are the sustained guitar chords being played in the verse?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Musical Texture",
-  "category_4": "Low",
+  "category_1": "Performance",
+  "category_2": "[\"Musical Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Long duration",
@@ -5405,8 +5281,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Musical Texture",
-    "Low"
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -5418,10 +5293,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the main musical feature of the outro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Structure;Performance",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Structure\", \"Performance\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Instrumental",
@@ -5442,8 +5317,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure;Performance",
-    "Low"
+    "Structure",
+    "Performance"
    ]
   },
   "audio": null
@@ -5455,10 +5330,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How many times is the main theme played in the intro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Structure",
-  "category_3": "Melody",
-  "category_4": "Medium",
+  "category_1": "Structure",
+  "category_2": "[\"Melody\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "2",
@@ -5479,8 +5354,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Melody",
-    "Medium"
+    "Melody"
    ]
   },
   "audio": null
@@ -5492,10 +5366,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which is the main instrument that plays in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Guitar",
@@ -5515,9 +5389,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Instrumentation"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -5528,10 +5400,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of guitars are playing at the end of the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Structure",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Structure\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Acoustic & electric",
@@ -5552,8 +5424,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "Low"
+    "Structure"
    ]
   },
   "audio": null
@@ -5565,10 +5436,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Where is this type of music usually played?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Functional Context",
-  "category_3": "Performance",
-  "category_4": "Low",
+  "category_1": "Functional Context",
+  "category_2": "[\"Performance\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Clubs",
@@ -5589,8 +5460,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "Low"
+    "Performance"
    ]
   },
   "audio": null
@@ -5602,10 +5472,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of instruments are used in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Digital Synths",
@@ -5626,8 +5496,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Low"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -5639,10 +5508,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What key is used in the break?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Structure",
-  "category_4": "Medium",
+  "category_1": "Harmony",
+  "category_2": "[\"Structure\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "F major",
@@ -5663,8 +5532,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "Medium"
+    "Structure"
    ]
   },
   "audio": null
@@ -5676,10 +5544,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What mood do you think the song conveys?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "Performance;Lyrics",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[\"Performance\", \"Lyrics\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "optimistic",
@@ -5700,8 +5568,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance;Lyrics",
-    "Low"
+    "Performance",
+    "Lyrics"
    ]
   },
   "audio": null
@@ -5713,10 +5581,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How would you describe the sound of the snare?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Instrumentation;Performance",
-  "category_4": "Medium",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Instrumentation\", \"Performance\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "muddy",
@@ -5737,8 +5605,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Performance",
-    "Medium"
+    "Instrumentation",
+    "Performance"
    ]
   },
   "audio": null
@@ -5750,10 +5618,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What instrument adds syncopation to the verse?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "piano",
@@ -5774,8 +5642,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Medium"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -5787,10 +5654,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What musical style do the arpeggios remind you of?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "Musical Texture;Harmony",
-  "category_4": "Medium",
+  "category_1": "Genre and Style",
+  "category_2": "[\"Musical Texture\", \"Harmony\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Impressionism",
@@ -5811,8 +5678,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Musical Texture;Harmony",
-    "Medium"
+    "Musical Texture",
+    "Harmony"
    ]
   },
   "audio": null
@@ -5824,10 +5691,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What can you say about the harmony?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Harmony",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "It's tonal harmony without dissonances",
@@ -5847,9 +5714,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Harmony"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -5860,10 +5725,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What can you say about the bass notes?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Musical Texture;Harmony",
-  "category_4": "Medium",
+  "category_1": "Melody",
+  "category_2": "[\"Musical Texture\", \"Harmony\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "It describes a melodic line",
@@ -5884,8 +5749,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Musical Texture;Harmony",
-    "Medium"
+    "Musical Texture",
+    "Harmony"
    ]
   },
   "audio": null
@@ -5897,10 +5762,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What would you add to the drums to make them more present?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Performance",
-  "category_4": "High",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Performance\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "A compressor",
@@ -5921,8 +5786,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "High"
+    "Performance"
    ]
   },
   "audio": null
@@ -5934,10 +5798,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What can you say about the harmonic structure?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Genre and Style;Structure",
-  "category_4": "Medium",
+  "category_1": "Harmony",
+  "category_2": "[\"Genre and Style\", \"Structure\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "It is similar to a blues with some variations",
@@ -5958,8 +5822,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style;Structure",
-    "Medium"
+    "Genre and Style",
+    "Structure"
    ]
   },
   "audio": null
@@ -5971,10 +5835,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which age group is most likely to listen to this tune?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Functional Context",
-  "category_3": "Historical and Cultural Context",
-  "category_4": "Low",
+  "category_1": "Functional Context",
+  "category_2": "[\"Historical and Cultural Context\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": ">40",
@@ -5995,8 +5859,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Historical and Cultural Context",
-    "Low"
+    "Historical and Cultural Context"
    ]
   },
   "audio": null
@@ -6008,10 +5871,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Why can you say the piano is not acoustic?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Performance;Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Performance\", \"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "It doesn't have decay",
@@ -6032,8 +5895,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance;Instrumentation",
-    "Medium"
+    "Performance",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -6045,10 +5908,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What notes are sung by the vocals when the lyrics say \"This is the loneliest\"?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "",
-  "category_4": "High",
+  "category_1": "Melody",
+  "category_2": "[]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "C# - E",
@@ -6068,9 +5931,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Melody"
    ],
    "genre": [],
-   "skill": [
-    "High"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -6081,10 +5942,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What mood does the synth create at the end of the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "Instrumentation;Sound Texture",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[\"Instrumentation\", \"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "dreamy",
@@ -6105,8 +5966,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Sound Texture",
-    "Low"
+    "Instrumentation",
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -6118,10 +5979,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the rhythm feeling of the vocals in the chorus?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Performance",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Performance\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "swinged",
@@ -6142,8 +6003,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "Medium"
+    "Performance"
    ]
   },
   "audio": null
@@ -6155,10 +6015,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Right before the first verse, there are chords that are reminiscent of a particular jazz style. Do you know which one?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "Harmony",
-  "category_4": "High",
+  "category_1": "Genre and Style",
+  "category_2": "[\"Harmony\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Modal jazz",
@@ -6179,8 +6039,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Harmony",
-    "High"
+    "Harmony"
    ]
   },
   "audio": null
@@ -6192,10 +6051,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "The chorus starts with two descending notes in the bass. Can you determine the intervallic movement?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Harmony",
-  "category_4": "Medium",
+  "category_1": "Melody",
+  "category_2": "[\"Harmony\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Chromatic",
@@ -6216,8 +6075,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Harmony",
-    "Medium"
+    "Harmony"
    ]
   },
   "audio": null
@@ -6229,10 +6087,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "There is an harmonic dissonance in the fourth eighth note of the piano introduction. Can you determine the interval?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Melody",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[\"Melody\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "major 2",
@@ -6253,8 +6111,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Melody",
-    "High"
+    "Melody"
    ]
   },
   "audio": null
@@ -6266,10 +6123,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "The chorus suddenly changes the vibe of the song. How does the music create this?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Mood and Expression;Structure",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[\"Mood and Expression\", \"Structure\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "by modulating to the relative major key",
@@ -6290,8 +6147,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression;Structure",
-    "High"
+    "Mood and Expression",
+    "Structure"
    ]
   },
   "audio": null
@@ -6303,10 +6160,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What instrument does the piano sound like with the arpeggio texture of the introduction?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture;Musical Texture",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\", \"Musical Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "guitar",
@@ -6327,8 +6184,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture;Musical Texture",
-    "Low"
+    "Sound Texture",
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -6340,10 +6197,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What mode is used in the exposition of the melody?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Harmony",
-  "category_4": "High",
+  "category_1": "Melody",
+  "category_2": "[\"Harmony\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Phrygian",
@@ -6364,8 +6221,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Harmony",
-    "High"
+    "Harmony"
    ]
   },
   "audio": null
@@ -6377,10 +6233,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the subdivision of the beats in this tune?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Ternary and binary",
@@ -6400,9 +6256,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Metre and Rhythm"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -6413,10 +6267,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What time signature would you say this is?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "",
-  "category_4": "High",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "7/8",
@@ -6436,9 +6290,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Metre and Rhythm"
    ],
    "genre": [],
-   "skill": [
-    "High"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -6449,10 +6301,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of rhythm is used in the guitar introduction?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "shuffle",
@@ -6472,9 +6324,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Metre and Rhythm"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -6485,10 +6335,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What instruments seem to duplicate the melody in the beginning of the verse?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Musical Texture;Melody",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Musical Texture\", \"Melody\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "guitar and vocals",
@@ -6509,8 +6359,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Musical Texture;Melody",
-    "Medium"
+    "Musical Texture",
+    "Melody"
    ]
   },
   "audio": null
@@ -6522,10 +6372,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the most important word in the vocal melody, taking into account the melodic contour?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Lyrics",
-  "category_4": "Medium",
+  "category_1": "Melody",
+  "category_2": "[\"Lyrics\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Frontline",
@@ -6546,8 +6396,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Lyrics",
-    "Medium"
+    "Lyrics"
    ]
   },
   "audio": null
@@ -6559,10 +6408,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "When are the electric guitar chords played in the introduction?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Instrumentation;Structure",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Instrumentation\", \"Structure\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Downbeat and upbeat",
@@ -6583,8 +6432,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Structure",
-    "Medium"
+    "Instrumentation",
+    "Structure"
    ]
   },
   "audio": null
@@ -6596,10 +6445,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which type of radio station would be more likely to play this tune?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Functional Context",
-  "category_3": "Genre and Style",
-  "category_4": "Low",
+  "category_1": "Functional Context",
+  "category_2": "[\"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Commercial radio station",
@@ -6620,8 +6469,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style",
-    "Low"
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -6633,10 +6481,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "If you were a teacher, at which moment of the lesson would you use this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Functional Context",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Functional Context",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Beginning",
@@ -6656,9 +6504,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Functional Context"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -6669,10 +6515,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What could be the meaning of the lyrics?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Lyrics",
-  "category_3": "Mood and Expression",
-  "category_4": "Low",
+  "category_1": "Lyrics",
+  "category_2": "[\"Mood and Expression\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "The girl is pregnant",
@@ -6693,8 +6539,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression",
-    "Low"
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -6706,10 +6551,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the rhythm pattern of the bass?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Genre and Style;Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Genre and Style\", \"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Cumbia",
@@ -6730,8 +6575,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style;Instrumentation",
-    "Medium"
+    "Genre and Style",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -6743,10 +6588,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How could you interpret this song from a feminist perspective?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Lyrics",
-  "category_3": "Mood and Expression;Historical and Cultural Context",
-  "category_4": "Low",
+  "category_1": "Lyrics",
+  "category_2": "[\"Mood and Expression\", \"Historical and Cultural Context\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "It is expressing jealousy",
@@ -6767,8 +6612,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression;Historical and Cultural Context",
-    "Low"
+    "Mood and Expression",
+    "Historical and Cultural Context"
    ]
   },
   "audio": null
@@ -6780,10 +6625,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What harmonic progression can be heard in the introduction?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Structure",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[\"Structure\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "ii-V-I over the sixth chord",
@@ -6804,8 +6649,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "High"
+    "Structure"
    ]
   },
   "audio": null
@@ -6817,10 +6661,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which musical element predominates over the others in this tune?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Metre and Rhythm;Sound Texture",
-  "category_4": "Medium",
+  "category_1": "Harmony",
+  "category_2": "[\"Metre and Rhythm\", \"Sound Texture\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Harmony",
@@ -6841,8 +6685,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Metre and Rhythm;Sound Texture",
-    "Medium"
+    "Metre and Rhythm",
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -6854,10 +6698,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How does this tune enhance the tonal harmony?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "secondary dominants",
@@ -6877,9 +6721,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Harmony"
    ],
    "genre": [],
-   "skill": [
-    "High"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -6890,10 +6732,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What brass instruments are played in the intro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Structure",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Structure\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Trumpets & trombones",
@@ -6914,8 +6756,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "Medium"
+    "Structure"
    ]
   },
   "audio": null
@@ -6927,10 +6768,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How are the phrases distributed among the brass section in the intro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Musical Texture",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Musical Texture\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "The first phrase played by two trumpets and responded with other phrase by the trombones in unison",
@@ -6951,8 +6792,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Musical Texture",
-    "Medium"
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -6964,10 +6804,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What region of the world does this type of rhythm usually remind you of?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Historical and Cultural Context;Genre and Style",
-  "category_4": "Low",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Historical and Cultural Context\", \"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Latin America",
@@ -6988,8 +6828,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Historical and Cultural Context;Genre and Style",
-    "Low"
+    "Historical and Cultural Context",
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -7001,10 +6841,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the main string instrument in the song apart from the ukulele?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Banjo",
@@ -7025,8 +6865,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Low"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -7038,10 +6877,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How many voices are recorded in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Musical Texture",
-  "category_3": "Performance;Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Musical Texture",
+  "category_2": "[\"Performance\", \"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Two voices singing in unison",
@@ -7062,8 +6901,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance;Instrumentation",
-    "Medium"
+    "Performance",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -7075,10 +6914,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which percussion instruments are played in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Bass drum, shaker & tambourine",
@@ -7099,8 +6938,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Medium"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -7112,10 +6950,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of guitar technique is used in this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Instrumentation;Genre and Style",
-  "category_4": "Low",
+  "category_1": "Performance",
+  "category_2": "[\"Instrumentation\", \"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Flamenco technique",
@@ -7136,8 +6974,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Genre and Style",
-    "Low"
+    "Instrumentation",
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -7149,10 +6987,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What mode is used in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Harmony",
-  "category_4": "High",
+  "category_1": "Melody",
+  "category_2": "[\"Harmony\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Aeolian",
@@ -7173,8 +7011,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Harmony",
-    "High"
+    "Harmony"
    ]
   },
   "audio": null
@@ -7186,10 +7023,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the first chord played by the guitarist?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Instrumentation",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "F minor",
@@ -7210,8 +7047,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "High"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -7223,10 +7059,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the name of the rhythm used by the drums during this period?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Performance",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Performance\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Half time shuffle",
@@ -7247,8 +7083,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "Medium"
+    "Performance"
    ]
   },
   "audio": null
@@ -7260,10 +7095,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which cymbal does the drummer use in the bridge?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Structure;Performance",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Structure\", \"Performance\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Ride cymbal",
@@ -7284,8 +7119,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure;Performance",
-    "Medium"
+    "Structure",
+    "Performance"
    ]
   },
   "audio": null
@@ -7297,10 +7132,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the predominant component used by the synth during the solo?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Performance;Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Performance\", \"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Glide effect",
@@ -7321,8 +7156,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance;Instrumentation",
-    "Medium"
+    "Performance",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -7334,10 +7169,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What instruments are used in the intro as accompaniment to the voice?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture;Musical Texture",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\", \"Musical Texture\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Synth piano and synth drums",
@@ -7358,8 +7193,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture;Musical Texture",
-    "Medium"
+    "Sound Texture",
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -7371,10 +7206,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Hearing the voice, is it a native English speaker singing?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Lyrics",
-  "category_4": "Low",
+  "category_1": "Performance",
+  "category_2": "[\"Lyrics\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "No",
@@ -7395,8 +7230,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Lyrics",
-    "Low"
+    "Lyrics"
    ]
   },
   "audio": null
@@ -7408,10 +7242,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of synth effects are used to create more anticipation for the chorus?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Structure",
-  "category_4": "Medium",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Structure\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Reverbs, Phasers and Distortion",
@@ -7432,8 +7266,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "Medium"
+    "Structure"
    ]
   },
   "audio": null
@@ -7445,10 +7278,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the main pedal effect used in the guitar solo?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Instrumentation",
-  "category_4": "Low",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Distortion pedal",
@@ -7469,8 +7302,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Low"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -7482,10 +7314,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the scale predominantly used by the singer?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "",
-  "category_4": "High",
+  "category_1": "Melody",
+  "category_2": "[]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "F# minor pentatonic",
@@ -7505,9 +7337,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Melody"
    ],
    "genre": [],
-   "skill": [
-    "High"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -7518,10 +7348,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of accompaniment is the ukulele using in the intro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Musical Texture",
-  "category_3": "Performance;Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Musical Texture",
+  "category_2": "[\"Performance\", \"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Arpeggio patterns",
@@ -7542,8 +7372,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance;Instrumentation",
-    "Medium"
+    "Performance",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -7555,10 +7385,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What chord is the ukulele playing in the intro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Instrumentation;Structure",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[\"Instrumentation\", \"Structure\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "C6",
@@ -7579,8 +7409,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Structure",
-    "High"
+    "Instrumentation",
+    "Structure"
    ]
   },
   "audio": null
@@ -7592,10 +7422,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of percussion is used for the bass drum?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Cajon",
@@ -7615,9 +7445,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Instrumentation"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -7628,10 +7456,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What technique does the drummer use on the snare drum to mark the upbeat during the intro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Instrumentation;Metre and Rhythm",
-  "category_4": "High",
+  "category_1": "Performance",
+  "category_2": "[\"Instrumentation\", \"Metre and Rhythm\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Close rim-shot",
@@ -7652,8 +7480,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Metre and Rhythm",
-    "High"
+    "Instrumentation",
+    "Metre and Rhythm"
    ]
   },
   "audio": null
@@ -7665,10 +7493,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the instrumentation of the piece?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Synth Piano, Guitar, Bass & Drums",
@@ -7688,9 +7516,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Instrumentation"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -7701,10 +7527,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of feeling do the acoustic guitar solos in the song produce?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "Instrumentation;Performance",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[\"Instrumentation\", \"Performance\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Calming & relaxing",
@@ -7725,8 +7551,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Performance",
-    "Low"
+    "Instrumentation",
+    "Performance"
    ]
   },
   "audio": null
@@ -7738,10 +7564,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of drum sticks are being used to accompany the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Performance;Sound Texture",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Performance\", \"Sound Texture\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Drum Brushes",
@@ -7762,8 +7588,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance;Sound Texture",
-    "Medium"
+    "Performance",
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -7775,10 +7601,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How many guitars are playing during the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "2",
@@ -7798,9 +7624,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Instrumentation"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -7811,10 +7635,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of guitar is playing the accompaniment?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Acoustic guitar",
@@ -7835,8 +7659,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Low"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -7848,10 +7671,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What genre does the song evoke?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Genre and Style",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Songwriting",
@@ -7871,9 +7694,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Genre and Style"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -7884,10 +7705,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of technique is the guitar using during the chorus?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Performance",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Slapping",
@@ -7908,8 +7729,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Medium"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -7921,10 +7741,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What musical technique is used by the guitar accompaniment to emphasize rhythm in the chorus?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Instrumentation;Performance",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Instrumentation\", \"Performance\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Back beat",
@@ -7945,8 +7765,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Performance",
-    "Medium"
+    "Instrumentation",
+    "Performance"
    ]
   },
   "audio": null
@@ -7958,10 +7778,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the time signature of the intro of the piece?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Structure",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Structure\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "3/4",
@@ -7982,8 +7802,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "Medium"
+    "Structure"
    ]
   },
   "audio": null
@@ -7995,10 +7814,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "For what type of music was this song made?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Functional Context",
-  "category_3": "Genre and Style",
-  "category_4": "Low",
+  "category_1": "Functional Context",
+  "category_2": "[\"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Movie Soundtrack",
@@ -8019,8 +7838,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style",
-    "Low"
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -8032,10 +7850,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How many bars does the drum play in the intro before the guitar comes in?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Structure",
-  "category_3": "Metre and Rhythm;Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Structure",
+  "category_2": "[\"Metre and Rhythm\", \"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "4",
@@ -8056,8 +7874,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Metre and Rhythm;Instrumentation",
-    "Medium"
+    "Metre and Rhythm",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -8069,10 +7887,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of snare drum is the drummer using?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Piccolo",
@@ -8092,9 +7910,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Instrumentation"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -8105,10 +7921,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Is the singer a native English speaker?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Lyrics;Sound Texture",
-  "category_4": "Low",
+  "category_1": "Performance",
+  "category_2": "[\"Lyrics\", \"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "No",
@@ -8129,8 +7945,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Lyrics;Sound Texture",
-    "Low"
+    "Lyrics",
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -8142,10 +7958,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the key of the bass pattern?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Bb minor",
@@ -8165,9 +7981,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Harmony"
    ],
    "genre": [],
-   "skill": [
-    "High"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -8178,10 +7992,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What extended technique is used by the flutist during the solo?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Sound Texture;Instrumentation",
-  "category_4": "High",
+  "category_1": "Performance",
+  "category_2": "[\"Sound Texture\", \"Instrumentation\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Flutter tonguing",
@@ -8202,8 +8016,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture;Instrumentation",
-    "High"
+    "Sound Texture",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -8215,10 +8029,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What percussion instruments are playing during the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Tambourine & cow bell",
@@ -8239,8 +8053,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Low"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -8252,10 +8065,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How does the song begin?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Structure",
-  "category_4": "High",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Structure\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "tetric",
@@ -8276,8 +8089,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "High"
+    "Structure"
    ]
   },
   "audio": null
@@ -8289,10 +8101,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is this genre of music good for?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Functional Context",
-  "category_3": "Mood and Expression;Genre and Style",
-  "category_4": "Low",
+  "category_1": "Functional Context",
+  "category_2": "[\"Mood and Expression\", \"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "studying and working",
@@ -8313,8 +8125,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression;Genre and Style",
-    "Low"
+    "Mood and Expression",
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -8326,10 +8138,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which of these options is most related to this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Functional Context",
-  "category_3": "Genre and Style;Sound Texture;Performance",
-  "category_4": "Medium",
+  "category_1": "Functional Context",
+  "category_2": "[\"Genre and Style\", \"Sound Texture\", \"Performance\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "bedroom producer",
@@ -8350,8 +8162,9 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style;Sound Texture;Performance",
-    "Medium"
+    "Genre and Style",
+    "Sound Texture",
+    "Performance"
    ]
   },
   "audio": null
@@ -8363,10 +8176,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How are the different instruments introduced in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Musical Texture;Structure",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Musical Texture\", \"Structure\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "progressive",
@@ -8387,8 +8200,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Musical Texture;Structure",
-    "Low"
+    "Musical Texture",
+    "Structure"
    ]
   },
   "audio": null
@@ -8400,10 +8213,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which instruments make the song groovy?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Metre and Rhythm;Performance",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Metre and Rhythm\", \"Performance\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "kick and bass",
@@ -8424,8 +8237,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Metre and Rhythm;Performance",
-    "Medium"
+    "Metre and Rhythm",
+    "Performance"
    ]
   },
   "audio": null
@@ -8437,10 +8250,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What harmonic techniques is the composer using in the chorus?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Structure",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[\"Structure\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "It uses secondary dominants",
@@ -8461,8 +8274,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "High"
+    "Structure"
    ]
   },
   "audio": null
@@ -8474,10 +8286,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What roots would you say this song has?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Historical and Cultural Context",
-  "category_3": "Genre and Style",
-  "category_4": "Low",
+  "category_1": "Historical and Cultural Context",
+  "category_2": "[\"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "African",
@@ -8498,8 +8310,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style",
-    "Low"
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -8511,10 +8322,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What are these lyrics about?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Lyrics",
-  "category_3": "Mood and Expression",
-  "category_4": "Low",
+  "category_1": "Lyrics",
+  "category_2": "[\"Mood and Expression\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "personal empowering",
@@ -8535,8 +8346,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression",
-    "Low"
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -8548,10 +8358,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of language is used in the lyrics of the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Lyrics",
-  "category_3": "Mood and Expression",
-  "category_4": "Low",
+  "category_1": "Lyrics",
+  "category_2": "[\"Mood and Expression\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Metaphoric and symbolic",
@@ -8572,8 +8382,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression",
-    "Low"
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -8585,10 +8394,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "To which city does the introduction of the song transport you?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "Structure",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[\"Structure\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Granada",
@@ -8609,8 +8418,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "Low"
+    "Structure"
    ]
   },
   "audio": null
@@ -8622,10 +8430,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What harmonic system is used here?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Tonal and modal",
@@ -8645,9 +8453,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Harmony"
    ],
    "genre": [],
-   "skill": [
-    "High"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -8658,10 +8464,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Who do you imagine playing this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Performance",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "A man",
@@ -8681,9 +8487,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Performance"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -8694,10 +8498,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What scene does the introduction of this song remind you of?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "Performance;Genre and Style",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[\"Performance\", \"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "A dancer on a flamenco tablao",
@@ -8718,8 +8522,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance;Genre and Style",
-    "Low"
+    "Performance",
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -8731,10 +8535,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What could you say about the introduction?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Structure",
-  "category_4": "Medium",
+  "category_1": "Melody",
+  "category_2": "[\"Structure\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "It plays a motif from different grades of the scale",
@@ -8755,8 +8559,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "Medium"
+    "Structure"
    ]
   },
   "audio": null
@@ -8768,10 +8571,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What are these lyrics about?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Lyrics",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Lyrics",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "About weed and getting high",
@@ -8791,9 +8594,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Lyrics"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -8804,10 +8605,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "This song could have been written recently. However, its style sounds like it was written...",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "Historical and Cultural Context",
-  "category_4": "Medium",
+  "category_1": "Genre and Style",
+  "category_2": "[\"Historical and Cultural Context\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Before bebop",
@@ -8828,8 +8629,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Historical and Cultural Context",
-    "Medium"
+    "Historical and Cultural Context"
    ]
   },
   "audio": null
@@ -8841,10 +8641,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the rhythmic accompaniment of the organ?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Combination of downbeat & upbeat",
@@ -8865,8 +8665,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Medium"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -8878,10 +8677,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What instrument would mark the movement of the foot if you were to dance to this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "double bass",
@@ -8902,8 +8701,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Medium"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -8915,10 +8713,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What element in the introduction creates intrigue?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Instrumentation;Mood and Expression",
-  "category_4": "High",
+  "category_1": "Melody",
+  "category_2": "[\"Instrumentation\", \"Mood and Expression\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "the half step in the guitar part",
@@ -8939,8 +8737,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Mood and Expression",
-    "High"
+    "Instrumentation",
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -8952,10 +8750,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which instrument sometimes doubles the notes of the vocals?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Musical Texture",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Musical Texture\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "guitar",
@@ -8976,8 +8774,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Musical Texture",
-    "Medium"
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -8989,10 +8786,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What resource is used here to make the song harmonically ambiguous?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Homonymous key",
@@ -9012,9 +8809,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Harmony"
    ],
    "genre": [],
-   "skill": [
-    "High"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -9025,10 +8820,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What interval is repeated in the bass voice?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Musical Texture",
-  "category_4": "High",
+  "category_1": "Melody",
+  "category_2": "[\"Musical Texture\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "4th",
@@ -9049,8 +8844,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Musical Texture",
-    "High"
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -9062,10 +8856,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What roots would you say this song has?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Historical and Cultural Context",
-  "category_3": "Genre and Style",
-  "category_4": "Medium",
+  "category_1": "Historical and Cultural Context",
+  "category_2": "[\"Genre and Style\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "East Europe",
@@ -9086,8 +8880,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style",
-    "Medium"
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -9099,10 +8892,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How do the different instruments relate to each other?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Musical Texture",
-  "category_3": "Instrumentation;Melody",
-  "category_4": "Medium",
+  "category_1": "Musical Texture",
+  "category_2": "[\"Instrumentation\", \"Melody\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "They complement each other polyphonically",
@@ -9123,8 +8916,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Melody",
-    "Medium"
+    "Instrumentation",
+    "Melody"
    ]
   },
   "audio": null
@@ -9136,10 +8929,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the theme of this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Lyrics",
-  "category_3": "Mood and Expression",
-  "category_4": "Low",
+  "category_1": "Lyrics",
+  "category_2": "[\"Mood and Expression\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "love",
@@ -9160,8 +8953,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression",
-    "Low"
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -9173,10 +8965,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What cadence is played at the end of the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Structure",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[\"Structure\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Authentic Cadence",
@@ -9197,8 +8989,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "High"
+    "Structure"
    ]
   },
   "audio": null
@@ -9210,10 +9001,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How was the tide in the story told by the singer?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Lyrics",
-  "category_3": "Mood and Expression",
-  "category_4": "Low",
+  "category_1": "Lyrics",
+  "category_2": "[\"Mood and Expression\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Rising",
@@ -9234,8 +9025,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression",
-    "Low"
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -9247,10 +9037,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What drug is commonly associated with this genre of music?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "Historical and Cultural Context",
-  "category_4": "Low",
+  "category_1": "Genre and Style",
+  "category_2": "[\"Historical and Cultural Context\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Weed",
@@ -9271,8 +9061,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Historical and Cultural Context",
-    "Low"
+    "Historical and Cultural Context"
    ]
   },
   "audio": null
@@ -9284,10 +9073,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which instrument sounds soft and shy?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture;Mood and Expression",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\", \"Mood and Expression\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "saxophone",
@@ -9308,8 +9097,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture;Mood and Expression",
-    "Low"
+    "Sound Texture",
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -9321,10 +9110,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How would you imagine the temperature in the place where this song was created?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "Sound Texture;Genre and Style;Instrumentation",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[\"Sound Texture\", \"Genre and Style\", \"Instrumentation\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Warm",
@@ -9345,8 +9134,9 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture;Genre and Style;Instrumentation",
-    "Low"
+    "Sound Texture",
+    "Genre and Style",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -9358,10 +9148,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How would you rate the sound production of this track?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Performance",
-  "category_4": "Low",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Performance\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Amateur",
@@ -9382,8 +9172,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "Low"
+    "Performance"
    ]
   },
   "audio": null
@@ -9395,10 +9184,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the main scale used in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "",
-  "category_4": "High",
+  "category_1": "Melody",
+  "category_2": "[]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Blues",
@@ -9418,9 +9207,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Melody"
    ],
    "genre": [],
-   "skill": [
-    "High"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -9431,10 +9218,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What musical backgrounds would you guess these musicians have?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Genre and Style",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "jazz and rock",
@@ -9454,9 +9241,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Genre and Style"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -9467,10 +9252,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Where is the vocalist's accent from?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Historical and Cultural Context",
-  "category_3": "Performance",
-  "category_4": "Low",
+  "category_1": "Historical and Cultural Context",
+  "category_2": "[\"Performance\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Brazil",
@@ -9491,8 +9276,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "Low"
+    "Performance"
    ]
   },
   "audio": null
@@ -9504,10 +9288,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "There is something strange in the mix. What is it?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Metre and Rhythm;Instrumentation;Performance",
-  "category_4": "Medium",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Metre and Rhythm\", \"Instrumentation\", \"Performance\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "The rhythmic guitars are panned in different sides of the stereo and they don't sound at the same time",
@@ -9528,8 +9312,9 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Metre and Rhythm;Instrumentation;Performance",
-    "Medium"
+    "Metre and Rhythm",
+    "Instrumentation",
+    "Performance"
    ]
   },
   "audio": null
@@ -9541,10 +9326,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which of these musical elements contributes to adding emotion to the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Mood and Expression",
-  "category_4": "Medium",
+  "category_1": "Melody",
+  "category_2": "[\"Mood and Expression\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "A broad melodic contour",
@@ -9565,8 +9350,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression",
-    "Medium"
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -9578,10 +9362,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What could be the intended mood of this tune?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Relaxing",
@@ -9601,9 +9385,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Mood and Expression"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -9614,10 +9396,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What does not contribute to creating this mood?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "Sound Texture;Instrumentation;Harmony;Performance",
-  "category_4": "Medium",
+  "category_1": "Mood and Expression",
+  "category_2": "[\"Sound Texture\", \"Instrumentation\", \"Harmony\", \"Performance\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Tremolo",
@@ -9638,8 +9420,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture;Instrumentation;Harmony;Performance",
-    "Medium"
+    "Sound Texture",
+    "Instrumentation",
+    "Harmony",
+    "Performance"
    ]
   },
   "audio": null
@@ -9651,10 +9435,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which of these genres cannot be recognized in this tune?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Genre and Style",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Drone music",
@@ -9674,9 +9458,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Genre and Style"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -9687,10 +9469,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which of these genres cannot be recognized in this tune?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Genre and Style",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Flamenco",
@@ -9710,9 +9492,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Genre and Style"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -9723,10 +9503,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of drums are featured in this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Drum machine",
@@ -9747,8 +9527,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Low"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -9760,10 +9539,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Who is the primary audience intended for the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Functional Context",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Functional Context",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Young women",
@@ -9783,9 +9562,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Functional Context"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -9796,10 +9573,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which instrument is not present in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "mandolin",
@@ -9819,9 +9596,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Instrumentation"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -9832,10 +9607,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Where could the roots of this song be?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Historical and Cultural Context",
-  "category_3": "Genre and Style",
-  "category_4": "Medium",
+  "category_1": "Historical and Cultural Context",
+  "category_2": "[\"Genre and Style\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Andalucia",
@@ -9856,8 +9631,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style",
-    "Medium"
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -9869,10 +9643,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which scales or modes are related to the one we hear in this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Harmony",
-  "category_4": "High",
+  "category_1": "Melody",
+  "category_2": "[\"Harmony\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Phrygian",
@@ -9893,8 +9667,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Harmony",
-    "High"
+    "Harmony"
    ]
   },
   "audio": null
@@ -9906,10 +9679,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What instrument does the sound of the lead bass imitate at the beginning of the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Sitar",
@@ -9930,8 +9703,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Low"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -9943,10 +9715,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What comping technique is used by the keyboard player?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Harmony;Instrumentation",
-  "category_4": "High",
+  "category_1": "Performance",
+  "category_2": "[\"Harmony\", \"Instrumentation\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Approaching chords",
@@ -9967,8 +9739,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Harmony;Instrumentation",
-    "High"
+    "Harmony",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -9980,10 +9752,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What solo technique does the sax player use to make the improvisation harmonically interesting?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Melody;Performance",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[\"Melody\", \"Performance\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Playing momentarily outside the key of the song",
@@ -10004,8 +9776,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Melody;Performance",
-    "High"
+    "Melody",
+    "Performance"
    ]
   },
   "audio": null
@@ -10017,10 +9789,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which of the following statements is true?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Structure;Historical and Cultural Context",
-  "category_4": "Low",
+  "category_1": "Melody",
+  "category_2": "[\"Structure\", \"Historical and Cultural Context\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "The introduction copies a popular classical melody",
@@ -10041,8 +9813,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure;Historical and Cultural Context",
-    "Low"
+    "Structure",
+    "Historical and Cultural Context"
    ]
   },
   "audio": null
@@ -10054,10 +9826,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which of the following statements is not true?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Instrumentation;Musical Texture",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[\"Instrumentation\", \"Musical Texture\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "The accompaniment doesn't use the leading note",
@@ -10078,8 +9850,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Musical Texture",
-    "High"
+    "Instrumentation",
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -10091,10 +9863,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What effect is created by modulating the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "Harmony",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[\"Harmony\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "It creates excitement",
@@ -10115,8 +9887,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Harmony",
-    "Low"
+    "Harmony"
    ]
   },
   "audio": null
@@ -10128,10 +9899,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which of the following statements is true about the introduction?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Performance",
-  "category_4": "High",
+  "category_1": "Melody",
+  "category_2": "[\"Performance\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "The piano plays a pentatonic pattern",
@@ -10152,8 +9923,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "High"
+    "Performance"
    ]
   },
   "audio": null
@@ -10165,10 +9935,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is this music intended for?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Functional Context",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Functional Context",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Dancing",
@@ -10188,9 +9958,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Functional Context"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -10201,10 +9969,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What topics do the lyrics cover?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Lyrics",
-  "category_3": "Historical and Cultural Context",
-  "category_4": "Low",
+  "category_1": "Lyrics",
+  "category_2": "[\"Historical and Cultural Context\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Social change",
@@ -10225,8 +9993,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Historical and Cultural Context",
-    "Low"
+    "Historical and Cultural Context"
    ]
   },
   "audio": null
@@ -10238,10 +10005,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which instrument is least commonly associated with Reggae music?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Genre and Style",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Drums",
@@ -10262,8 +10029,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style",
-    "Low"
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -10275,10 +10041,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the protest content of the lyrics?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Lyrics",
-  "category_3": "Historical and Cultural Context;Mood and Expression",
-  "category_4": "Low",
+  "category_1": "Lyrics",
+  "category_2": "[\"Historical and Cultural Context\", \"Mood and Expression\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "High",
@@ -10299,8 +10065,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Historical and Cultural Context;Mood and Expression",
-    "Low"
+    "Historical and Cultural Context",
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -10312,10 +10078,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Who sings the choir vocals?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Instrumentation;Musical Texture",
-  "category_4": "Medium",
+  "category_1": "Performance",
+  "category_2": "[\"Instrumentation\", \"Musical Texture\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "The same singer as the lead voice",
@@ -10336,8 +10102,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Musical Texture",
-    "Medium"
+    "Instrumentation",
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -10349,10 +10115,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which instrument has a strong presence in the center of the mix?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Instrumentation",
-  "category_4": "Low",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Bass",
@@ -10373,8 +10139,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Low"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -10386,10 +10151,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What audio effect gives the guitar a funky vibe in this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Mood and Expression;Genre and Style",
-  "category_4": "Low",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Mood and Expression\", \"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Wah-wah",
@@ -10410,8 +10175,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression;Genre and Style",
-    "Low"
+    "Mood and Expression",
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -10423,10 +10188,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which of these statements is true?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Metre and Rhythm;Lyrics",
-  "category_4": "Low",
+  "category_1": "Performance",
+  "category_2": "[\"Metre and Rhythm\", \"Lyrics\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "The vocal style of the chorus is very rhythmic and with few words",
@@ -10447,8 +10212,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Metre and Rhythm;Lyrics",
-    "Low"
+    "Metre and Rhythm",
+    "Lyrics"
    ]
   },
   "audio": null
@@ -10460,10 +10225,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which of the following situations would not be suitable for this music?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Functional Context",
-  "category_3": "Mood and Expression;Genre and Style",
-  "category_4": "Low",
+  "category_1": "Functional Context",
+  "category_2": "[\"Mood and Expression\", \"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "An anniversary party",
@@ -10484,8 +10249,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression;Genre and Style",
-    "Low"
+    "Mood and Expression",
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -10497,10 +10262,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which of the following musical elements is most prominent in this piece?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Harmony;Metre and Rhythm;Sound Texture",
-  "category_4": "Low",
+  "category_1": "Melody",
+  "category_2": "[\"Harmony\", \"Metre and Rhythm\", \"Sound Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Melody",
@@ -10521,8 +10286,9 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Harmony;Metre and Rhythm;Sound Texture",
-    "Low"
+    "Harmony",
+    "Metre and Rhythm",
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -10534,10 +10300,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What do the melodic instruments imitate?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Musical Texture",
-  "category_4": "Low",
+  "category_1": "Melody",
+  "category_2": "[\"Musical Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "A conversation",
@@ -10558,8 +10324,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Musical Texture",
-    "Low"
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -10571,10 +10336,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of movie theme would you say this song fits?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "Mood and Expression;Functional Context",
-  "category_4": "Low",
+  "category_1": "Genre and Style",
+  "category_2": "[\"Mood and Expression\", \"Functional Context\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Epic",
@@ -10595,8 +10360,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression;Functional Context",
-    "Low"
+    "Mood and Expression",
+    "Functional Context"
    ]
   },
   "audio": null
@@ -10608,10 +10373,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What feeling does this song add to the picture?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "tension",
@@ -10631,9 +10396,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Mood and Expression"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -10644,10 +10407,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which of these elements does not contribute to creating tension in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "Instrumentation;Performance;Musical Texture",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[\"Instrumentation\", \"Performance\", \"Musical Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "long notes played by the trumpet",
@@ -10668,8 +10431,9 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Performance;Musical Texture",
-    "Low"
+    "Instrumentation",
+    "Performance",
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -10681,10 +10445,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which of these statements is true?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Performance;Sound Texture",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Performance\", \"Sound Texture\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "The instruments do not sound as they were quantized",
@@ -10705,8 +10469,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance;Sound Texture",
-    "Medium"
+    "Performance",
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -10718,10 +10482,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which country does this music remind you of?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Historical and Cultural Context",
-  "category_3": "Genre and Style;Mood and Expression",
-  "category_4": "Low",
+  "category_1": "Historical and Cultural Context",
+  "category_2": "[\"Genre and Style\", \"Mood and Expression\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Brazil",
@@ -10742,8 +10506,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style;Mood and Expression",
-    "Low"
+    "Genre and Style",
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -10755,10 +10519,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the main goal of the bass line?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Instrumentation;Musical Texture",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[\"Instrumentation\", \"Musical Texture\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Play the fundamental and the 5th",
@@ -10779,8 +10543,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Musical Texture",
-    "High"
+    "Instrumentation",
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -10792,10 +10556,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the most important element in this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Musical Texture;Melody;Harmony;Metre and Rhythm",
-  "category_4": "Medium",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Musical Texture\", \"Melody\", \"Harmony\", \"Metre and Rhythm\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Texture/Timbre",
@@ -10816,8 +10580,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Musical Texture;Melody;Harmony;Metre and Rhythm",
-    "Medium"
+    "Musical Texture",
+    "Melody",
+    "Harmony",
+    "Metre and Rhythm"
    ]
   },
   "audio": null
@@ -10829,10 +10595,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the decay time of the reverb used in this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Performance",
-  "category_4": "Medium",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Performance\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Long",
@@ -10853,8 +10619,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance",
-    "Medium"
+    "Performance"
    ]
   },
   "audio": null
@@ -10866,10 +10631,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How is the reverb size used in this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "Mood and Expression",
-  "category_4": "Medium",
+  "category_1": "Sound Texture",
+  "category_2": "[\"Mood and Expression\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Large",
@@ -10890,8 +10655,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression",
-    "Medium"
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -10903,10 +10667,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of pedal effect is applied on the voice in the intro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Sound Texture",
-  "category_3": "",
-  "category_4": "High",
+  "category_1": "Sound Texture",
+  "category_2": "[]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Fuzz pedal",
@@ -10926,9 +10690,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Sound Texture"
    ],
    "genre": [],
-   "skill": [
-    "High"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -10939,10 +10701,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What instrument plays the bass line?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Musical Texture",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Musical Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Bass Guitar",
@@ -10963,8 +10725,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Musical Texture",
-    "Low"
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -10976,10 +10737,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What region of the US does this type of music usually remind you of?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Historical and Cultural Context",
-  "category_3": "Genre and Style",
-  "category_4": "Low",
+  "category_1": "Historical and Cultural Context",
+  "category_2": "[\"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Southern music",
@@ -11000,8 +10761,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style",
-    "Low"
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -11013,10 +10773,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which instruments are used to accompany the voice in the intro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Structure;Musical Texture",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Structure\", \"Musical Texture\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Synth & drum pads",
@@ -11037,8 +10797,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure;Musical Texture",
-    "Low"
+    "Structure",
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -11050,10 +10810,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What do the lyrics suggest?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Lyrics",
-  "category_3": "Mood and Expression",
-  "category_4": "Low",
+  "category_1": "Lyrics",
+  "category_2": "[\"Mood and Expression\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Sexual connotation",
@@ -11074,8 +10834,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Mood and Expression",
-    "Low"
+    "Mood and Expression"
    ]
   },
   "audio": null
@@ -11087,10 +10846,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What´s the style of the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "",
-  "category_4": "High",
+  "category_1": "Genre and Style",
+  "category_2": "[]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Neo hip hop",
@@ -11110,9 +10869,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Genre and Style"
    ],
    "genre": [],
-   "skill": [
-    "High"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -11123,10 +10880,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of music does the intro evoke?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "Historical and Cultural Context",
-  "category_4": "Low",
+  "category_1": "Genre and Style",
+  "category_2": "[\"Historical and Cultural Context\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Middle eastern music",
@@ -11147,8 +10904,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Historical and Cultural Context",
-    "Low"
+    "Historical and Cultural Context"
    ]
   },
   "audio": null
@@ -11160,10 +10916,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which tonality is used in the intro?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Harmony",
-  "category_3": "Structure",
-  "category_4": "High",
+  "category_1": "Harmony",
+  "category_2": "[\"Structure\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "E minor",
@@ -11184,8 +10940,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure",
-    "High"
+    "Structure"
    ]
   },
   "audio": null
@@ -11197,10 +10952,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What mode is mainly played by the guitar?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Melody",
-  "category_3": "Instrumentation",
-  "category_4": "High",
+  "category_1": "Melody",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Phrygian",
@@ -11221,8 +10976,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "High"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -11234,10 +10988,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "How many guitars are playing during the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Musical Texture",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Musical Texture\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Three",
@@ -11258,8 +11012,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Musical Texture",
-    "Medium"
+    "Musical Texture"
    ]
   },
   "audio": null
@@ -11271,10 +11024,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of guitars are used?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "",
-  "category_4": "Low",
+  "category_1": "Instrumentation",
+  "category_2": "[]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Acoustic & electric",
@@ -11294,9 +11047,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Instrumentation"
    ],
    "genre": [],
-   "skill": [
-    "Low"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -11307,10 +11058,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which percussion instruments are used in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Sound Texture",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Sound Texture\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Cajón Peruano and brushes",
@@ -11331,8 +11082,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Sound Texture",
-    "Medium"
+    "Sound Texture"
    ]
   },
   "audio": null
@@ -11344,10 +11094,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is the configuration in the brass section?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "2 trumpets, 1 trombone, 2 Saxos",
@@ -11367,9 +11117,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Instrumentation"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -11380,10 +11128,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of genre is this song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "",
-  "category_4": "Medium",
+  "category_1": "Genre and Style",
+  "category_2": "[]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Merengue",
@@ -11403,9 +11151,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
     "Genre and Style"
    ],
    "genre": [],
-   "skill": [
-    "Medium"
-   ]
+   "skill": []
   },
   "audio": null
  },
@@ -11416,10 +11162,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What's the instrument used to mark the rhythm?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Instrumentation",
-  "category_3": "Metre and Rhythm",
-  "category_4": "Medium",
+  "category_1": "Instrumentation",
+  "category_2": "[\"Metre and Rhythm\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Metallic guiro",
@@ -11440,8 +11186,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Metre and Rhythm",
-    "Medium"
+    "Metre and Rhythm"
    ]
   },
   "audio": null
@@ -11453,10 +11198,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Which piano technique is used during the accompaniment?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Musical Texture",
-  "category_3": "Performance;Metre and Rhythm",
-  "category_4": "Medium",
+  "category_1": "Musical Texture",
+  "category_2": "[\"Performance\", \"Metre and Rhythm\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Rhythmic arpeggios",
@@ -11477,8 +11222,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Performance;Metre and Rhythm",
-    "Medium"
+    "Performance",
+    "Metre and Rhythm"
    ]
   },
   "audio": null
@@ -11490,10 +11235,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What emotions do the lyrics evoke?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Mood and Expression",
-  "category_3": "Lyrics",
-  "category_4": "Low",
+  "category_1": "Mood and Expression",
+  "category_2": "[\"Lyrics\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Sadness",
@@ -11514,8 +11259,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Lyrics",
-    "Low"
+    "Lyrics"
    ]
   },
   "audio": null
@@ -11527,10 +11271,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What dynamics are used by the piano to accompany the bridge?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Structure;Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Performance",
+  "category_2": "[\"Structure\", \"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Crescendo/Discrescendo",
@@ -11551,8 +11295,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Structure;Instrumentation",
-    "Medium"
+    "Structure",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -11564,10 +11308,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What´s the rhythm used by the drums in the song?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Instrumentation;Performance",
-  "category_4": "Medium",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Instrumentation\", \"Performance\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Four on the floor",
@@ -11588,8 +11332,8 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation;Performance",
-    "Medium"
+    "Instrumentation",
+    "Performance"
    ]
   },
   "audio": null
@@ -11601,10 +11345,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "Where is this type of music usually played?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Functional Context",
-  "category_3": "Genre and Style",
-  "category_4": "Low",
+  "category_1": "Functional Context",
+  "category_2": "[\"Genre and Style\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Honky Tonk bars",
@@ -11625,8 +11369,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style",
-    "Low"
+    "Genre and Style"
    ]
   },
   "audio": null
@@ -11638,10 +11381,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What percussion instrument is used to divide tempo?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Instrumentation",
-  "category_4": "Low",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Low",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Tambourine",
@@ -11662,8 +11405,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Low"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -11675,10 +11417,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What type of technique is used by the guitar?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Performance",
-  "category_3": "Instrumentation",
-  "category_4": "Medium",
+  "category_1": "Performance",
+  "category_2": "[\"Instrumentation\"]",
+  "category_3": "Medium",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Fingerpicking",
@@ -11699,8 +11441,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Instrumentation",
-    "Medium"
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -11712,10 +11453,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What kind of clave is used by the percussion?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Metre and Rhythm",
-  "category_3": "Genre and Style;Historical and Cultural Context;Instrumentation",
-  "category_4": "High",
+  "category_1": "Metre and Rhythm",
+  "category_2": "[\"Genre and Style\", \"Historical and Cultural Context\", \"Instrumentation\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "3+2",
@@ -11736,8 +11477,9 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Genre and Style;Historical and Cultural Context;Instrumentation",
-    "High"
+    "Genre and Style",
+    "Historical and Cultural Context",
+    "Instrumentation"
    ]
   },
   "audio": null
@@ -11749,10 +11491,10 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "question": "What is this genre called?",
   "question_type": "mcq",
   "piac": "",
-  "category_1": "music",
-  "category_2": "Genre and Style",
-  "category_3": "Historical and Cultural Context",
-  "category_4": "High",
+  "category_1": "Genre and Style",
+  "category_2": "[\"Historical and Cultural Context\"]",
+  "category_3": "High",
+  "category_4": "",
   "skills": "",
   "answer_format": "",
   "correct_answer": "Trova cubana",
@@ -11773,8 +11515,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    ],
    "genre": [],
    "skill": [
-    "Historical and Cultural Context",
-    "High"
+    "Historical and Cultural Context"
    ]
   },
   "audio": null
