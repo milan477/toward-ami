@@ -27,7 +27,8 @@
   "bibtex": "@misc{nsynth2017,\n    Author = {Jesse Engel and Cinjon Resnick and Adam Roberts and\n              Sander Dieleman and Douglas Eck and Karen Simonyan and\n              Mohammad Norouzi},\n    Title = {Neural Audio Synthesis of Musical Notes with WaveNet Autoencoders},\n    Year = {2017},\n    Eprint = {arXiv:1704.01279},\n}",
   "status": "confirmed",
   "question_count": 0,
-  "has_questions": false
+  "has_questions": false,
+  "questions_url": ""
  },
  {
   "name": "MARBLE",
@@ -57,7 +58,8 @@
   "bibtex": "@misc{yuanMARBLEMusicAudio2023,\n  title = {{{MARBLE}}: {{Music Audio Representation Benchmark}} for {{Universal Evaluation}}},\n  shorttitle = {{{MARBLE}}},\n  author = {Yuan, Ruibin and Ma, Yinghao and Li, Yizhi and Zhang, Ge and Chen, Xingran and Yin, Hanzhi and Zhuo, Le and Liu, Yiqi and Huang, Jiawen and Tian, Zeyue and Deng, Binyue and Wang, Ningzhi and Lin, Chenghua and Benetos, Emmanouil and Ragni, Anton and Gyenge, Norbert and Dannenberg, Roger and Chen, Wenhu and Xia, Gus and Xue, Wei and Liu, Si and Wang, Shi and Liu, Ruibo and Guo, Yike and Fu, Jie},\n  year = 2023,\n  month = nov,\n  number = {arXiv:2306.10548},\n  eprint = {2306.10548},\n  primaryclass = {cs},\n  publisher = {arXiv},\n  doi = {10.48550/arXiv.2306.10548},\n  archiveprefix = {arXiv},\n}",
   "status": "confirmed",
   "question_count": 0,
-  "has_questions": false
+  "has_questions": false,
+  "questions_url": ""
  },
  {
   "name": "MMAU",
@@ -95,7 +97,8 @@
   "bibtex": "@misc{sakshiMMAUMassiveMultiTask2024,\n  title = {{{MMAU}}: {{A Massive Multi-Task Audio Understanding}} and {{Reasoning Benchmark}}},\n  shorttitle = {{{MMAU}}},\n  author = {Sakshi, S. and Tyagi, Utkarsh and Kumar, Sonal and Seth, Ashish and Selvakumar, Ramaneswaran and Nieto, Oriol and Duraiswami, Ramani and Ghosh, Sreyan and Manocha, Dinesh},\n  year = 2024,\n  month = oct,\n  number = {arXiv:2410.19168},\n  eprint = {2410.19168},\n  primaryclass = {eess},\n  publisher = {arXiv},\n  doi = {10.48550/arXiv.2410.19168},\n  archiveprefix = {arXiv},\n}",
   "status": "confirmed",
   "question_count": 0,
-  "has_questions": false
+  "has_questions": false,
+  "questions_url": ""
  },
  {
   "name": "MuChoMusic",
@@ -129,7 +132,8 @@
   "bibtex": "@misc{weckMuChoMusicEvaluatingMusic2024,\n  title = {{{MuChoMusic}}: {{Evaluating Music Understanding}} in {{Multimodal Audio-Language Models}}},\n  shorttitle = {{{MuChoMusic}}},\n  author = {Weck, Benno and Manco, Ilaria and Benetos, Emmanouil and Quinton, Elio and Fazekas, George and Bogdanov, Dmitry},\n  year = 2024,\n  month = aug,\n  number = {arXiv:2408.01337},\n  eprint = {2408.01337},\n  primaryclass = {cs},\n  publisher = {arXiv},\n  doi = {10.48550/arXiv.2408.01337},\n  archiveprefix = {arXiv},\n}",
   "status": "confirmed",
   "question_count": 1187,
-  "has_questions": true
+  "has_questions": true,
+  "questions_url": "data/questions/muchomusic.json"
  },
  {
   "name": "OpenMU",
@@ -163,7 +167,8 @@
   "bibtex": "@article{zhao2024openmu,\n  title={OpenMU: Your Swiss Army Knife for Music Understanding},\n  author={Zhao, Mengjie and Zhong, Zhi and Mao, Zhuoyuan and Yang, Shiqi and Liao, Wei-Hsiang and Takahashi, Shusuke and Wakaki, Hiromi and Mitsufuji, Yuki},\n  journal={arXiv preprint arXiv:2410.15573},\n  year={2024}\n}",
   "status": "confirmed",
   "question_count": 0,
-  "has_questions": false
+  "has_questions": false,
+  "questions_url": ""
  },
  {
   "name": "Percepiano",
@@ -193,7 +198,8 @@
   "bibtex": "",
   "status": "confirmed",
   "question_count": 0,
-  "has_questions": false
+  "has_questions": false,
+  "questions_url": ""
  },
  {
   "name": "CMI-Bench",
@@ -227,7 +233,8 @@
   "bibtex": "@misc{maCMIBenchComprehensiveBenchmark2025,\n  title = {{{CMI-Bench}}: {{A Comprehensive Benchmark}} for {{Evaluating Music Instruction Following}}},\n  shorttitle = {{{CMI-Bench}}},\n  author = {Ma, Yinghao and Li, Siyou and Yu, Juntao and Benetos, Emmanouil and Maezawa, Akira},\n  year = 2025,\n  month = jun,\n  number = {arXiv:2506.12285},\n  eprint = {2506.12285},\n  primaryclass = {eess},\n  publisher = {arXiv},\n  doi = {10.48550/arXiv.2506.12285},\n  archiveprefix = {arXiv},\n}",
   "status": "confirmed",
   "question_count": 0,
-  "has_questions": false
+  "has_questions": false,
+  "questions_url": ""
  },
  {
   "name": "MMAR",
@@ -261,7 +268,8 @@
   "bibtex": "@misc{maMMARChallengingBenchmark2025,\n  title = {{{MMAR}}: {{A Challenging Benchmark}} for {{Deep Reasoning}} in {{Speech}}, {{Audio}}, {{Music}}, and {{Their Mix}}},\n  shorttitle = {{{MMAR}}},\n  author = {Ma, Ziyang and Ma, Yinghao and Zhu, Yanqiao and Yang, Chen and Chao, Yi-Wen and Xu, Ruiyang and Chen, Wenxi and Chen, Yuanzhe and Chen, Zhuo and Cong, Jian and Li, Kai and Li, Keliang and Li, Siyou and Li, Xinfeng and Li, Xiquan and Lian, Zheng and Liang, Yuzhe and Liu, Minghao and Niu, Zhikang and Wang, Tianrui and Wang, Yuping and Wang, Yuxuan and Wu, Yihao and Yang, Guanrou and Yu, Jianwei and Yuan, Ruibin and Zheng, Zhisheng and Zhou, Ziya and Zhu, Haina and Xue, Wei and Benetos, Emmanouil and Yu, Kai and Chng, Eng-Siong and Chen, Xie},\n  year = 2025,\n  month = may,\n  number = {arXiv:2505.13032},\n  eprint = {2505.13032},\n  primaryclass = {cs},\n  publisher = {arXiv},\n  doi = {10.48550/arXiv.2505.13032},\n  archiveprefix = {arXiv},\n}",
   "status": "confirmed",
   "question_count": 323,
-  "has_questions": true
+  "has_questions": true,
+  "questions_url": "data/questions/mmar.json"
  },
  {
   "name": "MMAU-Pro",
@@ -295,7 +303,8 @@
   "bibtex": "@misc{kumarMMAUProChallengingComprehensive2025,\n  title = {{{MMAU-Pro}}: {{A Challenging}} and {{Comprehensive Benchmark}} for {{Holistic Evaluation}} of {{Audio General Intelligence}}},\n  shorttitle = {{{MMAU-Pro}}},\n  author = {Kumar, Sonal and Sedl{\\'a}{\\v c}ek, {\\v S}imon and Lokegaonkar, Vaibhavi and L{\\'o}pez, Fernando and Yu, Wenyi and Anand, Nishit and Ryu, Hyeonggon and Chen, Lichang and Pli{\\v c}ka, Maxim and Hlav{\\'a}{\\v c}ek, Miroslav and Ellingwood, William Fineas and Udupa, Sathvik and Hou, Siyuan and Ferner, Allison and Barahona, Sara and Bola{\\~n}os, Cecilia and Rahi, Satish and {Herrera-Alarc{\\'o}n}, Laura and Dixit, Satvik and Patil, Siddhi and Deshmukh, Soham and Koroshinadze, Lasha and Liu, Yao and Perera, Leibny Paola Garcia and Zanou, Eleni and Stafylakis, Themos and Chung, Joon Son and Harwath, David and Zhang, Chao and Manocha, Dinesh and {Lozano-Diez}, Alicia and Kesiraju, Santosh and Ghosh, Sreyan and Duraiswami, Ramani},\n  year = 2025,\n  month = aug,\n  number = {arXiv:2508.13992},\n  eprint = {2508.13992},\n  primaryclass = {eess},\n  publisher = {arXiv},\n  doi = {10.48550/arXiv.2508.13992},\n  archiveprefix = {arXiv},\n}",
   "status": "confirmed",
   "question_count": 1521,
-  "has_questions": true
+  "has_questions": true,
+  "questions_url": "data/questions/mmaupro.json"
  },
  {
   "name": "MUSE",
@@ -329,7 +338,8 @@
   "bibtex": "@misc{caroneMUSEBenchmarkProbing2025,\n  title = {The {{MUSE Benchmark}}: {{Probing Music Perception}} and {{Auditory Relational Reasoning}} in {{Audio LLMS}}},\n  shorttitle = {The {{MUSE Benchmark}}},\n  author = {Carone, Brandon James and Roman, Iran R. and Ripoll{\\'e}s, Pablo},\n  year = 2025,\n  month = oct,\n  number = {arXiv:2510.19055},\n  eprint = {2510.19055},\n  primaryclass = {cs},\n  publisher = {arXiv},\n  doi = {10.48550/arXiv.2510.19055},\n  archiveprefix = {arXiv},\n}",
   "status": "confirmed",
   "question_count": 0,
-  "has_questions": false
+  "has_questions": false,
+  "questions_url": ""
  },
  {
   "name": "Factual Music Comprehension Benchmark",
@@ -350,7 +360,8 @@
   "bibtex": "@online{linAssessingFactualMusic2026,\n  title = {Assessing {{Factual Music Comprehension}} in {{Large Audio Language Models}}},\n  author = {Lin, Daniel Chenyu and Freeman, Michael and Thickstun, John},\n  date = {2026-05-26},\n  eprint = {2511.05550},\n  eprinttype = {arXiv},\n  eprintclass = {cs.SD},\n  doi = {10.48550/arXiv.2511.05550},\n  url = {http://arxiv.org/abs/2511.05550},\n  pubstate = {prepublished},\n}",
   "status": "confirmed",
   "question_count": 0,
-  "has_questions": false
+  "has_questions": false,
+  "questions_url": ""
  },
  {
   "name": "HumMusQA",
@@ -380,7 +391,8 @@
   "bibtex": "@inproceedings{weckHumMusQAHumanwrittenMusic2026,\n  title = {{{HumMusQA}}: {{A Human-written Music Understanding QA Benchmark Dataset}}},\n  shorttitle = {{{HumMusQA}}},\n  booktitle = {Proceedings of the 4th {{Workshop}} on {{NLP}} for {{Music}} and {{Audio}} ({{NLP4MusA}} 2026)},\n  author = {Weck, Benno and Puentes, Pablo and Poltronieri, Andrea and Prabhu, Satyajeet and Bogdanov, Dmitry},\n  date = {2026},\n  eprint = {2603.27877},\n  eprinttype = {arXiv},\n  eprintclass = {cs.CL},\n  pages = {58--67},\n  doi = {10.18653/v1/2026.nlp4musa-1.9},\n  url = {http://arxiv.org/abs/2603.27877},\n}",
   "status": "confirmed",
   "question_count": 0,
-  "has_questions": false
+  "has_questions": false,
+  "questions_url": ""
  },
  {
   "name": "MuseBench",
@@ -406,7 +418,8 @@
   "bibtex": "@online{zhaoMuseAgent1InteractiveGrounded2026a,\n  title = {{{MuseAgent-1}}: {{Interactive Grounded Multimodal Understanding}} of {{Music Scores}} and {{Performance Audio}}},\n  shorttitle = {{{MuseAgent-1}}},\n  author = {Zhao, Qihao and Cao, Yunqi and Huang, Yangyu and Leong, Hui Yi and Zhang, Fan and Yap, Kim-Hui and Hu, Wei},\n  date = {2026-01-17},\n  eprint = {2601.11968},\n  eprinttype = {arXiv},\n  eprintclass = {cs.MM},\n  doi = {10.48550/arXiv.2601.11968},\n  url = {http://arxiv.org/abs/2601.11968},\n  pubstate = {prepublished},\n}",
   "status": "confirmed",
   "question_count": 0,
-  "has_questions": false
+  "has_questions": false,
+  "questions_url": ""
  },
  {
   "name": "PARSA-Bench",
@@ -436,7 +449,8 @@
   "bibtex": "@misc{kalahroodi2026parsabenchcomprehensivepersianaudiolanguage,\n      title={PARSA-Bench: A Comprehensive Persian Audio-Language Model Benchmark}, \n      author={Mohammad Javad Ranjbar Kalahroodi and Mohammad Amini and Parmis Bathayan and Heshaam Faili and Azadeh Shakery},\n      year={2026},\n      eprint={2603.14456},\n      archivePrefix={arXiv},\n      primaryClass={cs.CL},\n      url={https://arxiv.org/abs/2603.14456}, \n}",
   "status": "confirmed",
   "question_count": 0,
-  "has_questions": false
+  "has_questions": false,
+  "questions_url": ""
  },
  {
   "name": "PitchBench",
@@ -466,6 +480,7 @@
   "bibtex": "@misc{dujardinPitchBenchMeasuringPitch2026,\n  title = {{{PitchBench}}: {{Measuring Pitch Hearing}} in {{Audio-Language Models}}},\n  shorttitle = {{{PitchBench}}},\n  author = {Dujardin, Milan Liessens and Yu, Song-Ze and {Thomas-Smith}, Craver Corbyn and Chan, David M. and Nguyen, Karina},\n  year = 2026,\n  month = may,\n  number = {arXiv:2605.26176},\n  eprint = {2605.26176},\n  primaryclass = {cs.SD},\n  publisher = {arXiv},\n  doi = {10.48550/arXiv.2605.26176},\n  archiveprefix = {arXiv},\n}",
   "status": "confirmed",
   "question_count": 0,
-  "has_questions": false
+  "has_questions": false,
+  "questions_url": ""
  }
 ]

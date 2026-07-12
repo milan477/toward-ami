@@ -41,6 +41,7 @@ sys.path.insert(0, str(ROOT))
 
 DOCS = ROOT / "docs"
 DATA_DIR = DOCS / "data"
+QUESTION_DATA_DIR = DATA_DIR / "questions"
 AUDIO_OUT = DOCS / "audio"
 AUDIO_DATA = ROOT / "data" / "audio"
 BENCHMARK_DATA = ROOT / "data" / "benchmarks"
@@ -170,6 +171,10 @@ def _parse_listish(raw: str) -> list[str]:
 
 def _compact_key(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", str(value).lower())
+
+
+def _question_file_key(value: str) -> str:
+    return _compact_key(value) or "benchmark"
 
 
 def _display_name_map(benchmarks: list[dict]) -> dict[str, str]:
@@ -623,6 +628,7 @@ def load_benchmarks() -> list[dict]:
     for row in rows:
         row["question_count"] = question_counts.get(row["name"], 0)
         row["has_questions"] = row["question_count"] > 0
+        row["questions_url"] = f"data/questions/{_question_file_key(row['name'])}.json" if row["has_questions"] else ""
     return rows
 
 
@@ -881,6 +887,7 @@ def write_json(name: str, payload) -> Path:
     """Write one generated site JSON payload."""
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     path = DATA_DIR / name
+    path.parent.mkdir(parents=True, exist_ok=True)
     text = json.dumps(payload, ensure_ascii=False, indent=1) + "\n"
     path.write_text(text, encoding="utf-8")
     print(f"  wrote {path.relative_to(ROOT)} ({len(text) / 1e6:.2f} MB)")
@@ -958,6 +965,14 @@ def build_questions_target(no_audio: bool) -> None:
     questions, _, _, _ = question_payload(no_audio)
     write_json("questions.json", questions)
     write_json("benchmark_questions.json", questions)
+    by_benchmark: dict[str, list[dict]] = {}
+    for question in questions:
+        by_benchmark.setdefault(question.get("benchmark") or "benchmark", []).append(question)
+    QUESTION_DATA_DIR.mkdir(parents=True, exist_ok=True)
+    for path in QUESTION_DATA_DIR.glob("*.json"):
+        path.unlink()
+    for benchmark, rows in sorted(by_benchmark.items()):
+        write_json(f"questions/{_question_file_key(benchmark)}.json", rows)
 
 
 def build_overview_target() -> None:

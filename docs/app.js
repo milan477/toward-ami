@@ -12,6 +12,7 @@ const FILTER_LABELS = {
   ...CATEGORY_LABELS,
   piac: "PIAC",
 };
+const BENCH_QUESTION_PAGE = 60;
 const state = {
   data: null,
   benchQ: "",
@@ -23,7 +24,9 @@ const state = {
   inspectName: null,
   benchQFilters: { q: "", categories: {} },
   benchQControlsReady: false,
-  questionsPromise: null,
+  benchQVisible: BENCH_QUESTION_PAGE,
+  questionsByBench: {},
+  questionPromises: {},
 };
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -55,23 +58,26 @@ async function loadData() {
     })),
   );
   const [meta, news, models, benchmarks, evaluation, overview, prompts] = parts;
-  return { ...meta, news, models, benchmarks, evaluation, overview, prompts, questions: null };
+  return { ...meta, news, models, benchmarks, evaluation, overview, prompts };
 }
 
-async function loadBenchmarkQuestions() {
-  if (state.data?.questions) return state.data.questions;
-  if (!state.questionsPromise) {
-    state.questionsPromise = fetch("data/benchmark_questions.json", { cache: "no-store" }).then((r) => {
-      if (!r.ok) throw new Error("failed to load benchmark_questions.json");
+async function loadBenchmarkQuestions(name) {
+  if (state.questionsByBench[name]) return state.questionsByBench[name];
+  if (!state.questionPromises[name]) {
+    const benchmark = benchByName(name);
+    const url = benchmark?.questions_url || "data/benchmark_questions.json";
+    state.questionPromises[name] = fetch(url, { cache: "no-store" }).then((r) => {
+      if (!r.ok) throw new Error(`failed to load ${url}`);
       return r.json();
     }).then((questions) => {
-      state.data.questions = questions;
-      return questions;
+      const rows = benchmark?.questions_url ? questions : questions.filter((q) => q.benchmark === name);
+      state.questionsByBench[name] = rows;
+      return rows;
     }).finally(() => {
-      state.questionsPromise = null;
+      delete state.questionPromises[name];
     });
   }
-  return state.questionsPromise;
+  return state.questionPromises[name];
 }
 
 async function init() {
@@ -131,7 +137,7 @@ function hasBenchmarkQuestions(b) {
 }
 
 function questionsForBench(name) {
-  return (state.data.questions || []).filter((q) => q.benchmark === name);
+  return state.questionsByBench[name] || [];
 }
 
 /* ---------- home: news ---------- */
@@ -876,11 +882,18 @@ function setupBenchQuestionControls() {
     clearTimeout(t);
     t = setTimeout(() => {
       state.benchQFilters.q = e.target.value.toLowerCase().trim();
+      state.benchQVisible = BENCH_QUESTION_PAGE;
       renderBenchQuestions();
     }, 140);
   });
   document.addEventListener("click", (event) => {
     const target = event.target instanceof Element ? event.target : event.target?.parentElement;
+    const moreButton = target?.closest("[data-show-more-questions]");
+    if (moreButton) {
+      state.benchQVisible += BENCH_QUESTION_PAGE;
+      renderBenchQuestions();
+      return;
+    }
     const audioButton = target?.closest("[data-load-audio]");
     if (audioButton) {
       loadQuestionAudio(audioButton);
@@ -910,10 +923,10 @@ async function renderBenchmarkDetail(name) {
     $("#bench-q-empty").textContent = "No questions available.";
     return;
   }
-  if (!state.data.questions) {
+  if (!state.questionsByBench[name]) {
     renderBenchmarkDetailLoading(b);
     try {
-      await loadBenchmarkQuestions();
+      await loadBenchmarkQuestions(name);
       if (state.inspectName === name) renderBenchmarkDetail(name);
     } catch (err) {
       $("#bench-q-empty").hidden = false;
@@ -942,10 +955,11 @@ async function renderBenchmarkDetail(name) {
       ${field("Sources", b.sources, true)}
       ${b.links && b.links.length ? `<div class="field"><div class="k">Links</div><div class="bench-links">${linksHTML(b)}</div></div>` : ""}
     </div>
-    ${categoryFilterHTML(benchRows)}
+  ${categoryFilterHTML(benchRows)}
     <div id="bench-stat-fields" class="bench-fields stat-fields"></div>
     <div id="bench-chart-wrap"></div>`;
   state.benchQFilters = { q: "", categories: {} };
+  state.benchQVisible = BENCH_QUESTION_PAGE;
   setupBenchmarkCategoryFilters();
   $("#bench-q-search").value = "";
   renderBenchQuestions();
@@ -1028,6 +1042,7 @@ function setupBenchmarkCategoryFilters() {
         categories[dim].push(checked.value);
       });
       state.benchQFilters.categories = categories;
+      state.benchQVisible = BENCH_QUESTION_PAGE;
       renderBenchQuestions();
     });
   });
@@ -1327,12 +1342,19 @@ function renderBenchQuestions() {
     return true;
   });
   updateBenchmarkStats(list);
-  $("#bench-q-count").textContent = `${list.length} of ${all.length}`;
+  const visible = Math.min(state.benchQVisible, list.length);
+  const shown = list.slice(0, visible);
+  $("#bench-q-count").textContent = visible < list.length
+    ? `${visible} shown · ${list.length} matching · ${all.length} total`
+    : `${list.length} of ${all.length}`;
   $("#bench-q-empty").hidden = list.length > 0;
   $("#bench-q-empty").textContent = all.length
     ? "No questions match."
     : "Questions for this benchmark are not loaded on the site yet.";
-  $("#bench-q-cards").innerHTML = list.map(benchQuestionHTML).join("");
+  $("#bench-q-cards").innerHTML = `
+    ${shown.map(benchQuestionHTML).join("")}
+    ${visible < list.length ? `<button class="show-more-questions" type="button" data-show-more-questions>Show ${Math.min(BENCH_QUESTION_PAGE, list.length - visible)} more</button>` : ""}
+  `;
 }
 
 function benchQuestionHTML(row) {
