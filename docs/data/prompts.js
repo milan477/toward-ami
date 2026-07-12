@@ -1,0 +1,40 @@
+window.__AMI_DATA__ = window.__AMI_DATA__ || {};
+window.__AMI_DATA__["prompts"] = [
+ {
+  "name": "MCQ prompt",
+  "purpose": "The original multiple-choice form. Options are shuffled deterministically per question and the model returns only a letter; graded automatically against the correct option. This is the 'apparent' score.",
+  "variants": [
+   {
+    "label": "Instruction",
+    "text": "Listen to the audio and answer the multiple-choice question. Respond with only the letter of the correct option, and nothing else. Example: A\n\nNo other text or comments.",
+    "example": "Question: What instrument plays the main melody?\n\nA. Trumpet\nB. Violin\nC. Piano\nD. Flute"
+   }
+  ]
+ },
+ {
+  "name": "OEQ prompt",
+  "purpose": "The same question with the options stripped away. The model must produce the answer unaided. Graded by the PIAC judge below; this is the 'actual' score. A per-question answer-format hint steers only the form of the answer, never its content.",
+  "variants": [
+   {
+    "label": "Unguided",
+    "text": "Listen to the audio and answer the question in 1-2 sentences. Be specific and ground your answer in what you hear.",
+    "example": "Listen to the audio and answer the question in 1-2 sentences. Be specific and ground your answer in what you hear.\n\nQuestion: What does the music feel like?"
+   },
+   {
+    "label": "Format-guided",
+    "text": "Listen to the audio and answer the question. Be specific and ground your answer in what you hear.",
+    "example": "Listen to the audio and answer the question. Be specific and ground your answer in what you hear.\nAnswer format: a single instrument name.\nExample of a validly-formatted answer (shows the expected form only — it is NOT the correct answer): \"Cello\"\n\nQuestion: What instrument plays the main melody?"
+   }
+  ]
+ },
+ {
+  "name": "PIAC judge prompt",
+  "purpose": "A category-aware LLM-as-judge (local Qwen3) that grades each open-ended answer 0-4 and separately flags hallucination. The grading rubric injected into {rubric} depends on the question's PIAC category.",
+  "text": "You are a strict, fair music-evaluation judge. Grade a model's open-ended answer to a question about an audio clip, and separately assess hallucination.\n\nQuestion category (PIAC): {category}\n{rubric}\n\nAlso assess HALLUCINATION: a confident claim in the answer that is wrong or ungrounded - most often a fluent higher-level claim (affective or inferential) that rests on a wrong or absent lower-level (perceptual) observation, or a stated fact that contradicts the reference. If the answer hallucinates, set hallucinated=true and hallucination_level to the PIAC level of the failing claim (perceptual / inferential / affective / contextual); otherwise hallucinated=false and hallucination_level=\"none\". Also rate grounding 0-1 (how well the answer ties its claims to observable audio features).\n\nQuestion: {question}\nAnswer format expected: {answer_format}\nReference answer (one valid ground truth): {reference}\nModel's answer: {answer}\n\nReply with ONLY a JSON object and nothing else:\n{{\"score\": <int 0-4>, \"grounded\": <float 0-1>, \"hallucinated\": <true|false>, \"hallucination_level\": \"<perceptual|inferential|affective|contextual|none>\", \"rationale\": \"<one short sentence>\"}}"
+ },
+ {
+  "name": "Annotation prompt",
+  "purpose": "Used offline to pre-populate each question's PIAC category and answer-format hint (later reviewed by hand). Defines the four categories and the rule of thumb by degree of ambiguity.",
+  "text": "You are annotating a question about an audio clip for a music-evaluation study. Do three things.\n\n1. answer_format: in a short, SPECIFIC noun phrase, describe what a correct answer looks like if the question were asked open-ended — its form, not its content, and IGNORING that options may be listed. Be precise about the type: e.g. \"a single instrument name\", \"a country name\", \"an ordinal number (first/second/…)\", \"a tempo in beats per minute\", \"a short emotion word\", \"yes or no\", \"a count of beats\", \"a reason (a 'because…' clause)\". Derive the type from the REFERENCE ANSWER's own form. NEVER answer with a vague type such as \"mcq option\", \"one of the listed options\", \"an option\", or \"a piece number\".\n\n2. category: classify the question into exactly ONE of these four content categories, by what a correct answer fundamentally depends on:\n  - perceptual: Anything measurable from the audio itself; needs neither prior knowledge nor active reasoning. Objective signal-level attributes: pitch, timing, duration, bpm, loudness, instrumentation, lyrics. NOT meter/time-signature (interpreted, e.g. 4/4 vs 2/2) — that is inferential.\n  - inferential: Musical properties derived from the audio through trained listening and analytical reasoning. Harmonic function, formal segmentation, phrase structure, genre attribution, voice leading, other aspects of musical organization.\n  - affective: How the music is experienced by a listener — expression and emotional response. Perceived mood, character, tension, intimacy, energy, aesthetic quality, personal response.\n  - contextual: Factual, world knowledge information associated with the music through historical or physical context; admits a single ground truth. Composer, performer, title, date/period of recording, reception or influence. (Detecting genre from audio is inferential, not contextual. Detecting location can be contextual if a documented fact, or inferential if deduced from reverberation.)\n\nRule of thumb: unambiguously extractable from the signal → perceptual; tied to the listener's subjective experience → affective; a non-debatable external fact about the piece → contextual; otherwise (trained analysis of the signal) → inferential.\n\n3. example_answer: give ONE INCORRECT but valid answer to the question — a real answer from the SAME answer space and in the SAME form as the reference answer (same brevity and type), just a wrong value. It is a wrong OPTION, not an explanation: never a sentence or a justification.\n   - If the question is yes/no or offers explicit alternatives, use the OTHER option (reference \"Yes\" → \"No\"; reference \"Outdoors\" → \"Indoors\"; reference \"Fourth\" → \"Second\").\n   - If options are listed below, example_answer MUST be exactly one of the INCORRECT options, copied verbatim.\n   - Otherwise pick a different but realistic value of the same kind (reference \"violin\" → \"cello\"; reference \"Japan\" → \"Korea\").\n\nQuestion: {question}\nAnswer type: {qtype}\nReference answer (the CORRECT answer — do not reuse it): {answer}{options}\n\nReply with ONLY a JSON object and nothing else:\n{\"answer_format\": \"<short phrase>\", \"category\": \"<perceptual|inferential|affective|contextual>\", \"rationale\": \"<one short sentence>\", \"example_answer\": \"<an incorrect option, same form as the reference>\"}"
+ }
+]

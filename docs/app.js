@@ -31,6 +31,7 @@ const state = {
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const dataScriptPromises = {};
 const pct = (x) => (x == null ? "–" : (x * 100).toFixed(1) + "%");
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) =>
   ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -48,15 +49,47 @@ const knownPiac = (value) => {
 
 init();
 
+function dataFileName(name, ext) {
+  return `data/${name}.${ext}`;
+}
+
+async function loadDataFile(name) {
+  if (location.protocol === "file:") return loadScriptData(name);
+  return fetch(dataFileName(name, "json"), { cache: "no-store" }).then((r) => {
+    if (!r.ok) throw new Error(`failed to load ${name}.json`);
+    return r.json();
+  });
+}
+
+function loadScriptData(name) {
+  window.__AMI_DATA__ = window.__AMI_DATA__ || {};
+  if (Object.prototype.hasOwnProperty.call(window.__AMI_DATA__, name)) {
+    return Promise.resolve(window.__AMI_DATA__[name]);
+  }
+  if (!dataScriptPromises[name]) {
+    dataScriptPromises[name] = new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = dataFileName(name, "js");
+      script.async = true;
+      script.onload = () => {
+        if (Object.prototype.hasOwnProperty.call(window.__AMI_DATA__, name)) {
+          resolve(window.__AMI_DATA__[name]);
+        } else {
+          reject(new Error(`missing ${name}.js payload`));
+        }
+      };
+      script.onerror = () => reject(new Error(`failed to load ${name}.js`));
+      document.head.appendChild(script);
+    }).finally(() => {
+      delete dataScriptPromises[name];
+    });
+  }
+  return dataScriptPromises[name];
+}
+
 async function loadData() {
-  const base = "data/";
   const names = ["meta", "news", "models", "benchmarks", "evaluation", "overview", "prompts"];
-  const parts = await Promise.all(
-    names.map((n) => fetch(`${base}${n}.json`, { cache: "no-store" }).then((r) => {
-      if (!r.ok) throw new Error(`failed to load ${n}.json`);
-      return r.json();
-    })),
-  );
+  const parts = await Promise.all(names.map(loadDataFile));
   const [meta, news, models, benchmarks, evaluation, overview, prompts] = parts;
   return { ...meta, news, models, benchmarks, evaluation, overview, prompts };
 }
@@ -65,11 +98,8 @@ async function loadBenchmarkQuestions(name) {
   if (state.questionsByBench[name]) return state.questionsByBench[name];
   if (!state.questionPromises[name]) {
     const benchmark = benchByName(name);
-    const url = benchmark?.questions_url || "data/benchmark_questions.json";
-    state.questionPromises[name] = fetch(url, { cache: "no-store" }).then((r) => {
-      if (!r.ok) throw new Error(`failed to load ${url}`);
-      return r.json();
-    }).then((questions) => {
+    const key = dataKeyFromUrl(benchmark?.questions_url) || "benchmark_questions";
+    state.questionPromises[name] = loadDataFile(key).then((questions) => {
       const rows = benchmark?.questions_url ? questions : questions.filter((q) => q.benchmark === name);
       state.questionsByBench[name] = rows;
       return rows;
@@ -78,6 +108,11 @@ async function loadBenchmarkQuestions(name) {
     });
   }
   return state.questionPromises[name];
+}
+
+function dataKeyFromUrl(url) {
+  const match = String(url || "").match(/^data\/(.+)\.json$/);
+  return match ? match[1] : "";
 }
 
 async function init() {

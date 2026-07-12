@@ -883,13 +883,21 @@ def hosted_audio(stems: set[tuple[str, str]]) -> dict[tuple[str, str], str]:
     return mapping
 
 
-def write_json(name: str, payload) -> Path:
+def write_json(name: str, payload, *, emit_js: bool = True) -> Path:
     """Write one generated site JSON payload."""
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     path = DATA_DIR / name
     path.parent.mkdir(parents=True, exist_ok=True)
     text = json.dumps(payload, ensure_ascii=False, indent=1) + "\n"
     path.write_text(text, encoding="utf-8")
+    if emit_js:
+        key = path.relative_to(DATA_DIR).with_suffix("").as_posix()
+        js = (
+            "window.__AMI_DATA__ = window.__AMI_DATA__ || {};\n"
+            f"window.__AMI_DATA__[{json.dumps(key)}] = {text}"
+        )
+        js_path = path.with_suffix(".js")
+        js_path.write_text(js, encoding="utf-8")
     print(f"  wrote {path.relative_to(ROOT)} ({len(text) / 1e6:.2f} MB)")
     return path
 
@@ -963,13 +971,13 @@ def question_payload(no_audio: bool) -> tuple[list[dict], set[tuple[str, str]], 
 
 def build_questions_target(no_audio: bool) -> None:
     questions, _, _, _ = question_payload(no_audio)
-    write_json("questions.json", questions)
-    write_json("benchmark_questions.json", questions)
+    write_json("questions.json", questions, emit_js=False)
+    write_json("benchmark_questions.json", questions, emit_js=False)
     by_benchmark: dict[str, list[dict]] = {}
     for question in questions:
         by_benchmark.setdefault(question.get("benchmark") or "benchmark", []).append(question)
     QUESTION_DATA_DIR.mkdir(parents=True, exist_ok=True)
-    for path in QUESTION_DATA_DIR.glob("*.json"):
+    for path in list(QUESTION_DATA_DIR.glob("*.json")) + list(QUESTION_DATA_DIR.glob("*.js")):
         path.unlink()
     for benchmark, rows in sorted(by_benchmark.items()):
         write_json(f"questions/{_question_file_key(benchmark)}.json", rows)

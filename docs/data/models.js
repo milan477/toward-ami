@@ -1,0 +1,107 @@
+window.__AMI_DATA__ = window.__AMI_DATA__ || {};
+window.__AMI_DATA__["models"] = [
+ {
+  "id": "gpt-4o",
+  "label": "GPT-4o",
+  "developer": "OpenAI",
+  "year": "2024",
+  "paper_title": "GPT-4o System Card",
+  "paper_url": "https://openai.com/index/gpt-4o-system-card/"
+ },
+ {
+  "id": "gpt-5",
+  "label": "GPT-5",
+  "developer": "OpenAI",
+  "year": "2025",
+  "paper_title": "GPT-5 System Card",
+  "paper_url": "https://openai.com/index/gpt-5-system-card/"
+ },
+ {
+  "id": "gemini",
+  "label": "Gemini 3 Flash",
+  "developer": "Google DeepMind",
+  "year": "2025",
+  "paper_title": "Gemini 3 Flash Model Card",
+  "paper_url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-Flash-Model-Card.pdf"
+ },
+ {
+  "id": "qwen-omni",
+  "label": "Qwen2.5-Omni",
+  "developer": "Alibaba",
+  "year": "2025",
+  "paper_title": "Qwen2.5-Omni Technical Report",
+  "paper_url": "https://arxiv.org/abs/2503.20215"
+ },
+ {
+  "id": "salmonn",
+  "label": "SALMONN",
+  "developer": "Tsinghua University & ByteDance",
+  "year": "2024",
+  "paper_title": "SALMONN: Towards Generic Hearing Abilities for Large Language Models",
+  "paper_url": "https://arxiv.org/abs/2310.13289"
+ },
+ {
+  "id": "af3",
+  "label": "Audio Flamingo 3",
+  "developer": "NVIDIA & University of Maryland",
+  "year": "2025",
+  "paper_title": "Audio Flamingo 3: Advancing Audio Intelligence with Fully Open Large Audio Language Models",
+  "paper_url": "https://arxiv.org/abs/2507.08128"
+ },
+ {
+  "id": "af-next",
+  "label": "Audio Flamingo Next",
+  "developer": "NVIDIA & University of Maryland",
+  "year": "2026",
+  "paper_title": "Audio Flamingo Next: Next-Generation Open Audio-Language Models for Speech, Sound, and Music",
+  "paper_url": "https://arxiv.org/abs/2604.10905"
+ },
+ {
+  "id": "music-flamingo",
+  "label": "Music Flamingo",
+  "developer": "NVIDIA & University of Maryland",
+  "year": "2025",
+  "paper_title": "Music Flamingo: Scaling Music Understanding in Audio Language Models",
+  "paper_url": "https://arxiv.org/abs/2511.10289"
+ },
+ {
+  "id": "gamma",
+  "label": "GaMMA",
+  "developer": "Fudan University & ByteDance",
+  "year": "2026",
+  "paper_title": "GaMMA: Towards Joint Global-Temporal Music Understanding in Large Multimodal Models",
+  "paper_url": "https://arxiv.org/abs/2605.00371"
+ },
+ {
+  "id": "mufun",
+  "label": "MuFun",
+  "developer": "Zhejiang University & NetEase Cloud Music",
+  "year": "2025",
+  "paper_title": "Advancing the Foundation Model for Music Understanding",
+  "paper_url": "https://arxiv.org/abs/2508.01178"
+ },
+ {
+  "id": "mert",
+  "label": "MERT",
+  "developer": "m-a-p.ai, University of Manchester, University of Sheffield, Carnegie Mellon University, HKUST, University of Waterloo, Beijing Academy of Artificial Intelligence, Queen Mary University of London, Durham University, Google DeepMind, MBZUAI, New York University, linksoul.ai",
+  "year": "2024",
+  "paper_title": "MERT: Acoustic Music Understanding Model with Large-Scale Self-supervised Training",
+  "paper_url": "https://arxiv.org/abs/2306.00107"
+ },
+ {
+  "id": "tinymu",
+  "label": "TinyMU",
+  "developer": "LTCI, Télécom Paris, Institut Polytechnique de Paris & Shanghai Jiao Tong University",
+  "year": "2026",
+  "paper_title": "TinyMU: A Compact Audio-Language Model for Music Understanding",
+  "paper_url": "https://arxiv.org/abs/2604.15849"
+ },
+ {
+  "id": "llark",
+  "label": "LLark",
+  "developer": "University of Washington & Spotify",
+  "year": "2023/2024",
+  "paper_title": "LLark: A Multimodal Instruction-Following Language Model for Music",
+  "paper_url": "https://arxiv.org/abs/2310.07160"
+ }
+]
