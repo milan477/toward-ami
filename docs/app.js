@@ -297,8 +297,8 @@ function renderBenchmarks() {
       ${hasQ ? `<button class="inspect-icon bench-inspect" type="button" data-inspect-benchmark="${esc(b.name)}" aria-label="Inspect ${esc(b.name)} questions">${inspectIcon()}<span>inspect</span></button>` : ""}
       ${b.paper_title ? `<p class="paper">${esc(b.paper_title)}</p>` : ""}
       <div class="bench-fields">
-        ${field("Modalities", b.modalities, false, 20)}
-        ${field("Size", formatSize(b.size), false, 20)}
+        ${field("Modalities", b.modalities, true, 20)}
+        ${field("Size", formatSize(b.size), true, 20)}
         ${field("Skills", b.skills, true, 20)}
         ${field("Sources", b.sources, true, 20)}
         ${b.links && b.links.length ? `<div class="field"><div class="k">Links</div><div class="bench-links">${linksHTML(b)}</div></div>` : ""}
@@ -531,8 +531,8 @@ function zoomHTML(b) {
     </div>
     ${b.paper_title ? `<p class="paper">${esc(b.paper_title)}</p>` : ""}
     <div class="bench-fields">
-      ${field("Modalities", b.modalities)}
-      ${field("Size", formatSize(b.size))}
+      ${field("Modalities", b.modalities, true)}
+      ${field("Size", formatSize(b.size), true)}
       ${field("Authors", authorDisplay(b), true)}
       ${field("Skills", b.skills, true)}
       ${field("Sources", b.sources, true)}
@@ -983,8 +983,8 @@ async function renderBenchmarkDetail(name) {
     </p>`;
   meta.innerHTML = `
     <div class="bench-fields">
-      ${field("Modalities", b.modalities)}
-      ${field("Size", formatSize(b.size))}
+      ${field("Modalities", b.modalities, true)}
+      ${field("Size", formatSize(b.size), true)}
       ${field("Authors", authorDisplay(b), true)}
       ${field("Skills", b.skills, true)}
       ${field("Sources", b.sources, true)}
@@ -1013,8 +1013,8 @@ function renderBenchmarkDetailLoading(b) {
     </p>`;
   $("#bench-detail-meta").innerHTML = `
     <div class="bench-fields">
-      ${field("Modalities", b.modalities)}
-      ${field("Size", formatSize(b.size))}
+      ${field("Modalities", b.modalities, true)}
+      ${field("Size", formatSize(b.size), true)}
       ${field("Authors", authorDisplay(b), true)}
       ${field("Skills", b.skills, true)}
       ${field("Sources", b.sources, true)}
