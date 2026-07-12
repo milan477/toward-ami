@@ -934,6 +934,11 @@ function setupBenchQuestionControls() {
       loadQuestionAudio(audioButton);
       return;
     }
+    const citeButton = target?.closest("[data-detail-copy-cite]");
+    if (citeButton) {
+      copyInspectorCitation(citeButton);
+      return;
+    }
     const toggle = target?.closest(".pie-toggle");
     if (!toggle) return;
     const card = toggle.closest(".pie-card");
@@ -942,6 +947,19 @@ function setupBenchQuestionControls() {
     toggle.setAttribute("aria-expanded", String(expanded));
     toggle.textContent = expanded ? "show less" : "show all";
   });
+}
+
+async function copyInspectorCitation(button) {
+  const b = benchByName(button.dataset.detailCopyCite || state.inspectName);
+  if (!b) return;
+  const original = button.textContent;
+  const ok = await copyText(bibFor(b));
+  button.textContent = ok ? "Copied" : "Could not copy";
+  button.classList.toggle("copied", ok);
+  setTimeout(() => {
+    button.textContent = original || "Copy citation";
+    button.classList.remove("copied");
+  }, 1200);
 }
 
 async function renderBenchmarkDetail(name) {
@@ -990,6 +1008,9 @@ async function renderBenchmarkDetail(name) {
       ${field("Sources", b.sources, true)}
       ${b.links && b.links.length ? `<div class="field"><div class="k">Links</div><div class="bench-links">${linksHTML(b)}</div></div>` : ""}
     </div>
+    <div class="bench-detail-actions">
+      <button type="button" class="act" data-detail-copy-cite="${esc(b.name)}">Copy citation</button>
+    </div>
   ${categoryFilterHTML(benchRows)}
     <div id="bench-stat-fields" class="bench-fields stat-fields"></div>
     <div id="bench-chart-wrap"></div>`;
@@ -1019,6 +1040,9 @@ function renderBenchmarkDetailLoading(b) {
       ${field("Skills", b.skills, true)}
       ${field("Sources", b.sources, true)}
       ${b.links && b.links.length ? `<div class="field"><div class="k">Links</div><div class="bench-links">${linksHTML(b)}</div></div>` : ""}
+    </div>
+    <div class="bench-detail-actions">
+      <button type="button" class="act" data-detail-copy-cite="${esc(b.name)}">Copy citation</button>
     </div>`;
   state.benchQFilters = { q: "", categories: {} };
   $("#bench-q-search").value = "";

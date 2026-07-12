@@ -372,6 +372,10 @@ main { flex: 1; max-width: var(--wide); width: 100%; margin: 0 auto; padding: 0 
 .bench-detail-tags .kind { font-size: 13px; color: var(--fg-mute); }
 .bench-detail-meta { margin: 28px 0 8px; }
 .bench-detail-meta .bench-fields { margin: 0; }
+.bench-detail-actions { display: flex; gap: 12px; margin: 18px 0 0; }
+.bench-detail-actions .act { border-color: rgba(0,0,0,0.3); color: rgba(0,0,0,0.8); }
+.bench-detail-actions .act:hover,
+.bench-detail-actions .act.copied { background: rgba(0,0,0,0.06); }
 .ref.muted { color: var(--fg-soft); font-size: 14.5px; margin-top: -12px; }
 .zoom-check { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; color: rgba(0,0,0,0.75); cursor: pointer; }
 .zoom-check input { width: 16px; height: 16px; accent-color: var(--bordeaux); }
