@@ -3,6 +3,8 @@
 Source: https://huggingface.co/datasets/pitchbench-authors/PitchBench
 """
 
+import io
+import wave
 from pathlib import Path
 
 import pandas as pd
@@ -63,6 +65,48 @@ def _audio_url(subset: str, row: dict, idx: int) -> str:
     return f"{subset}/{_audio_name(row, idx)}"
 
 
+def _combined_audio_bytes(row: dict) -> bytes:
+    """Return a single WAV payload, combining split-reference prompts when needed."""
+    audio = row.get("audio") or {}
+    data = audio.get("bytes") or b""
+    if data:
+        return data
+
+    parts = [
+        (row.get("audio_1") or {}).get("bytes") or b"",
+        (row.get("audio_2") or {}).get("bytes") or b"",
+    ]
+    parts = [part for part in parts if part]
+    if not parts:
+        return b""
+    if len(parts) == 1:
+        return parts[0]
+
+    decoded = []
+    params = None
+    for part in parts:
+        with wave.open(io.BytesIO(part), "rb") as src:
+            current = src.getparams()
+            frames = src.readframes(src.getnframes())
+        if params is None:
+            params = current
+        elif current[:3] != params[:3] or current[4:] != params[4:]:
+            return parts[0]
+        decoded.append(frames)
+
+    assert params is not None
+    silence_frames = int(params.framerate * 0.5)
+    silence = b"\x00" * silence_frames * params.nchannels * params.sampwidth
+    out = io.BytesIO()
+    with wave.open(out, "wb") as dst:
+        dst.setparams(params)
+        for idx, frames in enumerate(decoded):
+            if idx:
+                dst.writeframes(silence)
+            dst.writeframes(frames)
+    return out.getvalue()
+
+
 def _raw_value(value):
     if isinstance(value, bytes):
         return f"<{len(value)} bytes>"
@@ -85,7 +129,7 @@ def _raw_rows() -> list[dict]:
             item.update({
                 "subset": subset,
                 "audio_path": _audio_url(subset, row, idx),
-                "audio_bytes": len(audio.get("bytes") or b""),
+                "audio_bytes": len(_combined_audio_bytes(row)),
             })
             rows.append(item)
     return rows
@@ -140,8 +184,7 @@ def download_pitchbench_audio() -> Path:
         df = _fetch_subset(parquet)
         print(f"  audio subset {subset} ({len(df)} rows)", flush=True)
         for idx, row in enumerate(df.to_dict("records")):
-            audio = row.get("audio") or {}
-            data = audio.get("bytes") or b""
+            data = _combined_audio_bytes(row)
             if not data:
                 continue
             out = out_dir / _audio_url(subset, row, idx)
