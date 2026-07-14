@@ -30,11 +30,16 @@ def main() -> int:
         return 1
     rows = load_benchmarks()
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(
-        json.dumps(rows, ensure_ascii=False, indent=1) + "\n",
+    text = json.dumps(rows, ensure_ascii=False, indent=1) + "\n"
+    OUT.write_text(text, encoding="utf-8")
+    js_path = OUT.with_suffix(".js")
+    js_path.write_text(
+        "window.__AMI_DATA__ = window.__AMI_DATA__ || {};\n"
+        f'window.__AMI_DATA__["benchmarks"] = {text}',
         encoding="utf-8",
     )
     print(f"wrote {len(rows)} benchmark(s) → {OUT.relative_to(ROOT)}")
+    print(f"wrote companion → {js_path.relative_to(ROOT)}")
     print(f"source: {src.relative_to(ROOT)}")
     return 0
 

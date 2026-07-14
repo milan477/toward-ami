@@ -642,6 +642,33 @@ function closeZoom() {
 }
 
 /* ---------- evaluation ---------- */
+function foldHTML(title, body, { startOpen = false } = {}) {
+  return `
+    <div class="prompt fold${startOpen ? " open" : ""}">
+      <div class="prompt-head" role="button" tabindex="0" aria-expanded="${startOpen ? "true" : "false"}">
+        <div>
+          <h4>${esc(title)}</h4>
+        </div>
+        <span class="chev"></span>
+      </div>
+      <div class="prompt-body">${body}</div>
+    </div>`;
+}
+
+function bindFolds(root) {
+  $$(`${root} .prompt-head`).forEach((h) => {
+    const toggle = () => {
+      const fold = h.closest(".prompt");
+      fold.classList.toggle("open");
+      h.setAttribute("aria-expanded", fold.classList.contains("open") ? "true" : "false");
+    };
+    h.addEventListener("click", toggle);
+    h.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }
+    });
+  });
+}
+
 function motivationHTML(ev) {
   const m = ev.motivation;
   if (!m) return "";
@@ -651,15 +678,13 @@ function motivationHTML(ev) {
       <span class="annot-text">${esc(seg.text)}</span>
       <span class="annot-cat">${esc(seg.category)}</span>
     </span>`).join("");
-  return `
-    <aside class="rule-of-thumb framework-motivation">
-      <p class="rule-of-thumb-lede">Motivation</p>
-      <div class="motivation-body">
-        ${paras}
-        ${m.example_prompt ? `<p class="motivation-example-q">${esc(m.example_prompt)}</p>` : ""}
-        ${segs ? `<div class="annotated-passage">${segs}</div>` : ""}
-      </div>
-    </aside>`;
+  const body = `
+    <div class="motivation-body">
+      ${paras}
+      ${m.example_prompt ? `<p class="motivation-example-q">${esc(m.example_prompt)}</p>` : ""}
+      ${segs ? `<div class="annotated-passage">${segs}</div>` : ""}
+    </div>`;
+  return foldHTML("Motivation", body);
 }
 
 function ruleOfThumbHTML(ev) {
@@ -671,15 +696,13 @@ function ruleOfThumbHTML(ev) {
         <span class="rule-arrow" aria-hidden="true">→</span>
         <span class="pill ${esc(item.category)}">${esc(item.category)}</span>
       </li>`).join("");
-    return `
-      <aside class="rule-of-thumb">
-
-        <p class="rule-of-thumb-lede">Rule of thumb</p>
-        <ul class="rule-of-thumb-list">${rows}</ul>
-      </aside>`;
+    return foldHTML(
+      "Rule of thumb",
+      `<ul class="rule-of-thumb-list">${rows}</ul>`,
+    );
   }
   if (!ev.rule_of_thumb) return "";
-  return `<aside class="rule-of-thumb"><p>${esc(ev.rule_of_thumb)}</p></aside>`;
+  return foldHTML("Rule of thumb", `<p>${esc(ev.rule_of_thumb)}</p>`);
 }
 
 function renderEvaluation() {
@@ -692,16 +715,16 @@ function renderEvaluation() {
     introEl.hidden = !ev.intro;
   }
 
-  let html = `<div class="framework-list">` + cats.map((c) => `
+  const folds = [motivationHTML(ev), ruleOfThumbHTML(ev)].filter(Boolean).join("");
+  let html = "";
+  if (folds) html += `<div class="eval-folds">${folds}</div>`;
+  html += `<div class="framework-list">` + cats.map((c) => `
     <article class="framework-card" data-key="${esc(c.key)}">
       <div class="bench-id"><h3>${esc(c.key)}</h3></div>
       ${c.subtitle ? `<p class="fw-sub">${esc(c.subtitle)}</p>` : ""}
     </article>`).join("") + `</div>`;
   $("#piac").innerHTML = html;
-  const rot = ruleOfThumbHTML(ev);
-  if (rot) $("#piac").insertAdjacentHTML("beforeend", rot);
-  const mot = motivationHTML(ev);
-  if (mot) $("#piac").insertAdjacentHTML("beforeend", mot);
+  bindFolds("#piac .eval-folds");
 
   // Click a category to open its full detail in the shared zoom view.
   $("#piac").addEventListener("click", (e) => {
@@ -749,7 +772,7 @@ function renderPrompts() {
       : (p.text ? `<pre class="prompt-example">${esc(p.text)}</pre>` : "");
     return `
     <div class="prompt">
-      <div class="prompt-head">
+      <div class="prompt-head" role="button" tabindex="0" aria-expanded="false">
         <div>
           <h4>${esc(p.name)}</h4>
           <p class="purpose">${esc(p.purpose)}</p>
@@ -759,8 +782,7 @@ function renderPrompts() {
       <div class="prompt-body">${body}</div>
     </div>`;
   }).join("");
-  $$("#prompts .prompt-head").forEach((h) =>
-    h.addEventListener("click", () => h.closest(".prompt").classList.toggle("open")));
+  bindFolds("#prompts");
 }
 
 /* ---------- models ---------- */

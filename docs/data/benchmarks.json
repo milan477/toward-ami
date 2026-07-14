@@ -451,36 +451,5 @@
   "question_count": 0,
   "has_questions": false,
   "questions_url": ""
- },
- {
-  "name": "PitchBench",
-  "extended": "/",
-  "paper_title": "PitchBench: Measuring Pitch Hearing in Audio-Language Models",
-  "domain": "Diagnostic / Focused",
-  "format": "OEQ",
-  "year": "2026",
-  "modalities": "Audio / Music",
-  "skills": "Absolute and relative pitch perception across 3 levels (atomic, contextual, and melodic), 28 experiments across 6 categories",
-  "sources": "Synthetic stimuli (FluidSynth), Bach 4-part chorales (music21), Acoustic processing (Pedalboard)",
-  "size": "17,667",
-  "models": "",
-  "links": [
-   {
-    "label": "arXiv",
-    "url": "https://arxiv.org/abs/2605.26176"
-   },
-   {
-    "label": "Hugging Face",
-    "url": "https://huggingface.co/datasets/pitchbench-authors/PitchBench"
-   }
-  ],
-  "paper_url": "https://arxiv.org/abs/2605.26176",
-  "hf_url": "https://huggingface.co/datasets/pitchbench-authors/PitchBench",
-  "code_url": "",
-  "bibtex": "@misc{dujardinPitchBenchMeasuringPitch2026,\n  title = {{{PitchBench}}: {{Measuring Pitch Hearing}} in {{Audio-Language Models}}},\n  shorttitle = {{{PitchBench}}},\n  author = {Dujardin, Milan Liessens and Yu, Song-Ze and {Thomas-Smith}, Craver Corbyn and Chan, David M. and Nguyen, Karina},\n  year = 2026,\n  month = may,\n  number = {arXiv:2605.26176},\n  eprint = {2605.26176},\n  primaryclass = {cs.SD},\n  publisher = {arXiv},\n  doi = {10.48550/arXiv.2605.26176},\n  archiveprefix = {arXiv},\n}",
-  "status": "confirmed",
-  "question_count": 15648,
-  "has_questions": true,
-  "questions_url": "data/questions/pitchbench.json"
  }
 ]

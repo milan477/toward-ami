@@ -579,6 +579,10 @@ def latest_benchmark_overview() -> Path | None:
     return files[-1] if files else None
 
 
+# Temporarily hidden from the public benchmarks list.
+HIDDEN_BENCHMARKS = {"PitchBench"}
+
+
 def load_benchmarks() -> list[dict]:
     """Read the newest benchmark_overview_*.csv into benchmark dicts (source of truth)."""
     path = latest_benchmark_overview()
@@ -594,7 +598,7 @@ def load_benchmarks() -> list[dict]:
             if not year:
                 continue
             name = _clean(r.get("Known name", ""))
-            if not name:
+            if not name or name in HIDDEN_BENCHMARKS:
                 continue
             ext = _clean(r.get("Extended benchmark name", ""))
             paper = _clean(r.get("Paper title", ""))
