@@ -14,9 +14,18 @@ from src.config import DEFAULT_ANNOTATED_DATA, DEFAULT_MODALITY, DEFAULT_RUNNER_
 from src.evaluation.prompts import INSTRUCTION_OEQ_GUIDED
 from src.evaluation.scoring import judge_probe_answers, merge_probe_records
 from src.helpers.results import git_commit
-from src.querying.common import audio_stem, build_audio_index, infer_benchmark_name, resolve_path, result_dir
+from src.querying.common import (
+    audio_stem,
+    build_audio_index,
+    create_result_dir,
+    infer_benchmark_name,
+    resolve_path,
+    run_stamp,
+)
 from src.querying.probes import query_probe_answers
 from src.reporting.results import write_probe_outputs
+
+EXPERIMENT_NAME = Path(__file__).stem
 
 
 def probe_key(qid: str, idx: int) -> str:
@@ -64,14 +73,17 @@ def run(model_spec: str, data_path: Path, modality: str | None, out_dir: Path | 
 
     benchmark = infer_benchmark_name(data_path)
     label = modality or "all"
-    out_dir = out_dir or result_dir(benchmark, model_spec, f"{label}-probes")
+    if out_dir is None:
+        out_dir = create_result_dir(EXPERIMENT_NAME, benchmark, model_spec)
+        stamp = out_dir.name
+    else:
+        stamp = run_stamp()
     out_dir.mkdir(parents=True, exist_ok=True)
 
     client = make_client(model_spec)
     audio_index = build_audio_index()
     probe_units = iter_probe_units(df)
     started = datetime.now(timezone.utc).isoformat()
-    stamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     print(f"Model: {model_spec}  |  {benchmark} {label} questions: {len(df)}  probes: {len(probe_units)}")
 
     answers = query_probe_answers(probe_units, audio_index, client, out_dir / ".probe_answers.jsonl")
@@ -79,7 +91,7 @@ def run(model_spec: str, data_path: Path, modality: str | None, out_dir: Path | 
     records = merge_probe_records(probe_units, answers, judged)
 
     metadata = {
-        "experiment": "probe_eval",
+        "experiment": EXPERIMENT_NAME,
         "benchmark": benchmark,
         "modality": label,
         "answer_model": getattr(client, "model_id", model_spec),
@@ -95,11 +107,12 @@ def run(model_spec: str, data_path: Path, modality: str | None, out_dir: Path | 
         "run_started": started,
         "run_finished": datetime.now(timezone.utc).isoformat(),
         "run_local_datetime": stamp,
+        "result_dir": str(out_dir),
     }
     summary = write_probe_outputs(out_dir, stamp, metadata, records)
     print(f"\nDone. {summary['n_judged']} probes judged over {summary['chain']['n_chains']} chains.")
     print("Accuracy by level:", summary["accuracy_by_level"])
-    print(f"Wrote results to {out_dir} (prefix {stamp})")
+    print(f"Wrote results to {out_dir}")
 
 
 def main() -> None:

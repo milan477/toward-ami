@@ -1,8 +1,10 @@
 """Pluggable model clients with a single interface, audio when supported.
 
 Backends (selected by a `spec` string):
-    af-next                          direct local Audio Flamingo Next
-    af-next:<hf-model-id>            direct local Audio Flamingo Next with a model id
+    afn                               remote Audio Flamingo Next (Cloudflare tunnel)
+    afn@https://host                  ... at a custom tunnel/base URL
+    af-next                           direct local Audio Flamingo Next
+    af-next:<hf-model-id>             direct local Audio Flamingo Next with a model id
     flamingo                          local Audio Flamingo FastAPI server (:8001)
     flamingo@http://host:port         ... at a custom URL
     openai:gpt-4o-audio-preview       OpenAI; audio-capable models ingest the clip
@@ -10,16 +12,21 @@ Backends (selected by a `spec` string):
     local                             local HF text model (default Qwen, runs here)
     local:Qwen/Qwen2.5-7B-Instruct    ... a specific HuggingFace model id
 
-Env vars: OPENAI_API_KEY, OPENROUTER_API_KEY, FLAMINGO_URL, LOCAL_JUDGE_MODEL.
+Env vars: OPENAI_API_KEY, OPENROUTER_API_KEY, FLAMINGO_URL, AFN_BASE_URL,
+AFN_API_KEY, LOCAL_JUDGE_MODEL.
 
     from models.client import make_client
-    client = make_client("openai:gpt-4o-audio-preview")
+    client = make_client("afn")
     text = client.generate("What instrument is this?", audio_path="clip.wav")
 """
 
 import base64
 import os
 from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 
 TIMEOUT = 180
 
@@ -210,7 +217,12 @@ class LocalHFClient(ModelClient):
 # --- Factory --------------------------------------------------------------
 
 def make_client(spec: str) -> ModelClient:
-    """Build a client from a spec like 'af-next', 'openai:MODEL', or 'openrouter:MODEL'."""
+    """Build a client from a spec like 'afn', 'af-next', 'openai:MODEL'."""
+    if spec == "afn" or spec.startswith("afn@"):
+        from models.afn import AFNClient
+
+        url = spec.split("@", 1)[1] if "@" in spec else None
+        return AFNClient(url)
     if spec == "af-next" or spec.startswith("af-next:"):
         from models.af_next import DEFAULT_MODEL_ID, DirectAFNextClient
 
@@ -222,7 +234,9 @@ def make_client(spec: str) -> ModelClient:
     if spec == "local":
         return LocalHFClient()
     if ":" not in spec:
-        raise ValueError(f"Bad model spec {spec!r}. Use 'backend:model', 'flamingo', or 'local'.")
+        raise ValueError(
+            f"Bad model spec {spec!r}. Use 'backend:model', 'afn', 'flamingo', or 'local'."
+        )
     backend, model_id = spec.split(":", 1)
     if backend == "local":
         return LocalHFClient(model_id or None)

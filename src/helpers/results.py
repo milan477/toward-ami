@@ -5,7 +5,7 @@ import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
-RESULTS_ROOT = Path(__file__).resolve().parents[2] / "results"
+from src.querying.common import create_result_dir
 
 
 def git_commit() -> str:
@@ -29,22 +29,28 @@ def get_run_metadata(exp_name: str, model: str, config: dict) -> dict:
     }
 
 
-def save_results(metadata: dict, items: list[dict], summary: dict) -> Path:
+def save_results(
+    metadata: dict,
+    items: list[dict],
+    summary: dict,
+    *,
+    benchmark: str,
+    date: str | None = None,
+) -> Path:
+    """Save one benchmark run below experiment/benchmark/model/date."""
     exp_name = metadata["exp_name"]
-    model_slug = metadata["model"].replace("/", "_").replace(":", "_")
-    ts = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    run_dir = create_result_dir(exp_name, benchmark, metadata["model"], date)
 
-    run_dir = RESULTS_ROOT / exp_name / ts
-    run_dir.mkdir(parents=True, exist_ok=True)
+    payload = {**metadata, "benchmark": benchmark, "result_dir": str(run_dir),
+               "summary": summary, "items": items}
 
-    payload = {**metadata, "summary": summary, "items": items}
-
-    json_path = run_dir / f"results_{model_slug}.json"
+    json_path = run_dir / "results.json"
     json_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False))
 
-    txt_path = run_dir / f"results_{model_slug}.txt"
+    txt_path = run_dir / "report.txt"
     lines = [
         f"Experiment: {exp_name}",
+        f"Benchmark:  {benchmark}",
         f"Model:      {metadata['model']}",
         f"Commit:     {metadata['git_commit']}",
         f"Timestamp:  {metadata['timestamp']}",

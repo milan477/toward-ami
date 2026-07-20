@@ -1,0 +1,7 @@
+openrouter:google/gemini-3-flash-preview - mmar all MCQ
+================================================
+Run: 2026-07-18_17-37-06   commit 731cb3ef81bde435c7eeda9b5883951148f1e09e
+accuracy: 56.67%  (17/30)
+
+By PIAC category:
+  ?            56.67%  (n=30)

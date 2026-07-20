@@ -233,3 +233,12 @@ Music Instruct,MusicInstruct (MI),MusiLingo: Bridging Music and Text with Pre-tr
 }",
 MusicCaps,MusicCaps: A Dataset for Music Audio Captioning,MusicLM: Generating Music From Text,Focused,Captioning,2023,Music / Text,"Music Audio Captioning, Text-to-Music generation evaluation",AudioSet,"5,521 clips",https://arxiv.org/abs/2301.11325,https://www.kaggle.com/datasets/googleai/musiccaps,N/A,"Agostinelli, A., et al. (2023). MusicLM: Generating Music From Text. arXiv preprint arXiv:2301.11325.
 }",
+AHA,Audio Hallucination Alignment,AHA: Aligning Large Audio-Language Models for Reasoning Hallucinations via Counterfactual Hard Negatives,Diagnostic / Focused,Preference pairs / Open-ended QA,2025,Audio / Text,"Event omission, false event identity, temporal relation errors, quantitative temporal errors, event counting, and duration comparison",Synthetic multi-event audio sequences,"1,251 test pairs (12,758 total)",https://arxiv.org/abs/2512.24052,https://huggingface.co/datasets/ASU-GSL/AHA,https://github.com/LLM-VLM-GSL/AHA,"@misc{chen2025aha,
+  title={AHA: Aligning Large Audio-Language Models for Reasoning Hallucinations via Counterfactual Hard Negatives},
+  author={Chen, Yanxi and Zhu, Wenhui and Chen, Xiwen and Wang, Zhipeng and Li, Xin and Qiu, Peijie and Wang, Hao and Dong, Xuanzhao and Xiong, Yujian and Schneider, Anderson and Nevmyvaka, Yuriy and Wang, Yalin},
+  year={2025},
+  eprint={2512.24052},
+  archivePrefix={arXiv},
+  primaryClass={cs.SD},
+  url={https://arxiv.org/abs/2512.24052}
+}",confirmed

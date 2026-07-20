@@ -14,12 +14,12 @@ filtered subset with compact visual diagnostics: a sound-duration histogram and
 pie charts for distractors, modality, category, skill, and PIAC distribution.
 Long category legends stay compact with a `show all` control.
 
-Benchmark audio is stored once under `data/audio/<benchmark>/` and reused by the
-website. For local inspection, `docs/audio/` can contain ignored links/copies in
-the same organized layout. For the published website, build the question JSON
-with `AMI_AUDIO_BASE_URL` set to a static audio host that mirrors `data/audio`;
-the generated cards then play those hosted clips directly without committing the
-multi-gigabyte audio corpus to git.
+Benchmark audio is hosted once on Hugging Face under
+`milan477/toward-ami`. The committed website data stores only question metadata
+and hosted audio URLs, so the cards play those clips directly without keeping
+the multi-gigabyte audio corpus in git or under `docs/`. Local `data/audio/`
+files are just a generated cache for downloading, rebuilding duration stats, or
+running experiments.
 
 Screenshots of these website states live in `data/screenshots/` as visual
 references for the site functionality.

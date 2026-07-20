@@ -1,0 +1,22 @@
+source_id,result_set_id,benchmark,table_label,page,model,model_category,size,sound_test_mini,sound_test,music_test_mini,music_test,speech_test_mini,speech_test,average_test_mini,average_test
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,Random Guess,Baseline,-,26.72,25.73,24.55,26.53,26.72,25.50,26.00,25.92
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,Most Frequent Choice,Baseline,-,27.02,25.73,20.35,23.73,29.12,30.33,25.50,26.50
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,Human (test-mini),Human,-,86.31,,78.22,,82.17,,82.23,
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,Pengi,Large Audio Language Model,323M,6.10,8.00,2.90,3.05,1.20,1.50,3.40,4.18
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,Audio Flamingo Chat,Large Audio Language Model,2.2B,23.42,28.26,15.26,18.20,11.41,10.16,16.69,18.87
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,LTU,Large Audio Language Model,7B,22.52,25.86,9.69,12.83,17.71,16.37,16.89,18.51
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,LTU AS,Large Audio Language Model,7B,23.35,24.96,9.10,10.46,20.60,21.30,17.68,18.90
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,MusiLingo,Large Audio Language Model,7B,23.12,27.76,3.96,6.00,5.88,6.42,10.98,13.39
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,MuLLaMa,Large Audio Language Model,7B,40.84,44.80,32.63,30.63,22.22,16.56,31.90,30.66
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,M2UGen,Large Audio Language Model,7B,3.60,3.69,32.93,30.40,6.36,4.53,14.28,12.87
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,GAMA,Large Audio Language Model,7B,41.44,45.40,32.33,30.83,18.91,19.21,30.90,31.81
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,GAMA-IT,Large Audio Language Model,7B,43.24,43.23,28.44,28.00,18.91,15.84,30.20,29.02
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,Qwen-Audio-Chat,Large Audio Language Model,8.4B,55.25,56.73,44.00,40.90,30.03,27.95,43.10,41.86
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,Qwen2-Audio,Large Audio Language Model,8.4B,7.50,8.20,5.14,6.16,3.10,4.24,5.24,6.20
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,Qwen2-Audio-Instruct,Large Audio Language Model,8.4B,54.95,45.90,50.98,53.26,42.04,45.90,49.20,52.50
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,SALAMONN,Large Audio Language Model,13B,41.00,40.30,34.80,33.76,25.50,24.24,33.70,32.77
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,Gemini Pro v1.5,Large Audio Language Model,-,56.75,54.46,49.40,48.56,58.55,55.90,54.90,52.97
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,GPT4o + weak cap.,Large Language Model,-,39.33,35.80,39.52,41.90,58.25,68.27,45.70,48.65
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,GPT4o + strong cap.,Large Language Model,-,57.35,55.83,49.70,51.73,64.86,68.66,57.30,58.74
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,Llama-3-Ins. + weak cap.,Large Language Model,8B,34.23,33.73,38.02,42.36,54.05,61.54,42.10,45.87
+src-mmau-arxiv-2024,mmau-table-3,MMAU,Table 3,7,Llama-3-Ins. + strong cap.,Large Language Model,8B,50.75,49.10,50.29,48.93,55.25,62.70,52.10,53.57

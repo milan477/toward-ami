@@ -28,6 +28,7 @@ from clean import MODALITY_COLUMN, clean_dataset
 
 # Register one metadata download function per dataset here.
 DATASETS = {
+    "aha": ("benchmark_aha", "download_aha"),
     "hummusqa": ("benchmark_hummusqa", "download_hummusqa"),
     "mmau": ("benchmark_mmau", "download_mmau"),
     "mmar": ("benchmark_mmar", "download_mmar"),

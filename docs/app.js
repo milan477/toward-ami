@@ -19,6 +19,9 @@ const state = {
   benchSort: "name-asc",
   modelQ: "",
   modelSort: "label-asc",
+  resultsBenchmark: "MMAR",
+  resultsMetric: "average",
+  resultsControlsReady: false,
   selected: new Set(),
   selectMode: false,
   inspectName: null,
@@ -88,10 +91,10 @@ function loadScriptData(name) {
 }
 
 async function loadData() {
-  const names = ["meta", "news", "models", "benchmarks", "evaluation", "overview", "prompts"];
+  const names = ["meta", "news", "models", "benchmarks", "evaluation", "overview", "literature_results", "prompts"];
   const parts = await Promise.all(names.map(loadDataFile));
-  const [meta, news, models, benchmarks, evaluation, overview, prompts] = parts;
-  return { ...meta, news, models, benchmarks, evaluation, overview, prompts };
+  const [meta, news, models, benchmarks, evaluation, overview, literatureResults, prompts] = parts;
+  return { ...meta, news, models, benchmarks, evaluation, overview, literatureResults, prompts };
 }
 
 async function loadBenchmarkQuestions(name) {
@@ -132,6 +135,7 @@ async function init() {
   renderBenchmarks();
   renderModels();
   renderEvaluation();
+  setupResultsControls();
   renderResults();
 
   window.addEventListener("hashchange", route);
@@ -608,13 +612,11 @@ function openAbout() {
   card.innerHTML = `
     <button class="zoom-close" type="button" data-close aria-label="Close">×</button>
     <div class="about">
-      <span class="wip-badge">our mission</span>
+      <span class="wip-badge">mission statement</span>
       <br /><br />
-      <p><em>Towards Artificial Musical Intelligence (AMI)</em> is an open, community-driven platform where researchers can
+      <p><em>Towards Artificial Musical Intelligence (AMI)</em> is an open platform where researchers can
         collectively define what artificial musical intelligence is about.</p>
-      <p>Its goal is to unify evaluation across models
-       and benchmarks, enabling consistent and comprehensive assessment of model performance. The Benchmarks section allows users to explore and filter tasks by musical skill, while the Results section provides performance comparisons across models. 
-        Designed as a living resource, the platform continuously evolves with contributions from the community, supporting the development and evaluation of the next generation of Audio-Language Models.</p>
+      <p>The goal is to become a living resource for artificial musical intelligence by providing a platform with benchmarks and results, as well as streamlining evaluation of model performance. Researchers can explore and filter tasks by musical skill in the Benchmarks section, while the Results section provides performance comparisons across models. With contributions from the community, the platform intends to support the development and evaluation of the next generation of Audio-Language Models.</p>
       <p class="about-note">Fork the repository on GitHub to contribute to the website, benchmarks or models.</p>
     </div>`;
   overlay.hidden = false;
@@ -642,12 +644,13 @@ function closeZoom() {
 }
 
 /* ---------- evaluation ---------- */
-function foldHTML(title, body, { startOpen = false } = {}) {
+function foldHTML(title, body, { startOpen = false, subtitle = "" } = {}) {
   return `
     <div class="prompt fold${startOpen ? " open" : ""}">
       <div class="prompt-head" role="button" tabindex="0" aria-expanded="${startOpen ? "true" : "false"}">
         <div>
           <h4>${esc(title)}</h4>
+          ${subtitle ? `<p class="purpose">${esc(subtitle)}</p>` : ""}
         </div>
         <span class="chev"></span>
       </div>
@@ -705,6 +708,30 @@ function ruleOfThumbHTML(ev) {
   return foldHTML("Rule of thumb", `<p>${esc(ev.rule_of_thumb)}</p>`);
 }
 
+function promptBodyHTML(p) {
+  if ((p.variants || []).length) {
+    return `<div class="oeq-variants">${p.variants.map((v) => `
+      <aside class="oeq-variant">
+        <p class="rule-of-thumb-title">${esc(v.label)}</p>
+        <pre>${esc(v.text)}</pre>
+        ${v.example ? `<p class="oeq-example-label">Example built prompt</p><pre class="oeq-example">${esc(v.example)}</pre>` : ""}
+      </aside>`).join("")}</div>`;
+  }
+  return p.text ? `<pre class="prompt-example">${esc(p.text)}</pre>` : "";
+}
+
+function promptsHTML() {
+  const prompts = state.data.prompts || [];
+  if (!prompts.length) return "";
+  const body = prompts.map((p) => `
+    <section class="prompt-embed">
+      <h5 class="prompt-embed-title">${esc(p.name)}</h5>
+      ${p.purpose ? `<p class="purpose">${esc(p.purpose)}</p>` : ""}
+      ${promptBodyHTML(p)}
+    </section>`).join("");
+  return foldHTML("Prompts", body);
+}
+
 function renderEvaluation() {
   const ev = state.data.evaluation || {};
   const cats = ev.categories || [];
@@ -715,14 +742,19 @@ function renderEvaluation() {
     introEl.hidden = !ev.intro;
   }
 
-  const folds = [motivationHTML(ev), ruleOfThumbHTML(ev)].filter(Boolean).join("");
-  let html = "";
-  if (folds) html += `<div class="eval-folds">${folds}</div>`;
-  html += `<div class="framework-list">` + cats.map((c) => `
+  let html = `<div class="framework-list">` + cats.map((c) => `
     <article class="framework-card" data-key="${esc(c.key)}">
       <div class="bench-id"><h3>${esc(c.key)}</h3></div>
       ${c.subtitle ? `<p class="fw-sub">${esc(c.subtitle)}</p>` : ""}
     </article>`).join("") + `</div>`;
+
+  const folds = [
+    motivationHTML(ev),
+    ruleOfThumbHTML(ev),
+    promptsHTML(),
+  ].filter(Boolean).join("");
+  if (folds) html += `<div class="eval-folds">${folds}</div>`;
+
   $("#piac").innerHTML = html;
   bindFolds("#piac .eval-folds");
 
@@ -731,8 +763,7 @@ function renderEvaluation() {
     const card = e.target.closest(".framework-card");
     if (card) openEvalZoom(card.dataset.key, card);
   });
-
-  renderPrompts();
+  renderEvaluationStudy();
 }
 
 function evalByKey(key) {
@@ -755,34 +786,6 @@ function openEvalZoom(key, origin) {
   const c = evalByKey(key);
   if (!c) return;
   flipZoom(evalZoomHTML(c), origin);
-}
-
-function renderPrompts() {
-  $("#prompts").innerHTML = (state.data.prompts || []).map((p) => {
-    const variants = (p.variants || []).length
-      ? `<div class="oeq-variants">${p.variants.map((v) => `
-          <aside class="oeq-variant">
-            <p class="rule-of-thumb-title">${esc(v.label)}</p>
-            <pre>${esc(v.text)}</pre>
-            ${v.example ? `<p class="oeq-example-label">Example built prompt</p><pre class="oeq-example">${esc(v.example)}</pre>` : ""}
-          </aside>`).join("")}</div>`
-      : "";
-    const body = variants
-      ? variants
-      : (p.text ? `<pre class="prompt-example">${esc(p.text)}</pre>` : "");
-    return `
-    <div class="prompt">
-      <div class="prompt-head" role="button" tabindex="0" aria-expanded="false">
-        <div>
-          <h4>${esc(p.name)}</h4>
-          <p class="purpose">${esc(p.purpose)}</p>
-        </div>
-        <span class="chev"></span>
-      </div>
-      <div class="prompt-body">${body}</div>
-    </div>`;
-  }).join("");
-  bindFolds("#prompts");
 }
 
 /* ---------- models ---------- */
@@ -884,12 +887,12 @@ function flipZoom(html, origin) {
 const evalModels = (data = state.data) =>
   (data.models || []).filter((m) => (data.overview || {})[m.id]);
 
-/* ---------- results ---------- */
-function renderResults() {
+/* ---------- evaluation study ---------- */
+function renderEvaluationStudy() {
   const { overview } = state.data;
   const models = evalModels();
 
-  $("#results-overview").innerHTML = models.map((m) => {
+  $("#evaluation-results-overview").innerHTML = models.map((m) => {
     const o = overview[m.id];
     const row = (lab, val, head) =>
       `<div class="mrow${head ? " headline" : ""}"><span class="lab">${lab}</span><span class="num">${val}</span></div>`;
@@ -903,10 +906,10 @@ function renderResults() {
     </div>`;
   }).join("");
 
-  renderPiacTable();
+  renderEvaluationPiacTable();
 }
 
-function renderPiacTable() {
+function renderEvaluationPiacTable() {
   const { overview } = state.data;
   const models = evalModels();
   let html = `<thead><tr>
@@ -927,7 +930,109 @@ function renderPiacTable() {
       </tr>`;
     });
   }
-  $("#piac-table").innerHTML = html + "</tbody>";
+  $("#evaluation-piac-table").innerHTML = html + "</tbody>";
+}
+
+/* ---------- published results ---------- */
+function setupResultsControls() {
+  if (state.resultsControlsReady) return;
+  state.resultsControlsReady = true;
+  $("#results-benchmark").addEventListener("change", (e) => {
+    state.resultsBenchmark = e.target.value;
+    state.resultsMetric = "";
+    renderResults();
+  });
+  $("#results-metric").addEventListener("change", (e) => {
+    state.resultsMetric = e.target.value;
+    renderResults();
+  });
+}
+
+function resultSourceById(sourceId) {
+  return (state.data.literatureResults?.sources || []).find((source) => source.source_id === sourceId);
+}
+
+function resultCategoryClass(category) {
+  return String(category || "baseline").toLowerCase().replace(/[^a-z]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+function renderResults() {
+  const data = state.data.literatureResults || {};
+  const resultSets = data.result_sets || [];
+  const benchmarks = [...new Set(resultSets.map((resultSet) => resultSet.benchmark))];
+  if (!benchmarks.includes(state.resultsBenchmark)) state.resultsBenchmark = benchmarks[0] || "";
+
+  const benchmarkSelect = $("#results-benchmark");
+  benchmarkSelect.innerHTML = benchmarks.map((benchmark) =>
+    `<option value="${esc(benchmark)}"${benchmark === state.resultsBenchmark ? " selected" : ""}>${esc(benchmark)}</option>`
+  ).join("");
+
+  const resultSet = resultSets.find((item) => item.benchmark === state.resultsBenchmark);
+  const usedMetricIds = new Set(
+    (resultSet?.models || []).flatMap((model) => Object.keys(model.values || {})),
+  );
+  const metrics = (data.metrics || []).filter((metric) => usedMetricIds.has(metric.metric_id));
+  if (!metrics.some((metric) => metric.metric_id === state.resultsMetric)) {
+    state.resultsMetric = metrics.some((metric) => metric.metric_id === resultSet?.default_metric_id)
+      ? resultSet.default_metric_id
+      : metrics[0]?.metric_id || "";
+  }
+  const metricSelect = $("#results-metric");
+  metricSelect.innerHTML = metrics.map((metric) =>
+    `<option value="${esc(metric.metric_id)}"${metric.metric_id === state.resultsMetric ? " selected" : ""}>${esc(metric.label)}</option>`
+  ).join("");
+
+  const root = $("#literature-results");
+  if (!resultSet) {
+    $("#results-count").textContent = "0 results";
+    root.innerHTML = `<p class="empty">No published results loaded.</p>`;
+    return;
+  }
+
+  const metric = metrics.find((item) => item.metric_id === state.resultsMetric);
+  const rows = (resultSet.models || [])
+    .filter((model) => model.values?.[state.resultsMetric])
+    .map((model) => ({ ...model, measurement: model.values[state.resultsMetric] }))
+    .sort((a, b) => b.measurement.value - a.measurement.value || a.model.localeCompare(b.model));
+  $("#results-count").textContent = `${rows.length} reported results`;
+
+  const source = resultSourceById(resultSet.source_id);
+  const sourceUrl = source?.url || source?.pdf_url || "";
+  const sourceLink = sourceUrl
+    ? `<a href="${esc(sourceUrl)}" target="_blank" rel="noopener">${esc(resultSet.source_id)}</a>`
+    : esc(resultSet.source_id);
+  const chartRows = rows.map((row) => {
+    const measurement = row.measurement;
+    const sourceLabel = `${measurement.source_id}, ${resultSet.table_label}, p. ${resultSet.page}`;
+    return `
+      <div class="performance-row ${esc(resultCategoryClass(row.category))}"
+           title="${esc(`${row.model}: ${measurement.value.toFixed(2)}${measurement.unit} - ${sourceLabel}`)}">
+        <div class="performance-label">
+          <span class="performance-model">${esc(row.model)}</span>
+          <span class="performance-meta">${esc(row.size === "-" ? row.category : `${row.size} · ${row.category}`)}</span>
+        </div>
+        <div class="performance-track" role="img"
+             aria-label="${esc(`${row.model}: ${measurement.value.toFixed(2)} percent, source ${sourceLabel}`)}">
+          <span class="performance-bar" style="width:${Math.max(0, Math.min(100, measurement.value))}%"></span>
+        </div>
+        <span class="performance-value">${measurement.value.toFixed(2)}%</span>
+        <a class="source-chip" href="${esc(sourceUrl)}" target="_blank" rel="noopener"
+           aria-label="Open source ${esc(sourceLabel)}">${esc(measurement.source_id)}</a>
+      </div>`;
+  }).join("");
+
+  root.innerHTML = `
+    <article class="result-source">
+      <div>
+        <h2>${esc(resultSet.benchmark)} · ${esc(metric?.label || state.resultsMetric)}</h2>
+      </div>
+      <div class="source-record">
+        <span class="source-record-id">${sourceLink}</span>
+        <span>${esc(source?.authors || "")}</span>
+        <span>${esc(source?.venue || "")}</span>
+      </div>
+    </article>
+    <div class="performance-chart" style="--rows:${rows.length}">${chartRows}</div>`;
 }
 
 /* ---------- benchmark detail / inspect questions ---------- */

@@ -8,3 +8,4 @@ data/audio
 CLAUDE.md
 AGENTS.md
 docs/audio/
+.env

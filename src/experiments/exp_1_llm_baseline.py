@@ -7,6 +7,7 @@ how much a text-only model can score — the floor that audio adds value over.
 from models.api import get_model_info, query_text_only
 from src.helpers.results import get_run_metadata, save_results
 from src.analysis.load import available_benchmarks, load_items
+from src.querying.common import run_stamp
 
 CONFIG = {
     "benchmarks": "all",   # or list of benchmark names
@@ -41,8 +42,8 @@ def run() -> None:
     metadata = get_run_metadata("exp_1_llm_baseline", model_info["model_id"], CONFIG)
 
     benchmarks = available_benchmarks()
-    all_items = []
     summary: dict[str, dict] = {}
+    date = run_stamp()
 
     for name in benchmarks:
         try:
@@ -57,12 +58,13 @@ def run() -> None:
 
         question_format = sorted({q.get("question_type", "") for q in questions if q.get("question_type")})
         correct = 0
+        benchmark_items = []
         for q in questions:
             prompt = CONFIG["prompt_template"].format(question=q["question"])
             response = query_text_only(prompt)
             is_correct = response.strip().lower() == str(q["correct_answer"]).strip().lower()
             correct += int(is_correct)
-            all_items.append({
+            benchmark_items.append({
                 "benchmark": name,
                 "question_format": question_format,
                 "question": q["question"],
@@ -75,5 +77,4 @@ def run() -> None:
         acc = correct / len(questions) if questions else 0.0
         summary[name] = {"n": len(questions), "accuracy": round(acc, 4)}
         print(f"{name}: {acc:.1%} ({correct}/{len(questions)})")
-
-    save_results(metadata, all_items, summary)
+        save_results(metadata, benchmark_items, summary[name], benchmark=name, date=date)

@@ -6,15 +6,17 @@ results, and the live prompt sources, then emits a self-contained site under
 
     docs/index.html  docs/styles.css  docs/app.js   (static, hand-written)
     docs/data/*.json                                (generated here)
-    docs/audio/<dataset>/...                        (local audio, gitignored)
+    docs/audio/<dataset>/...                        (optional local audio, gitignored)
 
-Audio can be served locally from gitignored ``docs/audio`` while developing, or
-from an external static host by setting ``AMI_AUDIO_BASE_URL`` before building
-the site JSON. The hosted layout mirrors ``data/audio/<dataset>/...`` so the
-website can play all available benchmark clips without committing the audio.
+Audio is normally served from an external static host by setting
+``AMI_AUDIO_BASE_URL`` before building the site JSON. The hosted layout mirrors
+the normalized ``audio_url`` metadata for each benchmark, so the website can
+play all available benchmark clips without committing or locally keeping the
+multi-gigabyte audio corpus. Local ``docs/audio``/``data/audio`` files are only
+fallbacks for development and duration recomputation.
 
     python renderers/site/build_site.py --list
-    AMI_AUDIO_BASE_URL=https://example.com/audio python renderers/site/build_site.py --target questions --no-audio
+    AMI_AUDIO_BASE_URL=https://huggingface.co/datasets/milan477/toward-ami/resolve/main python renderers/site/build_site.py --target questions --no-audio
     python renderers/site/build_site.py --target questions --no-audio
     python renderers/site/build_site.py --target benchmarks
 
@@ -43,12 +45,14 @@ DOCS = ROOT / "docs"
 DATA_DIR = DOCS / "data"
 QUESTION_DATA_DIR = DATA_DIR / "questions"
 AUDIO_OUT = DOCS / "audio"
-AUDIO_DATA = ROOT / "data" / "audio"
 BENCHMARK_DATA = ROOT / "data" / "benchmarks"
 AUDIO_SRC = ROOT / "data" / "audio" / "mmar"
 PAPER_PDF = ROOT / "paper" / "paper.pdf"
 REPO_URL = "https://github.com/milan477/toward-ami"
 HOSTED_AUDIO_BASE_URL = os.environ.get("AMI_AUDIO_BASE_URL", "").rstrip("/")
+# Benchmarks present in the catalog whose source metadata has been imported but
+# whose clips have not yet been added to the hosted/local audio collection.
+METADATA_ONLY_AUDIO_DATASETS = {"aha"}
 DATA_TARGETS = (
     "meta",
     "news",
@@ -56,6 +60,7 @@ DATA_TARGETS = (
     "benchmarks",
     "evaluation",
     "overview",
+    "literature-results",
     "prompts",
     "questions",
     "paper",
@@ -158,15 +163,46 @@ def _parse_distractors(raw: str) -> list[str]:
 
 
 def _parse_listish(raw: str) -> list[str]:
-    if _is_empty_list_marker(raw):
+    text = str(raw or "").strip()
+    if not text or _is_empty_list_marker(text):
         return []
+    decoder = json.JSONDecoder()
+    out: list[str] = []
+    pos = 0
+    decoded_json = False
+    while pos < len(text):
+        while pos < len(text) and text[pos].isspace():
+            pos += 1
+        try:
+            val, end = decoder.raw_decode(text, pos)
+        except json.JSONDecodeError:
+            break
+        decoded_json = True
+        if isinstance(val, list):
+            out.extend(str(x).strip() for x in val if str(x).strip() and not _is_empty_list_marker(str(x)))
+        elif str(val).strip() and not _is_empty_list_marker(str(val)):
+            out.append(str(val).strip())
+        pos = end
+    if decoded_json:
+        return _dedupe(out)
     try:
-        val = json.loads(raw) if raw else []
+        val = json.loads(text)
     except (json.JSONDecodeError, TypeError):
-        return [str(raw)] if raw else []
+        return _dedupe([part.strip() for part in re.split(r"[,;]", text) if part.strip()])
     if isinstance(val, list):
-        return [str(x) for x in val if str(x).strip() and not _is_empty_list_marker(str(x))]
+        return _dedupe([str(x).strip() for x in val if str(x).strip() and not _is_empty_list_marker(str(x))])
     return [str(val)] if str(val).strip() and not _is_empty_list_marker(str(val)) else []
+
+
+def _dedupe(values: list[str]) -> list[str]:
+    seen = set()
+    out = []
+    for value in values:
+        key = value.lower()
+        if value and key not in seen:
+            seen.add(key)
+            out.append(value)
+    return out
 
 
 def _compact_key(value: str) -> str:
@@ -181,8 +217,11 @@ def _display_name_map(benchmarks: list[dict]) -> dict[str, str]:
     names = {_compact_key(b["name"]): b["name"] for b in benchmarks}
     return {
         "mmar": "MMAR",
+        "mmau": names.get("mmau", "MMAU"),
         "mmau_pro": names.get("mmaupro", "MMAU-Pro"),
         "muchomusic": names.get("muchomusic", "MuChoMusic"),
+        "hummusqa": names.get("hummusqa", "HumMusQA"),
+        "pitchbench": names.get("pitchbench", "PitchBench"),
         **names,
     }
 
@@ -263,10 +302,82 @@ def _has_empty_list_marker(raw: str) -> bool:
     return "[]" in str(raw or "").replace(" ", "")
 
 
-def _site_category_values(dataset: str, row: dict) -> dict[str, list[str]]:
-    from src.analysis.statistics import category_values_for_row
+def _category_cell_values(raw: str) -> list[str]:
+    text = str(raw or "").strip()
+    if not text:
+        return []
+    if text.startswith("["):
+        return _parse_listish(text)
+    return [text]
 
-    categories = category_values_for_row(dataset, row)
+
+def _category_values_for_row(dataset: str, row: dict) -> dict[str, list[str]]:
+    if dataset == "mmar":
+        return {
+            "modality": _category_cell_values(row.get("category_1", "")),
+            "category": _category_cell_values(row.get("category_2", "")),
+            "genre": [],
+            "skill": _category_cell_values(row.get("category_3", "")),
+        }
+    if dataset == "mmau_pro":
+        skills = _parse_listish(row.get("skills", ""))
+        categories = []
+        if _parse_listish(row.get("perceptual_skills", "")):
+            categories.append("perceptual")
+        if _parse_listish(row.get("reasoning_skills", "")):
+            categories.append("reasoning")
+        return {
+            "modality": _category_cell_values(row.get("category_1", "")) or _category_cell_values(row.get("category_2", "")),
+            "category": categories,
+            "genre": [],
+            "skill": skills,
+        }
+    if dataset == "mmau":
+        return {
+            "modality": _category_cell_values(row.get("category_1", "")),
+            "category": _category_cell_values(row.get("category_2", "")),
+            "genre": [],
+            "skill": _category_cell_values(row.get("category_3", "")),
+        }
+    if dataset == "muchomusic":
+        skills = _parse_listish(row.get("music_knowledge", "")) + _parse_listish(row.get("music_reasoning", ""))
+        return {
+            "modality": ["music"],
+            "category": [],
+            "genre": _category_cell_values(row.get("category_1", "")),
+            "skill": _dedupe(skills),
+        }
+    if dataset == "hummusqa":
+        return {
+            "modality": ["music"],
+            "category": _category_cell_values(row.get("category_1", "")),
+            "genre": [],
+            "skill": _category_cell_values(row.get("category_2", "")),
+        }
+    if dataset == "pitchbench":
+        return {
+            "modality": ["music"],
+            "category": _category_cell_values(row.get("category_2", "")),
+            "genre": [],
+            "skill": _category_cell_values(row.get("category_3", "")),
+        }
+    if dataset == "parsa_bench":
+        return {
+            "modality": _category_cell_values(row.get("category_1", "")),
+            "category": _category_cell_values(row.get("category_2", "")),
+            "genre": [],
+            "skill": _category_cell_values(row.get("task", "")),
+        }
+    return {
+        "modality": _category_cell_values(row.get("category_1", "")),
+        "category": _category_cell_values(row.get("category_2", "")),
+        "genre": [],
+        "skill": _parse_listish(row.get("skills", "")),
+    }
+
+
+def _site_category_values(dataset: str, row: dict) -> dict[str, list[str]]:
+    categories = _category_values_for_row(dataset, row)
     for key, values in list(categories.items()):
         categories[key] = [
             "none specified" if _is_empty_list_marker(value) else value
@@ -289,21 +400,42 @@ def _question_id(dataset: str, row: dict, idx: int) -> str:
     return stem or f"{dataset}:{idx + 1}"
 
 
-def load_questions(benchmarks: list[dict], models: dict[str, dict]) -> tuple[list[dict], set[tuple[str, str]], dict[str, str], list[str]]:
-    from src.analysis.statistics import (
-        _audio_duration,
-        _audio_names,
-        _build_audio_index,
-    )
+def _existing_question_cache() -> dict[tuple[str, str], dict]:
+    """Read generated question metadata so rebuilds without local audio keep stats."""
+    cache: dict[tuple[str, str], dict] = {}
+    paths = sorted(QUESTION_DATA_DIR.glob("*.json"))
+    if not paths and (DATA_DIR / "questions.json").exists():
+        paths = [DATA_DIR / "questions.json"]
+    for path in paths:
+        try:
+            rows = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        for row in rows:
+            qid = str(row.get("qid") or "")
+            benchmark = str(row.get("benchmark") or "")
+            if qid and benchmark:
+                cache[(benchmark, qid)] = row
+                cache[("", qid)] = row
+    return cache
 
+
+def load_questions(benchmarks: list[dict], models: dict[str, dict]) -> tuple[list[dict], set[tuple[str, str]], dict[str, str], list[str]]:
     display_names = _display_name_map(benchmarks)
     questions: list[dict] = []
     stems: set[tuple[str, str]] = set()
     q_piac: dict[str, str] = {}
     eval_qids: list[str] = []
     audio_indexes: dict[str, dict] = {}
+    question_cache = _existing_question_cache()
 
     def audio_durations(dataset: str, audio_url: str) -> list[float]:
+        from src.analysis.statistics import (
+            _audio_duration,
+            _audio_names,
+            _build_audio_index,
+        )
+
         if dataset not in audio_indexes:
             audio_indexes[dataset] = _build_audio_index(dataset)
         index = audio_indexes[dataset]
@@ -329,6 +461,13 @@ def load_questions(benchmarks: list[dict], models: dict[str, dict]) -> tuple[lis
                     stems.add((dataset, stem))
                 if piac:
                     q_piac[qid] = piac
+                cached = question_cache.get((benchmark, qid)) or question_cache.get(("", qid))
+                if HOSTED_AUDIO_BASE_URL:
+                    durations = (cached or {}).get("audio_duration_seconds") or []
+                else:
+                    durations = audio_durations(dataset, r.get("audio_url", ""))
+                    if not durations and cached:
+                        durations = cached.get("audio_duration_seconds") or []
                 rec = {
                     "qid": qid,
                     "benchmark": benchmark,
@@ -344,9 +483,12 @@ def load_questions(benchmarks: list[dict], models: dict[str, dict]) -> tuple[lis
                     "answer_format": r.get("answer_format", ""),
                     "correct_answer": r.get("correct_answer", ""),
                     "distractors": _parse_distractors(r.get("distractors", "")),
+                    "audio_source": r.get("audio_url", ""),
                     "audio_stem": stem,
-                    "audio_duration_seconds": audio_durations(dataset, r.get("audio_url", "")),
+                    "audio_duration_seconds": durations,
                     "categories": _site_category_values(dataset, r),
+                    "_cached_audio_known": cached is not None and "audio" in cached,
+                    "_cached_audio": cached.get("audio") if cached else None,
                 }
                 has_result = False
                 for mid, data in models.items():
@@ -840,51 +982,34 @@ def existing_site_audio(stems: set[tuple[str, str]]) -> dict[tuple[str, str], st
     return mapping
 
 
-def _audio_lookup_keys(stem: str) -> tuple[str, ...]:
-    return (
-        stem,
-        f"{stem}.wav",
-        f"{stem}.mp3",
-        f"{stem}.ogg",
-        f"{stem}.flac",
-        f"{stem}.m4a",
-        f"{stem}.opus",
-        f"{stem}.2min",
-        f"{stem}.2min.mp3",
-    )
+def _hosted_audio_rel(dataset: str, audio_source: str) -> str:
+    """Return the hosted-audio path relative to AMI_AUDIO_BASE_URL."""
+    first = str(audio_source or "").split(";", 1)[0].strip()
+    if not first:
+        return ""
+    first = first.replace("\\", "/").lstrip("./")
+
+    if dataset == "muchomusic" and ":" in first and "/" not in first:
+        source, _, ident = first.partition(":")
+        ident = ident.strip()
+        if source == "sdd" and ident:
+            return f"muchomusic/sdd/{ident}.2min.mp3"
+        if source == "musiccaps" and ident:
+            return f"muchomusic/musiccaps/{ident}.wav"
+
+    if ":" in first and "/" not in first:
+        _, _, first = first.partition(":")
+    first = first.removeprefix("audio/").removeprefix("data/")
+    return f"{dataset}/{first}" if first else ""
 
 
-def hosted_audio(stems: set[tuple[str, str]]) -> dict[tuple[str, str], str]:
-    """Map stems to externally hosted audio URLs mirroring data/audio."""
-    if not HOSTED_AUDIO_BASE_URL:
-        return {}
-
-    from src.analysis.statistics import _build_audio_index
-
-    mapping: dict[tuple[str, str], str] = {}
-    indexes: dict[str, dict[str, Path]] = {}
-    for dataset, stem in stems:
-        if dataset not in indexes:
-            indexes[dataset] = _build_audio_index(dataset)
-        index = indexes[dataset]
-        path = None
-        for key in _audio_lookup_keys(stem):
-            path = index.get(key)
-            if path:
-                break
-        if not path:
-            continue
-        try:
-            rel = path.relative_to(AUDIO_DATA)
-        except ValueError:
-            rel = Path(dataset) / path.name
-        mapping[(dataset, stem)] = f"{HOSTED_AUDIO_BASE_URL}/{quote(rel.as_posix(), safe='/')}"
-
-    print(
-        f"  audio: hosted {len(mapping)}/{len(stems)} available clips "
-        f"from {HOSTED_AUDIO_BASE_URL}"
-    )
-    return mapping
+def hosted_audio_url(dataset: str, audio_source: str) -> str:
+    if dataset in METADATA_ONLY_AUDIO_DATASETS:
+        return ""
+    rel = _hosted_audio_rel(dataset, audio_source)
+    if not rel:
+        return ""
+    return f"{HOSTED_AUDIO_BASE_URL}/{quote(rel, safe='/')}"
 
 
 def write_json(name: str, payload, *, emit_js: bool = True) -> Path:
@@ -962,14 +1087,31 @@ def question_payload(no_audio: bool) -> tuple[list[dict], set[tuple[str, str]], 
     benchmarks = load_benchmarks()
     questions, stems, q_piac, eval_qids = load_questions(benchmarks, models)
 
-    audio_map = hosted_audio(stems) if HOSTED_AUDIO_BASE_URL else existing_site_audio(stems)
+    audio_map = {} if HOSTED_AUDIO_BASE_URL else existing_site_audio(stems)
     if not no_audio and not HOSTED_AUDIO_BASE_URL:
         missing_mmar = {pair for pair in stems if pair[0] == "mmar" and pair not in audio_map}
         audio_map = {**audio_map, **transcode_audio(missing_mmar)}
+    hosted_pairs: set[tuple[str, str]] = set()
     for rec in questions:
         dataset = rec.get("audio_dataset") or _compact_key(rec["benchmark"])
-        rec["audio"] = audio_map.get((dataset, rec["audio_stem"]))
+        if HOSTED_AUDIO_BASE_URL:
+            audio = hosted_audio_url(dataset, rec.get("audio_source", ""))
+            if rec.get("_cached_audio_known") and not rec.get("_cached_audio"):
+                audio = ""
+            rec["audio"] = audio or None
+            if rec["audio"]:
+                hosted_pairs.add((dataset, rec["audio_stem"]))
+        else:
+            rec["audio"] = audio_map.get((dataset, rec["audio_stem"]))
         del rec["audio_stem"]
+        del rec["audio_source"]
+        del rec["_cached_audio_known"]
+        del rec["_cached_audio"]
+    if HOSTED_AUDIO_BASE_URL:
+        print(
+            f"  audio: hosted {len(hosted_pairs)}/{len(stems)} available clips "
+            f"from {HOSTED_AUDIO_BASE_URL}"
+        )
     return questions, stems, q_piac, eval_qids
 
 
@@ -1002,6 +1144,13 @@ def build_overview_target() -> None:
         mid: overview_for(data, eval_qids, q_piac)
         for mid, data in models.items()
     })
+
+
+def build_literature_results_target() -> None:
+    from src.reporting.literature_results import rebuild_database, site_payload
+
+    database = rebuild_database()
+    write_json("literature_results.json", site_payload(database))
 
 
 def build_paper_target() -> None:
@@ -1049,6 +1198,7 @@ def main() -> None:
         "benchmarks": build_benchmarks_target,
         "evaluation": build_evaluation_target,
         "overview": build_overview_target,
+        "literature-results": build_literature_results_target,
         "prompts": build_prompts_target,
         "questions": lambda: build_questions_target(args.no_audio),
         "paper": build_paper_target,

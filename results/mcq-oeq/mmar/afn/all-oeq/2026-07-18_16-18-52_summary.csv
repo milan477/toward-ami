@@ -1,0 +1,31 @@
+qid,category,skills,category_1,category_2,category_3,category_4,question,answer_format,example_answer,prompt,reference_answer,response,judge_score,judge_score_norm,verdict,grounded,hallucinated,hallucination_level,judge_rationale,skipped,error
+BV1vc411S7ro_00-00-00_00-00-30,,,music,Perception Layer,Environmental Perception and Reasoning,,"In the video, the woman is singing. Is the location indoors or outdoors?",,,"Listen to the audio and answer the question in 1-2 sentences. Be specific and ground your answer in what you hear.
+
+Question: In the video, the woman is singing. Is the location indoors or outdoors?",Outdoors,,,,,,,,,,500 Server Error: Internal Server Error for url: https://dresses-side-affairs-jump.trycloudflare.com/v1/audio/generate | Internal Server Error
+opWHxQ7RC4I_00-00-00_00-00-16,,,mix-music-speech,Semantic Layer,Content Analysis,,Are the two segments of singing in the video from the same section of the same song?,,,"Listen to the audio and answer the question in 1-2 sentences. Be specific and ground your answer in what you hear.
+
+Question: Are the two segments of singing in the video from the same section of the same song?",Yes,,,,,,,,,,500 Server Error: Internal Server Error for url: https://dresses-side-affairs-jump.trycloudflare.com/v1/audio/generate | Internal Server Error
+WfN8-7uAfjY_00-00-00_00-00-29,,,mix-music-speech,Semantic Layer,Content Analysis,,"In the four pieces of music, which one is the real classical piano sound?",,,"Listen to the audio and answer the question in 1-2 sentences. Be specific and ground your answer in what you hear.
+
+Question: In the four pieces of music, which one is the real classical piano sound?",Fourth,,,,,,,,,,500 Server Error: Internal Server Error for url: https://dresses-side-affairs-jump.trycloudflare.com/v1/audio/generate | Internal Server Error
+bNJthUa3VSc_00-00-00_00-00-27,,,mix-music-speech,Semantic Layer,Content Analysis,,Why does the singer scream at the end,,,"Listen to the audio and answer the question in 1-2 sentences. Be specific and ground your answer in what you hear.
+
+Question: Why does the singer scream at the end",Because she held her breath to finish the whole song,,,,,,,,,,500 Server Error: Internal Server Error for url: https://dresses-side-affairs-jump.trycloudflare.com/v1/audio/generate | Internal Server Error
+IinTv0PZ2_0_00-00-00_00-00-28,,,mix-sound-music,Cultural Layer,Professional Knowledge and Reasoning,,Which country is the performance in this video most likely from,,,"Listen to the audio and answer the question in 1-2 sentences. Be specific and ground your answer in what you hear.
+
+Question: Which country is the performance in this video most likely from",Japan,,,,,,,,,,500 Server Error: Internal Server Error for url: https://dresses-side-affairs-jump.trycloudflare.com/v1/audio/generate | Internal Server Error
+pUZeSYsU0Uk_00-01-40_00-02-00,,,music,Cultural Layer,Professional Knowledge and Reasoning,,"What emotion does this piece of music express, happiness or sadness",,,"Listen to the audio and answer the question in 1-2 sentences. Be specific and ground your answer in what you hear.
+
+Question: What emotion does this piece of music express, happiness or sadness",Sadness,,,,,,,,,,500 Server Error: Internal Server Error for url: https://dresses-side-affairs-jump.trycloudflare.com/v1/audio/generate | Internal Server Error
+5cV1y1uDhpk_00-00-00_00-00-22,,,music,Cultural Layer,Professional Knowledge and Reasoning,,"Different violins are used in the performance in the video, which violin do you think is more expensive?",,,"Listen to the audio and answer the question in 1-2 sentences. Be specific and ground your answer in what you hear.
+
+Question: Different violins are used in the performance in the video, which violin do you think is more expensive?",The second one,,,,,,,,,,500 Server Error: Internal Server Error for url: https://dresses-side-affairs-jump.trycloudflare.com/v1/audio/generate | Internal Server Error
+kxWPzFEkv3o_00-00-00_00-00-12,,,mix-music-speech,Perception Layer,Temporal Analysis,,At which second does the audio play slowly,,,"Listen to the audio and answer the question in 1-2 sentences. Be specific and ground your answer in what you hear.
+
+Question: At which second does the audio play slowly",00:06:00,,,,,,,,,,500 Server Error: Internal Server Error for url: https://dresses-side-affairs-jump.trycloudflare.com/v1/audio/generate | Internal Server Error
+__sJVNK0enM_00-00-00_00-00-19,,,music,Semantic Layer,Content Analysis,,Which segment of music is played the best,,,"Listen to the audio and answer the question in 1-2 sentences. Be specific and ground your answer in what you hear.
+
+Question: Which segment of music is played the best",First segment,,,,,,,,,,500 Server Error: Internal Server Error for url: https://dresses-side-affairs-jump.trycloudflare.com/v1/audio/generate | Internal Server Error
+v2oCIDFP4oU_00-00-29_00-00-59,,,music,Perception Layer,Counting and Statistics,,How many types of instruments appeared in the video in total,,,"Listen to the audio and answer the question in 1-2 sentences. Be specific and ground your answer in what you hear.
+
+Question: How many types of instruments appeared in the video in total",3,,,,,,,,,,500 Server Error: Internal Server Error for url: https://dresses-side-affairs-jump.trycloudflare.com/v1/audio/generate | Internal Server Error

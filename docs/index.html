@@ -24,12 +24,6 @@
         <a class="nav-link" href="#evaluation" data-route="evaluation">Evaluation</a>
         <a class="nav-link" href="#results" data-route="results">Results</a>
       </nav>
-      <a class="home-bubble nav-link" href="#home" data-route="home" aria-label="Home">
-        <video class="vid-bg" src="vid.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4.5 10.7 12 4.6l7.5 6.1v8.1a1.6 1.6 0 0 1-1.6 1.6h-4.1v-5.6h-3.6v5.6H6.1a1.6 1.6 0 0 1-1.6-1.6v-8.1Z" />
-        </svg>
-      </a>
     </div>
   </div>
 </header>
@@ -39,7 +33,6 @@
   <section class="page home" id="page-home">
     <div class="home-grid">
       <div class="home-hero">
-        <p class="home-toward">toward</p>
         <h1 class="display home-title">Artificial<br />Musical<br />Intelligence</h1>
       </div>
       <div class="home-bottom">
@@ -130,24 +123,34 @@
     <p class="hint">Click a category to see its full definition, coverage, example, and evaluation methods.</p>
     <article id="piac" class="prose"></article>
 
-    <h2 class="section-title">Prompts</h2>
-    <div id="prompts" class="prompts"></div>
+    <section class="evaluation-results">
+      <h2 class="section-title">Evaluation study</h2>
+      <p class="lede">The MMAR music set, answered by two models both as multiple
+        choice (apparent skill) and open-ended (actual skill), with open-ended
+        answers graded by a PIAC-aware judge.</p>
+      <div id="evaluation-results-overview" class="model-compare"></div>
+      <h3 class="subsection-title">By PIAC category</h3>
+      <div class="table-wrap"><table id="evaluation-piac-table" class="data-table"></table></div>
+    </section>
   </section>
 
   <!-- RESULTS -->
   <section class="page" id="page-results">
     <header class="page-head">
       <h1 class="display sm">Results</h1>
-      <p class="lede">The MMAR music set, answered by two models both as multiple
-        choice (apparent skill) and open-ended (actual skill), the open-ended
-        answers graded by a PIAC-aware judge. Shown side by side.</p>
-      <p class="disclaimer">More results coming soon.</p>
+      <p class="lede">Published benchmark performance, linked at the level of each
+        reported value to its original source.</p>
     </header>
-
-    <div id="results-overview" class="model-compare"></div>
-
-    <h2 class="section-title">By PIAC category</h2>
-    <div class="table-wrap"><table id="piac-table" class="data-table"></table></div>
+    <div class="results-controls controls">
+      <label>Benchmark
+        <select id="results-benchmark"></select>
+      </label>
+      <label>Measure
+        <select id="results-metric"></select>
+      </label>
+      <span class="count" id="results-count"></span>
+    </div>
+    <div id="literature-results"></div>
   </section>
 </main>
 

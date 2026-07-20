@@ -1,0 +1,6 @@
+openrouter:google/gemini-3-flash-preview - mmar all OEQ (PIAC-judged)
+================================================
+Run: 2026-07-18_16-42-54   commit 731cb3ef81bde435c7eeda9b5883951148f1e09e
+mean score (0-1): 0.0000   hallucination: 0.00% (0/0)
+
+By PIAC category (mean score | n):

@@ -24,8 +24,9 @@ sys.path.insert(0, str(Path(__file__).parent))
 from common import BENCH_DIR, bench_dir, bench_path
 
 # Per-dataset: which normalized column holds the audio modality label.
-# None = the whole dataset is music; keep every row.
+# None = keep the whole dataset as its benchmark selection.
 MODALITY_COLUMN = {
+    "aha": None,
     "hummusqa": None,
     "mmau": "category_1",
     "mmar": "category_1",

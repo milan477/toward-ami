@@ -32,8 +32,9 @@ from src.config import (
     DEFAULT_MODALITY,
     DEFAULT_RUNNER_MODEL,
     FIGURES_DIR,
+    RESULTS_DIR,
 )
-from src.querying.common import model_slug, result_dir, resolve_path
+from src.querying.common import latest_result_dir, model_slug, resolve_path
 
 FIG_DIR = FIGURES_DIR
 PIAC_ORDER = ["perceptual", "inferential", "affective", "contextual"]
@@ -193,15 +194,24 @@ def write_report(df, by_piac, by_skill, halluc_levels, oeq_path, mcq_path, out_d
 def run(annotated_path: Path, oeq_path: Path | None, mcq_path: Path | None,
         benchmark: str, model_spec: str, modality: str) -> None:
     annotated_path = resolve_path(annotated_path)
-    oeq_glob = str(result_dir(benchmark, model_spec, f"{modality}-oeq-piac") / "*_summary.csv")
-    mcq_glob = str(result_dir(benchmark, model_spec, modality) / "*_summary.csv")
-    oeq_path = oeq_path or _latest(oeq_glob)
-    mcq_path = mcq_path or _latest(mcq_glob)
+    run_dir = latest_result_dir("exp_0_mcq_oeq", benchmark, model_spec)
+    new_oeq = run_dir / "oeq" / "summary.csv" if run_dir else None
+    new_mcq = run_dir / "mcq" / "summary.csv" if run_dir else None
+
+    # Read legacy variant-based runs when no dated run exists yet.
+    legacy_root = RESULTS_DIR / "mcq-oeq" / benchmark / model_slug(model_spec)
+    oeq_glob = str(legacy_root / f"{modality}-oeq" / "*_summary.csv")
+    mcq_glob = str(legacy_root / modality / "*_summary.csv")
+    oeq_path = oeq_path or (new_oeq if new_oeq and new_oeq.exists() else _latest(oeq_glob))
+    mcq_path = mcq_path or (new_mcq if new_mcq and new_mcq.exists() else _latest(mcq_glob))
     if not oeq_path or not mcq_path:
-        raise SystemExit(f"Need both an OEQ-PIAC summary ({oeq_glob}) and an MCQ summary "
-                         f"({mcq_glob}). Run `python -m src.run experiments mcq-oeq` first.")
+        expected = (run_dir or RESULTS_DIR / "exp_0_mcq_oeq" / benchmark
+                    / model_slug(model_spec))
+        raise SystemExit(f"Need both MCQ and OEQ summaries below {expected}. "
+                         "Run `python -m src.run experiments mcq-oeq` first.")
     df = load_merged(annotated_path, oeq_path, mcq_path)
-    out_dir = oeq_path.parent            # write next to the OEQ summary being analyzed
+    out_dir = (run_dir / "analysis" if run_dir and oeq_path == new_oeq
+               else oeq_path.parent)
     slug = model_slug(model_spec)
 
     halluc_levels = (df[df["hallucinated"]]["hallucination_level"]

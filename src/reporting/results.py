@@ -12,7 +12,7 @@ from src.querying.common import audio_stem
 
 MCQ_COLS = [
     "qid", "category", "skills", "category_1", "category_2", "category_3", "category_4",
-    "question", "correct_answer", "correct_letter", "pred_letter", "pred_answer",
+    "question", "prompt", "correct_answer", "correct_letter", "pred_letter", "pred_answer",
     "response", "correct", "skipped", "error",
 ]
 
@@ -58,10 +58,10 @@ def write_mcq_outputs(out_dir: Path, stamp: str, metadata: dict,
             k: round(v[0] / v[1], 4) for k, v in by_piac.items() if v[1]
         },
     }
-    _write_csv(out_dir / f"{stamp}_summary.csv", MCQ_COLS, records)
-    _write_json(out_dir / f"{stamp}_comparison.json",
+    _write_csv(out_dir / "summary.csv", MCQ_COLS, records)
+    _write_json(out_dir / "comparison.json",
                 {**metadata, "form": "mcq", "summary": summary, "items": records})
-    _write_text(out_dir / f"{stamp}_report.txt", _mcq_report(metadata, stamp, accuracy, correct, scored, by_piac))
+    _write_text(out_dir / "report.txt", _mcq_report(metadata, stamp, accuracy, correct, scored, by_piac))
     return summary
 
 
@@ -83,15 +83,15 @@ def write_oeq_outputs(out_dir: Path, stamp: str, metadata: dict,
             k: round(sum(v) / len(v), 4) for k, v in by_piac.items()
         },
     }
-    _write_csv(out_dir / f"{stamp}_summary.csv", OEQ_COLS, records)
-    _write_json(out_dir / f"{stamp}_comparison.json", {
+    _write_csv(out_dir / "summary.csv", OEQ_COLS, records)
+    _write_json(out_dir / "comparison.json", {
         **metadata,
         "form": "oeq",
         "judge": "PIAC category-specific",
         "summary": summary,
         "items": records,
     })
-    _write_text(out_dir / f"{stamp}_report.txt", _oeq_report(metadata, stamp, mean, hallucinated, scored, by_piac, summary))
+    _write_text(out_dir / "report.txt", _oeq_report(metadata, stamp, mean, hallucinated, scored, by_piac, summary))
     return summary
 
 
@@ -118,10 +118,10 @@ def write_probe_outputs(out_dir: Path, stamp: str, metadata: dict,
         "n_by_level": {level: len(vals) for level, vals in by_level_correct.items()},
         "chain": chain,
     }
-    _write_csv(out_dir / f"{stamp}_summary.csv", PROBE_COLS, records)
-    _write_json(out_dir / f"{stamp}_comparison.json",
+    _write_csv(out_dir / "summary.csv", PROBE_COLS, records)
+    _write_json(out_dir / "comparison.json",
                 {**metadata, "summary": summary, "items": records})
-    _write_text(out_dir / f"{stamp}_report.txt", _probe_report(metadata, summary))
+    _write_text(out_dir / "report.txt", _probe_report(metadata, summary))
     return summary
 
 

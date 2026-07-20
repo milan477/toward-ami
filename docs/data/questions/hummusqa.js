@@ -1,7 +1,7 @@
 window.__AMI_DATA__ = window.__AMI_DATA__ || {};
 window.__AMI_DATA__["questions/hummusqa"] = [
  {
-  "qid": "q1_1204663",
+  "qid": "hummusqa_q_1",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which of the following best fits the guitar pattern heard at the beginning of this excerpt?",
@@ -19,9 +19,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Alberti",
    "walking bass"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -37,7 +35,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q1_1204663.mp3"
  },
  {
-  "qid": "q2_1204663",
+  "qid": "hummusqa_q_2",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which section of the song follows this harmonic progression: vi, IV, I, V?",
@@ -55,9 +53,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "bridge",
    "outro"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -73,7 +69,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q2_1204663.mp3"
  },
  {
-  "qid": "q3_1204663",
+  "qid": "hummusqa_q_3",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of beat do you hear in the drums?",
@@ -91,9 +87,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "soul",
    "jazz"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -109,7 +103,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q3_1204663.mp3"
  },
  {
-  "qid": "q4_196219",
+  "qid": "hummusqa_q_4",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of accompaniment best defines the beginning of the song?",
@@ -127,9 +121,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "broken chords",
    "counterpoint"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -145,7 +137,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q4_196219.mp3"
  },
  {
-  "qid": "q5_196219",
+  "qid": "hummusqa_q_5",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of articulation best defines the melody of this song?",
@@ -163,9 +155,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "sforzando",
    "staccato"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -181,7 +171,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q5_196219.mp3"
  },
  {
-  "qid": "q6_196219",
+  "qid": "hummusqa_q_6",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What level of ornamentation is present in the melody?",
@@ -199,9 +189,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "medium-low",
    "none"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -217,7 +205,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q6_196219.mp3"
  },
  {
-  "qid": "q7_171574",
+  "qid": "hummusqa_q_7",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of beat do you hear in the drums?",
@@ -235,9 +223,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "eighth note groove",
    "shuffle groove"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -251,7 +237,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q7_171574.mp3"
  },
  {
-  "qid": "q8_171574",
+  "qid": "hummusqa_q_8",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How many chords are played in the song?",
@@ -269,9 +255,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "three",
    "four"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -285,7 +269,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q8_171574.mp3"
  },
  {
-  "qid": "q9_171574",
+  "qid": "hummusqa_q_9",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of filter is applied to the melodic instruments at the beginning of the song?",
@@ -303,9 +287,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Band Pass Filter",
    "Band Stop Filter (Notch)"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -319,7 +301,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q9_171574.mp3"
  },
  {
-  "qid": "q10_1093606",
+  "qid": "hummusqa_q_10",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What effect is applied to the vocals in this track?",
@@ -337,9 +319,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Ring modulation",
    "gated reverb"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -355,7 +335,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q10_1093606.mp3"
  },
  {
-  "qid": "q11_1093606",
+  "qid": "hummusqa_q_11",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What note of the chords does the bass play during the verse?",
@@ -373,9 +353,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "5th",
    "7th"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -392,7 +370,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q11_1093606.mp3"
  },
  {
-  "qid": "q12_1093606",
+  "qid": "hummusqa_q_12",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What instrument plays the lead sound in the introduction?",
@@ -410,9 +388,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Piano",
    "Ukulele"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -429,7 +405,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q12_1093606.mp3"
  },
  {
-  "qid": "q13_1045016",
+  "qid": "hummusqa_q_13",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What time signature do you hear in this song?",
@@ -447,9 +423,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "6/8",
    "12/16"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -463,7 +437,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q13_1045016.mp3"
  },
  {
-  "qid": "q14_1045016",
+  "qid": "hummusqa_q_14",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which instrument is introduced in the chorus?",
@@ -481,9 +455,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "electric piano",
    "trumpet"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -499,7 +471,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q14_1045016.mp3"
  },
  {
-  "qid": "q15_1045016",
+  "qid": "hummusqa_q_15",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Where is the shaker positioned in the stereo field?",
@@ -517,9 +489,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "down",
    "up"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -535,7 +505,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q15_1045016.mp3"
  },
  {
-  "qid": "q16_1100505",
+  "qid": "hummusqa_q_16",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of synthesizer sound predominates in the chorus behind the vocals?",
@@ -553,9 +523,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "pluck",
    "sequenced"
   ],
-  "audio_duration_seconds": [
-   70.06
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -571,7 +539,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q16_1100505.mp3"
  },
  {
-  "qid": "q17_1100505",
+  "qid": "hummusqa_q_17",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How are the hi-hats played in this song?",
@@ -589,9 +557,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "half open",
    "there are no hi hats"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -608,7 +574,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q17_1100505.mp3"
  },
  {
-  "qid": "q18_1100505",
+  "qid": "hummusqa_q_18",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "During the introduction, there is a low-pass filter that is changing its frequency. Could you say in which direction it is shifting?",
@@ -626,9 +592,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "down-up",
    "up-down"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -644,7 +608,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q18_1100505.mp3"
  },
  {
-  "qid": "q19_435883",
+  "qid": "hummusqa_q_19",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "During the introduction, the kick is played twice in each bar. On which beats?",
@@ -662,9 +626,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "one and three",
    "two and three"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -680,7 +642,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q19_435883.mp3"
  },
  {
-  "qid": "q20_435883",
+  "qid": "hummusqa_q_20",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "During the sax solo, what scale is the electric piano using?",
@@ -698,9 +660,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "minor pentatonic",
    "hexatonic"
   ],
-  "audio_duration_seconds": [
-   44.069
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -716,7 +676,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q20_435883.mp3"
  },
  {
-  "qid": "q21_435883",
+  "qid": "hummusqa_q_21",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "In the introduction, the snare is played on the...",
@@ -734,9 +694,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "center",
    "side"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -753,7 +711,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q21_435883.mp3"
  },
  {
-  "qid": "q22_1215874",
+  "qid": "hummusqa_q_22",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "During the introduction, the bass and the lead play their melodies in a...",
@@ -771,9 +729,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "oblique",
    "random"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -789,7 +745,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q22_1215874.mp3"
  },
  {
-  "qid": "q23_1215874",
+  "qid": "hummusqa_q_23",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "During the chorus, we can hear a very popular type of synthesizer sound. Can you guess its name?",
@@ -807,9 +763,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "triangle wave",
    "sine wave"
   ],
-  "audio_duration_seconds": [
-   32.052
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -825,7 +779,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q23_1215874.mp3"
  },
  {
-  "qid": "q24_1215874",
+  "qid": "hummusqa_q_24",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which of these tempos is most accurate for the song?",
@@ -843,9 +797,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "140 bpm",
    "150 bpm"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -861,7 +813,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q24_1215874.mp3"
  },
  {
-  "qid": "q25_135660",
+  "qid": "hummusqa_q_25",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "When the drums start playing, we can hear something known as...",
@@ -879,9 +831,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "swing",
    "double-time"
   ],
-  "audio_duration_seconds": [
-   56.059
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -895,7 +845,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q25_135660.mp3"
  },
  {
-  "qid": "q26_135660",
+  "qid": "hummusqa_q_26",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of pattern is the bass following in the verse?",
@@ -913,9 +863,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Dominant 7th arpeggio",
    "Root - 5th - 8va"
   ],
-  "audio_duration_seconds": [
-   32.052
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -931,7 +879,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q26_135660.mp3"
  },
  {
-  "qid": "q27_135660",
+  "qid": "hummusqa_q_27",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What effect predominates in the electric guitar's sound?",
@@ -949,9 +897,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Gated Reverb",
    "Flanger"
   ],
-  "audio_duration_seconds": [
-   34.064
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -967,7 +913,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q27_135660.mp3"
  },
  {
-  "qid": "q28_14013",
+  "qid": "hummusqa_q_28",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "The beginning of the song starts with a change in dynamics. What is this called?",
@@ -985,9 +931,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "sforzando",
    "fortepiano"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1003,7 +947,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q28_14013.mp3"
  },
  {
-  "qid": "q29_14013",
+  "qid": "hummusqa_q_29",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the interval between the two voices that play the melody?",
@@ -1021,9 +965,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "3rd",
    "5th"
   ],
-  "audio_duration_seconds": [
-   50.077
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1040,7 +982,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q29_14013.mp3"
  },
  {
-  "qid": "q30_14013",
+  "qid": "hummusqa_q_30",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the name of the ornament played by the piano in the melody?",
@@ -1058,9 +1000,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "wavy glissando",
    "down arpeggio"
   ],
-  "audio_duration_seconds": [
-   45.061
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1076,7 +1016,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q30_14013.mp3"
  },
  {
-  "qid": "q31_644172",
+  "qid": "hummusqa_q_31",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "The melody starts with four notes on D. Can you guess which note is played after?",
@@ -1094,9 +1034,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "G",
    "E"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1110,7 +1048,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q31_644172.mp3"
  },
  {
-  "qid": "q32_644172",
+  "qid": "hummusqa_q_32",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "This verse of the tune is written...",
@@ -1128,9 +1066,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Neither of the two",
    "It is not a tonal tune"
   ],
-  "audio_duration_seconds": [
-   47.073
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1146,7 +1082,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q32_644172.mp3"
  },
  {
-  "qid": "q33_644172",
+  "qid": "hummusqa_q_33",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the time signature of the tune?",
@@ -1164,9 +1100,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "6/8",
    "9/8"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1180,7 +1114,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q33_644172.mp3"
  },
  {
-  "qid": "q34_355486",
+  "qid": "hummusqa_q_34",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What compositional technique do the piano and the drums use in the introduction?",
@@ -1198,9 +1132,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "There is only a piano in this excerpt.",
    "counterpoint"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1216,7 +1148,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q34_355486.mp3"
  },
  {
-  "qid": "q35_355486",
+  "qid": "hummusqa_q_35",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "In the verse there is a dissonance that doesn't belong the key and mode of the tune. Do you know which one is it?",
@@ -1234,9 +1166,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "F",
    "B"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1252,7 +1182,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q35_355486.mp3"
  },
  {
-  "qid": "q36_355486",
+  "qid": "hummusqa_q_36",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What element does the piano player introduce in the piano solo?",
@@ -1270,9 +1200,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Polytonality",
    "Atonality"
   ],
-  "audio_duration_seconds": [
-   50.077
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1289,7 +1217,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q36_355486.mp3"
  },
  {
-  "qid": "q37_337998",
+  "qid": "hummusqa_q_37",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which percussion instrument plays during the verse?",
@@ -1307,9 +1235,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "cabasa",
    "timpani"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1325,7 +1251,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q37_337998.mp3"
  },
  {
-  "qid": "q38_337998",
+  "qid": "hummusqa_q_38",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Here, the singer uses a specific vocal technique. Do you know what it's called?",
@@ -1343,9 +1269,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Middle voice",
    "None of the above"
   ],
-  "audio_duration_seconds": [
-   60.003
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1361,7 +1285,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q38_337998.mp3"
  },
  {
-  "qid": "q39_337998",
+  "qid": "hummusqa_q_39",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of instruments predominate in the song?",
@@ -1379,9 +1303,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "electronic (digital)",
    "None of the above"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1397,7 +1319,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q39_337998.mp3"
  },
  {
-  "qid": "q40_457120",
+  "qid": "hummusqa_q_40",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "The piano introduction features a typical accompaniment style from a specific country. Which country is it?",
@@ -1415,9 +1337,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Argentina",
    "Venezuela"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1435,7 +1355,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q40_457120.mp3"
  },
  {
-  "qid": "q41_457120",
+  "qid": "hummusqa_q_41",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "The guitar is a typical accompaniment from a specific country. Which country is it?",
@@ -1453,9 +1373,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Argentina",
    "Venezuela"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1472,7 +1390,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q41_457120.mp3"
  },
  {
-  "qid": "q42_457120",
+  "qid": "hummusqa_q_42",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the singer pursuing with her tone?",
@@ -1490,9 +1408,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Loudness",
    "Detachment"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1509,7 +1425,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q42_457120.mp3"
  },
  {
-  "qid": "q43_1235672",
+  "qid": "hummusqa_q_43",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How would you define the harmonic rhythm of this tune?",
@@ -1527,9 +1443,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "hemiolic",
    "chaotic"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1545,7 +1459,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q43_1235672.mp3"
  },
  {
-  "qid": "q44_1235672",
+  "qid": "hummusqa_q_44",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How could you call the section after the second verse?",
@@ -1563,9 +1477,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Chorus",
    "Outro"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1579,7 +1491,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q44_1235672.mp3"
  },
  {
-  "qid": "q45_1235672",
+  "qid": "hummusqa_q_45",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "In what decade could this song be created?",
@@ -1597,9 +1509,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "1980",
    "1970"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1618,7 +1528,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q45_1235672.mp3"
  },
  {
-  "qid": "q46_510027",
+  "qid": "hummusqa_q_46",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What level of musicianship is required for a synth bass player to perform this song?",
@@ -1636,9 +1546,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Expert",
    "Professional"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1654,7 +1562,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q46_510027.mp3"
  },
  {
-  "qid": "q47_510027",
+  "qid": "hummusqa_q_47",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the intention behind adding new voices in the last section?",
@@ -1672,9 +1580,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Maintain the same energy level",
    "Introduce new energy"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1692,7 +1598,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q47_510027.mp3"
  },
  {
-  "qid": "q48_510027",
+  "qid": "hummusqa_q_48",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Does this song have a differentiated chorus section?",
@@ -1710,9 +1616,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Yes, but it is more of a C section",
    "No, it is exactly the same as the verse"
   ],
-  "audio_duration_seconds": [
-   46.054
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1726,7 +1630,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q48_510027.mp3"
  },
  {
-  "qid": "q49_1149194",
+  "qid": "hummusqa_q_49",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the most obvious digital music techniques used in this tune?",
@@ -1744,9 +1648,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "pitch blending",
    "resynthesizing"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1762,7 +1664,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q49_1149194.mp3"
  },
  {
-  "qid": "q50_1149194",
+  "qid": "hummusqa_q_50",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Where would you imagine this song being played?",
@@ -1780,9 +1682,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "During a romantic dinner",
    "After exercising"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1799,7 +1699,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q50_1149194.mp3"
  },
  {
-  "qid": "q51_1149194",
+  "qid": "hummusqa_q_51",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What would you expect a professional jazz musician to say about this tune?",
@@ -1817,9 +1717,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "I would like to sing it.",
    "It would be the first song I would listen to after a gig."
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1837,7 +1735,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q51_1149194.mp3"
  },
  {
-  "qid": "q52_1107251",
+  "qid": "hummusqa_q_52",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How would you describe the electric guitar motif?",
@@ -1855,9 +1753,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "diverse",
    "unstable"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1873,7 +1769,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q52_1107251.mp3"
  },
  {
-  "qid": "q53_1107251",
+  "qid": "hummusqa_q_53",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Does this tune explore any themes other than love?",
@@ -1891,9 +1787,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "It depends on the listener's age.",
    "Yes, it talks about aspirations."
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1909,7 +1803,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q53_1107251.mp3"
  },
  {
-  "qid": "q54_1107251",
+  "qid": "hummusqa_q_54",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What level of humor does this song display?",
@@ -1927,9 +1821,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "It has a lot of humor",
    "It is serious, but it has some hilarious parts"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1943,7 +1835,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q54_1107251.mp3"
  },
  {
-  "qid": "q55_189585",
+  "qid": "hummusqa_q_55",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the harmonic interval between the voices in the first two notes of the verse?",
@@ -1961,9 +1853,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "octave",
    "6th"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -1980,7 +1870,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q55_189585.mp3"
  },
  {
-  "qid": "q56_189585",
+  "qid": "hummusqa_q_56",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What harmonic technique is used during the chorus?",
@@ -1998,9 +1888,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Polytonality",
    "Atonality"
   ],
-  "audio_duration_seconds": [
-   48.065
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2016,7 +1904,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q56_189585.mp3"
  },
  {
-  "qid": "q57_189585",
+  "qid": "hummusqa_q_57",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which guitar comping style can we here in the tune?",
@@ -2034,9 +1922,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "flamenco guitar",
    "hard bop"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2054,7 +1940,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q57_189585.mp3"
  },
  {
-  "qid": "q58_170946",
+  "qid": "hummusqa_q_58",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which country does this tune remind you of?",
@@ -2072,9 +1958,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Colombia",
    "Cuba"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2090,7 +1974,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q58_170946.mp3"
  },
  {
-  "qid": "q59_170946",
+  "qid": "hummusqa_q_59",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What effect do the brushes have on the song?",
@@ -2108,9 +1992,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Less precision",
    "Less intimacy"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2128,7 +2010,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q59_170946.mp3"
  },
  {
-  "qid": "q60_170946",
+  "qid": "hummusqa_q_60",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which instrumentalist do you think is the leader of the band?",
@@ -2146,9 +2028,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "saxophonist",
    "drummer"
   ],
-  "audio_duration_seconds": [
-   45.061
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2164,7 +2044,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q60_170946.mp3"
  },
  {
-  "qid": "q61_1278743",
+  "qid": "hummusqa_q_61",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What music genre does the introduction remind you of?",
@@ -2182,9 +2062,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "bossa nova",
    "tumbao"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2198,7 +2076,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q61_1278743.mp3"
  },
  {
-  "qid": "q62_1278743",
+  "qid": "hummusqa_q_62",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How much fusion between genres and countries is there in this song?",
@@ -2216,9 +2094,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "low",
    "no fusion"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2234,7 +2110,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q62_1278743.mp3"
  },
  {
-  "qid": "q63_1278743",
+  "qid": "hummusqa_q_63",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What effect introduces the kick in the song?",
@@ -2252,9 +2128,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "It changes the time signature",
    "It masks the congo rhythm"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2271,7 +2145,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q63_1278743.mp3"
  },
  {
-  "qid": "q64_261271",
+  "qid": "hummusqa_q_64",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What surprises you about the harmony in this song?",
@@ -2289,9 +2163,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "It uses polychords",
    "Nothing is surprising"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2305,7 +2177,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q64_261271.mp3"
  },
  {
-  "qid": "q65_261271",
+  "qid": "hummusqa_q_65",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which music genre does the introduction remind you of?",
@@ -2323,9 +2195,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "hard bop",
    "gypsy jazz"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2339,7 +2209,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q65_261271.mp3"
  },
  {
-  "qid": "q66_261271",
+  "qid": "hummusqa_q_66",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What could this music be used for?",
@@ -2357,9 +2227,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "A soundscape installation",
    "During an English test"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2375,7 +2243,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q66_261271.mp3"
  },
  {
-  "qid": "q67_1051201",
+  "qid": "hummusqa_q_67",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What are your thoughts on the piano bass voice of the outro?",
@@ -2393,9 +2261,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "It sounds perfectly consonant",
    "It is too low in pitch"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2413,7 +2279,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q67_1051201.mp3"
  },
  {
-  "qid": "q68_1051201",
+  "qid": "hummusqa_q_68",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What feeling does the music aim to create?",
@@ -2431,9 +2297,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "joy",
    "power"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2447,7 +2311,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q68_1051201.mp3"
  },
  {
-  "qid": "q69_1051201",
+  "qid": "hummusqa_q_69",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What level of musicianship do the instrumentalists display in this song?",
@@ -2465,9 +2329,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "professional",
    "expert"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2481,7 +2343,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q69_1051201.mp3"
  },
  {
-  "qid": "q70_1247308",
+  "qid": "hummusqa_q_70",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What stands out when you listen the beginning of this song?",
@@ -2499,9 +2361,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "the song's great originality",
    "the harmonic progression"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2517,7 +2377,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q70_1247308.mp3"
  },
  {
-  "qid": "q71_1247308",
+  "qid": "hummusqa_q_71",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What harmonic interval does the electric guitar use during its solo?",
@@ -2535,9 +2395,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "3rd",
    "6th"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2554,7 +2412,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q71_1247308.mp3"
  },
  {
-  "qid": "q72_1247308",
+  "qid": "hummusqa_q_72",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the longest section of the tune?",
@@ -2572,9 +2430,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Chorus",
    "Introduction"
   ],
-  "audio_duration_seconds": [
-   80.065
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2590,7 +2446,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q72_1247308.mp3"
  },
  {
-  "qid": "q73_26738",
+  "qid": "hummusqa_q_73",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which instrument plays the lead sounds in the intro?",
@@ -2608,9 +2464,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Piano",
    "Bass"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2626,7 +2480,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q73_26738.mp3"
  },
  {
-  "qid": "q74_26738",
+  "qid": "hummusqa_q_74",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of synths are firstly introduced in the intro?",
@@ -2644,9 +2498,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Pluck",
    "Lead"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2662,7 +2514,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q74_26738.mp3"
  },
  {
-  "qid": "q75_26738",
+  "qid": "hummusqa_q_75",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of choral music does the intro remind you of?",
@@ -2680,9 +2532,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Contemporary choirs",
    "Vocal Jazz"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2698,7 +2548,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q75_26738.mp3"
  },
  {
-  "qid": "q76_1087890",
+  "qid": "hummusqa_q_76",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which guitar technique is used at the beginning of the song?",
@@ -2716,9 +2566,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Tremolo picking",
    "Banjo roll"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2734,7 +2582,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q76_1087890.mp3"
  },
  {
-  "qid": "q77_1087890",
+  "qid": "hummusqa_q_77",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of instruments are used during the song?",
@@ -2752,9 +2600,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Analog acoustic",
    "Brass instruments"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2770,7 +2616,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q77_1087890.mp3"
  },
  {
-  "qid": "q78_1087890",
+  "qid": "hummusqa_q_78",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the predominant tempo of the song?",
@@ -2788,9 +2634,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "90bpm",
    "100bpm"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2804,7 +2648,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q78_1087890.mp3"
  },
  {
-  "qid": "q79_467850",
+  "qid": "hummusqa_q_79",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of string instrument is heard at the beginning?",
@@ -2822,9 +2666,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Jarana",
    "Ukulele"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2840,7 +2682,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q79_467850.mp3"
  },
  {
-  "qid": "q80_467850",
+  "qid": "hummusqa_q_80",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What genre does the song evoke?",
@@ -2858,9 +2700,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Flamenco",
    "Funk"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2874,7 +2714,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q80_467850.mp3"
  },
  {
-  "qid": "q81_467850",
+  "qid": "hummusqa_q_81",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which continent does the rhythm of the song remind you of?",
@@ -2892,9 +2732,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Africa",
    "Asia"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2911,7 +2749,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q81_467850.mp3"
  },
  {
-  "qid": "q82_875005",
+  "qid": "hummusqa_q_82",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the tempo of the intro?",
@@ -2929,9 +2767,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Allegro",
    "Moderato"
   ],
-  "audio_duration_seconds": [
-   35.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2948,7 +2784,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q82_875005.mp3"
  },
  {
-  "qid": "q83_875005",
+  "qid": "hummusqa_q_83",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How many chords are played in the intro?",
@@ -2966,9 +2802,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "3",
    "4"
   ],
-  "audio_duration_seconds": [
-   40.072
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -2984,7 +2818,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q83_875005.mp3"
  },
  {
-  "qid": "q84_875005",
+  "qid": "hummusqa_q_84",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of chord does the guitar play right at the beginning of the song?",
@@ -3002,9 +2836,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Dominant 7",
    "Major 7#4"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3020,7 +2852,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q84_875005.mp3"
  },
  {
-  "qid": "q85_1215807",
+  "qid": "hummusqa_q_85",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of accompaniment does the guitar play?",
@@ -3038,9 +2870,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Riffs",
    "Broken chords"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3057,7 +2887,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q85_1215807.mp3"
  },
  {
-  "qid": "q86_1215807",
+  "qid": "hummusqa_q_86",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What human sound does the lead instrument resemble in the introduction?",
@@ -3075,9 +2905,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Scat",
    "Falsetto"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3093,7 +2921,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q86_1215807.mp3"
  },
  {
-  "qid": "q87_1215807",
+  "qid": "hummusqa_q_87",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which instrument creates a mood of excitement in the song?",
@@ -3111,9 +2939,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Electric guitar",
    "Piano"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3129,7 +2955,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q87_1215807.mp3"
  },
  {
-  "qid": "q88_306166",
+  "qid": "hummusqa_q_88",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of chord does the guitar play right at the beginning of the song?",
@@ -3147,9 +2973,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Major",
    "Block chord"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3165,7 +2989,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q88_306166.mp3"
  },
  {
-  "qid": "q89_306166",
+  "qid": "hummusqa_q_89",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which is the first interval sung by the lead voice?",
@@ -3183,9 +3007,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "unison",
    "major 2nd"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3199,7 +3021,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q89_306166.mp3"
  },
  {
-  "qid": "q90_306166",
+  "qid": "hummusqa_q_90",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How does the drummer create anticipation for the final verse?",
@@ -3217,9 +3039,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Hi Hat fill",
    "Kick drum fill"
   ],
-  "audio_duration_seconds": [
-   32.052
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3236,7 +3056,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q90_306166.mp3"
  },
  {
-  "qid": "q91_8559",
+  "qid": "hummusqa_q_91",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which country does the song evoke?",
@@ -3254,9 +3074,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Russia",
    "United Kingdom"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3274,7 +3092,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q91_8559.mp3"
  },
  {
-  "qid": "q92_8559",
+  "qid": "hummusqa_q_92",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which guitar instrumental technique is used in the song?",
@@ -3292,9 +3110,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Slide",
    "Palm Mute"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3311,7 +3127,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q92_8559.mp3"
  },
  {
-  "qid": "q93_8559",
+  "qid": "hummusqa_q_93",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of bass is used in the song?",
@@ -3329,9 +3145,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Electric Bass",
    "Baby Bass"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3345,7 +3159,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q93_8559.mp3"
  },
  {
-  "qid": "q94_1420928",
+  "qid": "hummusqa_q_94",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kinds of string instruments are used in the intro?",
@@ -3363,9 +3177,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Baroque Strings",
    "Sitar"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3381,7 +3193,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q94_1420928.mp3"
  },
  {
-  "qid": "q95_1420928",
+  "qid": "hummusqa_q_95",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What emotions does the song create?",
@@ -3399,9 +3211,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Amusing",
    "Sad"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3415,7 +3225,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q95_1420928.mp3"
  },
  {
-  "qid": "q96_1420928",
+  "qid": "hummusqa_q_96",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How many chords does the song use?",
@@ -3433,9 +3243,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "2",
    "1"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3449,7 +3257,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q96_1420928.mp3"
  },
  {
-  "qid": "q97_1319502",
+  "qid": "hummusqa_q_97",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "In what style is the acoustic guitar accompanying?",
@@ -3467,9 +3275,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Jazz",
    "Soul"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3485,7 +3291,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q97_1319502.mp3"
  },
  {
-  "qid": "q98_1319502",
+  "qid": "hummusqa_q_98",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of drums are used in the song?",
@@ -3503,9 +3309,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Acoustic drums",
    "Other type"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3521,7 +3325,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q98_1319502.mp3"
  },
  {
-  "qid": "q99_1319502",
+  "qid": "hummusqa_q_99",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which country do you imagine this song is from?",
@@ -3539,9 +3343,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "France",
    "Russia"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3557,7 +3359,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q99_1319502.mp3"
  },
  {
-  "qid": "q100_1247352",
+  "qid": "hummusqa_q_100",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which instrument plays the lead sound in the introduction?",
@@ -3575,9 +3377,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Tuba",
    "Saxophone"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3593,7 +3393,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q100_1247352.mp3"
  },
  {
-  "qid": "q101_1247352",
+  "qid": "hummusqa_q_101",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which interval is played in the first two notes of the trombone?",
@@ -3611,9 +3411,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "4th",
    "9th"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3629,7 +3427,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q101_1247352.mp3"
  },
  {
-  "qid": "q102_1247352",
+  "qid": "hummusqa_q_102",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of saxophone plays the solo?",
@@ -3647,9 +3445,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Soprano Sax",
    "Baritone Sax"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3665,7 +3461,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q102_1247352.mp3"
  },
  {
-  "qid": "q103_625206",
+  "qid": "hummusqa_q_103",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the time signature of the tune?",
@@ -3683,9 +3479,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "6/8",
    "3/8"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3699,7 +3493,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q103_625206.mp3"
  },
  {
-  "qid": "q104_625206",
+  "qid": "hummusqa_q_104",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of bass is used in the song?",
@@ -3717,9 +3511,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "baby bass",
    "acoustic bass guitar"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3735,7 +3527,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q104_625206.mp3"
  },
  {
-  "qid": "q105_625206",
+  "qid": "hummusqa_q_105",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What part of the drums is used to set the beat in the intro?",
@@ -3753,9 +3545,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Snare drum",
    "Kick drum"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3771,7 +3561,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q105_625206.mp3"
  },
  {
-  "qid": "q106_395289",
+  "qid": "hummusqa_q_106",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of jazz ensemble plays the song?",
@@ -3789,9 +3579,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Quintet",
    "Duo"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3807,7 +3595,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q106_395289.mp3"
  },
  {
-  "qid": "q107_2083",
+  "qid": "hummusqa_q_107",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of rhythm is used by the bass line in the intro?",
@@ -3825,9 +3613,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Walking",
    "Straight eighths"
   ],
-  "audio_duration_seconds": [
-   87.066
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3843,7 +3629,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q107_2083.mp3"
  },
  {
-  "qid": "q108_2083",
+  "qid": "hummusqa_q_108",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What style of jazz would you say this tune is?",
@@ -3861,9 +3647,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Bebop",
    "Swing"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3879,7 +3663,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q108_2083.mp3"
  },
  {
-  "qid": "q109_2083",
+  "qid": "hummusqa_q_109",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which instrument predominates in the solos?",
@@ -3897,9 +3681,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Synths",
    "Drums"
   ],
-  "audio_duration_seconds": [
-   89.078
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3915,7 +3697,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q109_2083.mp3"
  },
  {
-  "qid": "q110_1336202",
+  "qid": "hummusqa_q_110",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which piano technique is used during this part of the song?",
@@ -3933,9 +3715,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Power chords",
    "Counterpoint"
   ],
-  "audio_duration_seconds": [
-   83.069
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3952,7 +3732,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q110_1336202.mp3"
  },
  {
-  "qid": "q111_1336202",
+  "qid": "hummusqa_q_111",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What could this music be used for?",
@@ -3970,9 +3750,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Party music",
    "Funeral"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -3988,7 +3766,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q111_1336202.mp3"
  },
  {
-  "qid": "q112_1336202",
+  "qid": "hummusqa_q_112",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which instrument is used to create contrast?",
@@ -4006,9 +3784,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Bass",
    "Viola"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4022,7 +3798,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q112_1336202.mp3"
  },
  {
-  "qid": "q113_1327741",
+  "qid": "hummusqa_q_113",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which country do you think the music is from?",
@@ -4040,9 +3816,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "India",
    "Mexico"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4058,7 +3832,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q113_1327741.mp3"
  },
  {
-  "qid": "q114_1327741",
+  "qid": "hummusqa_q_114",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of scale is used in the guitar motif?",
@@ -4076,9 +3850,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Eb Major",
    "E-flat minor blues"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4092,7 +3864,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q114_1327741.mp3"
  },
  {
-  "qid": "q115_1327741",
+  "qid": "hummusqa_q_115",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which piano technique predominantly is used during the accompaniment?",
@@ -4110,9 +3882,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Block chords",
    "Rhythm comping"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4129,7 +3899,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q115_1327741.mp3"
  },
  {
-  "qid": "q116_1162034",
+  "qid": "hummusqa_q_116",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of harmonic progression predominates in the song?",
@@ -4147,9 +3917,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "I-IV-V",
    "I-iii-ii"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4163,7 +3931,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q116_1162034.mp3"
  },
  {
-  "qid": "q117_1162034",
+  "qid": "hummusqa_q_117",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "There is a motif that is constantly repeated throughout the solo. Do you know which one?",
@@ -4181,9 +3949,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "A4-F#4-G4-B4-C5",
    "G4-A4-B4-A4-G4"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4199,7 +3965,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q117_1162034.mp3"
  },
  {
-  "qid": "q118_1162034",
+  "qid": "hummusqa_q_118",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of jazz ensemble plays the song?",
@@ -4217,9 +3983,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Quintet",
    "Duo"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4235,7 +3999,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q118_1162034.mp3"
  },
  {
-  "qid": "q119_1227239",
+  "qid": "hummusqa_q_119",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What impression does the singer aim to create with her singing style?",
@@ -4253,9 +4017,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "elaborate harmonies",
    "complicated vocal effects"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4271,7 +4033,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q119_1227239.mp3"
  },
  {
-  "qid": "q120_1227239",
+  "qid": "hummusqa_q_120",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "There is a chord that is out of key. Do you know which one?",
@@ -4289,9 +4051,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "First chord of the chorus",
    "First chord of part C"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4307,7 +4067,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q120_1227239.mp3"
  },
  {
-  "qid": "q121_1227239",
+  "qid": "hummusqa_q_121",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which instrument stands out at the front of the mix?",
@@ -4325,9 +4085,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Organ",
    "Bass"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4343,7 +4101,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q121_1227239.mp3"
  },
  {
-  "qid": "q122_114772",
+  "qid": "hummusqa_q_122",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the main part of this song?",
@@ -4361,9 +4119,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "the chorus",
    "the intro"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4379,7 +4135,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q122_114772.mp3"
  },
  {
-  "qid": "q123_114772",
+  "qid": "hummusqa_q_123",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How would you describe the comping style of the double bass?",
@@ -4397,9 +4153,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "chromatic chords",
    "harmonized melody"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4418,7 +4172,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q123_114772.mp3"
  },
  {
-  "qid": "q124_114772",
+  "qid": "hummusqa_q_124",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What effect does the piano aim to create when playing the pedal point?",
@@ -4436,9 +4190,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "stability",
    "release"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4455,7 +4207,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q124_114772.mp3"
  },
  {
-  "qid": "q125_187621",
+  "qid": "hummusqa_q_125",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the main purpose of this song?",
@@ -4473,9 +4225,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "to mix different music styles",
    "to create a song for an advertisement"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4492,7 +4242,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q125_187621.mp3"
  },
  {
-  "qid": "q126_187621",
+  "qid": "hummusqa_q_126",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What emotion is mainly conveyed in this song?",
@@ -4510,9 +4260,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "anger",
    "disgust"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4526,7 +4274,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q126_187621.mp3"
  },
  {
-  "qid": "q127_187621",
+  "qid": "hummusqa_q_127",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which instrumental section give this tune its unique sound?",
@@ -4544,9 +4292,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "digital synths section",
    "vocals"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4562,7 +4308,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q127_187621.mp3"
  },
  {
-  "qid": "q128_332470",
+  "qid": "hummusqa_q_128",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Why would you say this is a rumba?",
@@ -4580,9 +4326,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "because of the instruments",
    "because people are clapping"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4598,7 +4342,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q128_332470.mp3"
  },
  {
-  "qid": "q129_332470",
+  "qid": "hummusqa_q_129",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which country do you think this music is from?",
@@ -4616,9 +4360,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Mexico",
    "Colombia"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4635,7 +4377,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q129_332470.mp3"
  },
  {
-  "qid": "q130_332470",
+  "qid": "hummusqa_q_130",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What intervals create dissonance in the background guitar?",
@@ -4653,9 +4395,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "octaves",
    "Unison"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4671,7 +4411,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q130_332470.mp3"
  },
  {
-  "qid": "q131_182074",
+  "qid": "hummusqa_q_131",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What technique does this introduction aim to recreate?",
@@ -4689,9 +4429,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "tape machine",
    "sound generators"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4705,7 +4443,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q131_182074.mp3"
  },
  {
-  "qid": "q132_182074",
+  "qid": "hummusqa_q_132",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What gives the drums their unique house jazz sound?",
@@ -4723,9 +4461,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "kick",
    "hi-hat"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4743,7 +4479,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q132_182074.mp3"
  },
  {
-  "qid": "q133_182074",
+  "qid": "hummusqa_q_133",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What might be a reason this song is called \"Scattered Knowledge\"?",
@@ -4761,9 +4497,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "because of the drums",
    "because of the bass"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4780,7 +4514,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q133_182074.mp3"
  },
  {
-  "qid": "q134_172015",
+  "qid": "hummusqa_q_134",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What rhythmic pattern is used by the percussion throughout the entire song?",
@@ -4798,9 +4532,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "3+2+3",
    "4+4+2"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4816,7 +4548,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q134_172015.mp3"
  },
  {
-  "qid": "q135_172015",
+  "qid": "hummusqa_q_135",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which region of the world do you think the rhythm is from?",
@@ -4834,9 +4566,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "East European",
    "Mediterranean"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4853,7 +4583,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q135_172015.mp3"
  },
  {
-  "qid": "q136_172015",
+  "qid": "hummusqa_q_136",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of accompaniment instruments are used in the song?",
@@ -4871,9 +4601,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Acoustic pianos",
    "Electric guitar"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4889,7 +4617,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q136_172015.mp3"
  },
  {
-  "qid": "q137_250001",
+  "qid": "hummusqa_q_137",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Where do you think the song could be played?",
@@ -4907,9 +4635,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Concert Hall",
    "Open Air Concert"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4925,7 +4651,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q137_250001.mp3"
  },
  {
-  "qid": "q138_250001",
+  "qid": "hummusqa_q_138",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which instrument predominates in the solos?",
@@ -4943,9 +4669,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Bass",
    "Voice"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4961,7 +4685,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q138_250001.mp3"
  },
  {
-  "qid": "q139_250001",
+  "qid": "hummusqa_q_139",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of articulation is used by lead synth in the introduction?",
@@ -4979,9 +4703,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Marcato",
    "Pizzicato"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -4998,7 +4720,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q139_250001.mp3"
  },
  {
-  "qid": "q140_1138688",
+  "qid": "hummusqa_q_140",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which instrument predominates in the accompaniment?",
@@ -5016,9 +4738,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Cuatro Venezolano",
    "Electric guitar"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5034,7 +4754,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q140_1138688.mp3"
  },
  {
-  "qid": "q141_1138688",
+  "qid": "hummusqa_q_141",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Where is this kind of string instrument mostly used?",
@@ -5052,9 +4772,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Europe",
    "Asia"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5070,7 +4788,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q141_1138688.mp3"
  },
  {
-  "qid": "q142_1138688",
+  "qid": "hummusqa_q_142",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of emotions does the song evoke?",
@@ -5088,9 +4806,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Fear",
    "Anger"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5104,7 +4820,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q142_1138688.mp3"
  },
  {
-  "qid": "q143_14458",
+  "qid": "hummusqa_q_143",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the predominant key in the intro?",
@@ -5122,9 +4838,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "C minor",
    "A minor"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5141,7 +4855,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q143_14458.mp3"
  },
  {
-  "qid": "q144_14458",
+  "qid": "hummusqa_q_144",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of interval is created between the lead voice and the backing vocalist?",
@@ -5159,9 +4873,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Diminished intervals",
    "Augmented intervals"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5177,7 +4889,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q144_14458.mp3"
  },
  {
-  "qid": "q145_14458",
+  "qid": "hummusqa_q_145",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What instrument is used to introduce the climax of the song?",
@@ -5195,9 +4907,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Cymbal",
    "Hi-hats"
   ],
-  "audio_duration_seconds": [
-   50.077
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5213,7 +4923,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q145_14458.mp3"
  },
  {
-  "qid": "q146_179608",
+  "qid": "hummusqa_q_146",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of technique best describes the bass line?",
@@ -5231,9 +4941,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Heavy Eighths",
    "Slap"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5251,7 +4959,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q146_179608.mp3"
  },
  {
-  "qid": "q147_179608",
+  "qid": "hummusqa_q_147",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How are the sustained guitar chords being played in the verse?",
@@ -5269,9 +4977,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Straight",
    "Arpeggiato"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5287,7 +4993,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q147_179608.mp3"
  },
  {
-  "qid": "q148_179608",
+  "qid": "hummusqa_q_148",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the main musical feature of the outro?",
@@ -5305,9 +5011,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Voice solo",
    "Guitar solo"
   ],
-  "audio_duration_seconds": [
-   31.06
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5324,7 +5028,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q148_179608.mp3"
  },
  {
-  "qid": "q149_150794",
+  "qid": "hummusqa_q_149",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How many times is the main theme played in the intro?",
@@ -5342,9 +5046,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "3",
    "7"
   ],
-  "audio_duration_seconds": [
-   71.053
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5360,7 +5062,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q149_150794.mp3"
  },
  {
-  "qid": "q150_150794",
+  "qid": "hummusqa_q_150",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which is the main instrument that plays in the song?",
@@ -5378,9 +5080,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Drums",
    "Piano"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5394,7 +5094,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q150_150794.mp3"
  },
  {
-  "qid": "q151_150794",
+  "qid": "hummusqa_q_151",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of guitars are playing at the end of the song?",
@@ -5412,9 +5112,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Only acoustic",
    "Bass guitars"
   ],
-  "audio_duration_seconds": [
-   66.011
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5430,7 +5128,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q151_150794.mp3"
  },
  {
-  "qid": "q152_1051378",
+  "qid": "hummusqa_q_152",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Where is this type of music usually played?",
@@ -5448,9 +5146,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Concert halls",
    "Jazz clubs"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5466,7 +5162,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q152_1051378.mp3"
  },
  {
-  "qid": "q153_1051378",
+  "qid": "hummusqa_q_153",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of instruments are used in the song?",
@@ -5484,9 +5180,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Strings",
    "Brass"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5502,7 +5196,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q153_1051378.mp3"
  },
  {
-  "qid": "q154_1051378",
+  "qid": "hummusqa_q_154",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What key is used in the break?",
@@ -5520,9 +5214,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Bb major",
    "D major"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5538,7 +5230,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q154_1051378.mp3"
  },
  {
-  "qid": "q155_1199044",
+  "qid": "hummusqa_q_155",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What mood do you think the song conveys?",
@@ -5556,9 +5248,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "epic",
    "boring"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5575,7 +5265,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q155_1199044.mp3"
  },
  {
-  "qid": "q156_1199044",
+  "qid": "hummusqa_q_156",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How would you describe the sound of the snare?",
@@ -5593,9 +5283,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "focused",
    "boring"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5612,7 +5300,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q156_1199044.mp3"
  },
  {
-  "qid": "q157_1199044",
+  "qid": "hummusqa_q_157",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What instrument adds syncopation to the verse?",
@@ -5630,9 +5318,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "bass",
    "saxophone"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5648,7 +5334,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q157_1199044.mp3"
  },
  {
-  "qid": "q158_14014",
+  "qid": "hummusqa_q_158",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What musical style do the arpeggios remind you of?",
@@ -5666,9 +5352,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Contemporary academic music",
    "Baroque"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5685,7 +5369,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q158_14014.mp3"
  },
  {
-  "qid": "q159_14014",
+  "qid": "hummusqa_q_159",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What can you say about the harmony?",
@@ -5703,9 +5387,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "It's modal harmony",
    "It's polytonal"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5719,7 +5401,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q159_14014.mp3"
  },
  {
-  "qid": "q160_14014",
+  "qid": "hummusqa_q_160",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What can you say about the bass notes?",
@@ -5737,9 +5419,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "It always plays the tonic or the dominant",
    "It plays random notes"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5756,7 +5436,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q160_14014.mp3"
  },
  {
-  "qid": "q161_1177896",
+  "qid": "hummusqa_q_161",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What would you add to the drums to make them more present?",
@@ -5774,9 +5454,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "I would duplicate the track",
    "I would play it in mono"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5792,7 +5470,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q161_1177896.mp3"
  },
  {
-  "qid": "q162_1177896",
+  "qid": "hummusqa_q_162",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What can you say about the harmonic structure?",
@@ -5810,9 +5488,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "It has a pop structure",
    "It has a rock structure"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5829,7 +5505,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q162_1177896.mp3"
  },
  {
-  "qid": "q163_1177896",
+  "qid": "hummusqa_q_163",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which age group is most likely to listen to this tune?",
@@ -5847,9 +5523,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "20–30",
    "10–20"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5865,7 +5539,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q163_1177896.mp3"
  },
  {
-  "qid": "q164_1227240",
+  "qid": "hummusqa_q_164",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Why can you say the piano is not acoustic?",
@@ -5883,9 +5557,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "The tuning",
    "The voicing"
   ],
-  "audio_duration_seconds": [
-   80.065
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5902,7 +5574,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q164_1227240.mp3"
  },
  {
-  "qid": "q165_1227240",
+  "qid": "hummusqa_q_165",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What notes are sung by the vocals when the lyrics say \"This is the loneliest\"?",
@@ -5920,9 +5592,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "C# - D#",
    "C# - F#"
   ],
-  "audio_duration_seconds": [
-   40.072
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5936,7 +5606,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q165_1227240.mp3"
  },
  {
-  "qid": "q166_1227240",
+  "qid": "hummusqa_q_166",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What mood does the synth create at the end of the song?",
@@ -5954,9 +5624,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "optimistic",
    "sad"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -5973,7 +5641,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q166_1227240.mp3"
  },
  {
-  "qid": "q167_7096",
+  "qid": "hummusqa_q_167",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the rhythm feeling of the vocals in the chorus?",
@@ -5991,9 +5659,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "laid back",
    "accelerando"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6009,7 +5675,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q167_7096.mp3"
  },
  {
-  "qid": "q168_7096",
+  "qid": "hummusqa_q_168",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Right before the first verse, there are chords that are reminiscent of a particular jazz style. Do you know which one?",
@@ -6027,9 +5693,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Hard bop",
    "Fusion jazz"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6045,7 +5709,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q168_7096.mp3"
  },
  {
-  "qid": "q169_7096",
+  "qid": "hummusqa_q_169",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "The chorus starts with two descending notes in the bass. Can you determine the intervallic movement?",
@@ -6063,9 +5727,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "hexatonic",
    "pentatonic"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6081,7 +5743,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q169_7096.mp3"
  },
  {
-  "qid": "q170_1103980",
+  "qid": "hummusqa_q_170",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "There is an harmonic dissonance in the fourth eighth note of the piano introduction. Can you determine the interval?",
@@ -6099,9 +5761,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "major 3rd",
    "minor 3rd"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6117,7 +5777,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q170_1103980.mp3"
  },
  {
-  "qid": "q171_1103980",
+  "qid": "hummusqa_q_171",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "The chorus suddenly changes the vibe of the song. How does the music create this?",
@@ -6135,9 +5795,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "playing chords with fourths",
    "thinking about something beautiful"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6154,7 +5812,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q171_1103980.mp3"
  },
  {
-  "qid": "q172_1103980",
+  "qid": "hummusqa_q_172",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What instrument does the piano sound like with the arpeggio texture of the introduction?",
@@ -6172,9 +5830,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "cello",
    "synthesizer"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6191,7 +5847,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q172_1103980.mp3"
  },
  {
-  "qid": "q173_121123",
+  "qid": "hummusqa_q_173",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What mode is used in the exposition of the melody?",
@@ -6209,9 +5865,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Hungarian minor",
    "Arabic"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6227,7 +5881,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q173_121123.mp3"
  },
  {
-  "qid": "q174_121123",
+  "qid": "hummusqa_q_174",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the subdivision of the beats in this tune?",
@@ -6245,9 +5899,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Binary",
    "Quaternary"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6261,7 +5913,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q174_121123.mp3"
  },
  {
-  "qid": "q175_121123",
+  "qid": "hummusqa_q_175",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What time signature would you say this is?",
@@ -6279,9 +5931,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "5/4",
    "6/8"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6295,7 +5945,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q175_121123.mp3"
  },
  {
-  "qid": "q176_1076450",
+  "qid": "hummusqa_q_176",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of rhythm is used in the guitar introduction?",
@@ -6313,9 +5963,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "straight notes",
    "eighth notes"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6329,7 +5977,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q176_1076450.mp3"
  },
  {
-  "qid": "q177_1076450",
+  "qid": "hummusqa_q_177",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What instruments seem to duplicate the melody in the beginning of the verse?",
@@ -6347,9 +5995,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "guitar and piano",
    "vocals and piano"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6366,7 +6012,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q177_1076450.mp3"
  },
  {
-  "qid": "q178_1076450",
+  "qid": "hummusqa_q_178",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the most important word in the vocal melody, taking into account the melodic contour?",
@@ -6384,9 +6030,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "meet",
    "you"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6402,7 +6046,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q178_1076450.mp3"
  },
  {
-  "qid": "q179_1407836",
+  "qid": "hummusqa_q_179",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "When are the electric guitar chords played in the introduction?",
@@ -6420,9 +6064,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Odd beats",
    "Downbeat"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6439,7 +6081,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q179_1407836.mp3"
  },
  {
-  "qid": "q180_1407836",
+  "qid": "hummusqa_q_180",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which type of radio station would be more likely to play this tune?",
@@ -6457,9 +6099,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Rock radio station",
    "World music radio station"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6475,7 +6115,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q180_1407836.mp3"
  },
  {
-  "qid": "q181_1407836",
+  "qid": "hummusqa_q_181",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "If you were a teacher, at which moment of the lesson would you use this song?",
@@ -6493,9 +6133,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Middle",
    "All of them"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6509,7 +6147,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q181_1407836.mp3"
  },
  {
-  "qid": "q182_357330",
+  "qid": "hummusqa_q_182",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What could be the meaning of the lyrics?",
@@ -6527,9 +6165,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "The girl is in another unsuccessful relationship.",
    "The girl only thinks about another girl"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6545,7 +6181,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q182_357330.mp3"
  },
  {
-  "qid": "q183_357330",
+  "qid": "hummusqa_q_183",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the rhythm pattern of the bass?",
@@ -6563,9 +6199,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Bossa Nova",
    "Bolero"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6582,7 +6216,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q183_357330.mp3"
  },
  {
-  "qid": "q184_357330",
+  "qid": "hummusqa_q_184",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How could you interpret this song from a feminist perspective?",
@@ -6600,9 +6234,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "It creates nostalgia, which can actually be good after a relationship.",
    "It has a happy mood."
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6619,7 +6251,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q184_357330.mp3"
  },
  {
-  "qid": "q185_661634",
+  "qid": "hummusqa_q_185",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What harmonic progression can be heard in the introduction?",
@@ -6637,9 +6269,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "I-ii-V",
    "V-ii-I"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6655,7 +6285,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q185_661634.mp3"
  },
  {
-  "qid": "q186_661634",
+  "qid": "hummusqa_q_186",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which musical element predominates over the others in this tune?",
@@ -6673,9 +6303,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Timbre",
    "Metric"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6692,7 +6320,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q186_661634.mp3"
  },
  {
-  "qid": "q187_661634",
+  "qid": "hummusqa_q_187",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How does this tune enhance the tonal harmony?",
@@ -6710,9 +6338,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "polyrhythms",
    "polyphony"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6726,7 +6352,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q187_661634.mp3"
  },
  {
-  "qid": "q188_312915",
+  "qid": "hummusqa_q_188",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What brass instruments are played in the intro?",
@@ -6744,9 +6370,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Saxophones and trombones",
    "Saxophones and trumpets"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6762,7 +6386,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q188_312915.mp3"
  },
  {
-  "qid": "q189_312915",
+  "qid": "hummusqa_q_189",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How are the phrases distributed among the brass section in the intro?",
@@ -6780,9 +6404,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Trumpets play the phrase and it is repeated by trombones",
    "Every voice plays a different phrase"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6798,7 +6420,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q189_312915.mp3"
  },
  {
-  "qid": "q190_312915",
+  "qid": "hummusqa_q_190",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What region of the world does this type of rhythm usually remind you of?",
@@ -6816,9 +6438,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Africa",
    "Europe"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6835,7 +6455,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q190_312915.mp3"
  },
  {
-  "qid": "q191_1381590",
+  "qid": "hummusqa_q_191",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the main string instrument in the song apart from the ukulele?",
@@ -6853,9 +6473,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Guitar",
    "Bass"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6871,7 +6489,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q191_1381590.mp3"
  },
  {
-  "qid": "q192_1381590",
+  "qid": "hummusqa_q_192",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How many voices are recorded in the song?",
@@ -6889,9 +6507,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Only one voice",
    "Three voices singing in unison"
   ],
-  "audio_duration_seconds": [
-   50.077
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6908,7 +6524,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q192_1381590.mp3"
  },
  {
-  "qid": "q193_1381590",
+  "qid": "hummusqa_q_193",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which percussion instruments are played in the song?",
@@ -6926,9 +6542,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Full drum set",
    "nan"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6944,7 +6558,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q193_1381590.mp3"
  },
  {
-  "qid": "q194_1268901",
+  "qid": "hummusqa_q_194",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of guitar technique is used in this song?",
@@ -6962,9 +6576,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Pull-off technique",
    "String bending"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -6981,7 +6593,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q194_1268901.mp3"
  },
  {
-  "qid": "q195_1268901",
+  "qid": "hummusqa_q_195",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What mode is used in the song?",
@@ -6999,9 +6611,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Mixolydian",
    "Locrian"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7017,7 +6627,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q195_1268901.mp3"
  },
  {
-  "qid": "q196_1268901",
+  "qid": "hummusqa_q_196",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the first chord played by the guitarist?",
@@ -7035,9 +6645,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "D minor",
    "G minor"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7053,7 +6661,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q196_1268901.mp3"
  },
  {
-  "qid": "q197_1078326",
+  "qid": "hummusqa_q_197",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the name of the rhythm used by the drums during this period?",
@@ -7071,9 +6679,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Million dollar beat",
    "Four on the floor"
   ],
-  "audio_duration_seconds": [
-   80.065
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7089,7 +6695,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q197_1078326.mp3"
  },
  {
-  "qid": "q198_1078326",
+  "qid": "hummusqa_q_198",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which cymbal does the drummer use in the bridge?",
@@ -7107,9 +6713,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Hi-hats",
    "Splash cymbal"
   ],
-  "audio_duration_seconds": [
-   82.077
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7126,7 +6730,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q198_1078326.mp3"
  },
  {
-  "qid": "q199_1078326",
+  "qid": "hummusqa_q_199",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the predominant component used by the synth during the solo?",
@@ -7144,9 +6748,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "The sustain",
    "The output volume"
   ],
-  "audio_duration_seconds": [
-   42.057
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7163,7 +6765,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q199_1078326.mp3"
  },
  {
-  "qid": "q200_1121398",
+  "qid": "hummusqa_q_200",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What instruments are used in the intro as accompaniment to the voice?",
@@ -7181,9 +6783,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Guitars and drums",
    "Bass and drums"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7200,7 +6800,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q200_1121398.mp3"
  },
  {
-  "qid": "q201_1121398",
+  "qid": "hummusqa_q_201",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Hearing the voice, is it a native English speaker singing?",
@@ -7218,9 +6818,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "It is not clear",
    "It could be"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7236,7 +6834,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q201_1121398.mp3"
  },
  {
-  "qid": "q202_1121398",
+  "qid": "hummusqa_q_202",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of synth effects are used to create more anticipation for the chorus?",
@@ -7254,9 +6852,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Tremolo and flangers",
    "Chorus and EQ"
   ],
-  "audio_duration_seconds": [
-   37.068
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7272,7 +6868,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q202_1121398.mp3"
  },
  {
-  "qid": "q203_962064",
+  "qid": "hummusqa_q_203",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the main pedal effect used in the guitar solo?",
@@ -7290,9 +6886,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Chorus Pedal",
    "Phaser Pedal"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7308,7 +6902,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q203_962064.mp3"
  },
  {
-  "qid": "q204_962064",
+  "qid": "hummusqa_q_204",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the scale predominantly used by the singer?",
@@ -7326,9 +6920,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "F minor pentatonic",
    "Fm blues"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7342,7 +6934,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q204_962064.mp3"
  },
  {
-  "qid": "q205_1221864",
+  "qid": "hummusqa_q_205",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of accompaniment is the ukulele using in the intro?",
@@ -7360,9 +6952,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Syncopated patterns",
    "Strumming"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7379,7 +6969,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q205_1221864.mp3"
  },
  {
-  "qid": "q206_1221864",
+  "qid": "hummusqa_q_206",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What chord is the ukulele playing in the intro?",
@@ -7397,9 +6987,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "A minor",
    "C7"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7416,7 +7004,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q206_1221864.mp3"
  },
  {
-  "qid": "q207_1221864",
+  "qid": "hummusqa_q_207",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of percussion is used for the bass drum?",
@@ -7434,9 +7022,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Floor tom",
    "Snare drum"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7450,7 +7036,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q207_1221864.mp3"
  },
  {
-  "qid": "q208_1374348",
+  "qid": "hummusqa_q_208",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What technique does the drummer use on the snare drum to mark the upbeat during the intro?",
@@ -7468,9 +7054,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "General punch",
    "Overtone rim-shot"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7487,7 +7071,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q208_1374348.mp3"
  },
  {
-  "qid": "q209_1374348",
+  "qid": "hummusqa_q_209",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the instrumentation of the piece?",
@@ -7505,9 +7089,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Guitar, Bass & Drums",
    "Piano and Drums"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7521,7 +7103,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q209_1374348.mp3"
  },
  {
-  "qid": "q210_1374348",
+  "qid": "hummusqa_q_210",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of feeling do the acoustic guitar solos in the song produce?",
@@ -7539,9 +7121,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Energizing",
    "Depressing"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7558,7 +7138,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q210_1374348.mp3"
  },
  {
-  "qid": "q211_336086",
+  "qid": "hummusqa_q_211",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of drum sticks are being used to accompany the song?",
@@ -7576,9 +7156,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Mallets",
    "Standard sticks"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7595,7 +7173,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q211_336086.mp3"
  },
  {
-  "qid": "q212_336086",
+  "qid": "hummusqa_q_212",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How many guitars are playing during the song?",
@@ -7613,9 +7191,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "1",
    "nan"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7629,7 +7205,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q212_336086.mp3"
  },
  {
-  "qid": "q213_336086",
+  "qid": "hummusqa_q_213",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of guitar is playing the accompaniment?",
@@ -7647,9 +7223,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Bass guitar",
    "Flamenco guitar"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7665,7 +7239,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q213_336086.mp3"
  },
  {
-  "qid": "q214_1298301",
+  "qid": "hummusqa_q_214",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What genre does the song evoke?",
@@ -7683,9 +7257,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Pop rock",
    "Dance pop"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7699,7 +7271,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q214_1298301.mp3"
  },
  {
-  "qid": "q215_1298301",
+  "qid": "hummusqa_q_215",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of technique is the guitar using during the chorus?",
@@ -7717,9 +7289,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "String bending",
    "Tapping"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7735,7 +7305,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q215_1298301.mp3"
  },
  {
-  "qid": "q216_1298301",
+  "qid": "hummusqa_q_216",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What musical technique is used by the guitar accompaniment to emphasize rhythm in the chorus?",
@@ -7753,9 +7323,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Cross beat",
    "Down beat"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7772,7 +7340,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q216_1298301.mp3"
  },
  {
-  "qid": "q217_770629",
+  "qid": "hummusqa_q_217",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the time signature of the intro of the piece?",
@@ -7790,9 +7358,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "6/8",
    "12/4"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7808,7 +7374,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q217_770629.mp3"
  },
  {
-  "qid": "q218_770629",
+  "qid": "hummusqa_q_218",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "For what type of music was this song made?",
@@ -7826,9 +7392,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Lounge bar",
    "Jazz bar"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7844,7 +7408,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q218_770629.mp3"
  },
  {
-  "qid": "q219_1133179",
+  "qid": "hummusqa_q_219",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How many bars does the drum play in the intro before the guitar comes in?",
@@ -7862,9 +7426,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "8",
    "2"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7881,7 +7443,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q219_1133179.mp3"
  },
  {
-  "qid": "q220_1133179",
+  "qid": "hummusqa_q_220",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of snare drum is the drummer using?",
@@ -7899,9 +7461,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Wood",
    "Marching"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7915,7 +7475,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q220_1133179.mp3"
  },
  {
-  "qid": "q221_1133179",
+  "qid": "hummusqa_q_221",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Is the singer a native English speaker?",
@@ -7933,9 +7493,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Probably",
    "Can't tell"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7952,7 +7510,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q221_1133179.mp3"
  },
  {
-  "qid": "q222_1227366",
+  "qid": "hummusqa_q_222",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the key of the bass pattern?",
@@ -7970,9 +7528,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "C minor",
    "G minor"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -7986,7 +7542,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q222_1227366.mp3"
  },
  {
-  "qid": "q223_1227366",
+  "qid": "hummusqa_q_223",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What extended technique is used by the flutist during the solo?",
@@ -8004,9 +7560,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Spitting",
    "Jet whistle"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8023,7 +7577,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q223_1227366.mp3"
  },
  {
-  "qid": "q224_1227366",
+  "qid": "hummusqa_q_224",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What percussion instruments are playing during the song?",
@@ -8041,9 +7595,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Triangle",
    "marimba"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8059,7 +7611,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q224_1227366.mp3"
  },
  {
-  "qid": "q225_26435",
+  "qid": "hummusqa_q_225",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How does the song begin?",
@@ -8077,9 +7629,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "acephalous",
    "a combination of all three"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8095,7 +7645,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q225_26435.mp3"
  },
  {
-  "qid": "q226_26435",
+  "qid": "hummusqa_q_226",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is this genre of music good for?",
@@ -8113,9 +7663,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "exercising",
    "a parade"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8132,7 +7680,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q226_26435.mp3"
  },
  {
-  "qid": "q227_26435",
+  "qid": "hummusqa_q_227",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which of these options is most related to this song?",
@@ -8150,9 +7698,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "avant-garde music",
    "futurism"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8170,7 +7716,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q227_26435.mp3"
  },
  {
-  "qid": "q228_7360",
+  "qid": "hummusqa_q_228",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How are the different instruments introduced in the song?",
@@ -8188,9 +7734,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Different sections are added at different times.",
    "All of them follow the vocals."
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8207,7 +7751,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q228_7360.mp3"
  },
  {
-  "qid": "q229_7360",
+  "qid": "hummusqa_q_229",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which instruments make the song groovy?",
@@ -8225,9 +7769,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "hi-hat",
    "vocals"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8244,7 +7786,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q229_7360.mp3"
  },
  {
-  "qid": "q230_7360",
+  "qid": "hummusqa_q_230",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What harmonic techniques is the composer using in the chorus?",
@@ -8262,9 +7804,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "pedal point",
    "polytonality"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8280,7 +7820,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q230_7360.mp3"
  },
  {
-  "qid": "q231_1321293",
+  "qid": "hummusqa_q_231",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What roots would you say this song has?",
@@ -8298,9 +7838,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "North American",
    "Asian"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8316,7 +7854,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q231_1321293.mp3"
  },
  {
-  "qid": "q232_1321293",
+  "qid": "hummusqa_q_232",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What are these lyrics about?",
@@ -8334,9 +7872,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "work",
    "society"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8352,7 +7888,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q232_1321293.mp3"
  },
  {
-  "qid": "q233_1321293",
+  "qid": "hummusqa_q_233",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of language is used in the lyrics of the song?",
@@ -8370,9 +7906,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Narrative",
    "Essay"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8388,7 +7922,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q233_1321293.mp3"
  },
  {
-  "qid": "q234_156528",
+  "qid": "hummusqa_q_234",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "To which city does the introduction of the song transport you?",
@@ -8406,9 +7940,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Dublin",
    "Moscow"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8424,7 +7956,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q234_156528.mp3"
  },
  {
-  "qid": "q235_156528",
+  "qid": "hummusqa_q_235",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What harmonic system is used here?",
@@ -8442,9 +7974,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Modal",
    "Atonal"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8458,7 +7988,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q235_156528.mp3"
  },
  {
-  "qid": "q236_156528",
+  "qid": "hummusqa_q_236",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Who do you imagine playing this song?",
@@ -8476,9 +8006,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "A girl",
    "A boy"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8492,7 +8020,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q236_156528.mp3"
  },
  {
-  "qid": "q237_270070",
+  "qid": "hummusqa_q_237",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What scene does the introduction of this song remind you of?",
@@ -8510,9 +8038,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "A country house in Scandinavia",
    "People meditating"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8529,7 +8055,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q237_270070.mp3"
  },
  {
-  "qid": "q238_270070",
+  "qid": "hummusqa_q_238",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What could you say about the introduction?",
@@ -8547,9 +8073,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "It plays random motifs",
    "There is no structure"
   ],
-  "audio_duration_seconds": [
-   50.077
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8565,7 +8089,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q238_270070.mp3"
  },
  {
-  "qid": "q239_270070",
+  "qid": "hummusqa_q_239",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What are these lyrics about?",
@@ -8583,9 +8107,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Getting up in the morning and having breakfast",
    "Plants"
   ],
-  "audio_duration_seconds": [
-   53.055
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8599,7 +8121,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q239_270070.mp3"
  },
  {
-  "qid": "q240_1163315",
+  "qid": "hummusqa_q_240",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "This song could have been written recently. However, its style sounds like it was written...",
@@ -8617,9 +8139,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Before ragtime",
    "After jazz fusion"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8635,7 +8155,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q240_1163315.mp3"
  },
  {
-  "qid": "q241_1163315",
+  "qid": "hummusqa_q_241",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the rhythmic accompaniment of the organ?",
@@ -8653,9 +8173,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Upbeat",
    "Random"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8671,7 +8189,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q241_1163315.mp3"
  },
  {
-  "qid": "q242_1163315",
+  "qid": "hummusqa_q_242",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What instrument would mark the movement of the foot if you were to dance to this song?",
@@ -8689,9 +8207,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "saxophone",
    "drums"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8707,7 +8223,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q242_1163315.mp3"
  },
  {
-  "qid": "q243_78733",
+  "qid": "hummusqa_q_243",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What element in the introduction creates intrigue?",
@@ -8725,9 +8241,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "the absence of drums",
    "the combination of instruments"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8744,7 +8258,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q243_78733.mp3"
  },
  {
-  "qid": "q244_78733",
+  "qid": "hummusqa_q_244",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which instrument sometimes doubles the notes of the vocals?",
@@ -8762,9 +8276,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "none",
    "strings"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8780,7 +8292,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q244_78733.mp3"
  },
  {
-  "qid": "q245_78733",
+  "qid": "hummusqa_q_245",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What resource is used here to make the song harmonically ambiguous?",
@@ -8798,9 +8310,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Each instrument plays on a different key",
    "Chord tensions"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8814,7 +8324,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q245_78733.mp3"
  },
  {
-  "qid": "q246_785425",
+  "qid": "hummusqa_q_246",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What interval is repeated in the bass voice?",
@@ -8832,9 +8342,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "3rd",
    "6th"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8850,7 +8358,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q246_785425.mp3"
  },
  {
-  "qid": "q247_785425",
+  "qid": "hummusqa_q_247",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What roots would you say this song has?",
@@ -8868,9 +8376,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "South America",
    "Africa"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8886,7 +8392,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q247_785425.mp3"
  },
  {
-  "qid": "q248_785425",
+  "qid": "hummusqa_q_248",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How do the different instruments relate to each other?",
@@ -8904,9 +8410,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "They complement each other with counterpoint lines.",
    "They don't complement each other."
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8923,7 +8427,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q248_785425.mp3"
  },
  {
-  "qid": "q249_6730",
+  "qid": "hummusqa_q_249",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the theme of this song?",
@@ -8941,9 +8445,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "religion",
    "freedom"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8959,7 +8461,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q249_6730.mp3"
  },
  {
-  "qid": "q250_6730",
+  "qid": "hummusqa_q_250",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What cadence is played at the end of the song?",
@@ -8977,9 +8479,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Broken Cadence",
    "Imperfect Cadence"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -8995,7 +8495,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q250_6730.mp3"
  },
  {
-  "qid": "q251_6730",
+  "qid": "hummusqa_q_251",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How was the tide in the story told by the singer?",
@@ -9013,9 +8513,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "He doesn't talk about that",
    "High"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9031,7 +8529,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q251_6730.mp3"
  },
  {
-  "qid": "q252_231013",
+  "qid": "hummusqa_q_252",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What drug is commonly associated with this genre of music?",
@@ -9049,9 +8547,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Cocaine",
    "Heroin"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9067,7 +8563,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q252_231013.mp3"
  },
  {
-  "qid": "q253_231013",
+  "qid": "hummusqa_q_253",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which instrument sounds soft and shy?",
@@ -9085,9 +8581,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "drums",
    "organ"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9104,7 +8598,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q253_231013.mp3"
  },
  {
-  "qid": "q254_231013",
+  "qid": "hummusqa_q_254",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How would you imagine the temperature in the place where this song was created?",
@@ -9122,9 +8616,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Rainy",
    "Extremely hot"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9142,7 +8634,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q254_231013.mp3"
  },
  {
-  "qid": "q255_266919",
+  "qid": "hummusqa_q_255",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How would you rate the sound production of this track?",
@@ -9160,9 +8652,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Expert",
    "Specialist"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9178,7 +8668,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q255_266919.mp3"
  },
  {
-  "qid": "q256_266919",
+  "qid": "hummusqa_q_256",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the main scale used in the song?",
@@ -9196,9 +8686,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Half-whole step",
    "Whole tone scale"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9212,7 +8700,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q256_266919.mp3"
  },
  {
-  "qid": "q257_266919",
+  "qid": "hummusqa_q_257",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What musical backgrounds would you guess these musicians have?",
@@ -9230,9 +8718,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "pop",
    "songwriters"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9246,7 +8732,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q257_266919.mp3"
  },
  {
-  "qid": "q258_349850",
+  "qid": "hummusqa_q_258",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Where is the vocalist's accent from?",
@@ -9264,9 +8750,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Cape Verde",
    "Mozambique"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9282,7 +8766,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q258_349850.mp3"
  },
  {
-  "qid": "q259_349850",
+  "qid": "hummusqa_q_259",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "There is something strange in the mix. What is it?",
@@ -9300,9 +8784,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "The percussion is too compressed",
    "The reverb has parallel compression"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9320,7 +8802,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q259_349850.mp3"
  },
  {
-  "qid": "q260_349850",
+  "qid": "hummusqa_q_260",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which of these musical elements contributes to adding emotion to the song?",
@@ -9338,9 +8820,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Rhythmic percussion",
    "Timbre of instruments used"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9356,7 +8836,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q260_349850.mp3"
  },
  {
-  "qid": "q261_924963",
+  "qid": "hummusqa_q_261",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What could be the intended mood of this tune?",
@@ -9374,9 +8854,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Depressing",
    "Sad"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9390,7 +8868,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q261_924963.mp3"
  },
  {
-  "qid": "q262_924963",
+  "qid": "hummusqa_q_262",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What does not contribute to creating this mood?",
@@ -9408,9 +8886,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "The sound of the guitar",
    "A clear and consonant harmony"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9429,7 +8905,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q262_924963.mp3"
  },
  {
-  "qid": "q263_924963",
+  "qid": "hummusqa_q_263",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which of these genres cannot be recognized in this tune?",
@@ -9447,9 +8923,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "New Age",
    "Modern classical music"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9463,7 +8937,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q263_924963.mp3"
  },
  {
-  "qid": "q264_1138775",
+  "qid": "hummusqa_q_264",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which of these genres cannot be recognized in this tune?",
@@ -9481,9 +8955,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Pop",
    "Soul"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9497,7 +8969,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q264_1138775.mp3"
  },
  {
-  "qid": "q265_1138775",
+  "qid": "hummusqa_q_265",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of drums are featured in this song?",
@@ -9515,9 +8987,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Hybrid drums",
    "Percussion"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9533,7 +9003,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q265_1138775.mp3"
  },
  {
-  "qid": "q266_1138775",
+  "qid": "hummusqa_q_266",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Who is the primary audience intended for the song?",
@@ -9551,9 +9021,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Elder men",
    "Other"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9567,7 +9035,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q266_1138775.mp3"
  },
  {
-  "qid": "q267_1070646",
+  "qid": "hummusqa_q_267",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which instrument is not present in the song?",
@@ -9585,9 +9053,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "flamenco cajón",
    "guitar"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9601,7 +9067,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q267_1070646.mp3"
  },
  {
-  "qid": "q268_1070646",
+  "qid": "hummusqa_q_268",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Where could the roots of this song be?",
@@ -9619,9 +9085,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Cuba",
    "Barcelona"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9637,7 +9101,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q268_1070646.mp3"
  },
  {
-  "qid": "q269_1070646",
+  "qid": "hummusqa_q_269",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which scales or modes are related to the one we hear in this song?",
@@ -9655,9 +9119,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Lydian",
    "Mixolydian"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9673,7 +9135,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q269_1070646.mp3"
  },
  {
-  "qid": "q270_17954",
+  "qid": "hummusqa_q_270",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What instrument does the sound of the lead bass imitate at the beginning of the song?",
@@ -9691,9 +9153,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Organ",
    "trumpet"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9709,7 +9169,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q270_17954.mp3"
  },
  {
-  "qid": "q271_17954",
+  "qid": "hummusqa_q_271",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What comping technique is used by the keyboard player?",
@@ -9727,9 +9187,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Garland-style comping",
    "nan"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9746,7 +9204,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q271_17954.mp3"
  },
  {
-  "qid": "q272_17954",
+  "qid": "hummusqa_q_272",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What solo technique does the sax player use to make the improvisation harmonically interesting?",
@@ -9764,9 +9222,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Playing only one note",
    "Playing the Hendrix scale"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9783,7 +9239,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q272_17954.mp3"
  },
  {
-  "qid": "q273_1131366",
+  "qid": "hummusqa_q_273",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which of the following statements is true?",
@@ -9801,9 +9257,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "The melody of the chorus is related to the melody of the introduction",
    "The introduction is motivically related to the rest of the song"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9820,7 +9274,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q273_1131366.mp3"
  },
  {
-  "qid": "q274_1131366",
+  "qid": "hummusqa_q_274",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which of the following statements is not true?",
@@ -9838,9 +9292,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "The song uses the Andalusian cadence",
    "The guitar plays filling motives between the vocal phrases"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9857,7 +9309,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q274_1131366.mp3"
  },
  {
-  "qid": "q275_1131366",
+  "qid": "hummusqa_q_275",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What effect is created by modulating the song?",
@@ -9875,9 +9327,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "It creates a different mood in the song.",
    "It introduces different musical elements."
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9893,7 +9343,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q275_1131366.mp3"
  },
  {
-  "qid": "q276_30259",
+  "qid": "hummusqa_q_276",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which of the following statements is true about the introduction?",
@@ -9911,9 +9361,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "The piano plays a diatonic scale",
    "The piano is not playing with the sustain pedal"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9929,7 +9377,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q276_30259.mp3"
  },
  {
-  "qid": "q277_30259",
+  "qid": "hummusqa_q_277",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is this music intended for?",
@@ -9947,9 +9395,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "a funeral",
    "a religious ceremony"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9963,7 +9409,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q277_30259.mp3"
  },
  {
-  "qid": "q278_30259",
+  "qid": "hummusqa_q_278",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What topics do the lyrics cover?",
@@ -9981,9 +9427,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Friendship",
    "The western world"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -9999,7 +9443,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q278_30259.mp3"
  },
  {
-  "qid": "q279_617329",
+  "qid": "hummusqa_q_279",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which instrument is least commonly associated with Reggae music?",
@@ -10017,9 +9461,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Vocals",
    "Organ"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10035,7 +9477,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q279_617329.mp3"
  },
  {
-  "qid": "q280_617329",
+  "qid": "hummusqa_q_280",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the protest content of the lyrics?",
@@ -10053,9 +9495,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Low",
    "nan"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10072,7 +9512,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q280_617329.mp3"
  },
  {
-  "qid": "q281_617329",
+  "qid": "hummusqa_q_281",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Who sings the choir vocals?",
@@ -10090,9 +9530,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Other singers",
    "A cloned voice"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10109,7 +9547,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q281_617329.mp3"
  },
  {
-  "qid": "q282_852",
+  "qid": "hummusqa_q_282",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which instrument has a strong presence in the center of the mix?",
@@ -10127,9 +9565,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "trumpet",
    "keyboard"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10145,7 +9581,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q282_852.mp3"
  },
  {
-  "qid": "q283_852",
+  "qid": "hummusqa_q_283",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What audio effect gives the guitar a funky vibe in this song?",
@@ -10163,9 +9599,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "echo",
    "delay"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10182,7 +9616,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q283_852.mp3"
  },
  {
-  "qid": "q284_852",
+  "qid": "hummusqa_q_284",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which of these statements is true?",
@@ -10200,9 +9634,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "There is no vocals",
    "The vocal style of the chorus isn't syncopated"
   ],
-  "audio_duration_seconds": [
-   70.06
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10219,7 +9651,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q284_852.mp3"
  },
  {
-  "qid": "q285_1222340",
+  "qid": "hummusqa_q_285",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which of the following situations would not be suitable for this music?",
@@ -10237,9 +9669,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "A theater play",
    "A concert for children"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10256,7 +9686,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q285_1222340.mp3"
  },
  {
-  "qid": "q286_1222340",
+  "qid": "hummusqa_q_286",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which of the following musical elements is most prominent in this piece?",
@@ -10274,9 +9704,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Rhythm",
    "Timbre"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10294,7 +9722,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q286_1222340.mp3"
  },
  {
-  "qid": "q287_1222340",
+  "qid": "hummusqa_q_287",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What do the melodic instruments imitate?",
@@ -10312,9 +9740,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "A sculpture",
    "An essay"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10330,7 +9756,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q287_1222340.mp3"
  },
  {
-  "qid": "q288_1222369",
+  "qid": "hummusqa_q_288",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of movie theme would you say this song fits?",
@@ -10348,9 +9774,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Adventure",
    "Mystery"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10367,7 +9791,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q288_1222369.mp3"
  },
  {
-  "qid": "q289_1222369",
+  "qid": "hummusqa_q_289",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What feeling does this song add to the picture?",
@@ -10385,9 +9809,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "intrigue",
    "excitement"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10401,7 +9823,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q289_1222369.mp3"
  },
  {
-  "qid": "q290_1222369",
+  "qid": "hummusqa_q_290",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which of these elements does not contribute to creating tension in the song?",
@@ -10419,9 +9841,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "accents",
    "percussion"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10439,7 +9859,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q290_1222369.mp3"
  },
  {
-  "qid": "q291_1352257",
+  "qid": "hummusqa_q_291",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which of these statements is true?",
@@ -10457,9 +9877,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "The instruments sound as if they were quantized",
    "The production uses a lot of compression"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10476,7 +9894,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q291_1352257.mp3"
  },
  {
-  "qid": "q292_1352257",
+  "qid": "hummusqa_q_292",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which country does this music remind you of?",
@@ -10494,9 +9912,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Cuba",
    "Mexico"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10513,7 +9929,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q292_1352257.mp3"
  },
  {
-  "qid": "q293_1352257",
+  "qid": "hummusqa_q_293",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the main goal of the bass line?",
@@ -10531,9 +9947,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Play the fundamental and the 7th",
    "Play the fundamental and the 3rd"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10550,7 +9964,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q293_1352257.mp3"
  },
  {
-  "qid": "q294_1936726",
+  "qid": "hummusqa_q_294",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the most important element in this song?",
@@ -10568,9 +9982,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Harmony",
    "Rhythm"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10589,7 +10001,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q294_1936726.mp3"
  },
  {
-  "qid": "q295_1936726",
+  "qid": "hummusqa_q_295",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the decay time of the reverb used in this song?",
@@ -10607,9 +10019,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Medium",
    "Very short"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10625,7 +10035,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q295_1936726.mp3"
  },
  {
-  "qid": "q296_1936726",
+  "qid": "hummusqa_q_296",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How is the reverb size used in this song?",
@@ -10643,9 +10053,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Medium",
    "Very small"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10661,7 +10069,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q296_1936726.mp3"
  },
  {
-  "qid": "q297_1320579",
+  "qid": "hummusqa_q_297",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of pedal effect is applied on the voice in the intro?",
@@ -10679,9 +10087,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Delay pedal",
    "Octaver pedal"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10695,7 +10101,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q297_1320579.mp3"
  },
  {
-  "qid": "q298_1320579",
+  "qid": "hummusqa_q_298",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What instrument plays the bass line?",
@@ -10713,9 +10119,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Synth Bass",
    "There´s no bass"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10731,7 +10135,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q298_1320579.mp3"
  },
  {
-  "qid": "q299_1320579",
+  "qid": "hummusqa_q_299",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What region of the US does this type of music usually remind you of?",
@@ -10749,9 +10153,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "East coast music",
    "Northwest music"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10767,7 +10169,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q299_1320579.mp3"
  },
  {
-  "qid": "q300_1079319",
+  "qid": "hummusqa_q_300",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which instruments are used to accompany the voice in the intro?",
@@ -10785,9 +10187,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Drums & Bass",
    "Guitar & piano"
   ],
-  "audio_duration_seconds": [
-   30.067
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10804,7 +10204,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q300_1079319.mp3"
  },
  {
-  "qid": "q301_1079319",
+  "qid": "hummusqa_q_301",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What do the lyrics suggest?",
@@ -10822,9 +10222,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Love",
    "Hope"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10840,7 +10238,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q301_1079319.mp3"
  },
  {
-  "qid": "q302_1079319",
+  "qid": "hummusqa_q_302",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What´s the style of the song?",
@@ -10858,9 +10256,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Rap",
    "Jazz"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10874,7 +10270,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q302_1079319.mp3"
  },
  {
-  "qid": "q303_498814",
+  "qid": "hummusqa_q_303",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of music does the intro evoke?",
@@ -10892,9 +10288,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Latin music",
    "Asian music"
   ],
-  "audio_duration_seconds": [
-   55.066
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10910,7 +10304,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q303_498814.mp3"
  },
  {
-  "qid": "q304_498814",
+  "qid": "hummusqa_q_304",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which tonality is used in the intro?",
@@ -10928,9 +10322,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "C minor",
    "A major"
   ],
-  "audio_duration_seconds": [
-   55.066
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10946,7 +10338,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q304_498814.mp3"
  },
  {
-  "qid": "q305_498814",
+  "qid": "hummusqa_q_305",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What mode is mainly played by the guitar?",
@@ -10964,9 +10356,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Locrian",
    "Ionian"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -10982,7 +10372,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q305_498814.mp3"
  },
  {
-  "qid": "q306_785413",
+  "qid": "hummusqa_q_306",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "How many guitars are playing during the song?",
@@ -11000,9 +10390,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Four",
    "One"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -11018,7 +10406,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q306_785413.mp3"
  },
  {
-  "qid": "q307_785413",
+  "qid": "hummusqa_q_307",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of guitars are used?",
@@ -11036,9 +10424,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Only electric",
    "Bass guitar"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -11052,7 +10438,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q307_785413.mp3"
  },
  {
-  "qid": "q308_785413",
+  "qid": "hummusqa_q_308",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which percussion instruments are used in the song?",
@@ -11070,9 +10456,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Timbal and buss drum",
    "Bongo"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -11088,7 +10472,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q308_785413.mp3"
  },
  {
-  "qid": "q309_964594",
+  "qid": "hummusqa_q_309",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is the configuration in the brass section?",
@@ -11106,9 +10490,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "1 Sax, 1 Trumpet",
    "3 trumpets"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -11122,7 +10504,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q309_964594.mp3"
  },
  {
-  "qid": "q310_964594",
+  "qid": "hummusqa_q_310",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of genre is this song?",
@@ -11140,9 +10522,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Cumbia",
    "Ska"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -11156,7 +10536,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q310_964594.mp3"
  },
  {
-  "qid": "q311_964594",
+  "qid": "hummusqa_q_311",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What's the instrument used to mark the rhythm?",
@@ -11174,9 +10554,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Cow bell",
    "Congas"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -11192,7 +10570,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q311_964594.mp3"
  },
  {
-  "qid": "q312_1051203",
+  "qid": "hummusqa_q_312",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Which piano technique is used during the accompaniment?",
@@ -11210,9 +10588,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Counterpoint",
    "Rhythmic comping"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -11229,7 +10605,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q312_1051203.mp3"
  },
  {
-  "qid": "q313_1051203",
+  "qid": "hummusqa_q_313",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What emotions do the lyrics evoke?",
@@ -11247,9 +10623,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Joy",
    "Triumph"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -11265,7 +10639,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q313_1051203.mp3"
  },
  {
-  "qid": "q314_1051203",
+  "qid": "hummusqa_q_314",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What dynamics are used by the piano to accompany the bridge?",
@@ -11283,9 +10657,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Pianissimo",
    "Mezzo piano"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -11302,7 +10674,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q314_1051203.mp3"
  },
  {
-  "qid": "q315_1351134",
+  "qid": "hummusqa_q_315",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What´s the rhythm used by the drums in the song?",
@@ -11320,9 +10692,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Swing",
    "Shuffle"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -11339,7 +10709,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q315_1351134.mp3"
  },
  {
-  "qid": "q316_1351134",
+  "qid": "hummusqa_q_316",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "Where is this type of music usually played?",
@@ -11357,9 +10727,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Night clubs",
    "Restaurants"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -11375,7 +10743,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q316_1351134.mp3"
  },
  {
-  "qid": "q317_1351134",
+  "qid": "hummusqa_q_317",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What percussion instrument is used to divide tempo?",
@@ -11393,9 +10761,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Maracas",
    "Congas"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -11411,7 +10777,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q317_1351134.mp3"
  },
  {
-  "qid": "q318_307395",
+  "qid": "hummusqa_q_318",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What type of technique is used by the guitar?",
@@ -11429,9 +10795,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Travis picking",
    "Tremolo picking"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -11447,7 +10811,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q318_307395.mp3"
  },
  {
-  "qid": "q319_307395",
+  "qid": "hummusqa_q_319",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What kind of clave is used by the percussion?",
@@ -11465,9 +10829,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "2+2",
    "3+3"
   ],
-  "audio_duration_seconds": [
-   60.056
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"
@@ -11485,7 +10847,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
   "audio": "https://huggingface.co/datasets/milan477/toward-ami/resolve/main/hummusqa/q319_307395.mp3"
  },
  {
-  "qid": "q320_307395",
+  "qid": "hummusqa_q_320",
   "benchmark": "HumMusQA",
   "audio_dataset": "hummusqa",
   "question": "What is this genre called?",
@@ -11503,9 +10865,7 @@ window.__AMI_DATA__["questions/hummusqa"] = [
    "Folk",
    "Jazz"
   ],
-  "audio_duration_seconds": [
-   90.07
-  ],
+  "audio_duration_seconds": [],
   "categories": {
    "modality": [
     "music"

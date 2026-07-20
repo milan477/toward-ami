@@ -11,6 +11,7 @@ download/benchmark_mmar.py) that produces two CSVs under data/benchmarks/<name>/
 
 Normalized schema
 -----------------
+qid             str        stable question id: <benchmark>_q_<n> (1-based)
 benchmark       str        benchmark name
 question        str        question text
 question_type   str        "mcq" (has choices) or "oeq" (open-ended)
@@ -90,10 +91,15 @@ def referenced_audio_paths(name: str, stage: str = "selected") -> list[str]:
     return out
 
 NORMALIZED_COLUMNS = [
-    "benchmark", "question", "question_type", "correct_answer",
+    "qid", "benchmark", "question", "question_type", "correct_answer",
     "distractors", "audio_url",
     "category_1", "category_2", "category_3", "category_4",
 ]
+
+
+def make_qid(name: str, n: int) -> str:
+    """Return a stable question id: ``<benchmark>_q_<n>`` (1-based)."""
+    return f"{name}_q_{n}"
 
 
 def clean_text(value) -> str:
@@ -196,13 +202,21 @@ def write_raw(name: str, df: pd.DataFrame) -> Path:
 def write_normalized(name: str, rows: list[dict]) -> Path:
     """Write canonical rows to data/benchmarks/<name>/<name>_normalized.csv.
 
+    Assigns a stable ``qid`` (``<name>_q_<n>``, 1-based) to every row.
     Columns in NORMALIZED_COLUMNS come first (in order); any extra keys present
     in the rows are appended after, sorted.
     """
     bench_dir(name)
-    extra = sorted({k for r in rows for k in r} - set(NORMALIZED_COLUMNS))
+    assigned = []
+    for i, row in enumerate(rows, start=1):
+        rec = dict(row)
+        rec["qid"] = make_qid(name, i)
+        if not rec.get("benchmark"):
+            rec["benchmark"] = name
+        assigned.append(rec)
+    extra = sorted({k for r in assigned for k in r} - set(NORMALIZED_COLUMNS))
     columns = NORMALIZED_COLUMNS + extra
-    df = pd.DataFrame(rows, columns=columns)
+    df = pd.DataFrame(assigned, columns=columns)
     path = bench_path(name, "normalized")
     df.to_csv(path, index=False)
     print(f"  normalized → {path}  ({len(df)} rows)")

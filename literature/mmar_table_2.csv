@@ -1,0 +1,33 @@
+source_id,result_set_id,benchmark,table_label,page,model,model_category,size,sound,music,speech,sound_music,sound_speech,music_speech,sound_music_speech,average
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Random Guess,Baseline,-,29.39,25.88,31.48,25.00,29.30,31.10,28.13,29.32
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Audio Flamingo,Large Audio Language Model,2.2B,32.73,21.84,24.83,18.18,30.28,24.39,25.00,26.60
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Audio Flamingo 2,Large Audio Language Model,0.5B,20.61,20.39,24.15,27.27,23.85,26.83,25.00,23.00
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Audio Flamingo 2,Large Audio Language Model,1.5B,26.67,20.87,22.79,9.09,22.94,23.17,20.83,22.90
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Audio Flamingo 2,Large Audio Language Model,3B,24.85,17.48,20.75,18.18,26.61,23.17,8.33,21.90
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,LTU,Large Audio Language Model,7B,19.39,19.90,13.95,18.18,24.77,21.95,16.67,19.20
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,LTU-AS,Large Audio Language Model,7B,20.00,14.08,19.05,9.09,20.64,28.05,12.50,19.00
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,MusiLingo,Large Audio Language Model,7B,9.09,7.28,4.08,9.09,6.88,7.32,8.33,6.60
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,MU-LLaMA,Large Audio Language Model,7B,13.94,13.59,14.97,9.09,12.39,14.63,16.67,13.90
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,GAMA,Large Audio Language Model,7B,29.09,24.27,27.89,27.27,24.77,28.05,20.83,26.50
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,GAMA-IT,Large Audio Language Model,7B,22.42,16.02,12.24,36.36,22.48,14.63,12.50,17.40
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Qwen-Audio-Chat,Large Audio Language Model,8.4B,27.88,20.39,22.11,9.09,25.23,25.61,20.83,23.50
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Qwen2-Audio,Large Audio Language Model,8.4B,33.94,23.30,32.99,9.09,33.03,26.83,33.33,30.40
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Qwen2-Audio-Instruct,Large Audio Language Model,8.4B,33.33,24.27,32.31,9.09,31.19,30.49,25.00,30.00
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,SALMONN,Large Audio Language Model,7B,30.91,29.61,34.35,9.09,37.61,28.05,37.50,32.80
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,SALMONN,Large Audio Language Model,13B,30.30,31.07,34.69,9.09,34.86,35.37,41.67,33.20
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,GPT-4o mini Audio,Large Audio Language Model,-,38.79,35.92,58.84,45.45,60.09,57.32,50.00,50.60
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,GPT-4o Audio,Large Audio Language Model,-,53.94,50.97,70.41,63.64,72.48,62.20,75.00,63.50
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Mellow,Large Audio Reasoning Model,167M,33.33,26.70,24.83,18.18,37.16,32.93,29.17,30.00
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Audio-CoT,Large Audio Reasoning Model,8.4B,35.76,25.24,34.01,9.09,30.73,30.49,37.50,31.30
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Audio-Reasoner,Large Audio Reasoning Model,8.4B,43.64,33.50,32.99,45.45,42.66,31.71,25.00,36.80
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,AnyGPT-chat,Omni Language Model,8B,24.24,19.42,22.11,27.27,27.52,26.83,29.17,23.70
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,OpenOmni,Omni Language Model,8B,20.61,22.33,35.37,18.18,27.06,23.17,25.00,27.00
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Baichuan-Omni-1.5,Omni Language Model,11B,41.21,33.01,40.48,36.36,48.62,39.02,41.67,40.70
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Qwen-2.5-Omni,Omni Language Model,3B,53.94,46.12,53.74,36.36,60.09,57.32,58.33,53.80
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Qwen-2.5-Omni,Omni Language Model,7B,58.79,40.78,59.86,54.55,61.93,67.07,58.33,56.70
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Gemini 2.0 Flash,Omni Language Model,-,61.21,50.97,72.11,81.82,72.48,65.85,70.83,65.60
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Caption + DeepSeek-V3,Large Language Model,671B,42.42,40.78,56.12,18.18,50.00,45.12,37.50,47.60
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Caption + GPT-4o,Large Language Model,-,46.06,40.29,60.88,27.27,53.67,46.34,45.83,50.70
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Caption + DeepSeek-R1,Large Reasoning Model,671B,46.67,49.51,62.59,45.45,58.72,56.10,54.17,55.50
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Caption + OpenAI o1,Large Reasoning Model,-,48.48,43.20,63.61,18.18,56.88,45.12,45.83,53.00
+src-mmar-neurips-2025,mmar-table-2,MMAR,Table 2,7,Caption + OpenAI o3,Large Reasoning Model,-,49.70,41.75,63.95,36.36,60.09,52.44,54.17,54.70

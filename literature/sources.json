@@ -1,0 +1,42 @@
+[
+  {
+    "source_id": "src-mmar-neurips-2025",
+    "title": "MMAR: A Challenging Benchmark for Deep Reasoning in Speech, Audio, Music, and Their Mix",
+    "authors": "Ziyang Ma et al.",
+    "year": 2025,
+    "venue": "NeurIPS 2025 Datasets and Benchmarks Track",
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/610a7d6507d55be70c6d13d0b663227d-Abstract-Datasets_and_Benchmarks_Track.html",
+    "pdf_url": "https://proceedings.neurips.cc/paper_files/paper/2025/file/610a7d6507d55be70c6d13d0b663227d-Paper-Datasets_and_Benchmarks_Track.pdf",
+    "local_path": "data/papers/mmar.pdf"
+  },
+  {
+    "source_id": "src-mmau-arxiv-2024",
+    "title": "MMAU: A Massive Multi-Task Audio Understanding and Reasoning Benchmark",
+    "authors": "Sakshi et al.",
+    "year": 2024,
+    "venue": "arXiv preprint",
+    "url": "https://arxiv.org/abs/2410.19168",
+    "pdf_url": "https://arxiv.org/pdf/2410.19168",
+    "local_path": "data/papers/mmau.pdf"
+  },
+  {
+    "source_id": "src-mmau-pro-aaai-2026",
+    "title": "MMAU-Pro: A Challenging and Comprehensive Benchmark for Holistic Evaluation of Audio General Intelligence",
+    "authors": "Sonal Kumar et al.",
+    "year": 2026,
+    "venue": "AAAI-26",
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/39430",
+    "pdf_url": "https://ojs.aaai.org/index.php/AAAI/article/view/39430/43391",
+    "local_path": "data/papers/mmau_pro.pdf"
+  },
+  {
+    "source_id": "src-hummusqa-acl-2026",
+    "title": "HumMusQA: A Human-written Music Understanding QA Benchmark Dataset",
+    "authors": "Benno Weck et al.",
+    "year": 2026,
+    "venue": "NLP4MusA 2026, Association for Computational Linguistics",
+    "url": "https://aclanthology.org/2026.nlp4musa-1.9/",
+    "pdf_url": "https://aclanthology.org/2026.nlp4musa-1.9.pdf",
+    "local_path": "data/papers/hummusqa.pdf"
+  }
+]

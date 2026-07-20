@@ -1,16 +1,13 @@
-"""Generate a self-contained HTML viewer for an OEQ results CSV.
+"""Generate a self-contained HTML viewer for exp-0 MCQ + OEQ results.
 
-Reads a <stamp>_summary.csv produced by src.experiments.exp_0_mcq_oeq (columns: qid,
-category_1, category_2, category_3, question, reference_answer, response,
-judge_score, judge_score_norm, judge_rationale, skipped, error) and writes a
-single static HTML file with the rows embedded — open it directly in a browser
-(no server needed). Features: full-text search, category + judge-score filters,
-sortable columns, color-coded scores, and summary stats.
+Reads ``summary.csv`` from an ``exp_0_mcq_oeq/.../<date>/oeq`` run directory
+(and merges its sibling MCQ summary). Legacy ``*_summary.csv`` runs remain
+supported. Open with ``--serve`` to play local audio from ``data/audio/``.
 
 Usage:
-    python renderers/oeq_report/oeq_report.py                       # latest OEQ CSV
-    python renderers/oeq_report/oeq_report.py path/to/summary.csv   # specific CSV
-    python renderers/oeq_report/oeq_report.py summary.csv -o view.html
+    python renderers/oeq_report/oeq_report.py --serve
+    python renderers/oeq_report/oeq_report.py results/exp_0_mcq_oeq/mmar/gemini-3-flash-preview/2026-07-18_17-37-06/oeq/summary.csv --serve
+    python renderers/oeq_report/oeq_report.py path/to/summary.csv -o view.html
 """
 
 import argparse
@@ -28,7 +25,13 @@ from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parents[2]
 AUDIO_ROOT = ROOT / "data" / "audio"
-DEFAULT_GLOB = str(ROOT / "results" / "*" / "*" / "*-oeq-piac" / "*_summary.csv")
+# Prefer dated experiment runs, then fall back to the older variant layout.
+DEFAULT_GLOBS = [
+    str(ROOT / "results" / "exp_0_mcq_oeq" / "*" / "*" / "*" / "oeq" / "summary.csv"),
+    str(ROOT / "results" / "mcq-oeq" / "*" / "*" / "*-oeq" / "*_summary.csv"),
+    str(ROOT / "results" / "mcq-oeq" / "*" / "*" / "*-oeq-piac" / "*_summary.csv"),
+    str(ROOT / "results" / "*" / "*" / "*-oeq-piac" / "*_summary.csv"),
+]
 AUDIO_EXTS = {".wav", ".mp3", ".flac", ".ogg", ".m4a", ".opus"}
 MIME = {".wav": "audio/wav", ".mp3": "audio/mpeg", ".flac": "audio/flac",
         ".ogg": "audio/ogg", ".m4a": "audio/mp4", ".opus": "audio/opus"}
@@ -56,9 +59,57 @@ COLUMNS = ["qid", "category", "category_1", "category_2", "category_3", "categor
            "skipped", "error"]
 
 
+def _result_date(path: str) -> str:
+    result = Path(path)
+    if result.name == "summary.csv" and result.parent.name == "oeq":
+        return result.parent.parent.name
+    return result.name.split("_summary.csv")[0]
+
+
 def load_rows(csv_path: Path) -> list[dict]:
     with csv_path.open(encoding="utf-8") as f:
-        return list(csv.DictReader(f))
+        rows = list(csv.DictReader(f))
+    mcq_by_qid = _load_sibling_mcq(csv_path)
+    if not mcq_by_qid:
+        return rows
+    for row in rows:
+        mcq = mcq_by_qid.get(row.get("qid", ""), {})
+        if not mcq:
+            continue
+        row.setdefault("mcq_pred", mcq.get("pred_answer", ""))
+        row.setdefault("mcq_correct", mcq.get("correct", ""))
+        row.setdefault("mcq_response", mcq.get("response", ""))
+        row.setdefault("mcq_prompt", mcq.get("prompt", ""))
+        if not row.get("audio") and mcq.get("audio"):
+            row["audio"] = mcq["audio"]
+    return rows
+
+
+def _load_sibling_mcq(oeq_csv: Path) -> dict[str, dict]:
+    """Pull the matching MCQ summary from the same logical run."""
+    parent = oeq_csv.parent
+    name = parent.name
+    if name == "oeq" and oeq_csv.name == "summary.csv":
+        mcq_dir = parent.parent / "mcq"
+        candidates = [mcq_dir / "summary.csv"]
+    elif name.endswith(("-oeq-piac", "-oeq")):
+        suffix = "-oeq-piac" if name.endswith("-oeq-piac") else "-oeq"
+        base = name[: -len(suffix)]
+        mcq_dir = parent.parent / base
+        stamp = oeq_csv.name.split("_summary.csv")[0]
+        candidates = [
+            mcq_dir / f"{stamp}_summary.csv",
+            *sorted(mcq_dir.glob("*_summary.csv")),
+        ]
+    else:
+        return {}
+    if not mcq_dir.is_dir():
+        return {}
+    for path in candidates:
+        if path.exists():
+            with path.open(encoding="utf-8") as f:
+                return {r["qid"]: r for r in csv.DictReader(f) if r.get("qid")}
+    return {}
 
 
 HTML_TEMPLATE = """<!doctype html>
@@ -73,10 +124,12 @@ HTML_TEMPLATE = """<!doctype html>
     --accent:#6ea8fe;
   }
   * { box-sizing:border-box; }
-  body { margin:0; background:var(--bg); color:var(--txt);
+  html, body { height:100%; }
+  body { margin:0; background:var(--bg); color:var(--txt); display:flex;
+         flex-direction:column;
          font:14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
   header { padding:14px 18px; border-bottom:1px solid var(--line); background:var(--panel);
-           position:sticky; top:0; z-index:5; }
+           flex:0 0 auto; }
   h1 { margin:0 0 6px; font-size:16px; }
   .sub { color:var(--muted); font-size:12px; }
   .stats { display:flex; flex-wrap:wrap; gap:14px; margin-top:10px; }
@@ -91,12 +144,12 @@ HTML_TEMPLATE = """<!doctype html>
                font-size:10px; color:var(--muted); }
   .controls { display:flex; flex-wrap:wrap; gap:8px; padding:10px 18px;
               border-bottom:1px solid var(--line); background:var(--panel);
-              position:sticky; top:0; z-index:4; }
+              flex:0 0 auto; }
   input,select { background:#11141b; color:var(--txt); border:1px solid var(--line);
                  border-radius:6px; padding:6px 8px; font-size:13px; }
   input#q { flex:1; min-width:220px; }
   .count { color:var(--muted); font-size:12px; align-self:center; margin-left:auto; }
-  .wrap { overflow:auto; max-height:calc(100vh - 190px); }
+  .wrap { overflow:auto; flex:1 1 auto; min-height:0; }
   table { border-collapse:collapse; width:100%; }
   th,td { border-bottom:1px solid var(--line); padding:8px 10px; text-align:left;
           vertical-align:top; }
@@ -123,14 +176,36 @@ HTML_TEMPLATE = """<!doctype html>
   .hbadge { background:#e5534b; color:#0b0d12; border-radius:6px; padding:1px 7px;
             font-weight:600; font-size:11px; }
   .muted2 { color:var(--muted); font-size:11px; }
+  td.long { cursor:zoom-in; }
+  td.long .text { display:-webkit-box; overflow:hidden; -webkit-box-orient:vertical;
+                  -webkit-line-clamp:3; white-space:pre-wrap; }
+  td.long.expanded { cursor:zoom-out; }
+  td.long.expanded .text { display:block; overflow:visible; }
   mark { background:#3a4a6b; color:#fff; }
   .empty { padding:40px; text-align:center; color:var(--muted); }
+  @media (min-width:1600px) {
+    header { display:grid; grid-template-columns:minmax(280px, .7fr) minmax(0, 2fr);
+             gap:18px; align-items:center; padding:8px 12px; }
+    h1 { margin-bottom:2px; }
+    .stats { margin-top:0; gap:6px; align-items:center; }
+    .stat { padding:4px 7px; }
+    .stat b { font-size:13px; }
+    .controls { padding:6px 12px; gap:6px; }
+    input, select { padding:4px 6px; font-size:12px; }
+    th, td { padding:4px 6px; }
+    td.q, td.ref, td.resp, td.rat { min-width:180px; max-width:280px; }
+    td.prompt { min-width:200px; max-width:300px; }
+    td.aud { width:176px; }
+    td.aud audio { width:170px; height:28px; }
+  }
 </style>
 </head>
 <body>
 <header>
-  <h1>OEQ answers, Qwen-judged</h1>
-  <div class="sub">__SUBTITLE__</div>
+  <div class="heading">
+    <h1>Exp 0 — MCQ + OEQ results</h1>
+    <div class="sub">__SUBTITLE__</div>
+  </div>
   <div class="stats" id="stats"></div>
 </header>
 <div class="controls">
@@ -150,6 +225,10 @@ HTML_TEMPLATE = """<!doctype html>
     <option value="1">hallucinated</option>
     <option value="0">clean</option>
   </select>
+  <select id="columns" title="Choose how much run metadata to display">
+    <option value="results">result columns</option>
+    <option value="all">all columns</option>
+  </select>
   <span class="count" id="count"></span>
 </div>
 <div class="wrap">
@@ -164,12 +243,16 @@ const ROWS = __DATA__;
 const COLS = __COLS__;
 const LABELS = {qid:"qid", category:"PIAC", skills:"skills", category_1:"cat1", category_2:"cat2", category_3:"cat3",
   question:"question", answer_format:"answer format", example_answer:"example",
-  prompt:"full prompt to ALM", reference_answer:"reference", response:"AF-Next answer",
+  prompt:"full prompt to ALM", reference_answer:"reference", response:"OEQ answer",
+  mcq_pred:"MCQ pred", mcq_correct:"MCQ ✓", mcq_response:"MCQ raw", mcq_prompt:"MCQ prompt",
   judge_score:"score", judge_score_norm:"norm", verdict:"verdict", grounded:"grounded",
   hallucinated:"halluc?", hallucination_level:"halluc level", judge_rationale:"rationale",
   skipped:"skipped", error:"error"};
 const TRUTHY = v => /^(true|1|yes)$/i.test((v??"").toString().trim());
 const LONG = new Set(["question","prompt","reference_answer","response","judge_rationale"]);
+const RESULT_COLS = new Set(["qid","category","category_2","category_3","question",
+  "reference_answer","response","mcq_pred","mcq_correct","judge_score","verdict",
+  "grounded","hallucinated","judge_rationale","error"]);
 let sortCol = "qid", sortDir = 1;
 
 function uniq(col){ return [...new Set(ROWS.map(r=>r[col]).filter(Boolean))].sort(); }
@@ -188,9 +271,10 @@ function scoreCell(v){
 }
 const SERVED = location.protocol !== "file:";
 function audioCell(r){
-  if(!r.qid) return `<td class="aud"></td>`;
+  const key = r.audio || r.qid;
+  if(!key) return `<td class="aud"></td>`;
   if(!SERVED) return `<td class="aud"><span class="noaudio">run with --serve to play</span></td>`;
-  return `<td class="aud"><audio controls preload="none" src="/audio/${encodeURIComponent(r.qid)}"></audio></td>`;
+  return `<td class="aud"><audio controls preload="none" src="/audio/${encodeURIComponent(key)}"></audio></td>`;
 }
 
 function render(){
@@ -218,21 +302,27 @@ function render(){
       if(isNaN(x))x=-1; if(isNaN(y))y=-1; }
     return (x>y?1:x<y?-1:0)*sortDir;
   });
-  const head=`<th class="noSort">audio</th>`+COLS.map(c=>`<th data-c="${c}">${LABELS[c]||c}${sortCol===c?` <span class="arrow">${sortDir>0?"▲":"▼"}</span>`:""}</th>`).join("");
+  const columnMode=document.getElementById("columns").value;
+  const visibleCols=columnMode==="all" ? COLS : COLS.filter(c=>RESULT_COLS.has(c));
+  const head=`<th class="noSort">audio</th>`+visibleCols.map(c=>`<th data-c="${c}">${LABELS[c]||c}${sortCol===c?` <span class="arrow">${sortDir>0?"▲":"▼"}</span>`:""}</th>`).join("");
   document.getElementById("head").innerHTML=head;
   document.querySelectorAll("th[data-c]").forEach(th=>th.onclick=()=>{
     const c=th.dataset.c; if(sortCol===c) sortDir*=-1; else {sortCol=c; sortDir=1;} render();
   });
-  const body=rows.map(r=>`<tr class="${TRUTHY(r.hallucinated)?'hall':''}">`+audioCell(r)+COLS.map(c=>{
+  const body=rows.map(r=>`<tr class="${TRUTHY(r.hallucinated)?'hall':''}">`+audioCell(r)+visibleCols.map(c=>{
     if(c==="judge_score") return `<td>${scoreCell(r[c])}</td>`;
     if(c==="qid") return `<td class="qid">${esc(r[c])}</td>`;
     if(c==="hallucinated") return `<td>${TRUTHY(r[c])?'<span class="hbadge">yes</span>':'<span class="muted2">no</span>'}</td>`;
     if(c.startsWith("category")) return `<td class="cat">${esc(r[c])}</td>`;
     if(c==="error") return `<td class="err">${esc(r[c])}</td>`;
-    const cls = LONG.has(c)?` class="${ {question:"q",prompt:"prompt",reference_answer:"ref",response:"resp",judge_rationale:"rat"}[c] }"`:"";
-    return `<td${cls}>${hl(r[c], q)}</td>`;
+    if(LONG.has(c)){
+      const cls={question:"q",prompt:"prompt",reference_answer:"ref",response:"resp",judge_rationale:"rat"}[c];
+      return `<td class="${cls} long" title="Click to expand"><div class="text">${hl(r[c], q)}</div></td>`;
+    }
+    return `<td>${hl(r[c], q)}</td>`;
   }).join("")+"</tr>").join("");
   document.getElementById("body").innerHTML=body;
+  document.querySelectorAll("td.long").forEach(td=>td.onclick=()=>td.classList.toggle("expanded"));
   document.getElementById("empty").style.display = rows.length?"none":"block";
   document.getElementById("count").textContent = `${rows.length} / ${ROWS.length} rows`;
 }
@@ -265,7 +355,7 @@ function stats(){
 
 fillSelect("piac","category","PIAC"); fillSelect("c1","category_1","cat1");
 fillSelect("c2","category_2","cat2"); fillSelect("c3","category_3","cat3");
-["q","piac","hall","c1","c2","c3","score"].forEach(id=>document.getElementById(id).addEventListener("input",render));
+["q","piac","hall","c1","c2","c3","score","columns"].forEach(id=>document.getElementById(id).addEventListener("input",render));
 stats(); render();
 </script>
 </body>
@@ -345,7 +435,7 @@ def serve(html: str, port: int) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("csv", nargs="?", help="OEQ summary CSV (default: latest music-oeq)")
+    ap.add_argument("csv", nargs="?", help="OEQ summary CSV (default: latest exp-0 run)")
     ap.add_argument("-o", "--out", help="output HTML path (default: <csv stem>.html)")
     ap.add_argument("--serve", action="store_true",
                     help="serve the viewer with audio playback instead of writing a file")
@@ -355,15 +445,19 @@ def main() -> None:
     if args.csv:
         csv_path = Path(args.csv)
     else:
-        matches = sorted(glob.glob(DEFAULT_GLOB))
+        matches = []
+        for pattern in DEFAULT_GLOBS:
+            matches = sorted(set(glob.glob(pattern)), key=_result_date)
+            if matches:
+                break
         if not matches:
-            sys.exit(f"No CSV given and none found at {DEFAULT_GLOB}")
+            sys.exit(f"No CSV given and none found under results/ (tried {DEFAULT_GLOBS})")
         csv_path = Path(matches[-1])
     if not csv_path.exists():
         sys.exit(f"CSV not found: {csv_path}")
 
     rows = load_rows(csv_path)
-    subtitle = f"{csv_path.name} — {len(rows)} rows"
+    subtitle = f"{csv_path} — {len(rows)} rows"
     html = build_html(rows, csv_path.stem, subtitle)
 
     if args.serve:

@@ -202,6 +202,41 @@
   "questions_url": ""
  },
  {
+  "name": "AHA",
+  "extended": "Audio Hallucination Alignment",
+  "paper_title": "AHA: Aligning Large Audio-Language Models for Reasoning Hallucinations via Counterfactual Hard Negatives",
+  "domain": "Diagnostic / Focused",
+  "format": "Preference pairs / Open-ended QA",
+  "year": "2025",
+  "modalities": "Audio / Text",
+  "skills": "Event omission, false event identity, temporal relation errors, quantitative temporal errors, event counting, and duration comparison",
+  "sources": "Synthetic multi-event audio sequences",
+  "size": "1,251 test pairs (12,758 total)",
+  "models": "",
+  "links": [
+   {
+    "label": "arXiv",
+    "url": "https://arxiv.org/abs/2512.24052"
+   },
+   {
+    "label": "Hugging Face",
+    "url": "https://huggingface.co/datasets/ASU-GSL/AHA"
+   },
+   {
+    "label": "GitHub",
+    "url": "https://github.com/LLM-VLM-GSL/AHA"
+   }
+  ],
+  "paper_url": "https://arxiv.org/abs/2512.24052",
+  "hf_url": "https://huggingface.co/datasets/ASU-GSL/AHA",
+  "code_url": "https://github.com/LLM-VLM-GSL/AHA",
+  "bibtex": "@misc{chen2025aha,\n  title={AHA: Aligning Large Audio-Language Models for Reasoning Hallucinations via Counterfactual Hard Negatives},\n  author={Chen, Yanxi and Zhu, Wenhui and Chen, Xiwen and Wang, Zhipeng and Li, Xin and Qiu, Peijie and Wang, Hao and Dong, Xuanzhao and Xiong, Yujian and Schneider, Anderson and Nevmyvaka, Yuriy and Wang, Yalin},\n  year={2025},\n  eprint={2512.24052},\n  archivePrefix={arXiv},\n  primaryClass={cs.SD},\n  url={https://arxiv.org/abs/2512.24052}\n}",
+  "status": "confirmed",
+  "question_count": 1251,
+  "has_questions": true,
+  "questions_url": "data/questions/aha.json"
+ },
+ {
   "name": "CMI-Bench",
   "extended": "CMI-Bench: A Comprehensive Benchmark for Evaluating Music Instruction Following",
   "paper_title": "CMI-Bench: A Comprehensive Benchmark for Evaluating Music Instruction Following",
