@@ -1,4 +1,4 @@
-"""Experiment 4: query and judge decomposed probe chains."""
+"""Experiment 11: legacy query and judging of decomposed probe chains."""
 
 from __future__ import annotations
 
@@ -11,7 +11,6 @@ import pandas as pd
 
 from models.client import make_client
 from src.config import DEFAULT_ANNOTATED_DATA, DEFAULT_MODALITY, DEFAULT_RUNNER_MODEL
-from src.evaluation.prompts import INSTRUCTION_OEQ_GUIDED
 from src.evaluation.scoring import judge_probe_answers, merge_probe_records
 from src.helpers.results import git_commit
 from src.querying.common import (
@@ -20,6 +19,7 @@ from src.querying.common import (
     create_result_dir,
     infer_benchmark_name,
     resolve_path,
+    row_audio,
     run_stamp,
 )
 from src.querying.probes import query_probe_answers
@@ -35,7 +35,8 @@ def probe_key(qid: str, idx: int) -> str:
 def iter_probe_units(df) -> list[dict]:
     units = []
     for _, row in df.iterrows():
-        qid = audio_stem(row["audio_url"])
+        source_url = row_audio(row)
+        qid = audio_stem(source_url)
         try:
             probes = json.loads(row.get("probes") or "[]")
         except json.JSONDecodeError:
@@ -48,13 +49,13 @@ def iter_probe_units(df) -> list[dict]:
                 "key": probe_key(qid, idx),
                 "qid": qid,
                 "probe_idx": idx,
-                "audio_url": row["audio_url"],
+                "audio_url": source_url,
                 "level": probe.get("level", ""),
                 "probe_question": question,
                 "expected": probe.get("expected", ""),
-                "prompt": f"{INSTRUCTION_OEQ_GUIDED}\n\nQuestion: {question}",
+                "prompt": f"Question: {question}",
                 "n_probes": row.get("n_probes", ""),
-                "category": row.get("category", ""),
+                "category": row.get("piec", ""),
                 "question": row.get("question", ""),
             })
     return units
@@ -65,7 +66,7 @@ def run(model_spec: str, data_path: Path, modality: str | None, out_dir: Path | 
     data_path = resolve_path(data_path)
     df = pd.read_csv(data_path, dtype=str, keep_default_na=False)
     if modality:
-        df = df[df["category_1"].str.lower() == modality.lower()].reset_index(drop=True)
+        df = df[df["focus"].str.lower().str.contains(modality.lower(), regex=False)].reset_index(drop=True)
     if "probes" not in df.columns:
         raise SystemExit("No `probes` column. Run: python -m src.run decomposition decompose mmar")
     if limit:
@@ -95,7 +96,7 @@ def run(model_spec: str, data_path: Path, modality: str | None, out_dir: Path | 
         "benchmark": benchmark,
         "modality": label,
         "answer_model": getattr(client, "model_id", model_spec),
-        "judge_model": "PIACJudge",
+        "judge_model": "PIECJudge",
         "config": {
             "data": str(data_path),
             "unit": "probe",
@@ -120,7 +121,7 @@ def main() -> None:
     parser.add_argument("--model", default=DEFAULT_RUNNER_MODEL)
     parser.add_argument("--data", default=str(DEFAULT_ANNOTATED_DATA))
     parser.add_argument("--modality", default=DEFAULT_MODALITY,
-                        help="filter category_1 (default: music; pass '' for all)")
+                        help="filter normalized focus (default: music; pass '' for all)")
     parser.add_argument("--outdir", default=None)
     parser.add_argument("--limit", type=int, default=None)
     args = parser.parse_args()

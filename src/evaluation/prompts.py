@@ -1,4 +1,4 @@
-"""Step 3: build the two prompt variants for each question.
+"""Build deterministic MCQ/OEQ prompts and the PIEC-aware judge prompt.
 
 MCQ  — the original multiple-choice form: shuffled lettered options, the model
        picks one. Graded automatically.
@@ -16,99 +16,66 @@ import random
 import re
 import string
 
-INSTRUCTION_MCQ = (
-    "Listen to the audio and answer the multiple-choice question. "
-    "Respond with only the letter of the correct option, and nothing else. Example: A\n\nNo other text or comments."
-)
-INSTRUCTION_OEQ = (
-    "Listen to the audio and answer the question in 1-2 sentences. "
-    "Be specific and ground your answer in what you hear."
-)
-INSTRUCTION_OEQ_GUIDED = (
-    "Listen to the audio and answer the question. "
-    "Be specific and ground your answer in what you hear."
-)
-
-# Per-strategy grading instruction injected into the PIAC judge prompt.
+# Per-category grading instruction injected into the PIEC judge prompt.
 STRATEGY_RUBRIC = {
     "binary_exact": (
-        "This is a PERCEPTUAL question with a single measurable ground truth. Grade BINARY: "
-        "score 4 if the answer matches the reference (exactly, as a synonym/paraphrase, or "
-        "within a small tolerance for a numeric value), otherwise 0. NEVER give 1/2/3. A "
-        "close-but-wrong value scores 0 (e.g. 20 when the reference is 26 -> 0)."
+        "PERCEPTUAL: require an exact semantic match to the reference. Accept synonyms, "
+        "paraphrases, and equivalent representations such as '3' and 'three'. Do not accept "
+        "a merely close numeric value or a related but different label."
     ),
     "binary_contextual": (
-        "This is a CONTEXTUAL question - an external factual ground truth. Grade BINARY: "
-        "score 4 if the answer matches the reference fact, otherwise 0. Accept a "
-        "semantically-compatible answer of different specificity (reference 'China' and "
-        "answer 'Beijing' -> 4; reference 'Beijing' and answer 'China' -> 4). If the reference "
-        "indicates the fact is unknown and the model declines/says unknown, score 4. Never 1/2/3."
+        "CONTEXTUAL: require an exact semantic match to the reference fact. Accept synonyms, "
+        "paraphrases, and equivalent representations, but not a related fact at a different "
+        "level of specificity unless it entails the reference in this question's context."
     ),
     "binary_expert_multi": (
-        "This is an INFERENTIAL question - trained analysis on which experts largely agree "
-        "but valid alternatives exist. Grade BINARY: score 4 if the answer matches the "
-        "reference OR any other reasonable expert-valid answer to this question, otherwise 0. "
-        "Do NOT require the model to justify its answer (it was not asked to). Never 1/2/3."
+        "INFERENTIAL: decide whether the answer is a reasonable interpretation for which "
+        "general consensus is desired. It may differ from the reference wording or specificity "
+        "when it is compatible with the reference and the supplied evidence. For example, if "
+        "the reference is 'outdoors', 'in the mountains' can score 1, normally with LOW "
+        "confidence because the compatibility is uncertain and indirect."
     ),
-    "graded_affective": (
-        "This is an AFFECTIVE question - subjective, with no single right answer. Grade 0-4 "
-        "on: plausibility (is the described feeling musically reasonable?), internal "
-        "consistency, and grounding (does it tie the feeling to perceptual/inferential "
-        "features?). Accept similar emotions ('sad' ~= 'melancholic' -> high). "
-        "4 = plausible, consistent and grounded; 2 = plausible but ungrounded/thin; 0 = "
-        "implausible, contradictory, or empty."
+    "graded_experiential": (
+        "EXPERIENTIAL: accept a plausible listener experience compatible with the reference; "
+        "consensus is not required. Related descriptions may be correct even when they are not "
+        "identical. For example, reference 'melancholic' and answer 'sadness' should score 1 "
+        "with MID confidence. Reject empty, irrelevant, or clearly incompatible experiences."
     ),
 }
 
-PIAC_JUDGE_PROMPT = """You are a strict, fair music-evaluation judge. Grade a model's open-ended \
-answer to a question about an audio clip, and separately assess hallucination.
+PIEC_JUDGE_PROMPT = """You are a strict, fair evaluator of an answer to an audio benchmark.
 
-Question category (PIAC): {category}
+Question category (PIEC): {category}
 {rubric}
 
-Also assess HALLUCINATION: a confident claim in the answer that is wrong or ungrounded - \
-most often a fluent higher-level claim (affective or inferential) that rests on a wrong or \
-absent lower-level (perceptual) observation, or a stated fact that contradicts the reference. \
-If the answer hallucinates, set hallucinated=true and hallucination_level to the PIAC level \
-of the failing claim (perceptual / inferential / affective / contextual); otherwise \
-hallucinated=false and hallucination_level="none". Also rate grounding 0-1 (how well the \
-answer ties its claims to observable audio features).
+Always return a BINARY score:
+- 1: correct under the category-specific rule above.
+- 0: incorrect, empty, irrelevant, or unsupported under that rule.
+
+Confidence describes how directly the available evidence supports YOUR grading decision:
+- high: direct semantic equivalence with the reference answer or a clear contradiction, depending on the question category. (e.g. "melancholy" and "sadness")
+- mid: a compatible interpretation, synonym, or experiential overlap that makes sense in the context of the question, but is not necessarily the same as the reference answer. (e.g. "outdoors" and "outside of the house")
+- low: a reasonable answer that matches the reference answer (e.g. is a subset of the reference answer), but you don't have enough knowledge about the audio to be sure it is correct. (e.g. 'outdoors' and 'in the mountains', or 'Belgium' and 'Flanders')
+
+Use all supplied context as evidence. The reference is authoritative but, for inferential and
+experiential questions, it is not necessarily the only acceptable wording or interpretation.
 
 Question: {question}
+Original question: {original_question}
 Answer format expected: {answer_format}
-Reference answer (one valid ground truth): {reference}
+Reference answer: {reference}
+Original benchmark answer: {original_answer}
+Question nature: {question_nature}
+Action-content labels: {action_content}
+Creator categories: {creator_categories}
+Distractors (known incorrect answers): {distractors}
+Speech transcription (may be empty):
+<transcription>{transcription}</transcription>
 Model's answer: {answer}
 
 Reply with ONLY a JSON object and nothing else:
-{{"score": <int 0-4>, "grounded": <float 0-1>, "hallucinated": <true|false>, \
-"hallucination_level": "<perceptual|inferential|affective|contextual|none>", \
+{{"score": <0|1>, "confidence": "<low|mid|high>", \
 "rationale": "<one short sentence>"}}"""
-
-GENERAL_JUDGE_PROMPT = """You are grading a model's open-ended answer to a question about an audio clip.
-
-Question: {question}
-Reference answer (ground truth): {reference}
-Model's answer: {answer}
-
-Score how well the model's answer matches the reference answer, on an integer scale 0-4:
-0 = wrong, irrelevant, or no answer
-1 = mostly wrong; only a slight or incidental overlap
-2 = partially correct; a MULTI-PART answer that gets some required parts but misses others
-3 = largely correct; all key content present, only minor wording differences
-4 = fully correct and complete
-
-Grading rules (apply strictly):
-- A single number or single discrete value (a count, a note, yes/no, one name, one word) is
-  either right or wrong: 4 if it matches the reference, 0 if it does not. NEVER give partial
-  credit for a close-but-wrong value - e.g. answering 20 when the reference is 26 scores 0.
-- Ignore extra information: if the answer contains everything the reference requires PLUS
-  additional details, do not penalize the extra - that is still 4.
-- "Partially correct" (2) applies ONLY when the reference has several required parts and the
-  answer is incomplete (some parts right, some missing) - never to a single value that is merely close.
-- Judge meaning, not wording: accept synonyms and paraphrases of the reference.
-
-Reply with ONLY a JSON object: {{"score": <integer 0-4>, "rationale": "<one short sentence>"}}"""
-
 
 def parse_distractors(raw) -> list[str]:
     if not raw:
@@ -126,13 +93,20 @@ def shuffled_options(correct: str, distractors: list[str], qid: str) -> list[str
     return opts
 
 
-def build_mcq(question: str, correct: str, distractors: list[str], qid: str) -> dict:
+def build_mcq(
+    question: str,
+    correct: str,
+    distractors: list[str],
+    qid: str,
+    *,
+    instruction: str,
+) -> dict:
     """Return {prompt, options, correct_letter, letter_map}."""
     opts = shuffled_options(correct, distractors, qid)
     letters = string.ascii_uppercase[:len(opts)]
     lines = [f"{ltr}. {opt}" for ltr, opt in zip(letters, opts)]
     correct_letter = letters[opts.index(correct)]
-    prompt = f"{INSTRUCTION_MCQ}\n\nQuestion: {question}\n\n" + "\n".join(lines)
+    prompt = f"{instruction}\n\nQuestion: {question}\n\n" + "\n".join(lines)
     return {
         "prompt": prompt,
         "options": opts,
@@ -142,15 +116,14 @@ def build_mcq(question: str, correct: str, distractors: list[str], qid: str) -> 
     }
 
 
-def build_oeq(question: str, correct: str,
+def build_oeq(question: str, correct: str, *, instruction: str,
               answer_format: str | None = None, example: str | None = None) -> dict:
     """Return {prompt, reference_answer}.
 
     If answer_format and/or example are given, they are added to the prompt to
     steer the answer's form (the example illustrates the expected form only — it
     is an incorrect answer, so it never leaks the correct one)."""
-    guided = bool((answer_format or "").strip() or (example or "").strip())
-    lines = [INSTRUCTION_OEQ_GUIDED if guided else INSTRUCTION_OEQ]
+    lines = [instruction]
     if answer_format and answer_format.strip():
         lines.append(f"Answer format: {answer_format.strip()}.")
     if example and example.strip():

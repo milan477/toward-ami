@@ -1,5 +1,5 @@
 """
-Exp 1: LLM-only baseline.
+Exp 8: legacy LLM-only baseline.
 Query the model with benchmark questions but NO audio, to establish
 how much a text-only model can score — the floor that audio adds value over.
 """
@@ -39,7 +39,7 @@ def preview() -> None:
 
 def run() -> None:
     model_info = get_model_info()
-    metadata = get_run_metadata("exp_1_llm_baseline", model_info["model_id"], CONFIG)
+    metadata = get_run_metadata("exp_8_llm_baseline", model_info["model_id"], CONFIG)
 
     benchmarks = available_benchmarks()
     summary: dict[str, dict] = {}

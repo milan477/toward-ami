@@ -1,19 +1,19 @@
-"""Annotators for benchmark-question analysis."""
+"""Structured LLM enhancement for normalized benchmark questions."""
 
 from __future__ import annotations
 
 from dataclasses import dataclass
+import json
 from typing import Protocol
 
 from src.config import DEFAULT_JUDGE_SPEC
 from src.helpers.answer_parsers import (
-    clean_value,
     extract_json_object,
-    normalize_piac,
+    normalize_piec,
     normalize_question_nature,
-    normalize_skills,
 )
-from src.analysis.taxonomy import RULE_OF_THUMB, describe
+from src.analysis.dimensions import normalize_action_content
+from src.analysis.prompts import build_enhancement_prompt
 
 
 class Client(Protocol):
@@ -36,175 +36,89 @@ class BaseAnnotator:
     def parse(self, text: str) -> dict:
         raise NotImplementedError
 
+
+class QuestionDimensionsAnnotator(BaseAnnotator):
+    """Create all five standardized enhancement fields in one model call."""
+
+    def __init__(self, client: Client):
+        super().__init__(
+            client,
+            "question_dimensions",
+            (
+                "action_content",
+                "piec",
+                "question_nature",
+                "answer_format",
+                "example_incorrect_answer",
+            ),
+            max_tokens=320,
+        )
+
     def annotate(self, row: dict) -> dict:
-        return self.parse(self.client.generate(self.prompt(row), max_tokens=self.max_tokens))
-
-
-class QuestionNatureAnnotator(BaseAnnotator):
-    def __init__(self, client: Client):
-        super().__init__(
-            client,
-            "question_nature",
-            ("question_nature", "question_nature_rationale"),
-            max_tokens=140,
+        prompt = self.prompt(row)
+        raw = self.client.generate(prompt, max_tokens=self.max_tokens)
+        parsed = self.parse(raw)
+        parsed["example_incorrect_answer"] = _validated_incorrect_answer(
+            parsed.get("example_incorrect_answer", ""), row, parsed["question_nature"]
         )
+        return {
+            **parsed,
+            # Stored in the JSONL provenance sidecar, not the enhanced CSV.
+            "enhancement_prompt": prompt,
+            "enhancement_raw_response": raw.strip(),
+        }
 
     def prompt(self, row: dict) -> str:
-        return f"""Classify the nature of this benchmark question.
-
-Ignore dataset distractors/options metadata. Use only the question text and reference answer.
-
-Labels:
-- tfq: asks for true/false, yes/no, or equivalent binary truth.
-- mcq: embeds a closed set of choices in the question text itself, e.g. "indoors or outdoors".
-- mlc: requires a specific label/value such as a number, note, instrument, chord, tempo, location, or name.
-- oeq: asks for a free-form description, explanation, or interpretation.
-
-Question: {row.get("question", "")}
-Reference answer: {row.get("correct_answer", "")}
-
-Reply with ONLY JSON:
-{{"question_nature": "<tfq|mcq|mlc|oeq>", "rationale": "<one short sentence>"}}"""
+        return build_enhancement_prompt(row)
 
     def parse(self, text: str) -> dict:
         obj = extract_json_object(text)
+        pairs = normalize_action_content(obj.get("action_content"))
+        nature = normalize_question_nature(obj.get("question_nature"), text)
+        incorrect = _clean_scalar(obj.get("example_incorrect_answer"), 500)
         return {
-            "question_nature": normalize_question_nature(obj.get("question_nature"), text),
-            "question_nature_rationale": clean_value(obj.get("rationale"), 300),
+            "action_content": json.dumps(pairs, ensure_ascii=False) if pairs else "",
+            "piec": normalize_piec(obj.get("piec"), text),
+            "question_nature": nature,
+            "answer_format": _clean_scalar(obj.get("answer_format"), 200),
+            "example_incorrect_answer": "" if nature == "true_false" else incorrect,
         }
 
 
-class AnswerFormatAnnotator(BaseAnnotator):
-    def __init__(self, client: Client):
-        super().__init__(
-            client,
-            "answer_format",
-            ("answer_format", "answer_format_rationale"),
-            max_tokens=140,
-        )
-
-    def prompt(self, row: dict) -> str:
-        return f"""Describe the answer format for this benchmark question as-is.
-
-Give the form a correct answer should take, not the answer content. Be specific and concise.
-
-Question: {row.get("question", "")}
-Reference answer: {row.get("correct_answer", "")}
-
-Reply with ONLY JSON:
-{{"answer_format": "<format as-is>", "rationale": "<one short sentence>"}}"""
-
-    def parse(self, text: str) -> dict:
-        obj = extract_json_object(text)
-        return {
-            "answer_format": clean_value(obj.get("answer_format")),
-            "answer_format_rationale": clean_value(obj.get("rationale"), 300),
-        }
+def _clean_scalar(value, limit: int) -> str:
+    if isinstance(value, (list, dict)):
+        return ""
+    return " ".join(str(value or "").split())[:limit]
 
 
-class ExampleAnswerAnnotator(BaseAnnotator):
-    def __init__(self, client: Client):
-        super().__init__(
-            client,
-            "example_answer",
-            ("example_answer", "example_answer_rationale"),
-            max_tokens=160,
-        )
-
-    def prompt(self, row: dict) -> str:
-        return f"""Give one example answer for this benchmark question as-is.
-
-The example should be in the same answer space and format as the reference answer. It may be
-the reference answer if that is the clearest example of the answer space.
-
-Question: {row.get("question", "")}
-Reference answer: {row.get("correct_answer", "")}
-
-Reply with ONLY JSON:
-{{"example_answer": "<example answer as-is>", "rationale": "<one short sentence>"}}"""
-
-    def parse(self, text: str) -> dict:
-        obj = extract_json_object(text)
-        return {
-            "example_answer": clean_value(obj.get("example_answer")),
-            "example_answer_rationale": clean_value(obj.get("rationale"), 300),
-        }
+def _json_list(value) -> list[str]:
+    if isinstance(value, str):
+        try:
+            value = json.loads(value)
+        except json.JSONDecodeError:
+            value = [value]
+    if not isinstance(value, list):
+        return []
+    return [" ".join(str(item).split()) for item in value if str(item).strip()]
 
 
-class PIACCategoryAnnotator(BaseAnnotator):
-    def __init__(self, client: Client):
-        super().__init__(
-            client,
-            "piac",
-            ("category", "piac", "category_auto", "category_rationale", "eval_strategy"),
-            max_tokens=220,
-        )
+def _validated_incorrect_answer(value: str, row: dict, nature: str) -> str:
+    """Reject correct/invalid examples and use a creator distractor as fallback."""
+    if nature == "true_false":
+        return ""
+    def answer_key(item: str) -> str:
+        return item.casefold().strip(" \t\r\n.,;:!?\"'")
 
-    def prompt(self, row: dict) -> str:
-        return f"""Classify this audio-question into exactly one PIAC category.
-
-PIAC taxonomy:
-{describe()}
-
-{RULE_OF_THUMB}
-
-Question: {row.get("question", "")}
-Reference answer: {row.get("correct_answer", "")}
-
-Reply with ONLY JSON:
-{{"piac": "<perceptual|inferential|affective|contextual>", "rationale": "<one short sentence>"}}"""
-
-    def parse(self, text: str) -> dict:
-        from src.analysis.taxonomy import eval_strategy
-
-        obj = extract_json_object(text)
-        piac = normalize_piac(obj.get("piac"), text)
-        return {
-            "category": piac,
-            "piac": piac,
-            "category_auto": piac,
-            "category_rationale": clean_value(obj.get("rationale"), 300),
-            "eval_strategy": eval_strategy(piac),
-        }
-
-
-class SkillsAnnotator(BaseAnnotator):
-    def __init__(self, client: Client):
-        super().__init__(
-            client,
-            "skills",
-            ("skills", "skills_rationale"),
-            max_tokens=180,
-        )
-
-    def prompt(self, row: dict) -> str:
-        return f"""List the skills required to answer this audio benchmark question.
-
-Return one to three concise skills. Each skill must be at most three words.
-Good examples: "melody identification", "pitch hearing", "spatial recognition".
-
-Question: {row.get("question", "")}
-Reference answer: {row.get("correct_answer", "")}
-
-Reply with ONLY JSON:
-{{"skills": ["<skill>", "..."], "rationale": "<one short sentence>"}}"""
-
-    def parse(self, text: str) -> dict:
-        obj = extract_json_object(text)
-        return {
-            "skills": ", ".join(normalize_skills(obj.get("skills"), text)),
-            "skills_rationale": clean_value(obj.get("rationale"), 300),
-        }
+    correct = {answer_key(item) for item in _json_list(row.get("answer", ""))}
+    candidates = [value, *_json_list(row.get("distractors", ""))]
+    for candidate in candidates:
+        cleaned = _clean_scalar(candidate, 500)
+        if cleaned and answer_key(cleaned) not in correct:
+            return cleaned
+    return ""
 
 
 def build_annotators(spec: str = DEFAULT_JUDGE_SPEC) -> list[BaseAnnotator]:
     from models.client import make_client
 
-    client = make_client(spec)
-    return [
-        QuestionNatureAnnotator(client),
-        AnswerFormatAnnotator(client),
-        ExampleAnswerAnnotator(client),
-        PIACCategoryAnnotator(client),
-        SkillsAnnotator(client),
-    ]
+    return [QuestionDimensionsAnnotator(make_client(spec))]

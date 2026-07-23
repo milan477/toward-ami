@@ -14,15 +14,13 @@ Each row has:
 
 Normalization choices
 ---------------------
-- question_type : always "mcq" (one correct + three distractors).
-- correct_answer: correct_answer column, resolved defensively.
-- distractors   : the three distractor_*_answer columns.
-- audio_url     : "<dataset>:<dataset_identifier>" (no audio is hosted here).
-- category_1/2/3/4: genre → (unused) → (unused) → (unused). The skill taxonomies are
-                  multi-valued, so they go in extra columns instead.
-- extra columns : music_knowledge, music_reasoning (JSON lists), dataset,
-                  odd_question.
+- answer: the resolved `correct_answer` as a one-item JSON list.
+- distractors: the three `distractor_*_answer` columns.
+- url: `["<dataset>:<dataset_identifier>"]` (no audio is hosted here).
+- creator categories: genre, music knowledge, and music reasoning.
 """
+
+from __future__ import annotations
 
 import ast
 import json
@@ -30,12 +28,13 @@ import shutil
 import subprocess
 from pathlib import Path
 
-import pandas as pd
-
-from common import (
+from download.common import (
     AUDIO_DIR,
     bench_path,
     clean_text,
+    frame_records,
+    normalized_record,
+    read_raw_records,
     resolve_correct_answer,
     to_distractors,
     write_normalized,
@@ -52,7 +51,9 @@ SDD_AUDIO_URL = "https://zenodo.org/api/records/10072001/files/audio.zip/content
 MUSICCAPS_CLIP_S = 10
 
 
-def _fetch_df() -> pd.DataFrame:
+def _fetch_df():
+    import pandas as pd
+
     from huggingface_hub import hf_hub_download
 
     path = hf_hub_download(HF_REPO, CSV_FILE, repo_type="dataset")
@@ -70,6 +71,10 @@ def _skills(value) -> str:
                       ensure_ascii=False)
 
 
+def _skill_items(value) -> list[str]:
+    return json.loads(_skills(value))
+
+
 def _normalize_row(row: dict) -> dict:
     choices = [
         row.get("correct_answer"),
@@ -78,22 +83,31 @@ def _normalize_row(row: dict) -> dict:
         row.get("distractor_3_answer"),
     ]
     correct = resolve_correct_answer(row.get("correct_answer"), choices)
-    return {
-        "benchmark":       NAME,
-        "question":        clean_text(row.get("question", "")),
-        "question_type":   "mcq",
-        "correct_answer":  correct,
-        "distractors":     to_distractors(choices, correct),
-        "audio_url":       f"{clean_text(row.get('dataset'))}:{clean_text(row.get('dataset_identifier'))}",
-        "category_1":      clean_text(row.get("genre", "")),
-        "category_2":      "",
-        "category_3":      "",
-        "category_4":      "",
-        "music_knowledge": _skills(row.get("music_knowledge")),
-        "music_reasoning": _skills(row.get("music_reasoning")),
-        "audio_source":    clean_text(row.get("dataset", "")),
-        "odd_question":    row.get("odd_question"),
-    }
+    distractors = json.loads(to_distractors(choices, correct))
+    knowledge = _skill_items(row.get("music_knowledge"))
+    reasoning = _skill_items(row.get("music_reasoning"))
+    creator_categories = []
+    if knowledge:
+        creator_categories.append("knowledge")
+    if reasoning:
+        creator_categories.append("reasoning")
+    creator_skills = []
+    for skill in [*knowledge, *reasoning]:
+        if skill and skill not in creator_skills:
+            creator_skills.append(skill)
+    return normalized_record(
+        bench=NAME,
+        focus=["music"],
+        question=row.get("question", ""),
+        answer=[correct] if correct else [],
+        distractors=distractors,
+        url=[f"{clean_text(row.get('dataset'))}:{clean_text(row.get('dataset_identifier'))}"],
+        categories={
+            "category_1_category": json.dumps(creator_categories, ensure_ascii=False),
+            "category_2_skills": json.dumps(creator_skills, ensure_ascii=False),
+            "category_3_genre": clean_text(row.get("genre", "")),
+        },
+    )
 
 
 def download_muchomusic() -> None:
@@ -102,9 +116,13 @@ def download_muchomusic() -> None:
 
     # Raw: store exactly as is.
     write_raw(NAME, df)
+    normalize_muchomusic(df)
 
-    # Normalized: canonical schema + MuChoMusic extras.
-    write_normalized(NAME, [_normalize_row(r) for r in df.to_dict("records")])
+
+def normalize_muchomusic(df=None):
+    """Normalize the local raw MuChoMusic CSV without downloading it again."""
+    rows = frame_records(df) if df is not None else read_raw_records(NAME)
+    return write_normalized(NAME, [_normalize_row(row) for row in rows])
 
 
 def _sdd_member(track_id: str) -> str:
@@ -191,6 +209,8 @@ def _download_musiccaps(ids: list[str], out_dir: Path) -> None:
 
 def download_muchomusic_audio() -> Path:
     """Fetch MuChoMusic clips from SDD and MusicCaps source datasets."""
+    import pandas as pd
+
     out_dir = AUDIO_DIR / NAME
     selected = bench_path(NAME, "selected")
     if not selected.exists():
@@ -200,10 +220,15 @@ def download_muchomusic_audio() -> Path:
     df = pd.read_csv(selected)
 
     by_source: dict[str, list[str]] = {"sdd": [], "musiccaps": []}
-    for url in df["audio_url"]:
-        source, _, ident = str(url).partition(":")
-        if source in by_source and ident and ident not in by_source[source]:
-            by_source[source].append(ident)
+    for raw_urls in df["url"]:
+        try:
+            urls = json.loads(raw_urls)
+        except (json.JSONDecodeError, TypeError):
+            urls = [raw_urls]
+        for url in urls:
+            source, _, ident = str(url).partition(":")
+            if source in by_source and ident and ident not in by_source[source]:
+                by_source[source].append(ident)
 
     print(f"[{NAME}] {sum(len(v) for v in by_source.values())} unique clips "
           f"(sdd={len(by_source['sdd'])}, musiccaps={len(by_source['musiccaps'])})")

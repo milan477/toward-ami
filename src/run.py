@@ -4,7 +4,7 @@ Usage:
     python -m src.run --list
     python -m src.run analysis pipeline mmar --limit 20
     python -m src.run decomposition decompose mmar --limit 5
-    python -m src.run experiments mcq-oeq --model af-next --limit 5
+    python -m src.run experiments exp-0 mmar --model af-next --limit 5
 """
 
 from __future__ import annotations
@@ -18,22 +18,33 @@ COMMANDS: dict[str, dict[str, str]] = {
         "load": "src.preprocess.benchmarks",
     },
     "analysis": {
-        "annotate": "src.analysis.run",
+        "enhance": "src.analysis.run",
         "pipeline": "src.analysis.run",
+        "rewrite-questions": "src.analysis.run",
         "statistics": "src.analysis.run",
+        "piec": "src.analysis.piec_analyze",
     },
     "evaluation": {
         "judge": "src.evaluation.judge",
-        "piac": "src.evaluation.piac_analyze",
     },
     "decomposition": {
-        "decompose": "src.decomposition.decompose",
-        "perturbation": "src.decomposition.exp_2_perturbation",
+        "decompose": "src.analysis.decompose",
+        "perturbation": "src.experiments.exp_9_perturbation",
     },
     "experiments": {
-        "mcq-oeq": "src.experiments.exp_0_mcq_oeq",
-        "probes": "src.experiments.exp_4_probe_eval",
-        "llm-baseline": "src.experiments.exp_1_llm_baseline",
+        "batch": "src.experiments.batch",
+        "exp-0": "src.experiments.exp_0_text_mcq",
+        "exp-1": "src.experiments.exp_1_no_audio",
+        "exp-2": "src.experiments.exp_2_no_audio_stt",
+        "exp-3": "src.experiments.exp_3_format_type_oeq",
+        "exp-4": "src.experiments.exp_4_original_mcq",
+        "exp-5": "src.experiments.exp_5_piec_rewrite",
+        "exp-6": "src.experiments.exp_6_task_rewrite_mcq",
+        "exp-7": "src.experiments.exp_7_mcq_oeq",
+        "exp-8": "src.experiments.exp_8_llm_baseline",
+        "exp-9": "src.experiments.exp_9_perturbation",
+        "exp-10": "src.experiments.exp_10_decomposition",
+        "exp-11": "src.experiments.exp_11_probe_eval",
     },
 }
 

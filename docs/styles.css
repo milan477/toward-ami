@@ -1084,7 +1084,12 @@ main { flex: 1; max-width: var(--wide); width: 100%; margin: 0 auto; padding: 0 
 .qcard-top .q { font-weight: 600; font-size: 19px; margin: 0; line-height: 1.4; letter-spacing: -0.01em; }
 .qmeta { color: var(--fg-faint); font-size: 12.5px; margin: 8px 0 16px; }
 .qcard audio { width: 100%; height: 34px; margin: 4px 0 18px; }
-.audio-lazy { margin: 4px 0 18px; }
+.audio-lazy {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 18px;
+}
 .audio-load {
   border: 1px solid var(--line-strong);
   background: #fff;

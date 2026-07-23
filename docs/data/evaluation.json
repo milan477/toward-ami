@@ -1,5 +1,5 @@
 {
- "intro": "PIAC is a listener-centered taxonomy created around four modes of musical engagement — Perceptual, Inferential, Affective, and Contextual — each corresponding to a distinct degree of evaluation ambiguity, from none, to generally agreed upon, to subject to personal experience. It is designed as a paradigm for benchmarks to organize evaluation around to systematically assess audio-language models in open-ended formats.",
+ "intro": "To this end, we propose a listener-centered taxonomy organized around four modes of musical engagement, each corresponding to a distinct degree of ambiguity: Perceptual, Inferential, Emotional, and Contextual content. For each category we discuss (1) the nature of the information, (2) its epistemic status, in particular the degree to which consensus is expected, (3) representative examples, (4) an appropriate evaluation methodology, and (5) an illustrative question.",
  "categories": [
   {
    "key": "perceptual",
@@ -7,13 +7,13 @@
    "information": "Perceptual content comprises anything that is measurable from the audio itself. This category requires neither prior knowledge nor active reasoning.",
    "ambiguity": "The defining characteristic is the absence of reasonable disagreement, given a predefined answer format: a given note corresponds to A4 or it does not; a note onset occurs at a specific time or it does not.",
    "coverage": "This category includes objective signal-level attributes or audio features, such as pitch, timing, duration, loudness, instrumentation, and lyrics. Musical descriptors that don't fall into this category include meter, as it is not physically present in the signal and may be interpreted differently by different listeners (such as 4/4 or 2/2), lacking a clear ground truth.",
-   "evaluation": "Evaluation within this category can proceed via exact semantic match or within a predefined tolerance. A constrained answer often required to increase comparability between prediction and reference.",
+   "evaluation": "Evaluation within this category can proceed via exact semantic match or within a predefined tolerance. A constrained answer is often required to increase comparability between prediction and reference.",
    "example_q": "What note is played by the violin at 0:31:23? Answer in scientific pitch notation.",
    "example_a": "A4."
   },
   {
    "key": "inferential",
-   "subtitle": "information derived from the audio through expert listening and analytical reasoning, for which expert consensus is expected though not guaranteed",
+   "subtitle": "information derived from the audio through expert listening and analytical reasoning, for which expert consensus is expected, although limited disagreement may remain",
    "information": "Inferential content consists of musical properties that can be derived from the audio through expert listening and analytical reasoning.",
    "ambiguity": "The claims are intersubjective: trained listeners tend to converge on an answer, but some degree of disagreement remains possible.",
    "coverage": "This category includes harmonic function, formal segmentation, phrase structure, genre attribution, voice leading, and other aspects of musical organization.",
@@ -22,13 +22,13 @@
    "example_a": "A7, or A9."
   },
   {
-   "key": "affective",
+   "key": "experiential",
    "subtitle": "information related to the subjective experience of the listener, for which no consensus is expected or desirable",
-   "information": "Affective content captures how music is experienced by a listener and relates to expression and emotional response.",
+   "information": "Experiential content captures a listener's personal experience of mood, feeling, interpretation, tension, and direction.",
    "ambiguity": "By definition, these claims are subjective and should not be resolved by consensus, as there is no single right answer.",
-   "coverage": "This category includes perceived mood, character, tension, intimacy, energy, aesthetic quality, and personal response.",
-   "evaluation": "Evaluation should accommodate multiple correct answers by focusing on core criteria: the plausibility of the affective description (whether it is musically reasonable), internal consistency (ensuring different parts of the response cohere), and grounding (verifying that affective claims are supported by perceptual or inferential references). For example, describing a passage as “tender” gains substance if it is supported by references to soft dynamics, legato articulation, and sustained harmonic resolution.",
-   "example_q": "What is the most dramatic spot in the audio?",
+   "coverage": "This category includes felt mood, character, tension, direction, intimacy, energy, aesthetic quality, and personal response. It excludes a composer's inspiration or intention. Analysis for which general agreement is desired is inferential.",
+   "evaluation": "Evaluation should accommodate multiple correct answers by focusing on core criteria: the plausibility of the experiential description (whether it is musically reasonable), internal consistency (ensuring different parts of the response cohere), and grounding (verifying that experiential claims are supported by perceptual or inferential references). For example, describing a passage as “tender” gains substance if it is supported by references to soft dynamics, legato articulation, and sustained harmonic resolution.",
+   "example_q": "Where does the audio feel most dramatic to you?",
    "example_a": "Any spot that can be conceived as the most dramatic spot in the audio by an engaged human listener."
   },
   {
@@ -42,15 +42,15 @@
    "example_a": "Mozart."
   }
  ],
- "rule_of_thumb": "Rule of thumb: unambiguously extractable from the signal → perceptual; tied to the listener's subjective experience → affective; a non-debatable external fact about the piece → contextual; otherwise (trained analysis of the signal) → inferential.",
+ "rule_of_thumb": "Rule of thumb: unambiguously extractable from the signal → perceptual; tied to the listener's personal experience, with no consensus required or desired → experiential; a non-debatable external fact about the piece → contextual; otherwise (trained analysis of the signal) → inferential.",
  "rule_of_thumb_items": [
   {
    "condition": "Unambiguously extractable from the signal",
    "category": "perceptual"
   },
   {
-   "condition": "Tied to the listener's subjective experience",
-   "category": "affective"
+   "condition": "A listener's personal experience; no consensus sought",
+   "category": "experiential"
   },
   {
    "condition": "A non-debatable external fact about the piece",
@@ -61,6 +61,14 @@
    "category": "inferential"
   }
  ],
+ "motivation": {
+  "body": [
+   "PIEC is a framework that probes layered understanding of music. It distinguishes information that is directly perceived, inferred with general consensus as a goal, experienced personally without consensus as a goal, and known from external context.",
+   "Consider the following examples. “How many notes are played in total in this audio?\" is a perceptual question, as it is directly measurable from the audio and admits a single ground truth. Therefore, its evaluation within an open-ended format is straightforward: an exact match requirement. The answer to “What does the music feel like?” shouldn't be converged on by consensus. The evaluation should admit multiple responses, using an LLM-as-a-judge or tailored similarity metrics.",
+   "Beyond the level of ambiguity, these categories also represent different axes along which we want to probe the model's understanding of music. For instance, “Where is the first climax?” presumes a musical event with consensus about its relationship to the rest of the piece, and is therefore inferential. “Where does the first climax feel like it happens?” considers the question from a listener's subjective experience and is experiential. Accordingly, each question falls into one of the four categories, and both the question and its evaluation should be designed in accordance with the skill they intend to probe.",
+   "More broadly, the taxonomy organizes the content of questions, their degree of ambiguity, and the evaluation methodology."
+  ]
+ },
  "concepts": {
   "Tone": [
    "pitch",
@@ -75,11 +83,8 @@
   "Time": [
    "rhythm",
    "tempo",
-   "onset",
-   "duration",
    "meter",
-   "form",
-   "counting"
+   "form"
   ],
   "Tone × Time": [
    "genre",
@@ -98,14 +103,6 @@
   ],
   "Other": [
    "other"
-  ]
- },
- "motivation": {
-  "body": [
-   "PIAC is a framework that probes layered understanding of music. It rests on a distinction between different levels of ambiguity (none, generally agreed upon, and subject to personal experience) and distinguishes between different types of information that can be extracted or derived from the audio (perceptual, inferential, affective, and contextual).",
-   "Consider the following examples. “How many notes are played in total in this audio?\" is a perceptual question, as it is directly measurable from the audio and admits a single ground truth. Therefore, its evaluation within an open-ended format is straightforward: an exact match requirement. The answer to “What does the music feel like?” shouldn't be converged on by consensus. The evaluation should admit multiple responses, using an LLM-as-a-judge or tailored similarity metrics.",
-   "Beyond the level of ambiguity, these categories also represent different axes along which we want to probe the model's understanding of music. For instance, “Where is the first climax?” presumes a musical event with consensus about its relationship to the rest of the piece, and is therefore inferential. “Where do you feel a first climax happens?” considers the question from a listener's subjective experience and is affective. Accordingly, each question falls into one of the four categories, and both the question and its evaluation should be designed in accordance with the skill they intend to probe.",
-   "More broadly, the taxonomy organizes the content of questions, their degree of ambiguity, and the evaluation methodology."
   ]
  }
 }

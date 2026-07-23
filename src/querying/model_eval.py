@@ -8,15 +8,21 @@ from pathlib import Path
 
 from src.config import API_RETRIES, MCQ_MAX_TOKENS, OEQ_MAX_TOKENS
 from src.evaluation.prompts import build_mcq, build_oeq, extract_letter, parse_distractors
-from src.querying.common import audio_name, audio_stem, read_jsonl
+from src.querying.common import (
+    audio_name, creator_categories, read_jsonl, row_answer, row_audio, row_qid,
+)
+from src.analysis.taxonomy import row_piec
 
 
-def generate_with_retries(client, prompt: str, audio: Path, max_tokens: int) -> tuple[str, str | None]:
+def generate_with_retries(
+    client, prompt: str, audio: Path | None, max_tokens: int
+) -> tuple[str, str | None]:
     """One model call with a few retries for transient errors."""
     last = None
     for attempt in range(API_RETRIES):
         try:
-            return client.generate(prompt, str(audio), max_tokens=max_tokens), None
+            audio_path = str(audio) if audio is not None else None
+            return client.generate(prompt, audio_path, max_tokens=max_tokens), None
         except Exception as exc:  # noqa: BLE001
             detail = str(exc)
             resp = getattr(exc, "response", None)
@@ -47,7 +53,7 @@ def _rewrite_jsonl(path: Path, records: dict[str, dict]) -> None:
 def query_answers(df, audio_index: dict[str, Path], client, cache: Path, form: str) -> dict[str, dict]:
     """Query ``client`` for all uncached (or previously failed) rows in MCQ/OEQ form."""
     done = read_jsonl(cache)
-    todo = [row for _, row in df.iterrows() if _needs_query(done.get(audio_stem(row["audio_url"])))]
+    todo = [row for _, row in df.iterrows() if _needs_query(done.get(row_qid(row)))]
     if not todo:
         print(f"[{form}] all {len(done)} answers present; skipping.")
         return done
@@ -55,8 +61,8 @@ def query_answers(df, audio_index: dict[str, Path], client, cache: Path, form: s
     n_ok = sum(1 for r in done.values() if not _needs_query(r))
     print(f"[{form}] {client.model_id}: {len(todo)} to answer ({n_ok} ok cached)")
     for i, row in enumerate(todo, 1):
-        qid = audio_stem(row["audio_url"])
-        audio = audio_index.get(audio_name(row["audio_url"]))
+        qid = row_qid(row)
+        audio = audio_index.get(audio_name(row_audio(row)))
         if audio is None:
             rec = {"qid": qid, "skipped": "no_audio"}
         elif form == "mcq":
@@ -76,20 +82,24 @@ def query_answers(df, audio_index: dict[str, Path], client, cache: Path, form: s
 
 
 def _query_mcq(row, qid: str, audio: Path, client) -> dict:
+    from src.experiments.variants import LETTER_AUDIO
+
     distractors = parse_distractors(row["distractors"])
-    mcq = build_mcq(row["question"], row["correct_answer"], distractors, qid)
+    mcq = build_mcq(
+        row["question"], row_answer(row), distractors, qid,
+        instruction=LETTER_AUDIO,
+    )
     response, error = generate_with_retries(client, mcq["prompt"], audio, MCQ_MAX_TOKENS)
     pred = extract_letter(response, mcq["letter_map"]) if not error else None
+    categories = creator_categories(row)
     return {
         "qid": qid,
         "question": row["question"],
         "audio": audio.name,
-        "category": row.get("category", ""),
-        "skills": row.get("skills", ""),
-        "category_1": row["category_1"],
-        "category_2": row["category_2"],
-        "category_3": row["category_3"],
-        "category_4": row.get("category_4", ""),
+        "category": row_piec(row),
+        "piec": row_piec(row),
+        "action_content": row.get("action_content", ""),
+        "creator_categories": json.dumps(categories, ensure_ascii=False),
         "prompt": mcq["prompt"],
         "correct_answer": mcq["correct_answer"],
         "correct_letter": mcq["correct_letter"],
@@ -102,27 +112,36 @@ def _query_mcq(row, qid: str, audio: Path, client) -> dict:
 
 
 def _query_oeq(row, qid: str, audio: Path, client) -> dict:
+    from src.experiments.variants import OEQ_AUDIO
+
     oeq = build_oeq(
         row["question"],
-        row["correct_answer"],
+        row_answer(row),
+        instruction=OEQ_AUDIO,
         answer_format=row.get("answer_format", ""),
-        example=row.get("example_answer", ""),
+        example=row.get("example_incorrect_answer", row.get("example_answer", "")),
     )
     response, error = generate_with_retries(client, oeq["prompt"], audio, OEQ_MAX_TOKENS)
+    categories = creator_categories(row)
     return {
         "qid": qid,
         "question": row["question"],
         "audio": audio.name,
-        "category": row.get("category", ""),
-        "skills": row.get("skills", ""),
-        "category_1": row["category_1"],
-        "category_2": row["category_2"],
-        "category_3": row["category_3"],
-        "category_4": row.get("category_4", ""),
+        "category": row_piec(row),
+        "piec": row_piec(row),
+        "action_content": row.get("action_content", ""),
+        "creator_categories": json.dumps(categories, ensure_ascii=False),
+        "original_question": row.get("question", ""),
+        "original_answer": row.get("answer", ""),
+        "distractors": row.get("distractors", ""),
+        "transcription": row.get("transcription", ""),
+        "question_nature": row.get("question_nature", ""),
         "answer_format": row.get("answer_format", ""),
-        "example_answer": row.get("example_answer", ""),
+        "example_answer": row.get(
+            "example_incorrect_answer", row.get("example_answer", "")
+        ),
         "prompt": oeq["prompt"],
-        "reference_answer": row["correct_answer"],
+        "reference_answer": row_answer(row),
         "response": response,
         "error": error,
     }

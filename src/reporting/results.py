@@ -7,33 +7,45 @@ import json
 from collections import defaultdict
 from pathlib import Path
 
-from src.analysis.taxonomy import PIAC_ORDER
-from src.querying.common import audio_stem
+from src.analysis.taxonomy import PIEC_ORDER
+from src.querying.common import row_qid
 
 MCQ_COLS = [
-    "qid", "category", "skills", "category_1", "category_2", "category_3", "category_4",
+    "qid", "model", "model_info", "git_commit", "run_config",
+    "category", "piec", "action_content", "creator_categories",
+    "experiment_variant", "audio_used", "transcription", "original_question",
+    "task_rewrite_model", "task_rewrite_model_spec", "task_rewrite_model_info",
+    "task_rewrite_equivalent", "task_rewrite_imperative",
+    "task_rewrite_rationale", "task_rewrite_prompt", "task_rewrite_raw",
+    "task_verification_prompt", "task_verification_raw",
     "question", "prompt", "correct_answer", "correct_letter", "pred_letter", "pred_answer",
     "response", "correct", "skipped", "error",
 ]
 
 OEQ_COLS = [
-    "qid", "category", "skills", "category_1", "category_2", "category_3", "category_4",
-    "question", "answer_format", "example_answer", "prompt", "reference_answer",
-    "response", "judge_score", "judge_score_norm", "verdict", "grounded",
-    "hallucinated", "hallucination_level", "judge_rationale", "skipped", "error",
+    "qid", "model", "model_info", "git_commit", "run_config",
+    "category", "piec", "action_content", "creator_categories",
+    "experiment_variant", "audio_used", "transcription", "original_question",
+    "task_rewrite_model", "task_rewrite_model_spec", "task_rewrite_model_info",
+    "task_rewrite_equivalent", "task_rewrite_imperative",
+    "task_rewrite_rationale", "task_rewrite_prompt", "task_rewrite_raw",
+    "task_verification_prompt", "task_verification_raw",
+    "question", "question_nature", "answer_format", "example_answer", "prompt", "reference_answer",
+    "response", "judge_score", "judge_score_norm", "verdict", "judge_confidence",
+    "judge_rationale", "skipped", "error",
 ]
 
 PROBE_COLS = [
     "qid", "probe_idx", "level", "target_category", "question", "probe_question",
     "expected", "response", "judge_score", "judge_score_norm", "verdict",
-    "hallucinated", "skipped", "error",
+    "judge_confidence", "skipped", "error",
 ]
 
 
 def records_for_rows(df, answers: dict[str, dict]) -> list[dict]:
     records = []
     for _, row in df.iterrows():
-        qid = audio_stem(row["audio_url"])
+        qid = row_qid(row)
         records.append(answers.get(qid, {"qid": qid}))
     return records
 
@@ -61,7 +73,10 @@ def write_mcq_outputs(out_dir: Path, stamp: str, metadata: dict,
     _write_csv(out_dir / "summary.csv", MCQ_COLS, records)
     _write_json(out_dir / "comparison.json",
                 {**metadata, "form": "mcq", "summary": summary, "items": records})
-    _write_text(out_dir / "report.txt", _mcq_report(metadata, stamp, accuracy, correct, scored, by_piac))
+    _write_text(
+        out_dir / "report.txt",
+        _mcq_report(metadata, stamp, accuracy, correct, scored, by_piac, records),
+    )
     return summary
 
 
@@ -69,16 +84,17 @@ def write_oeq_outputs(out_dir: Path, stamp: str, metadata: dict,
                       records: list[dict]) -> dict:
     scored = [r for r in records if r.get("judge_score_norm") is not None]
     mean = sum(r["judge_score_norm"] for r in scored) / len(scored) if scored else 0.0
-    hallucinated = [r for r in scored if r.get("hallucinated")]
     by_piac: dict[str, list[float]] = defaultdict(list)
+    by_confidence: dict[str, int] = defaultdict(int)
     for record in scored:
         by_piac[record.get("category") or "?"].append(record["judge_score_norm"])
+        by_confidence[record.get("judge_confidence") or "unknown"] += 1
 
     summary = {
         "n": len(records),
         "n_judged": len(scored),
         "mean_score_norm": round(mean, 4),
-        "hallucination_rate": round(len(hallucinated) / len(scored), 4) if scored else 0.0,
+        "confidence_counts": dict(by_confidence),
         "mean_score_norm_by_piac": {
             k: round(sum(v) / len(v), 4) for k, v in by_piac.items()
         },
@@ -87,11 +103,16 @@ def write_oeq_outputs(out_dir: Path, stamp: str, metadata: dict,
     _write_json(out_dir / "comparison.json", {
         **metadata,
         "form": "oeq",
-        "judge": "PIAC category-specific",
+        "judge": "PIEC category-specific",
         "summary": summary,
         "items": records,
     })
-    _write_text(out_dir / "report.txt", _oeq_report(metadata, stamp, mean, hallucinated, scored, by_piac, summary))
+    _write_text(
+        out_dir / "report.txt",
+        _oeq_report(
+            metadata, stamp, mean, scored, by_piac, summary, records
+        ),
+    )
     return summary
 
 
@@ -143,7 +164,25 @@ def _write_text(path: Path, lines: list[str]) -> None:
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def _mcq_report(metadata, stamp, accuracy, correct, scored, by_piac) -> list[str]:
+def _run_provenance(metadata: dict, records: list[dict]) -> list[str]:
+    lines = [
+        "",
+        f"Model info: {json.dumps(metadata.get('model_info', {}), ensure_ascii=False)}",
+        f"Run config: {json.dumps(metadata.get('config', {}), ensure_ascii=False)}",
+        "",
+        "Prompts:",
+    ]
+    for record in records:
+        qid = record.get("qid", "?")
+        lines.append(f"  [{qid}] answer: {record.get('prompt', '')}")
+        if record.get("task_rewrite_prompt"):
+            lines.append(f"  [{qid}] rewrite: {record['task_rewrite_prompt']}")
+        if record.get("task_verification_prompt"):
+            lines.append(f"  [{qid}] verification: {record['task_verification_prompt']}")
+    return lines
+
+
+def _mcq_report(metadata, stamp, accuracy, correct, scored, by_piac, records) -> list[str]:
     lines = [
         f"{metadata['model']} - {metadata['benchmark']} {metadata['modality']} MCQ",
         "=" * 48,
@@ -152,28 +191,28 @@ def _mcq_report(metadata, stamp, accuracy, correct, scored, by_piac) -> list[str
         "",
         "By PIAC category:",
     ]
-    for category in [*PIAC_ORDER, *[k for k in by_piac if k not in PIAC_ORDER]]:
+    for category in [*PIEC_ORDER, *[k for k in by_piac if k not in PIEC_ORDER]]:
         if category in by_piac and by_piac[category][1]:
             lines.append(f"  {category:<12} {by_piac[category][0] / by_piac[category][1]:.2%}  "
                          f"(n={by_piac[category][1]})")
-    return lines
+    return [*lines, *_run_provenance(metadata, records)]
 
 
-def _oeq_report(metadata, stamp, mean, hallucinated, scored, by_piac, summary) -> list[str]:
+def _oeq_report(metadata, stamp, mean, scored, by_piac, summary, records) -> list[str]:
     lines = [
-        f"{metadata['model']} - {metadata['benchmark']} {metadata['modality']} OEQ (PIAC-judged)",
+        f"{metadata['model']} - {metadata['benchmark']} {metadata['modality']} OEQ (PIEC-judged)",
         "=" * 48,
         f"Run: {stamp}   commit {metadata['git_commit']}",
-        f"mean score (0-1): {mean:.4f}   hallucination: {summary['hallucination_rate']:.2%} "
-        f"({len(hallucinated)}/{len(scored)})",
+        f"binary accuracy: {mean:.4f}   confidence: "
+        f"{json.dumps(summary['confidence_counts'], sort_keys=True)}",
         "",
-        "By PIAC category (mean score | n):",
+        "By PIEC category (mean score | n):",
     ]
-    for category in [*PIAC_ORDER, *[k for k in by_piac if k not in PIAC_ORDER]]:
+    for category in [*PIEC_ORDER, *[k for k in by_piac if k not in PIEC_ORDER]]:
         if category in by_piac:
             vals = by_piac[category]
             lines.append(f"  {category:<12} {sum(vals) / len(vals):.4f}  (n={len(vals)})")
-    return lines
+    return [*lines, *_run_provenance(metadata, records)]
 
 
 def _chain_summary(scored: list[dict]) -> dict:
@@ -218,12 +257,12 @@ def _probe_report(metadata, summary) -> list[str]:
         f"Run datetime: {metadata['run_local_datetime']} (local)",
         f"Questions: {cfg['n_questions']}   probes: {cfg['n_probes']}   judged: {summary['n_judged']}",
         "",
-        "Accuracy by PIAC probe level  (correct = judge score 4/4; affective also shows mean)",
+        "Accuracy by PIEC probe level  (correct = judge score 4/4; experiential also shows mean)",
         "-" * 66,
     ]
-    for level in PIAC_ORDER:
+    for level in PIEC_ORDER:
         if level in acc:
-            extra = f"   mean {mean[level]:.2f}" if level == "affective" else ""
+            extra = f"   mean {mean[level]:.2f}" if level == "experiential" else ""
             lines.append(f"  {level:<14} {acc[level]:6.1%}   (n={counts[level]}){extra}")
     lines += [
         "",

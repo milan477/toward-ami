@@ -10,28 +10,33 @@ Each parquet row has:
 
 Notable quirks
 --------------
-- choices is empty for 215 open-ended rows  → question_type "oeq".
-- answer is null for 87 instruction-following rows → correct_answer "".
+- choices is empty for 215 open-ended rows.
+- answer is null for 87 instruction-following rows → answer ``[]``.
 - audio_path is an array; 456 rows reference more than one clip.
 - perceptual_skills / reasoning_skills are multi-valued arrays.
 
 Normalization choices
 ---------------------
-- audio_url     : audio_path clips joined with "; ".
-- category_1/2/3/4: category → sub-cat → (unused) → (unused).
-- extra columns : perceptual_skills, reasoning_skills (JSON lists), length_type.
+- url: the source audio-path array, retained as a JSON list.
+- category hierarchy: ``category_1_category`` → ``category_2_subcategory``.
+- parallel creator taxonomies retain their own descriptive category columns.
 """
+
+from __future__ import annotations
 
 import json
 import os
 from pathlib import Path
 
-import pandas as pd
-
-from common import (
+from download.common import (
     AUDIO_DIR,
     as_list,
+    bench_path,
     clean_text,
+    focus_values,
+    frame_records,
+    normalized_record,
+    read_raw_records,
     referenced_audio_paths,
     resolve_correct_answer,
     to_distractors,
@@ -45,19 +50,13 @@ PARQUET_FILE = "test.parquet"
 AUDIO_FILE   = "data.zip"
 
 
-def _fetch_df() -> pd.DataFrame:
+def _fetch_df():
+    import pandas as pd
+
     from huggingface_hub import hf_hub_download
 
     path = hf_hub_download(HF_REPO, PARQUET_FILE, repo_type="dataset")
     return pd.read_parquet(path)
-
-
-def _join_audio(audio_path) -> str:
-    return "; ".join(clean_text(p) for p in as_list(audio_path) if clean_text(p))
-
-
-def _skills(value) -> str:
-    return json.dumps(_skill_items(value), ensure_ascii=False)
 
 
 def _skill_items(value) -> list[str]:
@@ -83,22 +82,38 @@ def _combined_skills(row: dict) -> str:
 def _normalize_row(row: dict) -> dict:
     choices = as_list(row.get("choices"))
     correct = resolve_correct_answer(row.get("answer"), choices)
-    return {
-        "benchmark":         NAME,
-        "question":          clean_text(row.get("question", "")),
-        "question_type":     "mcq" if choices else "oeq",
-        "correct_answer":    correct,
-        "distractors":       to_distractors(choices, correct),
-        "audio_url":         _join_audio(row.get("audio_path")),
-        "category_1":        clean_text(row.get("category", "")),
-        "category_2":        clean_text(row.get("sub-cat", "")),
-        "category_3":        "",
-        "category_4":        "",
-        "skills":            _combined_skills(row),
-        "perceptual_skills": _skills(row.get("perceptual_skills")),
-        "reasoning_skills":  _skills(row.get("reasoning_skills")),
-        "length_type":       clean_text(row.get("length_type", "")),
-    }
+    distractors = json.loads(to_distractors(choices, correct))
+    source_category = clean_text(row.get("category", ""))
+    source_subcategory = clean_text(row.get("sub-cat", ""))
+    perceptual = _skill_items(row.get("perceptual_skills"))
+    reasoning = _skill_items(row.get("reasoning_skills"))
+    creator_categories = []
+    if perceptual:
+        creator_categories.append("perceptual")
+    if reasoning:
+        creator_categories.append("reasoning")
+    task_classification = clean_text(row.get("task_classification", ""))
+    focus = focus_values(source_category, source_subcategory)
+    if not focus and source_category == "voice_chat":
+        focus = ["speech"]
+    elif not focus and source_category == "spatial_audio":
+        focus = ["sound"]
+    return normalized_record(
+        bench=NAME,
+        focus=focus,
+        question=row.get("question", ""),
+        answer=[correct] if correct else [],
+        distractors=distractors,
+        url=as_list(row.get("audio_path")),
+        categories={
+            "category_1_category": json.dumps(creator_categories, ensure_ascii=False),
+            "category_2_skills": _combined_skills(row),
+            "category_3_subcategory": source_subcategory,
+            "category_4_task_classification": task_classification,
+            "category_5_task_identifier": clean_text(row.get("task_identifier", "")),
+            "category_6_length_type": clean_text(row.get("length_type", "")),
+        },
+    )
 
 
 def download_mmau_pro() -> None:
@@ -107,9 +122,13 @@ def download_mmau_pro() -> None:
 
     # Raw: store exactly as is (arrays JSON-serialized by write_raw).
     write_raw(NAME, df)
+    normalize_mmau_pro(df)
 
-    # Normalized: canonical schema + MMAU-Pro extras.
-    write_normalized(NAME, [_normalize_row(r) for r in df.to_dict("records")])
+
+def normalize_mmau_pro(df=None):
+    """Normalize the local raw MMAU-Pro CSV without downloading it again."""
+    rows = frame_records(df) if df is not None else read_raw_records(NAME)
+    return write_normalized(NAME, [_normalize_row(row) for row in rows])
 
 
 def _hf_headers() -> dict:

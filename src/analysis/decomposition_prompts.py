@@ -1,4 +1,4 @@
-"""Prompts for benchmark decomposition into PIAC probe chains."""
+"""Analysis prompt for benchmark decomposition into PIEC probe chains."""
 
 from __future__ import annotations
 
@@ -31,10 +31,10 @@ Worked examples:
     1. perceptual — "Is there audible reverberation or echo? (yes/no)"  expected: "yes"
     2. inferential — "How large does the enclosing space sound?"  expected: "a large room"
     3. contextual — "Is the location indoors or outdoors?"  expected: "indoors"
-- "Which segment of music is played best?" (affective) →
+- "Which segment of music is played best?" (experiential) →
     1. perceptual — "What instrument is playing?"  expected: "violin"
     2. inferential — "How many distinct segments are there?"  expected: "three"
-    3. affective — "Which segment sounds best?"  expected: "the second segment"
+    3. experiential — "Which segment sounds best?"  expected: "the second segment"
 
 Original question: {question}
 Reference answer (correct): {reference}
@@ -42,7 +42,7 @@ PIAC category of the original question: {category}
 Answer format: {answer_format}
 
 Reply with ONLY a JSON object and nothing else:
-{{"probes": [{{"level": "<perceptual|inferential|affective|contextual>", "question": "<sub-question>", "expected": "<short expected answer>"}}, ...]}}"""
+{{"probes": [{{"level": "<perceptual|inferential|experiential|contextual>", "question": "<sub-question>", "expected": "<short expected answer>"}}, ...]}}"""
 
 
 def build_decompose_prompt(question: str, reference: str, category: str = "",

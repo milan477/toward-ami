@@ -2,9 +2,7 @@
 
 Reads data/benchmarks/<name>/<name>_normalized.csv and writes
 data/benchmarks/<name>/<name>_normalized_selected.csv keeping
-only rows whose modality is music or a mix that includes music (e.g.
-"mix-music-speech", "sound_music"). The modality lives in a different column
-per dataset, so each dataset declares which column to test.
+only rows whose normalized ``focus`` list contains music.
 
 Usage
 -----
@@ -14,27 +12,18 @@ python download/clean.py --list      # show registered datasets
 """
 
 import argparse
+import csv
 import sys
 from pathlib import Path
-
-import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).parent))
 
 from common import BENCH_DIR, bench_dir, bench_path
 
-# Per-dataset: which normalized column holds the audio modality label.
-# None = keep the whole dataset as its benchmark selection.
-MODALITY_COLUMN = {
-    "aha": None,
-    "hummusqa": None,
-    "mmau": "category_1",
-    "mmar": "category_1",
-    "mmau_pro": "category_1",
-    "muchomusic": None,
-    "parsa_bench": None,
-    "pitchbench": None,
-}
+DATASETS = (
+    "aha", "hummusqa", "mmau", "mmar", "mmau_pro", "muchomusic",
+    "parsa_bench", "pitchbench",
+)
 
 
 def _has_music(modality) -> bool:
@@ -44,22 +33,30 @@ def _has_music(modality) -> bool:
 
 def clean_dataset(name: str) -> Path:
     if name == "all":
-        for n in MODALITY_COLUMN:
+        for n in DATASETS:
+            if not bench_path(n, "normalized").exists():
+                print(f"[{n}] SKIPPED — missing normalized CSV")
+                continue
             clean_dataset(n)
         return BENCH_DIR
-    if name not in MODALITY_COLUMN:
+    if name not in DATASETS:
         raise ValueError(
-            f"Dataset {name!r} not found. Available: {', '.join(sorted(MODALITY_COLUMN))}"
+            f"Dataset {name!r} not found. Available: {', '.join(sorted(DATASETS))}"
         )
 
-    df = pd.read_csv(bench_path(name, "normalized"))
-    column = MODALITY_COLUMN[name]
-    music = df if column is None else df[df[column].map(_has_music)]
+    with bench_path(name, "normalized").open(newline="", encoding="utf-8-sig") as handle:
+        reader = csv.DictReader(handle)
+        columns = reader.fieldnames or []
+        rows = list(reader)
+    music = [row for row in rows if _has_music(row.get("focus", ""))]
 
     bench_dir(name)
     path = bench_path(name, "selected")
-    music.to_csv(path, index=False)
-    print(f"  selected   → {path}  ({len(music)} of {len(df)} rows kept)")
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=columns, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(music)
+    print(f"  selected   → {path}  ({len(music)} of {len(rows)} rows kept)")
     return path
 
 
@@ -71,7 +68,7 @@ if __name__ == "__main__":
 
     if args.list or not args.dataset:
         print("Registered datasets:")
-        for name in sorted(MODALITY_COLUMN):
+        for name in sorted(DATASETS):
             print(f"  {name}")
         sys.exit(0)
 

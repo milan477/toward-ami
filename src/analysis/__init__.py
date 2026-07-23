@@ -1,1 +1,1 @@
-"""Benchmark analysis, PIAC categorization, answer-format annotation, and skill labels."""
+"""Normalized benchmark enhancement, transcription, and question transformations."""

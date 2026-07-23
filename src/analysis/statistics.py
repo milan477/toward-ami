@@ -14,12 +14,13 @@ from download.common import bench_path
 from src.analysis.load import available_benchmarks
 from src.config import DATA_DIR, ROOT
 AUDIO_EXTENSIONS = {".wav", ".flac", ".mp3", ".m4a", ".ogg", ".opus"}
-STAGE_FALLBACKS = ("annotated", "selected", "normalized")
+STAGE_FALLBACKS = ("enhanced", "selected", "normalized")
 CATEGORY_DIMENSIONS = {
     "modality": "Modality",
     "category": "Category",
     "genre": "Genre",
-    "skill": "Skill",
+    "content": "Content",
+    "action": "Action",
 }
 
 
@@ -101,75 +102,44 @@ def _category_cell_values(raw: str) -> list[str]:
     return [text]
 
 
-def category_values_for_row(benchmark: str, row: dict) -> dict[str, list[str]]:
+def category_values_for_row(row: dict) -> dict[str, list[str]]:
     """Named, list-valued category dimensions used by stats and the website."""
-    if benchmark == "mmar":
-        return {
-            "modality": _category_cell_values(row.get("category_1", "")),
-            "category": _category_cell_values(row.get("category_2", "")),
-            "genre": [],
-            "skill": _category_cell_values(row.get("category_3", "")),
-        }
-    if benchmark == "mmau_pro":
-        skills = _parse_listish(row.get("skills", ""))
-        categories = []
-        if _parse_listish(row.get("perceptual_skills", "")):
-            categories.append("perceptual")
-        if _parse_listish(row.get("reasoning_skills", "")):
-            categories.append("reasoning")
-        return {
-            "modality": _category_cell_values(row.get("category_1", "")) or _category_cell_values(row.get("category_2", "")),
-            "category": categories,
-            "genre": [],
-            "skill": skills,
-        }
-    if benchmark == "mmau":
-        return {
-            "modality": _category_cell_values(row.get("category_1", "")),
-            "category": _category_cell_values(row.get("category_2", "")),
-            "genre": [],
-            "skill": _category_cell_values(row.get("category_3", "")),
-        }
-    if benchmark == "muchomusic":
-        skills = _parse_listish(row.get("music_knowledge", "")) + _parse_listish(row.get("music_reasoning", ""))
-        return {
-            "modality": ["music"],
-            "category": [],
-            "genre": _category_cell_values(row.get("category_1", "")),
-            "skill": _dedupe(skills),
-        }
-    if benchmark == "hummusqa":
-        return {
-            "modality": ["music"],
-            "category": _category_cell_values(row.get("category_1", "")),
-            "genre": [],
-            "skill": _category_cell_values(row.get("category_2", "")),
-        }
-    if benchmark == "pitchbench":
-        return {
-            "modality": ["music"],
-            "category": _category_cell_values(row.get("category_2", "")),
-            "genre": [],
-            "skill": _category_cell_values(row.get("category_3", "")),
-        }
-    if benchmark == "parsa_bench":
-        return {
-            "modality": _category_cell_values(row.get("category_1", "")),
-            "category": _category_cell_values(row.get("category_2", "")),
-            "genre": [],
-            "skill": _category_cell_values(row.get("task", "")),
-        }
+    category_columns = sorted(
+        (key for key in row if re.fullmatch(r"category_[1-9][0-9]*_.+", key)),
+        key=lambda key: (int(key.split("_", 2)[1]), key),
+    )
+    categories = _dedupe([
+        value
+        for key in category_columns
+        for value in _category_cell_values(row.get(key, ""))
+    ])
+    genres = _dedupe([
+        value for key in category_columns if "genre" in key
+        for value in _category_cell_values(row.get(key, ""))
+    ])
+    try:
+        pairs = json.loads(row.get("action_content", "") or "[]")
+    except (json.JSONDecodeError, TypeError):
+        pairs = []
+    if not isinstance(pairs, list):
+        pairs = []
+    actions = _dedupe([str(pair[0]) for pair in pairs if isinstance(pair, list) and len(pair) == 2])
+    content = _dedupe([str(pair[1]) for pair in pairs if isinstance(pair, list) and len(pair) == 2])
     return {
-        "modality": _category_cell_values(row.get("category_1", "")),
-        "category": _category_cell_values(row.get("category_2", "")),
-        "genre": [],
-        "skill": _parse_listish(row.get("skills", "")),
+        "modality": _parse_listish(row.get("focus", "")),
+        "category": categories,
+        "genre": genres,
+        "content": content,
+        "action": actions,
     }
 
 
 def _audio_names(raw: str) -> list[str]:
     names = []
-    for piece in str(raw or "").split(";"):
+    pieces = _parse_json_list(raw)
+    if not pieces:
+        pieces = str(raw or "").split(";")
+    for piece in pieces:
         piece = piece.strip()
         if not piece:
             continue
@@ -378,7 +348,7 @@ def _counter(series: pd.Series) -> dict:
 
 
 def _summarize_frame(name: str, df: pd.DataFrame) -> dict:
-    audio = df.get("audio_url", pd.Series(dtype=str)).astype(str)
+    audio = df.get("url", pd.Series(dtype=str)).astype(str)
     distractor_lists = [
         _parse_json_list(raw)
         for raw in df.get("distractors", pd.Series(dtype=str)).astype(str)
@@ -388,12 +358,12 @@ def _summarize_frame(name: str, df: pd.DataFrame) -> dict:
 
     summary = {
         "n_questions": int(len(df)),
-        "n_audio_files": int(audio[audio != ""].nunique()),
-        "n_questions_with_audio": int((audio != "").sum()),
-        "question_type_distribution": _counter(df.get("question_type", pd.Series(dtype=str))),
+        "n_audio_files": len({name for raw in audio for name in _audio_names(raw)}),
+        "n_questions_with_audio": sum(bool(_audio_names(raw)) for raw in audio),
         "question_nature_distribution": (
             _counter(df["question_nature"]) if "question_nature" in df.columns else {}
         ),
+        "piec_distribution": _counter(df["piec"]) if "piec" in df.columns else {},
         "average_distractors": round(sum(distractor_counts) / len(distractor_counts), 3)
         if distractor_counts else 0.0,
         "max_distractors": max(distractor_counts) if distractor_counts else 0,
@@ -401,10 +371,11 @@ def _summarize_frame(name: str, df: pd.DataFrame) -> dict:
         "pct_questions_with_distractors": round(questions_with_distractors / len(df), 4)
         if len(df) else 0.0,
         "distractor_count_distribution": dict(Counter(distractor_counts).most_common()),
-        "category_1_distribution": _counter(df.get("category_1", pd.Series(dtype=str))),
-        "category_2_distribution": _counter(df.get("category_2", pd.Series(dtype=str))),
-        "category_3_distribution": _counter(df.get("category_3", pd.Series(dtype=str))),
-        "category_4_distribution": _counter(df.get("category_4", pd.Series(dtype=str))),
+        "creator_category_distributions": {
+            column: _counter(df[column])
+            for column in df.columns
+            if re.fullmatch(r"category_[1-9][0-9]*_.+", column)
+        },
         "columns": list(df.columns),
     }
     summary.update(_audio_duration_stats(name, audio))
@@ -413,7 +384,7 @@ def _summarize_frame(name: str, df: pd.DataFrame) -> dict:
 
 def _category_slices(name: str, df: pd.DataFrame) -> dict:
     row_values = [
-        category_values_for_row(name, {col: row.get(col, "") for col in df.columns})
+        category_values_for_row({col: row.get(col, "") for col in df.columns})
         for _, row in df.iterrows()
     ]
     out: dict[str, dict[str, dict]] = {}

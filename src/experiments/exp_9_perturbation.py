@@ -1,5 +1,5 @@
 """
-Exp 2: Perturbation experiment.
+Exp 9: legacy perturbation experiment.
 Take questions from an existing benchmark and vary one acoustic parameter
 at a time (instrument, duration, effects, transposition) to measure
 how much model performance drifts from the baseline.
@@ -37,7 +37,7 @@ def preview() -> None:
 
 def run() -> None:
     model_info = get_model_info()
-    metadata = get_run_metadata("exp_2_perturbation", model_info["model_id"], CONFIG)
+    metadata = get_run_metadata("exp_9_perturbation", model_info["model_id"], CONFIG)
 
     # TODO: implement once a target benchmark + perturbation pipeline is chosen.
     # Steps:

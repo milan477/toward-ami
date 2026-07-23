@@ -81,7 +81,7 @@ NEWS = [
         "date": "2026-07-02",
         "title": "PIAC: grade a claim by how its truth is established",
         "text": "We separate every musical question into perceptual, inferential, "
-                "affective, or contextual — by the nature of its ground truth — and let "
+                "experiential, or contextual — by the nature of its ground truth — and let "
                 "the judge apply a different standard to each. Affective questions admit "
                 "many correct answers; perceptual ones admit one.",
     },
@@ -137,7 +137,7 @@ def load_models() -> list[dict]:
             models.append(m)
     return models
 
-PIAC_ORDER = ["perceptual", "inferential", "affective", "contextual"]
+PIAC_ORDER = ["perceptual", "inferential", "experiential", "contextual"]
 
 
 def _read_jsonl(path: Path) -> dict[str, dict]:
@@ -228,7 +228,9 @@ def _display_name_map(benchmarks: list[dict]) -> dict[str, str]:
 
 def _stage_path(dataset_dir: Path) -> Path | None:
     name = dataset_dir.name
+    fallback = None
     for suffix in (
+        "normalized_selected_enhanced",
         "normalized_selected_annotated",
         "normalized_selected",
         "ready",
@@ -236,8 +238,14 @@ def _stage_path(dataset_dir: Path) -> Path | None:
     ):
         path = dataset_dir / f"{name}_{suffix}.csv"
         if path.exists():
-            return path
-    return None
+            fallback = fallback or path
+            try:
+                with path.open(encoding="utf-8") as handle:
+                    if next(csv.DictReader(handle), None) is not None:
+                        return path
+            except OSError:
+                continue
+    return fallback
 
 
 def _benchmark_stage_paths() -> list[Path]:
@@ -268,17 +276,47 @@ def benchmark_question_counts(benchmarks: list[dict]) -> dict[str, int]:
     return counts
 
 
+def _audio_sources(audio_url: str) -> list[str]:
+    return _parse_listish(audio_url)
+
+
+def _audio_stems(audio_url: str) -> list[str]:
+    stems = []
+    for source in _audio_sources(audio_url):
+        if ":" in source and "/" not in source:
+            _, _, source = source.partition(":")
+        stem = Path(source).name.rsplit(".", 1)[0]
+        if stem:
+            stems.append(stem)
+    return stems
+
+
 def _audio_stem(audio_url: str) -> str:
-    first = str(audio_url or "").split(";", 1)[0].strip()
-    if not first:
-        return ""
-    if ":" in first and "/" not in first:
-        _, _, ident = first.partition(":")
-        return Path(ident).name.rsplit(".", 1)[0]
-    return Path(first).name.rsplit(".", 1)[0]
+    stems = _audio_stems(audio_url)
+    return stems[0] if stems else ""
 
 
 def _skills_text(row: dict) -> str:
+    action_content = row.get("action_content", "")
+    if action_content:
+        try:
+            pairs = json.loads(action_content)
+        except (json.JSONDecodeError, TypeError):
+            pairs = []
+        return ", ".join(
+            f"{pair[0]}: {pair[1]}"
+            for pair in pairs
+            if isinstance(pair, list) and len(pair) == 2
+        )
+    if row.get("content") or row.get("skill"):
+        content = ", ".join(_parse_listish(row.get("content", "")))
+        operations = ", ".join(_parse_listish(row.get("skill", "")))
+        return "; ".join(
+            part for part in (
+                f"content: {content}" if content else "",
+                f"operations: {operations}" if operations else "",
+            ) if part
+        )
     if row.get("skills"):
         vals = _parse_listish(row["skills"])
         if not vals and _has_empty_list_marker(row["skills"]):
@@ -312,68 +350,28 @@ def _category_cell_values(raw: str) -> list[str]:
 
 
 def _category_values_for_row(dataset: str, row: dict) -> dict[str, list[str]]:
-    if dataset == "mmar":
-        return {
-            "modality": _category_cell_values(row.get("category_1", "")),
-            "category": _category_cell_values(row.get("category_2", "")),
-            "genre": [],
-            "skill": _category_cell_values(row.get("category_3", "")),
-        }
-    if dataset == "mmau_pro":
-        skills = _parse_listish(row.get("skills", ""))
-        categories = []
-        if _parse_listish(row.get("perceptual_skills", "")):
-            categories.append("perceptual")
-        if _parse_listish(row.get("reasoning_skills", "")):
-            categories.append("reasoning")
-        return {
-            "modality": _category_cell_values(row.get("category_1", "")) or _category_cell_values(row.get("category_2", "")),
-            "category": categories,
-            "genre": [],
-            "skill": skills,
-        }
-    if dataset == "mmau":
-        return {
-            "modality": _category_cell_values(row.get("category_1", "")),
-            "category": _category_cell_values(row.get("category_2", "")),
-            "genre": [],
-            "skill": _category_cell_values(row.get("category_3", "")),
-        }
-    if dataset == "muchomusic":
-        skills = _parse_listish(row.get("music_knowledge", "")) + _parse_listish(row.get("music_reasoning", ""))
-        return {
-            "modality": ["music"],
-            "category": [],
-            "genre": _category_cell_values(row.get("category_1", "")),
-            "skill": _dedupe(skills),
-        }
-    if dataset == "hummusqa":
-        return {
-            "modality": ["music"],
-            "category": _category_cell_values(row.get("category_1", "")),
-            "genre": [],
-            "skill": _category_cell_values(row.get("category_2", "")),
-        }
-    if dataset == "pitchbench":
-        return {
-            "modality": ["music"],
-            "category": _category_cell_values(row.get("category_2", "")),
-            "genre": [],
-            "skill": _category_cell_values(row.get("category_3", "")),
-        }
-    if dataset == "parsa_bench":
-        return {
-            "modality": _category_cell_values(row.get("category_1", "")),
-            "category": _category_cell_values(row.get("category_2", "")),
-            "genre": [],
-            "skill": _category_cell_values(row.get("task", "")),
-        }
-    return {
-        "modality": _category_cell_values(row.get("category_1", "")),
-        "category": _category_cell_values(row.get("category_2", "")),
-        "genre": [],
-        "skill": _parse_listish(row.get("skills", "")),
+    category_columns = sorted(
+        (key for key in row if re.fullmatch(r"category_[1-9][0-9]*_.+", key)),
+        key=lambda key: (int(key.split("_", 2)[1]), key),
+    )
+    try:
+        pairs = json.loads(
+            row.get("action_content", "") or "[]"
+        )
+    except (json.JSONDecodeError, TypeError):
+        pairs = []
+    categories = {
+        "focus": _parse_listish(row.get("focus", "")),
+        "input_modality": _parse_listish(row.get("input_modality", "")),
+        "output_modality": _parse_listish(row.get("output_modality", "")),
+        **{
+            key: _dedupe(_category_cell_values(row.get(key, "")))
+            for key in category_columns
+        },
+        "action": _dedupe([pair[0] for pair in pairs if isinstance(pair, list) and len(pair) == 2]),
+        "content": _dedupe([pair[1] for pair in pairs if isinstance(pair, list) and len(pair) == 2]),
     }
+    return {key: values for key, values in categories.items() if values}
 
 
 def _site_category_values(dataset: str, row: dict) -> dict[str, list[str]]:
@@ -383,20 +381,20 @@ def _site_category_values(dataset: str, row: dict) -> dict[str, list[str]]:
             "none specified" if _is_empty_list_marker(value) else value
             for value in values
         ]
-    if dataset == "mmau_pro" and _has_empty_list_marker(row.get("skills", "")) and not categories.get("skill"):
-        categories["skill"] = ["none specified"]
+    if dataset == "mmau_pro" and _has_empty_list_marker(row.get("skills", "")) and not categories.get("action"):
+        categories["action"] = ["none specified"]
     return categories
 
 
 def _row_piac(row: dict) -> str:
-    val = (row.get("category") or row.get("piac") or "").strip().lower()
+    val = (row.get("piec") or row.get("category") or "").strip().lower()
     return val if val in PIAC_ORDER else ""
 
 
 def _question_id(dataset: str, row: dict, idx: int) -> str:
     if row.get("qid"):
         return row["qid"]
-    stem = _audio_stem(row.get("audio_url", ""))
+    stem = _audio_stem(row.get("url", row.get("audio_url", "")))
     return stem or f"{dataset}:{idx + 1}"
 
 
@@ -455,17 +453,18 @@ def load_questions(benchmarks: list[dict], models: dict[str, dict]) -> tuple[lis
         with path.open(encoding="utf-8") as f:
             for idx, r in enumerate(csv.DictReader(f)):
                 qid = _question_id(dataset, r, idx)
-                stem = _audio_stem(r.get("audio_url", ""))
+                source_urls = r.get("url", r.get("audio_url", ""))
+                audio_stems = _audio_stems(source_urls)
+                stem = audio_stems[0] if audio_stems else ""
                 piac = _row_piac(r)
-                if stem:
-                    stems.add((dataset, stem))
+                stems.update((dataset, audio_stem) for audio_stem in audio_stems)
                 if piac:
                     q_piac[qid] = piac
                 cached = question_cache.get((benchmark, qid)) or question_cache.get(("", qid))
                 if HOSTED_AUDIO_BASE_URL:
                     durations = (cached or {}).get("audio_duration_seconds") or []
                 else:
-                    durations = audio_durations(dataset, r.get("audio_url", ""))
+                    durations = audio_durations(dataset, source_urls)
                     if not durations and cached:
                         durations = cached.get("audio_duration_seconds") or []
                 rec = {
@@ -473,18 +472,15 @@ def load_questions(benchmarks: list[dict], models: dict[str, dict]) -> tuple[lis
                     "benchmark": benchmark,
                     "audio_dataset": dataset,
                     "question": r.get("question", ""),
-                    "question_type": r.get("question_type", ""),
+                    "question_type": r.get("question_nature", ""),
                     "piac": piac,
-                    "category_1": r.get("category_1", ""),
-                    "category_2": r.get("category_2", ""),
-                    "category_3": r.get("category_3", ""),
-                    "category_4": r.get("category_4", ""),
                     "skills": _skills_text(r),
                     "answer_format": r.get("answer_format", ""),
-                    "correct_answer": r.get("correct_answer", ""),
+                    "correct_answer": ", ".join(_parse_distractors(r.get("answer", ""))),
                     "distractors": _parse_distractors(r.get("distractors", "")),
-                    "audio_source": r.get("audio_url", ""),
+                    "audio_source": source_urls,
                     "audio_stem": stem,
+                    "audio_stems": audio_stems,
                     "audio_duration_seconds": durations,
                     "categories": _site_category_values(dataset, r),
                     "_cached_audio_known": cached is not None and "audio" in cached,
@@ -535,8 +531,7 @@ def model_cell(data: dict, qid: str) -> dict:
         "oeq_response": (ans.get("response") or "").strip(),
         "oeq_score": jud.get("score_norm"),
         "verdict": jud.get("verdict"),
-        "hallucinated": bool(jud.get("hallucinated")),
-        "hallucination_level": jud.get("hallucination_level"),
+        "confidence": jud.get("confidence"),
         "rationale": (jud.get("rationale") or "").strip(),
     }
 
@@ -557,9 +552,8 @@ def overview_for(data: dict, qids: list[str], q_piac: dict[str, str]) -> dict:
         mcq = sum(1 for r in rows if r["mcq_correct"]) / n
         oeq_mean = sum((r["oeq_score"] or 0) for r in rows) / n
         oeq_acc = sum(1 for r in rows if (r["oeq_score"] or 0) >= 0.5) / n
-        hall = sum(1 for r in rows if r["hallucinated"]) / n
         return {"n": n, "mcq_acc": mcq, "oeq_mean": oeq_mean,
-                "oeq_acc": oeq_acc, "halluc_rate": hall}
+                "oeq_acc": oeq_acc}
 
     cells = {qid: model_cell(data, qid) for qid in qids}
     overall = agg(list(cells.values()))
@@ -574,20 +568,20 @@ def overview_for(data: dict, qids: list[str], q_piac: dict[str, str]) -> dict:
 
 def build_prompts() -> list[dict]:
     """Pull the live prompt text from the pipeline modules so the tab stays true."""
-    from src.evaluation.prompts import (
-        INSTRUCTION_MCQ, INSTRUCTION_OEQ, INSTRUCTION_OEQ_GUIDED,
-        PIAC_JUDGE_PROMPT, build_mcq, build_oeq,
-    )
-    from src.analysis.prompts import ANNOTATION_PROMPT, category_block
-    from src.analysis.taxonomy import RULE_OF_THUMB
+    from src.evaluation.prompts import PIEC_JUDGE_PROMPT, build_mcq, build_oeq
+    from src.experiments.variants import LETTER_AUDIO, OEQ_AUDIO
+    from src.analysis.prompts import build_enhancement_prompt
 
     mcq = build_mcq(
-        "What instrument plays the main melody?",
-        "Violin", ["Piano", "Flute", "Trumpet"], "demo-qid")
+        "What instrument plays the main melody?", "Violin",
+        ["Piano", "Flute", "Trumpet"], "demo-qid", instruction=LETTER_AUDIO,
+    )
     oeq_unguided_ex = build_oeq(
-        "What does the music feel like?", "Melancholic")["prompt"]
+        "What does the music feel like?", "Melancholic", instruction=OEQ_AUDIO,
+    )["prompt"]
     oeq_guided_ex = build_oeq(
         "What instrument plays the main melody?", "Violin",
+        instruction=OEQ_AUDIO,
         answer_format="a single instrument name", example="Cello")["prompt"]
 
     mcq_options = "\n".join(
@@ -606,7 +600,7 @@ def build_prompts() -> list[dict]:
             "variants": [
                 {
                     "label": "Instruction",
-                    "text": INSTRUCTION_MCQ,
+                    "text": LETTER_AUDIO,
                     "example": mcq_example,
                 },
             ],
@@ -620,37 +614,34 @@ def build_prompts() -> list[dict]:
             "variants": [
                 {
                     "label": "Unguided",
-                    "text": INSTRUCTION_OEQ,
+                    "text": OEQ_AUDIO,
                     "example": oeq_unguided_ex,
                 },
                 {
                     "label": "Format-guided",
-                    "text": INSTRUCTION_OEQ_GUIDED,
+                    "text": OEQ_AUDIO,
                     "example": oeq_guided_ex,
                 },
             ],
         },
         {
-            "name": "PIAC judge prompt",
+            "name": "PIEC judge prompt",
             "purpose": "A category-aware LLM-as-judge (local Qwen3) that grades each "
-                       "open-ended answer 0-4 and separately flags hallucination. The "
+                       "open-ended answer as 0 or 1 with low/mid/high confidence. The "
                        "grading rubric injected into {rubric} depends on the question's "
                        "PIAC category.",
-            "text": PIAC_JUDGE_PROMPT,
+            "text": PIEC_JUDGE_PROMPT,
         },
         {
             "name": "Annotation prompt",
             "purpose": "Used offline to pre-populate each question's PIAC category and "
                        "answer-format hint (later reviewed by hand). Defines the four "
                        "categories and the rule of thumb by degree of ambiguity.",
-            "text": ANNOTATION_PROMPT.format(
-                categories=category_block(),
-                rule=RULE_OF_THUMB,
-                question="{question}",
-                qtype="{qtype}",
-                answer="{answer}",
-                options="{options}",
-            ),
+            "text": build_enhancement_prompt({
+                "question": "{question}",
+                "answer": "{answer}",
+                "distractors": "{distractors}",
+            }),
         },
     ]
 
@@ -721,10 +712,6 @@ def latest_benchmark_overview() -> Path | None:
     return files[-1] if files else None
 
 
-# Temporarily hidden from the public benchmarks list.
-HIDDEN_BENCHMARKS = {"PitchBench"}
-
-
 def load_benchmarks() -> list[dict]:
     """Read the newest benchmark_overview_*.csv into benchmark dicts (source of truth)."""
     path = latest_benchmark_overview()
@@ -740,7 +727,7 @@ def load_benchmarks() -> list[dict]:
             if not year:
                 continue
             name = _clean(r.get("Known name", ""))
-            if not name or name in HIDDEN_BENCHMARKS:
+            if not name:
                 continue
             ext = _clean(r.get("Extended benchmark name", ""))
             paper = _clean(r.get("Paper title", ""))
@@ -781,14 +768,14 @@ def load_benchmarks() -> list[dict]:
 def build_evaluation() -> dict:
     """PIAC taxonomy (the five-paragraph framing), concepts, from the live module."""
     from src.analysis.taxonomy import (
-        MOTIVATION, PIAC_ORDER, RULE_OF_THUMB, RULE_OF_THUMB_ITEMS, SKILL_AXIS,
+        MOTIVATION, PIEC_ORDER, RULE_OF_THUMB, RULE_OF_THUMB_ITEMS,
     )
 
     # Verbatim from paper/paper.tex §"PIAC Framework" so the site mirrors the paper.
     intro = (
         "To this end, we propose a listener-centered taxonomy organized around four "
         "modes of musical engagement, each corresponding to a distinct degree of "
-        "ambiguity: Perceptual, Inferential, Affective, and Contextual content. For "
+        "ambiguity: Perceptual, Inferential, Emotional, and Contextual content. For "
         "each category we discuss (1) the nature of the information, (2) its "
         "epistemic status, in particular the degree to which consensus is expected, "
         "(3) representative examples, (4) an appropriate evaluation methodology, and "
@@ -844,25 +831,27 @@ def build_evaluation() -> dict:
                          "an A, above an A7 chord] What is the name of this chord?",
             "example_a": "A7, or A9.",
         },
-        "affective": {
+        "experiential": {
             "subtitle": "information related to the subjective experience of the "
                         "listener, for which no consensus is expected or desirable",
-            "information": "Affective content captures how music is experienced by a "
-                           "listener and relates to expression and emotional response.",
+            "information": "Experiential content captures a listener's personal experience "
+                           "of mood, feeling, interpretation, tension, and direction.",
             "ambiguity": "By definition, these claims are subjective and should not be "
                          "resolved by consensus, as there is no single right answer.",
-            "coverage": "This category includes perceived mood, character, tension, "
-                        "intimacy, energy, aesthetic quality, and personal response.",
+            "coverage": "This category includes felt mood, character, tension, direction, "
+                        "intimacy, energy, aesthetic quality, and personal response. It "
+                        "excludes a composer's inspiration or intention. Analysis for "
+                        "which general agreement is desired is inferential.",
             "evaluation": "Evaluation should accommodate multiple correct answers by "
-                          "focusing on core criteria: the plausibility of the affective "
+                          "focusing on core criteria: the plausibility of the experiential "
                           "description (whether it is musically reasonable), internal "
                           "consistency (ensuring different parts of the response cohere), "
-                          "and grounding (verifying that affective claims are supported "
+                          "and grounding (verifying that experiential claims are supported "
                           "by perceptual or inferential references). For example, "
                           "describing a passage as “tender” gains substance if "
                           "it is supported by references to soft dynamics, legato "
                           "articulation, and sustained harmonic resolution.",
-            "example_q": "What is the most dramatic spot in the audio?",
+            "example_q": "Where does the audio feel most dramatic to you?",
             "example_a": "Any spot that can be conceived as the most dramatic spot in "
                          "the audio by an engaged human listener.",
         },
@@ -884,13 +873,8 @@ def build_evaluation() -> dict:
             "example_a": "Mozart.",
         },
     }
-    categories = [{"key": k, **PAPER[k]} for k in PIAC_ORDER]
+    categories = [{"key": k, **PAPER[k]} for k in PIEC_ORDER]
 
-    axis_label = {"tone": "Tone", "time": "Time", "tone_time": "Tone × Time",
-                  "context": "Context", "other": "Other"}
-    concepts: dict[str, list[str]] = {}
-    for skill, axis in SKILL_AXIS.items():
-        concepts.setdefault(axis_label.get(axis, axis), []).append(skill)
 
     return {
         "intro": intro,
@@ -898,7 +882,6 @@ def build_evaluation() -> dict:
         "rule_of_thumb": RULE_OF_THUMB,
         "rule_of_thumb_items": RULE_OF_THUMB_ITEMS,
         "motivation": MOTIVATION,
-        "concepts": concepts,
     }
 
 
@@ -984,7 +967,8 @@ def existing_site_audio(stems: set[tuple[str, str]]) -> dict[tuple[str, str], st
 
 def _hosted_audio_rel(dataset: str, audio_source: str) -> str:
     """Return the hosted-audio path relative to AMI_AUDIO_BASE_URL."""
-    first = str(audio_source or "").split(";", 1)[0].strip()
+    sources = _audio_sources(audio_source)
+    first = sources[0] if sources else ""
     if not first:
         return ""
     first = first.replace("\\", "/").lstrip("./")
@@ -1010,6 +994,14 @@ def hosted_audio_url(dataset: str, audio_source: str) -> str:
     if not rel:
         return ""
     return f"{HOSTED_AUDIO_BASE_URL}/{quote(rel, safe='/')}"
+
+
+def hosted_audio_urls(dataset: str, audio_source: str) -> list[str]:
+    """Return one hosted URL for every clip referenced by a question."""
+    return [
+        url for source in _audio_sources(audio_source)
+        if (url := hosted_audio_url(dataset, json.dumps([source])))
+    ]
 
 
 def write_json(name: str, payload, *, emit_js: bool = True) -> Path:
@@ -1095,15 +1087,20 @@ def question_payload(no_audio: bool) -> tuple[list[dict], set[tuple[str, str]], 
     for rec in questions:
         dataset = rec.get("audio_dataset") or _compact_key(rec["benchmark"])
         if HOSTED_AUDIO_BASE_URL:
-            audio = hosted_audio_url(dataset, rec.get("audio_source", ""))
-            if rec.get("_cached_audio_known") and not rec.get("_cached_audio"):
-                audio = ""
-            rec["audio"] = audio or None
-            if rec["audio"]:
-                hosted_pairs.add((dataset, rec["audio_stem"]))
+            audio_urls = hosted_audio_urls(dataset, rec.get("audio_source", ""))
+            rec["audio_urls"] = audio_urls
+            rec["audio"] = audio_urls[0] if audio_urls else None
+            hosted_pairs.update((dataset, stem) for stem in rec["audio_stems"][:len(audio_urls)])
         else:
-            rec["audio"] = audio_map.get((dataset, rec["audio_stem"]))
+            audio_urls = [
+                audio_map[(dataset, stem)]
+                for stem in rec["audio_stems"]
+                if (dataset, stem) in audio_map
+            ]
+            rec["audio_urls"] = audio_urls
+            rec["audio"] = audio_urls[0] if audio_urls else None
         del rec["audio_stem"]
+        del rec["audio_stems"]
         del rec["audio_source"]
         del rec["_cached_audio_known"]
         del rec["_cached_audio"]

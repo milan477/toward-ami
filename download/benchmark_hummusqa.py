@@ -8,11 +8,13 @@ from pathlib import Path
 from urllib.request import urlopen
 from zipfile import BadZipFile, ZipFile
 
-import pandas as pd
-
-from common import (
+from download.common import (
     AUDIO_DIR,
+    bench_path,
     clean_text,
+    frame_records,
+    normalized_record,
+    read_raw_records,
     resolve_correct_answer,
     to_distractors,
     write_normalized,
@@ -34,7 +36,9 @@ def _audio_name(row: dict, idx: int) -> str:
     return f"q{idx + 1}_{_track_id(row.get('Song link', ''))}.mp3"
 
 
-def _fetch_df() -> pd.DataFrame:
+def _fetch_df():
+    import pandas as pd
+
     qa = pd.read_csv(QA_URL)
     meta = pd.read_csv(METADATA_URL)
     meta = meta.rename(columns={"song_link": "Song link"})
@@ -55,24 +59,22 @@ def _normalize_row(row: dict, idx: int) -> dict:
         row.get("Distractor 3"),
     ]
     correct = resolve_correct_answer(row.get("True answer"), choices)
-    return {
-        "benchmark": NAME,
-        "question": clean_text(row.get("Question", "")),
-        "question_type": "mcq",
-        "correct_answer": correct,
-        "distractors": to_distractors(choices, correct),
-        "audio_url": _audio_name(row, idx),
-        "category_1": clean_text(row.get("Main Category", "")),
-        "category_2": _secondary_skills(row.get("Secondary Categories", "")),
-        "category_3": clean_text(row.get("Difficulty", "")),
-        "category_4": "",
-        "track_id": _track_id(row.get("Song link", "")),
-        "start_time": clean_text(row.get("start time", "")),
-        "end_time": clean_text(row.get("end time", "")),
-        "artist_name": clean_text(row.get("artist_name", "")),
-        "song_name": clean_text(row.get("name", "")),
-        "license": clean_text(row.get("license_ccurl", "")),
-    }
+    distractors = json.loads(to_distractors(choices, correct))
+    primary = clean_text(row.get("Main Category", ""))
+    secondary = _secondary_skills(row.get("Secondary Categories", ""))
+    return normalized_record(
+        bench=NAME,
+        focus=["music"],
+        question=row.get("Question", ""),
+        answer=[correct] if correct else [],
+        distractors=distractors,
+        url=[_audio_name(row, idx)],
+        categories={
+            "category_1_main_category": primary,
+            "category_2_secondary_categories": secondary,
+            "category_3_difficulty": clean_text(row.get("Difficulty", "")),
+        },
+    )
 
 
 def download_hummusqa() -> None:
@@ -81,7 +83,13 @@ def download_hummusqa() -> None:
     df = df.copy()
     df["audio_path"] = [_audio_name(r, i) for i, r in enumerate(df.to_dict("records"))]
     write_raw(NAME, df)
-    write_normalized(NAME, [_normalize_row(r, i) for i, r in enumerate(df.to_dict("records"))])
+    normalize_hummusqa(df)
+
+
+def normalize_hummusqa(df=None):
+    """Normalize the local raw HumMusQA CSV without downloading it again."""
+    rows = frame_records(df) if df is not None else read_raw_records(NAME)
+    return write_normalized(NAME, [_normalize_row(row, i) for i, row in enumerate(rows)])
 
 
 def download_hummusqa_audio() -> Path:

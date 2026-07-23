@@ -3,13 +3,22 @@
 Source: https://huggingface.co/datasets/pitchbench-authors/PitchBench
 """
 
+from __future__ import annotations
+
 import io
 import wave
 from pathlib import Path
 
-import pandas as pd
-
-from common import AUDIO_DIR, clean_text, write_normalized, write_raw
+from download.common import (
+    AUDIO_DIR,
+    bench_path,
+    clean_text,
+    frame_records,
+    normalized_record,
+    read_raw_records,
+    write_normalized,
+    write_raw,
+)
 
 NAME = "pitchbench"
 HF_REPO = "pitchbench-authors/PitchBench"
@@ -31,7 +40,9 @@ def _parquet_files() -> list[str]:
     )
 
 
-def _fetch_subset(path: str) -> pd.DataFrame:
+def _fetch_subset(path: str):
+    import pandas as pd
+
     from huggingface_hub import hf_hub_download
 
     local = hf_hub_download(HF_REPO, path, repo_type="dataset")
@@ -56,6 +67,9 @@ def _source_label(source: str) -> str:
 
 
 def _audio_name(row: dict, idx: int) -> str:
+    raw_path = clean_text(row.get("audio_path", ""))
+    if raw_path:
+        return Path(raw_path).name
     audio = row.get("audio") or {}
     path = clean_text(audio.get("path", ""))
     return path or f"audio_{idx:06d}.wav"
@@ -135,45 +149,50 @@ def _raw_rows() -> list[dict]:
     return rows
 
 
-def _normalized_rows() -> list[dict]:
+def _normalized_rows(raw_rows: list[dict] | None = None) -> list[dict]:
     rows = []
-    for parquet in _parquet_files():
-        subset = _subset(parquet)
-        skill = _subset_skill(subset)
-        df = _fetch_subset(parquet)
-        print(f"  normalized subset {subset} ({len(df)} rows)", flush=True)
-        for idx, row in enumerate(df.to_dict("records")):
+    if raw_rows is None:
+        raw_rows = read_raw_records(NAME)
+    by_subset: dict[str, list[dict]] = {}
+    for row in raw_rows:
+        by_subset.setdefault(clean_text(row.get("subset", "")), []).append(row)
+    for subset, subset_rows in by_subset.items():
+        print(f"  normalized subset {subset} ({len(subset_rows)} rows)", flush=True)
+        for idx, row in enumerate(subset_rows):
             for answer_format, (prompt_col, answer_col) in ANSWER_COLUMNS.items():
                 prompt = clean_text(row.get(prompt_col, ""))
                 if not prompt:
                     continue
-                rows.append({
-                    "benchmark": NAME,
-                    "question": prompt,
-                    "question_type": "oeq",
-                    "correct_answer": clean_text(row.get(answer_col, "")),
-                    "distractors": "[]",
-                    "audio_url": _audio_url(subset, row, idx),
-                    "category_1": "music",
-                    "category_2": _source_label(row.get("source", "")),
-                    "category_3": skill,
-                    "category_4": answer_format,
-                    "subset": subset,
-                    "skill": skill,
-                    "answer_format": answer_format,
-                    "gt_midi": clean_text(row.get("gt_midi", "")),
-                    "gt_abc": clean_text(row.get("gt_abc", "")),
-                    "gt_solfege": clean_text(row.get("gt_solfege", "")),
-                    "gt_freq": clean_text(row.get("gt_freq", "")),
-                    "source": clean_text(row.get("source", "")),
-                })
+                answer = clean_text(row.get(answer_col, ""))
+                rows.append(normalized_record(
+                    bench=NAME,
+                    focus=["music"],
+                    question=prompt,
+                    answer=[answer] if answer else [],
+                    distractors=[],
+                    url=[_audio_url(subset, row, idx)],
+                    categories={
+                        "category_1_subset": _subset_skill(subset),
+                        "category_2_source": _source_label(row.get("source", "")),
+                        "category_3_answer_format": answer_format,
+                    },
+                ))
     return rows
 
 
 def download_pitchbench() -> None:
+    import pandas as pd
+
     print(f"[{NAME}] downloading from {HF_REPO} …", flush=True)
-    write_raw(NAME, pd.DataFrame(_raw_rows()))
-    write_normalized(NAME, _normalized_rows())
+    rows = _raw_rows()
+    write_raw(NAME, pd.DataFrame(rows))
+    normalize_pitchbench(pd.DataFrame(rows))
+
+
+def normalize_pitchbench(df=None):
+    """Normalize the local raw PitchBench CSV without downloading it again."""
+    rows = None if df is None else frame_records(df)
+    return write_normalized(NAME, _normalized_rows(rows))
 
 
 def download_pitchbench_audio() -> Path:

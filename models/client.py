@@ -103,6 +103,12 @@ class _ChatCompletionsClient(ModelClient):
             raise RuntimeError(f"{self.env_key} not set (needed for {self.name}).")
         return {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
 
+    def _prepare_body(self, body: dict) -> None:
+        """Allow compatible providers to request provider-specific metadata."""
+
+    def _record_response(self, api_response: dict, prompt: str, response: str) -> None:
+        """Provider hook for accounting or other response metadata."""
+
     def generate(self, prompt, audio_path=None, max_tokens=256):
         import requests
 
@@ -120,11 +126,19 @@ class _ChatCompletionsClient(ModelClient):
             "max_tokens": max_tokens,
             "temperature": 0,
         }
+        self._prepare_body(body)
         resp = requests.post(f"{self.base_url}/chat/completions",
                              headers=self._headers(), json=body, timeout=TIMEOUT)
         if resp.status_code != 200:
             raise RuntimeError(f"{self.name} {resp.status_code}: {resp.text[:400]}")
-        return resp.json()["choices"][0]["message"]["content"]
+        api_response = resp.json()
+        response = ""
+        try:
+            response = api_response["choices"][0]["message"]["content"]
+        finally:
+            # Preserve accounting even if a provider returns a malformed choice.
+            self._record_response(api_response, prompt, response)
+        return response
 
 
 class OpenAIClient(_ChatCompletionsClient):
@@ -137,6 +151,14 @@ class OpenRouterClient(_ChatCompletionsClient):
     name = "openrouter"
     base_url = "https://openrouter.ai/api/v1"
     env_key = "OPENROUTER_API_KEY"
+
+    def _prepare_body(self, body: dict) -> None:
+        body["usage"] = {"include": True}
+
+    def _record_response(self, api_response: dict, prompt: str, response: str) -> None:
+        from src.reporting.openrouter_costs import record_openrouter_call
+
+        record_openrouter_call(api_response, prompt, response)
 
 
 _AUDIO_HINTS = ("audio", "gpt-4o", "gemini", "qwen2-audio", "qwen2.5-omni")

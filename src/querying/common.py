@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from datetime import datetime
 from pathlib import Path
 
@@ -17,11 +18,63 @@ def resolve_path(path: str | Path) -> Path:
 
 
 def audio_stem(audio_url: str) -> str:
-    return audio_url.split("/")[-1].rsplit(".", 1)[0]
+    name = audio_name(audio_url)
+    return name.rsplit(".", 1)[0]
 
 
 def audio_name(audio_url: str) -> str:
-    return audio_url.split("/")[-1]
+    try:
+        values = json.loads(str(audio_url or "[]"))
+    except json.JSONDecodeError:
+        values = [audio_url]
+    first = str(values[0]) if isinstance(values, list) and values else ""
+    return first.split("/")[-1]
+
+
+def row_audio(row) -> str:
+    """Return a normalized row's JSON URL cell, accepting legacy rows."""
+    return row.get("url", row.get("audio_url", ""))
+
+
+def row_answer(row) -> str:
+    """Return the first accepted answer from a normalized row."""
+    return row_first_json_value(row, "answer", fallback="correct_answer")
+
+
+def row_first_json_value(row, column: str, *, fallback: str = "") -> str:
+    """Return the first value from a normalized JSON-list cell."""
+    raw = row.get(column, row.get(fallback, "") if fallback else "")
+    try:
+        values = json.loads(str(raw or "[]"))
+    except json.JSONDecodeError:
+        values = [raw]
+    return str(values[0]) if isinstance(values, list) and values else ""
+
+
+def row_qid(row) -> str:
+    """Use the normalized stable qid, with a legacy audio-stem fallback."""
+    return str(row.get("qid", "") or audio_stem(row_audio(row)))
+
+
+def row_has_focus(row, focus: str) -> bool:
+    """Match one exact value in the normalized JSON-list focus cell."""
+    raw = row.get("focus", "")
+    try:
+        values = json.loads(str(raw or "[]"))
+    except json.JSONDecodeError:
+        values = [raw]
+    if not isinstance(values, list):
+        values = [values]
+    return focus.casefold() in {str(value).casefold() for value in values}
+
+
+def creator_categories(row) -> dict[str, str]:
+    """Return creator category columns in normalized order."""
+    keys = sorted(
+        (key for key in row.keys() if re.fullmatch(r"category_[1-9][0-9]*_.+", str(key))),
+        key=lambda key: (int(str(key).split("_", 2)[1]), str(key)),
+    )
+    return {str(key): str(row.get(key, "") or "") for key in keys}
 
 
 def build_audio_index(audio_root: str | Path | None = None) -> dict[str, Path]:
@@ -83,7 +136,7 @@ def result_dir(
     """Return ``results/<experiment>/<benchmark>/<model>/<date>``.
 
     ``experiment`` should be the numbered module name, such as
-    ``exp_0_mcq_oeq``. Forms and other run components belong inside this
+    ``exp_7_mcq_oeq``. Forms and other run components belong inside this
     directory rather than changing the four identifying path dimensions.
     """
     if not date or Path(date).name != date:

@@ -21,21 +21,22 @@ import importlib
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent.parent))
 sys.path.insert(0, str(Path(__file__).parent))
 
 from audio import DATASETS as AUDIO_DATASETS, download_audio
-from clean import MODALITY_COLUMN, clean_dataset
+from clean import DATASETS as SELECTION_DATASETS, clean_dataset
 
 # Register one metadata download function per dataset here.
 DATASETS = {
-    "aha": ("benchmark_aha", "download_aha"),
-    "hummusqa": ("benchmark_hummusqa", "download_hummusqa"),
-    "mmau": ("benchmark_mmau", "download_mmau"),
-    "mmar": ("benchmark_mmar", "download_mmar"),
-    "mmau_pro": ("benchmark_mmau_pro", "download_mmau_pro"),
-    "muchomusic": ("benchmark_muchomusic", "download_muchomusic"),
-    "parsa_bench": ("benchmark_parsa_bench", "download_parsa_bench"),
-    "pitchbench": ("benchmark_pitchbench", "download_pitchbench"),
+    "aha": ("download.benchmark_aha", "download_aha"),
+    "hummusqa": ("download.benchmark_hummusqa", "download_hummusqa"),
+    "mmau": ("download.benchmark_mmau", "download_mmau"),
+    "mmar": ("download.benchmark_mmar", "download_mmar"),
+    "mmau_pro": ("download.benchmark_mmau_pro", "download_mmau_pro"),
+    "muchomusic": ("download.benchmark_muchomusic", "download_muchomusic"),
+    "parsa_bench": ("download.benchmark_parsa_bench", "download_parsa_bench"),
+    "pitchbench": ("download.benchmark_pitchbench", "download_pitchbench"),
 }
 
 
@@ -57,7 +58,7 @@ def download_dataset(name: str) -> None:
 
     _load_download(name)()
 
-    if name in MODALITY_COLUMN:
+    if name in SELECTION_DATASETS:
         clean_dataset(name)
     else:
         print(f"[{name}] no music-selection rule registered; skipping normalized_selected")

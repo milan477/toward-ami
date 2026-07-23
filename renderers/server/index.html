@@ -55,7 +55,7 @@
   .review .saved.show { opacity:1; }
   .cat-perceptual { color:#4f8cff; border-color:#4f8cff; }
   .cat-inferential { color:#b07cff; border-color:#b07cff; }
-  .cat-affective   { color:#ff7c9c; border-color:#ff7c9c; }
+  .cat-experiential { color:#ff7c9c; border-color:#ff7c9c; }
   .cat-contextual  { color:#2ecc71; border-color:#2ecc71; }
   .chip.cat { font-weight:600; }
   .rationale { color:var(--muted); font-size:11.5px; font-style:italic; flex-basis:100%; }
@@ -120,7 +120,7 @@ function escapeAttr(s){return escapeHtml(s).replace(/"/g,"&quot;");}
 
 function parseDistractors(raw){ try { const v=JSON.parse(raw); return Array.isArray(v)?v:[]; } catch { return []; } }
 
-const KNOWN = new Set(["benchmark","question","question_type","correct_answer","distractors","audio_url","category_1","category_2","category_3","_audio","qid","category","category_auto","category_rationale","answer_format","example_answer","af_pred_letter","af_pred_answer","af_correct","af_response","af_error"]);
+const KNOWN = new Set(["bench","focus","question","answer","distractors","url","input_modality","output_modality","_audio","qid","content_skill","piec","question_nature","af_pred_letter","af_pred_answer","af_correct","af_response","af_error"]);
 
 function predBlock(r){
   if (!("af_pred_answer" in r) && !("af_response" in r)) return "";
@@ -137,8 +137,8 @@ function predBlock(r){
   return `<div class="pred">AF-Next: ${pred} ${mark}${raw}${err}</div>`;
 }
 
-let REVIEW_CATS = [];   // listener-action categories, from the server
-let EDITABLE = false;   // dataset carries qid + category columns
+let REVIEW_CATS = [];   // PIEC categories, from the server
+let EDITABLE = false;   // dataset carries qid + piec columns
 
 async function saveField(qid, field, value, el){
   const r = await fetch("/api/update", {
@@ -151,49 +151,40 @@ async function saveField(qid, field, value, el){
 
 function reviewBlock(r){
   if (!EDITABLE) return "";
-  const cur = r.category || "";
+  const cur = r.piec || "";
   const opts = [`<option value="">— unset —</option>`].concat(
     REVIEW_CATS.map(c=>`<option value="${escapeAttr(c)}"${c===cur?" selected":""}>${escapeHtml(c)}</option>`)
   ).join("");
-  const auto = r.category_auto ? `auto: ${escapeHtml(r.category_auto)}` : "";
-  const rationale = r.category_rationale ? `<div class="rationale">${escapeHtml(r.category_rationale)}</div>` : "";
   return `<div class="review" data-qid="${escapeAttr(r.qid)}">
-    <label>category
+    <label>PIEC
       <select class="cat-select cat-${escapeAttr(cur)}">${opts}</select>
     </label>
-    <label>answer format
-      <input class="fmt" type="text" value="${escapeAttr(r.answer_format||"")}" placeholder="e.g. an instrument name">
-    </label>
-    <span class="chip">${escapeHtml(auto)}</span>
     <span class="saved">✓ saved</span>
-    ${rationale}
   </div>`;
 }
 
 function renderRow(r, i){
-  const cats = [r.category_1, r.category_2, r.category_3].filter(Boolean)
+  const cats = Object.keys(r).filter(k=>/^category_[1-9][0-9]*_/.test(k) && r[k])
+    .map(k=>r[k])
     .map(c=>`<span class="chip">${escapeHtml(c)}</span>`).join("");
-  const typeChip = `<span class="chip type">${escapeHtml(r.question_type||"")}</span>`;
-  const catChip = r.category
-    ? `<span class="chip cat cat-${escapeAttr(r.category)}">${escapeHtml(r.category)}</span>` : "";
+  const typeChip = `<span class="chip type">${escapeHtml(r.question_nature||"")}</span>`;
+  const catChip = r.piec
+    ? `<span class="chip cat cat-${escapeAttr(r.piec)}">${escapeHtml(r.piec)}</span>` : "";
 
-  let answersHtml;
-  if (r.question_type === "mcq") {
-    const ds = parseDistractors(r.distractors);
-    answersHtml = `<div class="answers">`
-      + `<div class="ans correct"><span class="tick">✓</span> ${escapeHtml(r.correct_answer)}</div>`
-      + ds.map(d=>`<div class="ans distractor">• ${escapeHtml(d)}</div>`).join("")
-      + `</div>`;
-  } else {
-    answersHtml = `<div class="answers"><div class="open-ans">${escapeHtml(r.correct_answer) || "<em>(no reference answer)</em>"}</div></div>`;
-  }
+  const answers = parseDistractors(r.answer);
+  const ds = parseDistractors(r.distractors);
+  const answersHtml = `<div class="answers">`
+    + answers.map(a=>`<div class="ans correct"><span class="tick">✓</span> ${escapeHtml(a)}</div>`).join("")
+    + (answers.length ? "" : `<div class="open-ans"><em>(no reference answer)</em></div>`)
+    + ds.map(d=>`<div class="ans distractor">• ${escapeHtml(d)}</div>`).join("")
+    + `</div>`;
 
   const exampleHtml = (r.example_answer||"") !== ""
     ? `<div class="example"><span class="lbl">✗ incorrect example</span> ${escapeHtml(r.example_answer)}</div>` : "";
 
   const audio = (r._audio||[]).length
     ? r._audio.map(u=>`<audio controls preload="none" src="${u}"></audio>`).join("")
-    : `<div class="noaudio">no audio on disk · <code>${escapeHtml(r.audio_url)}</code></div>`;
+    : `<div class="noaudio">no audio on disk · <code>${escapeHtml(r.url)}</code></div>`;
 
   // any non-canonical columns (e.g. skills, length_type, music_knowledge)
   const extras = Object.keys(r).filter(k=>!KNOWN.has(k) && esc(r[k]).length)
@@ -220,10 +211,8 @@ function bindReview(){
     sel.onchange = e => {
       REVIEW_CATS.forEach(c=>sel.classList.remove("cat-"+c));
       if (e.target.value) sel.classList.add("cat-"+e.target.value);
-      saveField(qid, "category", e.target.value, saved);
+      saveField(qid, "piec", e.target.value, saved);
     };
-    const fmt = block.querySelector(".fmt");
-    fmt.onchange = e => saveField(qid, "answer_format", e.target.value, saved);
   });
 }
 

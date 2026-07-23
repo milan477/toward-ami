@@ -6,12 +6,23 @@ The repository is gated. The loader works once the local Hugging Face token has
 access to the dataset.
 """
 
+from __future__ import annotations
+
+import json
 from pathlib import Path
 
-import pandas as pd
-from huggingface_hub.errors import GatedRepoError
-
-from common import AUDIO_DIR, clean_text, resolve_correct_answer, to_distractors, write_normalized, write_raw
+from download.common import (
+    AUDIO_DIR,
+    bench_path,
+    clean_text,
+    frame_records,
+    normalized_record,
+    read_raw_records,
+    resolve_correct_answer,
+    to_distractors,
+    write_normalized,
+    write_raw,
+)
 
 NAME = "parsa_bench"
 HF_REPO = "MohammadJRanjbar/PARSA-Bench"
@@ -26,6 +37,7 @@ CSV_FILES = [
 
 def _download_file(path: str) -> str:
     from huggingface_hub import hf_hub_download
+    from huggingface_hub.errors import GatedRepoError
 
     try:
         return hf_hub_download(HF_REPO, path, repo_type="dataset")
@@ -36,7 +48,9 @@ def _download_file(path: str) -> str:
         ) from exc
 
 
-def _read_source() -> pd.DataFrame:
+def _read_source():
+    import pandas as pd
+
     frames = []
     for path in CSV_FILES:
         local = _download_file(path)
@@ -98,27 +112,32 @@ def _normalize_row(row: dict, idx: int) -> dict:
     choices = _choices(row)
     correct = resolve_correct_answer(_answer(row), choices)
     task = clean_text(row.get("task", ""))
-    return {
-        "benchmark": NAME,
-        "question": _question(row),
-        "question_type": "mcq" if choices else "oeq",
-        "correct_answer": correct,
-        "distractors": to_distractors(choices, correct),
-        "audio_url": _audio_path(row, idx),
-        "category_1": task,
-        "category_2": "",
-        "category_3": "",
-        "category_4": "",
-        "task": task,
-        "task_file": clean_text(row.get("task_file", "")),
-    }
+    distractors = json.loads(to_distractors(choices, correct))
+    return normalized_record(
+        bench=NAME,
+        focus=["speech"],
+        question=_question(row),
+        answer=[correct] if correct else [],
+        distractors=distractors,
+        url=[_audio_path(row, idx)],
+        categories={
+            "category_1_task": task,
+            "category_2_task_file": clean_text(row.get("task_file", "")),
+        },
+    )
 
 
 def download_parsa_bench() -> None:
     print(f"[{NAME}] downloading from {HF_REPO} …")
     df = _read_source()
     write_raw(NAME, df)
-    write_normalized(NAME, [_normalize_row(r, i) for i, r in enumerate(df.to_dict("records"))])
+    normalize_parsa_bench(df)
+
+
+def normalize_parsa_bench(df=None):
+    """Normalize local PARSA-Bench raw data without accessing its gated repo."""
+    rows = frame_records(df) if df is not None else read_raw_records(NAME)
+    return write_normalized(NAME, [_normalize_row(row, i) for i, row in enumerate(rows)])
 
 
 def download_parsa_bench_audio() -> Path:

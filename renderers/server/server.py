@@ -1,13 +1,14 @@
 """Tiny dependency-free web UI to browse benchmark questions + their audio.
 
 Reads benchmark CSVs (recursively) under --data-dir and serves the audio under
-data/audio/<dataset>/. Audio files are matched to each question's audio_url by
+data/audio/<dataset>/. Audio files are matched to each question's normalized URL list by
 indexing what's on disk (formats differ per dataset: "./audio/X.wav",
 "data/X.wav", "sdd:415600", multi-clip "a.wav; b.wav", ...), so questions whose
 audio hasn't been downloaded simply show up without a player.
 
 The default --data-dir is data/benchmarks, whose CSVs are named
-<name>_<stage>.csv (raw/normalized) plus normalized_selected/normalized_selected_annotated;
+<name>_<stage>.csv, including raw, normalized, normalized_selected,
+normalized_selected_enhanced, and legacy normalized_selected_annotated;
 each is discovered by its filename stem. Any other flat directory
 of CSVs also works (e.g. --data-dir data/model_runs).
 
@@ -76,11 +77,17 @@ def _audio_index(dataset: str) -> dict[str, str]:
     return idx
 
 
-def resolve_audio(dataset: str, audio_url: str) -> list[str]:
+def resolve_audio(dataset: str, raw_urls: str) -> list[str]:
     """Return playable /audio/... URLs for the clips that exist on disk."""
     idx = _audio_index(dataset)
     urls: list[str] = []
-    for piece in str(audio_url).split(";"):
+    try:
+        pieces = json.loads(raw_urls or "[]")
+    except (json.JSONDecodeError, TypeError):
+        pieces = str(raw_urls).split(";")
+    if not isinstance(pieces, list):
+        pieces = [pieces]
+    for piece in pieces:
         piece = piece.strip()
         if not piece:
             continue
@@ -124,18 +131,20 @@ def api_questions(params: dict) -> dict:
     size     = min(200, max(1, int(params.get("page_size", ["25"])[0] or 25)))
 
     rows = df.to_dict("records")
+    category_columns = [column for column in df.columns if re.fullmatch(r"category_[1-9][0-9]*_.+", column)]
+    primary_category = category_columns[0] if category_columns else ""
     if category:
-        rows = [r for r in rows if r.get("category_1", "") == category]
+        rows = [r for r in rows if r.get(primary_category, "") == category]
     if qtype:
-        rows = [r for r in rows if r.get("question_type", "") == qtype]
+        rows = [r for r in rows if r.get("question_nature", "") == qtype]
     if search:
         rows = [r for r in rows
                 if search in r.get("question", "").lower()
-                or search in r.get("correct_answer", "").lower()]
+                or search in r.get("answer", "").lower()]
 
     # attach resolved audio
     for r in rows:
-        r["_audio"] = resolve_audio(dataset, r.get("audio_url", ""))
+        r["_audio"] = resolve_audio(dataset, r.get("url", r.get("audio_url", "")))
     if only_aud:
         rows = [r for r in rows if r["_audio"]]
 
@@ -145,7 +154,7 @@ def api_questions(params: dict) -> dict:
     return {
         "dataset": dataset,
         "columns": list(df.columns),
-        "editable": "qid" in df.columns and "category" in df.columns,
+        "editable": "qid" in df.columns and "piec" in df.columns,
         "review_categories": REVIEW_CATEGORIES,
         "total": total,
         "page": page,
@@ -159,16 +168,14 @@ def api_categories(params: dict) -> dict:
     if dataset not in datasets():
         return {"categories": []}
     df = _load_df(dataset)
-    cats = sorted({c for c in df.get("category_1", pd.Series(dtype=str)) if c})
+    columns = [column for column in df.columns if re.fullmatch(r"category_[1-9][0-9]*_.+", column)]
+    cats = sorted({c for c in df.get(columns[0], pd.Series(dtype=str)) if c}) if columns else []
     return {"categories": cats}
 
 
-# The listener-action review categories (must match annotate.py). When a dataset
-# carries a `category` column, the frontend lets a reviewer reassign it.
-REVIEW_CATEGORIES = ["perceptual", "inferential", "affective", "contextual"]
-EDITABLE_FIELDS = {"category", "piac", "answer_format"}
-# `category` and `piac` hold the same content-category value — edit one, write both.
-PIAC_ALIASES = ("category", "piac")
+# The PIEC review categories (must match the enhancement taxonomy).
+REVIEW_CATEGORIES = ["perceptual", "inferential", "experiential", "contextual"]
+EDITABLE_FIELDS = {"piec"}
 
 
 def api_update(body: dict) -> dict:
@@ -181,7 +188,7 @@ def api_update(body: dict) -> dict:
         return {"ok": False, "error": f"unknown dataset {dataset!r}"}
     if field not in EDITABLE_FIELDS:
         return {"ok": False, "error": f"field {field!r} is not editable"}
-    if field in PIAC_ALIASES and value and value not in REVIEW_CATEGORIES:
+    if field == "piec" and value and value not in REVIEW_CATEGORIES:
         return {"ok": False, "error": f"invalid category {value!r}"}
 
     path = _dataset_map()[dataset]
@@ -191,12 +198,9 @@ def api_update(body: dict) -> dict:
     mask = df["qid"] == qid
     if not mask.any():
         return {"ok": False, "error": f"qid {qid!r} not found"}
-    # Editing the content category writes both aliases so they never drift.
-    targets = PIAC_ALIASES if field in PIAC_ALIASES else (field,)
-    for col in targets:
-        if col not in df.columns:
-            df[col] = ""
-        df.loc[mask, col] = value
+    if field not in df.columns:
+        df[field] = ""
+    df.loc[mask, field] = value
     df.to_csv(path, index=False)
     _load_df.cache_clear()  # so subsequent reads reflect the edit
     return {"ok": True, "dataset": dataset, "qid": qid, "field": field, "value": value}

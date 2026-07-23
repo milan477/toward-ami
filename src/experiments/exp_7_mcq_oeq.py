@@ -1,4 +1,4 @@
-"""Experiment 0: MCQ plus OEQ benchmark evaluation for one model."""
+"""Experiment 7: legacy MCQ plus OEQ benchmark evaluation for one model."""
 
 from __future__ import annotations
 
@@ -10,15 +10,15 @@ import pandas as pd
 
 from models.client import make_client
 from src.config import DEFAULT_ANNOTATED_DATA, DEFAULT_MODALITY, DEFAULT_RUNNER_MODEL, DEFAULT_SELECTED_DATA
-from src.evaluation.scoring import judge_piac_answers, merge_oeq_records
+from src.evaluation.scoring import judge_piec_answers, merge_oeq_records
 from src.helpers.results import git_commit
 from src.querying.common import (
-    audio_stem,
     build_audio_index,
     create_result_dir,
     infer_benchmark_name,
     read_jsonl,
     resolve_path,
+    row_qid,
 )
 from src.querying.model_eval import query_answers
 from src.reporting.results import write_mcq_outputs, write_oeq_outputs
@@ -39,7 +39,7 @@ def run(
         raise SystemExit(f"Data not found: {data_path}")
     df = pd.read_csv(data_path, dtype=str, keep_default_na=False)
     if modality:
-        df = df[df["category_1"].str.lower() == modality.lower()].reset_index(drop=True)
+        df = df[df["focus"].str.lower().str.contains(modality.lower(), regex=False)].reset_index(drop=True)
     if limit:
         df = df.head(limit)
 
@@ -84,12 +84,12 @@ def run(
     else:
         judged_path = oeq_dir / ".oeq_piac_judged.jsonl"
         try:
-            judged = judge_piac_answers(oeq_answers, judged_path)
+            judged = judge_piec_answers(oeq_answers, judged_path)
         except Exception as exc:  # noqa: BLE001
             print(f"[judge] unavailable ({type(exc).__name__}: {str(exc)[:140]}) - "
                   f"writing OEQ responses without scores.")
             judged = read_jsonl(judged_path)
-    oeq_records = merge_oeq_records(df, oeq_answers, judged, lambda row: audio_stem(row["audio_url"]))
+    oeq_records = merge_oeq_records(df, oeq_answers, judged, row_qid)
     write_oeq_outputs(oeq_dir, stamp, metadata, oeq_records)
     n_judged = sum(1 for r in oeq_records if r.get("judge_score_norm") is not None)
     print(f"Wrote OEQ -> {oeq_dir}  ({n_judged}/{len(oeq_answers)} judged)")
@@ -103,7 +103,7 @@ def main() -> None:
         default=str(DEFAULT_ANNOTATED_DATA if DEFAULT_ANNOTATED_DATA.exists() else DEFAULT_SELECTED_DATA),
     )
     parser.add_argument("--modality", default=DEFAULT_MODALITY,
-                        help="filter category_1 (default: music; pass '' for all)")
+                        help="filter normalized focus (default: music; pass '' for all)")
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--no-judge", action="store_true",
                         help="record OEQ responses only; skip PIAC judge scoring")

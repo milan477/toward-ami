@@ -1,16 +1,13 @@
 "use strict";
 
-const PIAC = ["perceptual", "inferential", "affective", "contextual"];
+const PIAC = ["perceptual", "inferential", "experiential", "contextual"];
 const ROUTES = ["home", "models", "benchmarks", "evaluation", "results"];
 const CATEGORY_LABELS = {
-  modality: "Modality",
-  category: "Category",
-  genre: "Genre",
-  skill: "Skill",
-};
-const FILTER_LABELS = {
-  ...CATEGORY_LABELS,
-  piac: "PIAC",
+  focus: "Focus",
+  input_modality: "Input modality",
+  output_modality: "Output modality",
+  action: "Action",
+  content: "Content",
 };
 const BENCH_QUESTION_PAGE = 60;
 const state = {
@@ -1203,14 +1200,26 @@ function categoryFilterHTML(rows) {
 }
 
 function categoryLabelsForRows(rows) {
-  const benchmark = rows.find((row) => row.benchmark)?.benchmark;
-  return benchmark === "PitchBench" ? { ...CATEGORY_LABELS, category: "Source" } : CATEGORY_LABELS;
+  const labels = { ...CATEGORY_LABELS };
+  rows.forEach((row) => {
+    Object.keys(row.categories || {}).forEach((key) => {
+      if (!(key in labels)) labels[key] = categoryLabel(key, row.benchmark);
+    });
+  });
+  return labels;
+}
+
+function categoryLabel(key, benchmark) {
+  if (benchmark === "PitchBench" && key === "category_1_subset") return "Skill tested";
+  const name = key.replace(/^category_\d+_/, "").replaceAll("_", " ");
+  return name ? name.charAt(0).toUpperCase() + name.slice(1) : "Category";
 }
 
 function categoryOptions(rows) {
-  const out = Object.fromEntries(Object.keys(FILTER_LABELS).map((key) => [key, new Set()]));
+  const labels = categoryLabelsForRows(rows);
+  const out = Object.fromEntries([...Object.keys(labels), "piac"].map((key) => [key, new Set()]));
   rows.forEach((row) => {
-    Object.keys(CATEGORY_LABELS).forEach((key) => {
+    Object.keys(labels).forEach((key) => {
       (row.categories?.[key] || []).forEach((value) => {
         if (value) out[key].add(value);
       });
@@ -1551,8 +1560,9 @@ function renderBenchQuestions() {
 }
 
 function benchQuestionHTML(row) {
-  const audio = row.audio
-    ? `<div class="audio-lazy"><button class="audio-load" type="button" data-load-audio="${esc(row.audio)}">Play audio</button></div>`
+  const audioUrls = row.audio_urls?.length ? row.audio_urls : (row.audio ? [row.audio] : []);
+  const audio = audioUrls.length
+    ? `<div class="audio-lazy">${audioUrls.map((url, index) => `<button class="audio-load" type="button" data-load-audio="${esc(url)}">Play audio${audioUrls.length > 1 ? ` ${index + 1}` : ""}</button>`).join("")}</div>`
     : `<div class="no-audio">audio unavailable for this clip</div>`;
   const meta = questionCategoryMeta(row);
   const piac = knownPiac(row.piac);
@@ -1588,7 +1598,7 @@ function loadQuestionAudio(button) {
 }
 
 function questionCategoryMeta(row) {
-  const parts = Object.entries(CATEGORY_LABELS).map(([key, label]) => {
+  const parts = Object.entries(categoryLabelsForRows([row])).map(([key, label]) => {
     const values = row.categories?.[key] || [];
     return values.length ? `${label}: ${values.map(esc).join(", ")}` : "";
   }).filter(Boolean);

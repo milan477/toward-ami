@@ -6,8 +6,11 @@ import json
 import re
 from typing import Any
 
-PIAC_CATEGORIES = {"perceptual", "inferential", "affective", "contextual"}
-QUESTION_NATURES = {"tfq", "mcq", "mlc", "oeq"}
+PIEC_CATEGORIES = {"perceptual", "inferential", "experiential", "contextual"}
+QUESTION_NATURES = {
+    "true_false", "multiple_choice", "ordinal_value",
+    "specific_label", "open_ended",
+}
 
 
 def extract_json_object(text: str) -> dict[str, Any]:
@@ -34,25 +37,17 @@ def clean_value(value: Any, limit: int | None = None) -> str:
 def _normalize_nature(value: Any, text: str) -> str:
     raw = _clean(value).lower().replace("-", "_").replace(" ", "_")
     aliases = {
-        "tf": "tfq",
-        "t_f": "tfq",
-        "true/false": "tfq",
-        "true_false": "tfq",
-        "true_or_false": "tfq",
-        "yes_no": "tfq",
-        "binary": "tfq",
-        "multiple_choice": "mcq",
-        "multiple_choice_question": "mcq",
-        "choice": "mcq",
-        "multi_label": "mlc",
-        "multilabel": "mlc",
-        "label": "mlc",
-        "specific_label": "mlc",
-        "open": "oeq",
-        "open_ended": "oeq",
-        "open_ended_question": "oeq",
-        "free_form": "oeq",
-        "oeq": "oeq",
+        "tf": "true_false", "tfq": "true_false", "t_f": "true_false",
+        "true/false": "true_false", "true_or_false": "true_false",
+        "yes_no": "true_false", "binary": "true_false",
+        "mcq": "multiple_choice", "multiple_choice_question": "multiple_choice",
+        "choice": "multiple_choice",
+        "mlc": "specific_label", "multi_label": "specific_label",
+        "multilabel": "specific_label", "label": "specific_label",
+        "specific_value": "specific_label",
+        "specific_label_or_value": "specific_label",
+        "open": "open_ended", "oeq": "open_ended",
+        "open_ended_question": "open_ended", "free_form": "open_ended",
     }
     nature = aliases.get(raw, raw)
     if nature in QUESTION_NATURES:
@@ -68,15 +63,15 @@ def normalize_question_nature(value: Any, text: str = "") -> str:
     return _normalize_nature(value, text)
 
 
-def _normalize_piac(value: Any, text: str) -> str:
-    piac = _clean(value).lower()
-    if piac in PIAC_CATEGORIES:
-        return piac
-    return next((c for c in PIAC_CATEGORIES if re.search(rf"\b{c}\b", text, re.I)), "")
+def _normalize_piec(value: Any, text: str) -> str:
+    piec = _clean(value).lower()
+    if piec in PIEC_CATEGORIES:
+        return piec
+    return next((c for c in PIEC_CATEGORIES if re.search(rf"\b{c}\b", text, re.I)), "")
 
 
-def normalize_piac(value: Any, text: str = "") -> str:
-    return _normalize_piac(value, text)
+def normalize_piec(value: Any, text: str = "") -> str:
+    return _normalize_piec(value, text)
 
 
 def _normalize_skills(value: Any, text: str) -> list[str]:
@@ -107,7 +102,7 @@ def parse_analysis_answer(text: str) -> dict:
     nature_obj = obj.get("question_nature", {})
     fmt_obj = obj.get("answer_format", {})
     example_obj = obj.get("example_answer", {})
-    piac_obj = obj.get("piac", {})
+    piec_obj = obj.get("piec", {})
     skills_obj = obj.get("skills", {})
 
     if not isinstance(nature_obj, dict):
@@ -116,8 +111,8 @@ def parse_analysis_answer(text: str) -> dict:
         fmt_obj = {"value": fmt_obj}
     if not isinstance(example_obj, dict):
         example_obj = {"value": example_obj}
-    if not isinstance(piac_obj, dict):
-        piac_obj = {"category": piac_obj}
+    if not isinstance(piec_obj, dict):
+        piec_obj = {"category": piec_obj}
     if not isinstance(skills_obj, dict):
         skills_obj = {"items": skills_obj}
 
@@ -128,8 +123,8 @@ def parse_analysis_answer(text: str) -> dict:
         "answer_format_rationale": _clean(fmt_obj.get("rationale"), 300),
         "example_answer": _clean(example_obj.get("value")),
         "example_answer_rationale": _clean(example_obj.get("rationale"), 300),
-        "piac": _normalize_piac(piac_obj.get("category"), text),
-        "piac_rationale": _clean(piac_obj.get("rationale"), 300),
+        "piec": _normalize_piec(piec_obj.get("category"), text),
+        "piec_rationale": _clean(piec_obj.get("rationale"), 300),
         "skills": _normalize_skills(skills_obj.get("items"), text),
         "skills_rationale": _clean(skills_obj.get("rationale"), 300),
         "raw": (text or "").strip(),

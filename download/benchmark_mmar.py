@@ -10,23 +10,25 @@ Each metadata item has:
 
 Normalization choices
 ---------------------
-- question_type : "mcq" when choices are present, else "oeq".
-- correct_answer: the answer is already option text; resolved defensively.
-- audio_url     : audio_path (the clip the question is about). The source video
-                  url + timestamp are preserved in the raw CSV.
-- category_1/2/3/4: modality → category → sub-category → (unused).
+- answer: the source answer is resolved defensively and stored as a JSON list.
+- url: a one-item JSON list containing `audio_path`.
+- focus: atomic values extracted from source `modality`.
+- creator categories: category, sub-category, language, and source are retained
+  in descriptively named ordered columns.
 """
 
 import json
 import tarfile
 from pathlib import Path
 
-import pandas as pd
-
-from common import (
+from download.common import (
     AUDIO_DIR,
     bench_path,
     clean_text,
+    focus_values,
+    frame_records,
+    normalized_record,
+    read_raw_records,
     referenced_audio_paths,
     resolve_correct_answer,
     to_distractors,
@@ -70,29 +72,41 @@ def _fetch_meta() -> list[dict]:
 def _normalize_row(item: dict) -> dict:
     choices = item.get("choices") or []
     correct = resolve_correct_answer(item.get("answer", ""), choices)
-    return {
-        "benchmark":      NAME,
-        "question":       clean_text(item.get("question", "")),
-        "question_type":  "mcq" if choices else "oeq",
-        "correct_answer": correct,
-        "distractors":    to_distractors(choices, correct),
-        "audio_url":      clean_text(item.get("audio_path", "")),
-        "category_1":     clean_text(item.get("modality", "")),
-        "category_2":     clean_text(item.get("category", "")),
-        "category_3":     clean_text(item.get("sub-category", "")),
-        "category_4":     "",
-    }
+    distractors = json.loads(to_distractors(choices, correct))
+    modality = clean_text(item.get("modality", ""))
+    category = clean_text(item.get("category", ""))
+    subcategory = clean_text(item.get("sub-category", ""))
+    return normalized_record(
+        bench=NAME,
+        focus=focus_values(modality),
+        question=item.get("question", ""),
+        answer=[correct] if correct else [],
+        distractors=distractors,
+        url=[item.get("audio_path", "")],
+        categories={
+            "category_1_category": category,
+            "category_2_subcategory": subcategory,
+            "category_3_language": clean_text(item.get("language", "")),
+            "category_4_source": clean_text(item.get("source", "")),
+        },
+    )
 
 
 def download_mmar() -> None:
+    import pandas as pd
+
     print(f"[{NAME}] downloading from {HF_REPO} …")
     meta = _fetch_meta()
 
     # Raw: store exactly as is (column order preserved from the source items).
     write_raw(NAME, pd.DataFrame(meta))
+    normalize_mmar(pd.DataFrame(meta))
 
-    # Normalized: canonical schema.
-    write_normalized(NAME, [_normalize_row(item) for item in meta])
+
+def normalize_mmar(df=None):
+    """Normalize the local raw MMAR CSV without downloading it again."""
+    rows = frame_records(df) if df is not None else read_raw_records(NAME)
+    return write_normalized(NAME, [_normalize_row(row) for row in rows])
 
 
 def download_mmar_audio(stage: str | None = None) -> Path:

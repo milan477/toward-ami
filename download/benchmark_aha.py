@@ -11,23 +11,25 @@ the raw CSV, while only the test split enters the normalized benchmark.
 
 Normalization choices
 ---------------------
-- question_type : ``mcq`` when the rejected answer is distinct from the chosen
-                  answer; ``oeq`` for the small number of degenerate source
-                  pairs whose chosen and rejected answers are identical.
-- correct_answer: the source ``chosen`` response.
+- answer        : a one-item list containing the source ``chosen`` response.
 - distractors   : a one-item JSON list containing ``rejected``.
-- audio_url     : the source audio reference, preserved verbatim.
-- category_1/2  : audio -> temporal reasoning.
-- category_3    : a deterministic task label derived from the prompt.
-- category_4    : source split (train or test).
+- url           : a one-item list containing the source audio reference.
+- focus         : ``["sound"]`` (AHA is explicitly an audio-event benchmark).
+- creator taxonomy: ``category_1_split``.
 """
 
 import json
 from urllib.request import urlopen
 
-import pandas as pd
-
-from common import clean_text, to_distractors, write_normalized, write_raw
+from download.common import (
+    bench_path,
+    clean_text,
+    frame_records,
+    normalized_record,
+    read_raw_records,
+    write_normalized,
+    write_raw,
+)
 
 NAME = "aha"
 HF_REPO = "ASU-GSL/AHA"
@@ -58,53 +60,39 @@ def _fetch_rows() -> list[dict]:
     return rows
 
 
-def _task(prompt: str) -> str:
-    text = clean_text(prompt).lower()
-    if "longest" in text or "duration" in text:
-        return "duration comparison"
-    if "how many" in text or "number of" in text or "more than once" in text:
-        return "event counting"
-    temporal_terms = (
-        "order", "sequence", "chronological", "temporal structure",
-        "first sound", "second sound", "last sound", "final sound",
-        "beginning", "followed by", "passage of sound",
-    )
-    if any(term in text for term in temporal_terms):
-        return "temporal order"
-    return "temporal reasoning"
-
-
 def _normalize_row(row: dict) -> dict:
     chosen = clean_text(row.get("chosen", ""))
     rejected = clean_text(row.get("rejected", ""))
     split = clean_text(row.get("split", ""))
-    has_hard_negative = bool(rejected and rejected.casefold() != chosen.casefold())
-    return {
-        "benchmark": NAME,
-        "question": clean_text(row.get("prompt", "")),
-        "question_type": "mcq" if has_hard_negative else "oeq",
-        "correct_answer": chosen,
-        "distractors": to_distractors([rejected], chosen),
-        "audio_url": clean_text(row.get("audio", "")),
-        "category_1": "audio",
-        "category_2": "temporal reasoning",
-        "category_3": _task(row.get("prompt", "")),
-        "category_4": split,
-        "caption": clean_text(row.get("caption", "")),
-        "rejected_answer": rejected,
-        "split": split,
-    }
+    distractors = [rejected] if rejected and rejected.casefold() != chosen.casefold() else []
+    return normalized_record(
+        bench=NAME,
+        focus=["sound"],
+        question=row.get("prompt", ""),
+        answer=[chosen] if chosen else [],
+        distractors=distractors,
+        url=[row.get("audio", "")],
+        categories={"category_1_split": split},
+    )
 
 
 def download_aha() -> None:
+    import pandas as pd
+
     print(
         f"[{NAME}] downloading metadata from {HF_REPO} (audio skipped) …",
         flush=True,
     )
     rows = _fetch_rows()
     write_raw(NAME, pd.DataFrame(rows))
-    evaluation_rows = [row for row in rows if row["split"] == EVALUATION_SPLIT]
-    write_normalized(NAME, [_normalize_row(row) for row in evaluation_rows])
+    normalize_aha(pd.DataFrame(rows))
+
+
+def normalize_aha(df=None):
+    """Normalize the local raw AHA metadata without downloading it again."""
+    rows = frame_records(df) if df is not None else read_raw_records(NAME)
+    evaluation_rows = [row for row in rows if row.get("split") == EVALUATION_SPLIT]
+    return write_normalized(NAME, [_normalize_row(row) for row in evaluation_rows])
 
 
 if __name__ == "__main__":

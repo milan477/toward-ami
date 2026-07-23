@@ -1,1 +1,1 @@
-"""Benchmark enhancement and probe-chain decomposition."""
+"""Uniquely numbered experiment entrypoints; preprocessing lives in analysis."""

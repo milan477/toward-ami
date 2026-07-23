@@ -3,15 +3,20 @@
 Source: https://huggingface.co/datasets/gamma-lab-umd/MMAU-test-mini
 """
 
+from __future__ import annotations
+
 import json
 from pathlib import Path
 
-import pandas as pd
-
-from common import (
+from download.common import (
     AUDIO_DIR,
     as_list,
+    bench_path,
     clean_text,
+    focus_values,
+    frame_records,
+    normalized_record,
+    read_raw_records,
     resolve_correct_answer,
     to_distractors,
     write_normalized,
@@ -23,7 +28,9 @@ HF_REPO = "gamma-lab-umd/MMAU-test-mini"
 PARQUET_FILE = "test_mini.parquet"
 
 
-def _fetch_df() -> pd.DataFrame:
+def _fetch_df():
+    import pandas as pd
+
     from huggingface_hub import hf_hub_download
 
     path = hf_hub_download(HF_REPO, PARQUET_FILE, repo_type="dataset")
@@ -44,7 +51,7 @@ def _audio_path(row: dict, attrs: dict) -> str:
     return f"{ident}.wav"
 
 
-def _raw_rows(df: pd.DataFrame) -> list[dict]:
+def _raw_rows(df) -> list[dict]:
     rows = []
     for i, row in enumerate(df.to_dict("records")):
         attrs = _attrs(row.get("other_attributes"))
@@ -66,29 +73,39 @@ def _normalize_row(row: dict, idx: int) -> dict:
     attrs = _attrs(row.get("other_attributes"))
     choices = as_list(row.get("choices"))
     correct = resolve_correct_answer(row.get("answer", ""), choices)
-    return {
-        "benchmark": NAME,
-        "question": clean_text(row.get("instruction", "")),
-        "question_type": "mcq" if choices else "oeq",
-        "correct_answer": correct,
-        "distractors": to_distractors(choices, correct),
-        "audio_url": _audio_path({"_row_id": idx}, attrs),
-        "category_1": clean_text(attrs.get("task", "")),
-        "category_2": clean_text(attrs.get("category", "")),
-        "category_3": clean_text(attrs.get("sub-category", "")),
-        "category_4": clean_text(attrs.get("difficulty", "")),
-        "source_dataset": clean_text(attrs.get("dataset", "")),
-        "split": clean_text(attrs.get("split", "")),
-        "source_id": clean_text(attrs.get("id", "")),
-    }
+    distractors = json.loads(to_distractors(choices, correct))
+    task = clean_text(attrs.get("task", ""))
+    category = clean_text(attrs.get("category", ""))
+    subcategory = clean_text(attrs.get("sub-category", ""))
+    return normalized_record(
+        bench=NAME,
+        focus=focus_values(task),
+        question=row.get("instruction", ""),
+        answer=[correct] if correct else [],
+        distractors=distractors,
+        url=[_audio_path({"_row_id": idx}, attrs)],
+        categories={
+            "category_1_category": category,
+            "category_2_subcategory": subcategory,
+            "category_3_difficulty": clean_text(attrs.get("difficulty", "")),
+        },
+    )
 
 
 def download_mmau() -> None:
+    import pandas as pd
+
     print(f"[{NAME}] downloading from {HF_REPO} …")
     df = _fetch_df()
-    write_raw(NAME, pd.DataFrame(_raw_rows(df)))
-    rows = [_normalize_row(row, i) for i, row in enumerate(df.to_dict("records"))]
-    write_normalized(NAME, rows)
+    raw_rows = _raw_rows(df)
+    write_raw(NAME, pd.DataFrame(raw_rows))
+    normalize_mmau(pd.DataFrame(raw_rows))
+
+
+def normalize_mmau(df=None):
+    """Normalize the local raw MMAU CSV without downloading it again."""
+    rows = frame_records(df) if df is not None else read_raw_records(NAME)
+    return write_normalized(NAME, [_normalize_row(row, i) for i, row in enumerate(rows)])
 
 
 def download_mmau_audio() -> Path:

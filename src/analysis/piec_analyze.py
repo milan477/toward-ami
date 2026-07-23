@@ -1,26 +1,25 @@
-"""STEP 5 — hallucination analysis + the "apparent ≠ actual acquisition" proof.
+"""Analyze binary PIEC judgments and the apparent-vs-actual acquisition gap.
 
 Joins three per-question sources on the audio-stem qid (no model calls):
   - annotated benchmark labels
-  - OEQ + PIAC judge summary
+  - OEQ + PIEC judge summary
   - MCQ summary (apparent acquisition)
 
 Produces:
-  - hallucination rate overall, per PIAC category, per skill, and by failing PIAC level
-    (the intercategorical diagnostic — fluent higher-level answers on weak perceptual ground).
-  - MCQ accuracy (apparent) vs OEQ correctness & (1 − hallucination) (actual), per skill and
-    per PIAC category → skills that look acquired in MCQ but aren't in OEQ.
+  - binary OEQ accuracy and low/mid/high judge-confidence counts by PIEC category.
+  - MCQ accuracy (apparent) vs OEQ accuracy (actual), per skill and PIEC category.
   - analysis.csv (merged per question), analysis_report.txt, and two figures under
     paper/figures/.
 
-    python -m src.evaluation.piac_analyze
-    python -m src.evaluation.piac_analyze --oeq <summary.csv> --mcq <summary.csv>
+    python -m src.run analysis piec
+    python -m src.run analysis piec --oeq <summary.csv> --mcq <summary.csv>
 """
 
 from __future__ import annotations
 
 import argparse
 import glob
+import json
 from collections import defaultdict
 from pathlib import Path
 
@@ -37,7 +36,7 @@ from src.config import (
 from src.querying.common import latest_result_dir, model_slug, resolve_path
 
 FIG_DIR = FIGURES_DIR
-PIAC_ORDER = ["perceptual", "inferential", "affective", "contextual"]
+PIEC_ORDER = ["perceptual", "inferential", "experiential", "contextual"]
 
 
 def _latest(pattern: str) -> Path | None:
@@ -55,16 +54,25 @@ def _stem(audio_url: str) -> str:
 
 def load_merged(annotated_path: Path, oeq_path: Path, mcq_path: Path) -> pd.DataFrame:
     proc = pd.read_csv(annotated_path, dtype=str, keep_default_na=False)
-    proc["qid"] = proc["audio_url"].map(_stem)
-    proc = proc[["qid", "category", "skills"]].rename(columns={"category": "piac"})
+    if "qid" not in proc:
+        source = proc["url"] if "url" in proc else proc["audio_url"]
+        proc["qid"] = source.map(_stem)
+    piac_col = "piec" if "piec" in proc else ("piac" if "piac" in proc else "category")
+    skills_col = (
+        "action_content" if "action_content" in proc
+        else "content_skill" if "content_skill" in proc
+        else "content" if "content" in proc
+        else "skills"
+    )
+    proc = proc[["qid", piac_col, skills_col]].rename(
+        columns={piac_col: "piec", skills_col: "skills"}
+    )
 
     oeq = pd.read_csv(oeq_path, dtype=str, keep_default_na=False)
-    oeq = oeq.rename(columns={"category": "piac_oeq"})
     oeq["oeq_norm"] = pd.to_numeric(oeq["judge_score_norm"], errors="coerce")
     oeq["oeq_correct"] = (oeq["oeq_norm"] == 1.0).astype("float")
-    oeq["hallucinated"] = oeq["hallucinated"].map(_truthy)
     oeq = oeq[["qid", "question", "reference_answer", "response", "oeq_norm", "oeq_correct",
-               "hallucinated", "hallucination_level", "judge_rationale"]]
+               "judge_confidence", "judge_rationale"]]
 
     mcq = pd.read_csv(mcq_path, dtype=str, keep_default_na=False)
     mcq["mcq_correct"] = mcq["correct"].map(_truthy).astype("float")
@@ -87,7 +95,9 @@ def _breakdown(df: pd.DataFrame, group: str) -> pd.DataFrame:
             "mcq_acc": _rate(g["mcq_correct"]),
             "oeq_acc": _rate(g["oeq_correct"]),
             "oeq_mean": _rate(g["oeq_norm"]),
-            "halluc_rate": _rate(g["hallucinated"].astype(float)),
+            "confidence_low": int((g["judge_confidence"] == "low").sum()),
+            "confidence_mid": int((g["judge_confidence"] == "mid").sum()),
+            "confidence_high": int((g["judge_confidence"] == "high").sum()),
         })
     out = pd.DataFrame(rows)
     out["apparent_minus_actual"] = out["mcq_acc"] - out["oeq_acc"]
@@ -97,7 +107,13 @@ def _breakdown(df: pd.DataFrame, group: str) -> pd.DataFrame:
 def _explode_skills(df: pd.DataFrame) -> pd.DataFrame:
     rows = []
     for _, r in df.iterrows():
-        for s in [s.strip() for s in str(r["skills"]).split(",") if s.strip()] or ["(none)"]:
+        raw = str(r["skills"] or "").strip()
+        try:
+            parsed = json.loads(raw) if raw.startswith("[") else None
+        except json.JSONDecodeError:
+            parsed = None
+        values = parsed if isinstance(parsed, list) else raw.split(",")
+        for s in [str(s).strip() for s in values if str(s).strip()] or ["(none)"]:
             rows.append({**r.to_dict(), "skill": s})
     return pd.DataFrame(rows)
 
@@ -106,28 +122,14 @@ def _fmt(v) -> str:
     return "—" if v != v else f"{v:.0%}"
 
 
-def make_figures(by_piac: pd.DataFrame, by_skill: pd.DataFrame, slug: str = "") -> list[Path]:
+def make_figures(by_piec: pd.DataFrame, by_skill: pd.DataFrame, slug: str = "") -> list[Path]:
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
     FIG_DIR.mkdir(parents=True, exist_ok=True)
-    pre = f"piac_{slug}_" if slug else "piac_"
+    pre = f"piec_{slug}_" if slug else "piec_"
     saved = []
-
-    # 1. hallucination rate by PIAC category
-    p = by_piac.set_index("piac").reindex([c for c in PIAC_ORDER if c in set(by_piac["piac"])])
-    fig, ax = plt.subplots(figsize=(6, 3.5))
-    ax.bar(p.index, p["halluc_rate"], color="#e5534b")
-    ax.set_ylabel("Hallucination rate")
-    ax.set_title("OEQ hallucination rate by PIAC category")
-    ax.set_ylim(0, 1)
-    for i, v in enumerate(p["halluc_rate"]):
-        ax.text(i, v + 0.02, f"{v:.0%}", ha="center", fontsize=9)
-    plt.tight_layout()
-    f1 = FIG_DIR / f"{pre}hallucination_by_category.pdf"
-    fig.savefig(f1); fig.savefig(f1.with_suffix(".png"), dpi=120); plt.close(fig)
-    saved.append(f1)
 
     # 2. MCQ (apparent) vs OEQ (actual) accuracy by skill
     s = by_skill[by_skill["n"] >= 3].sort_values("apparent_minus_actual", ascending=False)
@@ -149,10 +151,10 @@ def make_figures(by_piac: pd.DataFrame, by_skill: pd.DataFrame, slug: str = "") 
     return saved
 
 
-def write_report(df, by_piac, by_skill, halluc_levels, oeq_path, mcq_path, out_dir: Path) -> Path:
+def write_report(df, by_piec, by_skill, oeq_path, mcq_path, out_dir: Path) -> Path:
     n = len(df)
     lines = [
-        "PIAC analysis — hallucination & apparent-vs-actual acquisition",
+        "PIEC analysis — binary OEQ evaluation & apparent-vs-actual acquisition",
         "=" * 64,
         f"OEQ source: {oeq_path.name}",
         f"MCQ source: {mcq_path.name}",
@@ -162,30 +164,30 @@ def write_report(df, by_piac, by_skill, halluc_levels, oeq_path, mcq_path, out_d
         "-" * 64,
         f"  MCQ accuracy (apparent):   {_rate(df['mcq_correct']):.1%}",
         f"  OEQ accuracy (actual):     {_rate(df['oeq_correct']):.1%}",
-        f"  OEQ mean score (0-1):      {_rate(df['oeq_norm']):.3f}",
-        f"  Hallucination rate (OEQ):  {_rate(df['hallucinated'].astype(float)):.1%}",
-        f"  Hallucination by failing PIAC level: {halluc_levels}",
+        f"  OEQ binary mean (0-1):     {_rate(df['oeq_norm']):.3f}",
+        f"  Judge confidence:          {df['judge_confidence'].value_counts().to_dict()}",
         "",
-        "By PIAC category   (n | MCQ apparent | OEQ actual | OEQ mean | halluc | apparent−actual)",
+        "By PIEC category   (n | MCQ apparent | OEQ actual | low/mid/high | gap)",
         "-" * 64,
     ]
-    pv = by_piac.set_index("piac")
-    for c in [*PIAC_ORDER, *[x for x in pv.index if x not in PIAC_ORDER]]:
+    pv = by_piec.set_index("piec")
+    for c in [*PIEC_ORDER, *[x for x in pv.index if x not in PIEC_ORDER]]:
         if c in pv.index:
             r = pv.loc[c]
             lines.append(f"  {c:<12} {int(r['n']):>3} | {_fmt(r['mcq_acc']):>6} | "
-                         f"{_fmt(r['oeq_acc']):>6} | {r['oeq_mean']:.2f} | "
-                         f"{_fmt(r['halluc_rate']):>5} | {_fmt(r['apparent_minus_actual']):>6}")
+                         f"{_fmt(r['oeq_acc']):>6} | {int(r['confidence_low'])}/"
+                         f"{int(r['confidence_mid'])}/{int(r['confidence_high'])} | "
+                         f"{_fmt(r['apparent_minus_actual']):>6}")
     lines += ["", "By skill (n≥3), sorted by apparent−actual gap (the proof)",
               "-" * 64,
-              "  skill            n | MCQ | OEQ | halluc | gap"]
+              "  skill            n | MCQ | OEQ | gap"]
     for r in by_skill[by_skill["n"] >= 3].sort_values(
             "apparent_minus_actual", ascending=False).itertuples():
         lines.append(f"  {r.skill:<15} {r.n:>3} | {_fmt(r.mcq_acc):>4} | {_fmt(r.oeq_acc):>4} | "
-                     f"{_fmt(r.halluc_rate):>5} | {_fmt(r.apparent_minus_actual):>5}")
+                     f"{_fmt(r.apparent_minus_actual):>5}")
     lines += ["",
               "Reading: a large positive gap = the skill looks acquired in MCQ but collapses in",
-              "open-ended answering (often via hallucination) — apparent, not actual, acquisition."]
+              "open-ended answering — apparent, not actual, acquisition."]
     out = out_dir / "analysis_report.txt"
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return out
@@ -194,7 +196,7 @@ def write_report(df, by_piac, by_skill, halluc_levels, oeq_path, mcq_path, out_d
 def run(annotated_path: Path, oeq_path: Path | None, mcq_path: Path | None,
         benchmark: str, model_spec: str, modality: str) -> None:
     annotated_path = resolve_path(annotated_path)
-    run_dir = latest_result_dir("exp_0_mcq_oeq", benchmark, model_spec)
+    run_dir = latest_result_dir("exp_7_mcq_oeq", benchmark, model_spec)
     new_oeq = run_dir / "oeq" / "summary.csv" if run_dir else None
     new_mcq = run_dir / "mcq" / "summary.csv" if run_dir else None
 
@@ -205,7 +207,7 @@ def run(annotated_path: Path, oeq_path: Path | None, mcq_path: Path | None,
     oeq_path = oeq_path or (new_oeq if new_oeq and new_oeq.exists() else _latest(oeq_glob))
     mcq_path = mcq_path or (new_mcq if new_mcq and new_mcq.exists() else _latest(mcq_glob))
     if not oeq_path or not mcq_path:
-        expected = (run_dir or RESULTS_DIR / "exp_0_mcq_oeq" / benchmark
+        expected = (run_dir or RESULTS_DIR / "exp_7_mcq_oeq" / benchmark
                     / model_slug(model_spec))
         raise SystemExit(f"Need both MCQ and OEQ summaries below {expected}. "
                          "Run `python -m src.run experiments mcq-oeq` first.")
@@ -214,20 +216,18 @@ def run(annotated_path: Path, oeq_path: Path | None, mcq_path: Path | None,
                else oeq_path.parent)
     slug = model_slug(model_spec)
 
-    halluc_levels = (df[df["hallucinated"]]["hallucination_level"]
-                     .value_counts().to_dict())
-    by_piac = _breakdown(df, "piac")
+    by_piec = _breakdown(df, "piec")
     by_skill = _breakdown(_explode_skills(df), "skill")
 
     out_dir.mkdir(parents=True, exist_ok=True)
     df.to_csv(out_dir / "analysis.csv", index=False)
-    by_piac.to_csv(out_dir / "analysis_by_piac.csv", index=False)
+    by_piec.to_csv(out_dir / "analysis_by_piec.csv", index=False)
     by_skill.to_csv(out_dir / "analysis_by_skill.csv", index=False)
-    report = write_report(df, by_piac, by_skill, halluc_levels, oeq_path, mcq_path, out_dir)
-    figs = make_figures(by_piac, by_skill, slug)
+    report = write_report(df, by_piec, by_skill, oeq_path, mcq_path, out_dir)
+    figs = make_figures(by_piec, by_skill, slug)
 
     print(report.read_text())
-    print(f"Wrote {out_dir/'analysis.csv'} + by_piac/by_skill CSVs")
+    print(f"Wrote {out_dir/'analysis.csv'} + by_piec/by_skill CSVs")
     print("Figures:", ", ".join(str(f) for f in figs))
 
 

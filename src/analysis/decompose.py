@@ -14,15 +14,15 @@ Each probe carries the expected answer consistent with the known correct answer
 (the last probe's expected answer is the reference answer itself).
 
 The chain is written back to data/benchmarks/<name>/<name>_normalized_selected_annotated.csv as:
-    probe_chain  — the levels, e.g. "perceptual → inferential → affective"
+    probe_chain  — the levels, e.g. "perceptual → inferential → experiential"
     n_probes     — how many probes
     probes       — the full JSON list [{level, question, expected}, ...]
 
 Resumable via a ``.<name>.probes.jsonl``; ``--limit N`` bounds only how many NEW
 decompositions run this pass (so POC and full runs share one file).
 
-    python -m src.decomposition.decompose mmar --limit 5   # POC gate
-    python -m src.decomposition.decompose mmar             # full music subset (206)
+    python -m src.run decomposition decompose mmar --limit 5   # POC gate
+    python -m src.run decomposition decompose mmar             # full music subset
 """
 
 from __future__ import annotations
@@ -34,11 +34,13 @@ from pathlib import Path
 
 import pandas as pd
 
+from src.querying.common import row_answer
+
 from download.common import bench_dir, bench_path
 from models.client import make_client
 
-from src.analysis.taxonomy import CATEGORIES, PIAC_ORDER
-from .prompts import build_decompose_prompt
+from src.analysis.taxonomy import CATEGORIES, PIEC_ORDER
+from .decomposition_prompts import build_decompose_prompt
 
 ROOT = Path(__file__).resolve().parents[2]
 PROBE_COLS = ["probe_chain", "n_probes", "probes"]
@@ -100,13 +102,13 @@ def _read_jsonl(path: Path) -> dict[str, dict]:
 
 
 def run(name: str, modality: str | None, limit: int | None) -> Path:
-    processed = bench_path(name, "annotated")
+    processed = bench_path(name, "enhanced")
     if not processed.exists():
-        raise SystemExit(f"No annotated dataset at {processed}. Run: "
+        raise SystemExit(f"No enhanced dataset at {processed}. Run: "
                          f"python -m src.analysis.run pipeline {name}")
     df = pd.read_csv(processed, dtype=str, keep_default_na=False)
     if modality:
-        df = df[df["category_1"].str.lower() == modality.lower()].reset_index(drop=True)
+        df = df[df["focus"].str.lower().str.contains(modality.lower(), regex=False)].reset_index(drop=True)
 
     probes_path = bench_dir(name) / f".{name}.probes.jsonl"
     prior = _read_jsonl(probes_path)
@@ -120,13 +122,13 @@ def run(name: str, modality: str | None, limit: int | None) -> Path:
         qid = r["qid"]
         if qid in prior or (limit is not None and n_new >= limit):
             continue
-        res = dec.decompose(r["question"], r.get("correct_answer", ""),
-                            r.get("category", ""), r.get("answer_format", ""))
+        res = dec.decompose(r["question"], row_answer(r),
+                            r.get("piec", ""), r.get("answer_format", ""))
         prior[qid] = {"qid": qid, **res}
         fh.write(json.dumps(prior[qid], ensure_ascii=False) + "\n")
         fh.flush()
         n_new += 1
-        print(f"  [{n_new}] {qid} {r.get('category','?'):<11} {res['probe_chain']}")
+        print(f"  [{n_new}] {qid} {r.get('piec','?'):<11} {res['probe_chain']}")
     fh.close()
 
     df["probe_chain"] = [prior.get(q, {}).get("probe_chain", "") for q in df["qid"]]
@@ -144,7 +146,7 @@ def run(name: str, modality: str | None, limit: int | None) -> Path:
     print("Probes per question:", dict(sorted(depth.items())))
     # how often each level appears in a chain
     lvl = Counter(p["level"] for q in df["qid"] for p in prior.get(q, {}).get("probes", []))
-    print("Level coverage:", {k: lvl.get(k, 0) for k in PIAC_ORDER})
+    print("Level coverage:", {k: lvl.get(k, 0) for k in PIEC_ORDER})
     return processed
 
 
@@ -152,7 +154,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("dataset", help="dataset name, e.g. 'mmar' (→ data/benchmarks/mmar/mmar_normalized_selected_annotated.csv)")
-    ap.add_argument("--modality", default="music", help="filter category_1 (default: music)")
+    ap.add_argument("--modality", default="music", help="filter normalized focus (default: music)")
     ap.add_argument("--limit", type=int, default=None,
                     help="bound how many NEW decompositions run this pass")
     args = ap.parse_args()
